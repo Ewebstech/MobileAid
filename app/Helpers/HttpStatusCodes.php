@@ -6,10 +6,10 @@ class HttpStatusCodes {
 
     Const
         OK = 200,
-        UNPROCESSABLEENTITY =  422,
+        UNPROCESSABLE_ENTITY =  422,
         UNAUTHORIZED = 401,
         FORBIDDEN = 403,
-        NOTFOUND = 404,
-        BADREQUEST = 400;
+        NOT_FOUND = 404,
+        BAD_REQUEST = 400;
 
 }

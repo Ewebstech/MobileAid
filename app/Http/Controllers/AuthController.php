@@ -26,8 +26,6 @@ class AuthController extends Controller
 
  //REGISTER USER'S  METHOD
   //POST /register
-
-
     public function registerUser(Request $request) {
         //validate incoming user input request
         $validator =  $this->validateRegisterRequest($request);
@@ -52,7 +50,7 @@ class AuthController extends Controller
 
         } catch(\Exception $e) {
             //something went wrong during registeration
-            return $this->exceptionError($e->getMessage(), HttpStatusCodes::BADREQUEST);
+            return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
 
         }
             $this->sendWelcomeEmail($user, $defaultPassword);
@@ -60,7 +58,7 @@ class AuthController extends Controller
             return $this->registerationSuccess('Registeration successful, a default password as been sent to your email', $user, HttpStatusCodes::OK);
     }
 
-    public function validateRegisterRequest(Request $request) {
+    private function validateRegisterRequest(Request $request) {
 
         return Validator::make($request->all(), [
             //validation rules
@@ -87,7 +85,7 @@ class AuthController extends Controller
         //validate request
         $validator = $this->validateLoginRequest($request);
         if($validator->fails()) {
-            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BADREQUEST);
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BAD_REQUEST);
         }
 
         //check if password matches
@@ -95,7 +93,7 @@ class AuthController extends Controller
 
         if(!$verifyPassword) {
             //User's email or password is incorrect
-            return $this->validationError('Invalid login credentials', HttpStatusCodes::BADREQUEST);
+            return $this->validationError('Invalid login credentials', HttpStatusCodes::BAD_REQUEST);
         }  
 
         //return the user details back except from password, created and updated_at and remember_token
@@ -120,7 +118,7 @@ class AuthController extends Controller
             $userEmail = User::where('email', '=', $request->input('email'))->first();
         }catch(\Exception $e) {
             //something wemt wrong finding the user
-            return $this->exceptionError($e->getMessage(), HttpStatusCodes::UNPROCESSABLEENTITY);
+            return $this->exceptionError($e->getMessage(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
         }
 
         
@@ -140,7 +138,7 @@ class AuthController extends Controller
             $userEmail = User::where('email', '=', $request->auth->email)->first();
         }catch(\Exception $e) {
             //something wemt wrong finding the user
-            return $this->exceptionError($e->getMessage(), HttpStatusCodes::UNPROCESSABLEENTITY);
+            return $this->exceptionError($e->getMessage(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
         }
 
         
@@ -177,19 +175,19 @@ class AuthController extends Controller
         //validate request
         $validator = $this->validateDefaultChangePasswordRequest($request);
         if($validator->fails()) {
-            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BADREQUEST);
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BAD_REQUEST);
         }
 
         //verify default password
         $verifyDefaultPassword = $this->verifyDefaultPassword($request);
         if(!$verifyDefaultPassword) {
-            return $this->validationError('Default password is incorrect', HttpStatusCodes::BADREQUEST);
+            return $this->validationError('Default password is incorrect', HttpStatusCodes::BAD_REQUEST);
         }
 
         //update password
         $updatePassword = $this->updateDefaultPassword($request);
         if(!$updatePassword) {
-            return $this->error('Something went wrong', HttpStatusCodes::UNPROCESSABLEENTITY);
+            return $this->error('Something went wrong', HttpStatusCodes::UNPROCESSABLE_ENTITY);
         }
         
         return $this->success('Password updated succesfully', HttpStatusCodes::OK);
@@ -227,17 +225,17 @@ class AuthController extends Controller
         //validate request
         $validator = $this->validateMainChangePasswordRequest($request);
         if($validator->fails()){
-            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BADREQUEST);
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BAD_REQUEST);
         }
 
         //verify old password
         if(!$this->verifyOldPassword($request)) {
-            return $this->validationError('Old password is incorrect', HttpStatusCodes::BADREQUEST);
+            return $this->validationError('Old password is incorrect', HttpStatusCodes::BAD_REQUEST);
         }
 
         //update user's password
         if(!$this->updateMainPassword($request)) {
-            return $this->validationError('something went wrong', HttpStatusCodes::UNPROCESSABLEENTITY);
+            return $this->validationError('something went wrong', HttpStatusCodes::UNPROCESSABLE_ENTITY);
         }
 
         //successful
@@ -290,13 +288,13 @@ public function showResetUserPasswordForm(Request $request, $resetToken) {
 
         //validation fails
         if($validator->fails()) {
-            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BADREQUEST); 
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BAD_REQUEST); 
         }
 
         //checks if the user with the given email exists
         $user = User::where('email', '=', $request->email)->first();
         if(!$user) {
-            return $this->validationError('Email provided is not registered on this platform', HttpStatusCodes::BADREQUEST);
+            return $this->validationError('Email provided is not registered on this platform', HttpStatusCodes::BAD_REQUEST);
         }
         
         $resetToken = $this->generateDefaultStaticPassword(20);
