@@ -1,12 +1,12 @@
 <?php
 
 //Mysql Connection Vars
-$db_host = env('DB_HOST');
-$db_connection = env('DB_CONNECTION');
-$db_port = env('DB_PORT');
-$db_database = env('DB_USERNAME');
-$db_username = env('DB_USERNAME');
-$db_password = env("DB_PASSWORD");
+$db_host = "db4free.net";
+$db_connection = "mysql";
+$db_port = "3306";
+$db_database = "mobileaid";
+$db_username = "mobileaiduser";
+$db_password = "mobileaid";
 
 
 return [
