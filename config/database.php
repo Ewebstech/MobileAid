@@ -1,5 +1,14 @@
 <?php
 
+//Mysql Connection Vars
+$db_host = env('DB_HOST');
+$db_connection = env('DB_CONNECTION');
+$db_port = env('DB_PORT');
+$db_database = env('DB_USERNAME');
+$db_username = env('DB_USERNAME');
+$db_password = env("DB_PASSWORD");
+
+
 return [
 
     /*
@@ -13,7 +22,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', $db_connection),
 
     /*
     |--------------------------------------------------------------------------
@@ -41,11 +50,11 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => env('DB_HOST', $db_host),
+            'port' => env('DB_PORT', $db_port),
+            'database' => env('DB_DATABASE', $db_database),
+            'username' => env('DB_USERNAME', $db_username),
+            'password' => env('DB_PASSWORD', $db_password),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
