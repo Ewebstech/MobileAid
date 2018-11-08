@@ -45,6 +45,8 @@ class AuthController extends Controller
 
     public function registerUser(Request $request) {
         $params = $request->all();
+
+        dd('working');
         //validate incoming user input request
         $validator =  $this->validateRegisterRequest($request);
 
@@ -252,7 +254,7 @@ class AuthController extends Controller
            ]);
     }
     
-    
+
     public function showResetUserPasswordForm(Request $request, $resetToken) {
         //return resetpassword form
         return view('resetpassword', compact('resetToken'));
