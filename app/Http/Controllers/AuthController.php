@@ -45,8 +45,6 @@ class AuthController extends Controller
 
     public function registerUser(Request $request) {
         $params = $request->all();
-
-        dd('working');
         //validate incoming user input request
         $validator =  $this->validateRegisterRequest($request);
 
