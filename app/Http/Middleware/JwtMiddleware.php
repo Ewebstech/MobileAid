@@ -36,19 +36,19 @@ class JwtMiddleware
         }
 
         catch(ExpiredException $e) {
-            return $this->tokenError('Expired Token', HttpStatusCodes::NOTFOUND);
+            return $this->tokenError('Expired Token', HttpStatusCodes::NOT_FOUND);
         }
 
         catch(UnexpectedValueException $e) {
-            return $this->tokenError('Wrong number of segments in token', HttpStatusCodes::NOTFOUND);
+            return $this->tokenError('Wrong Number of Segments in Token', HttpStatusCodes::NOT_FOUND);
         }
 
         catch(DomainException $e) {
-            return $this->tokenError('Malformed Token', HttpStatusCodes::NOTFOUND);   
+            return $this->tokenError('Malformed Token', HttpStatusCodes::NOT_FOUND);   
         }
         
         catch(Exception $e) {
-            return $this->tokenError('Error occured while decoding token', HttpStatusCodes::NOTFOUND);
+            return $this->tokenError('Error occured while decoding token', HttpStatusCodes::NOT_FOUND);
         }
 
         $user = User::find($credentials->sub);

@@ -9,6 +9,7 @@ Trait Response {
     public function exceptionError($msg, $httpCode) {
         return response()->json([
             'status' => false,
+            'http_code' => $httpCode,
             'message' => $msg
         ], $httpCode);
     }
@@ -23,11 +24,12 @@ Trait Response {
     public static function validationError($msg, $httpCode) {
         return response()->json([
             'status' => false,
+            'http_code' =>$httpCode,
             'message' => $msg
         ], $httpCode);
     }
 
-    public static function registerationSuccess($msg, $data, $httpCode) {
+    public function regSuccess($msg, $data, $httpCode) {
         return response()->json([
             'status' => true,
             'message' => $msg,
@@ -37,7 +39,8 @@ Trait Response {
 
     public static function success($msg, $httpCode) {
         return response()->json([
-            'status' => true,
+            'status' => true, 
+            'http_code' => $httpCode,
             'message' => $msg
         ], $httpCode);
     }
@@ -45,6 +48,7 @@ Trait Response {
     public function issueUserToken($token, $msg, $httpCode, $data) {
         return response()->json([
             'status' => true,
+            'http_code' => $httpCode,
             'message' => $msg,
             'token' => $token,
             'data' => $data
@@ -54,6 +58,7 @@ Trait Response {
     public function tokenError($msg, $httpCode) {
         return response()->json([
             'status' => false,
+            'http_code' => $httpCode,
             'error' =>  $msg
         ], $httpCode);   
     }

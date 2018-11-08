@@ -25,14 +25,14 @@ Route::get('/', function(){
 //User Routes
 
     //Register's Users
-    Route::post('/register', 'AuthController@registerUser');
-    //Login users
-    Route::post('/login', 'AuthController@loginUser');
-    //change default password
-    Route::post('/change-default-password', 'AuthController@changeDefaultPassword');
-    //change password
-    Route::post('/change-password', 'AuthController@changeMainPassword');
-    //reset password link
-    Route::post('/reset-password', 'AuthController@resetPassword');
-    //Gets the authenticated user details/profile via token provided
-    Route::get('/me', 'AuthController@me');
+Route::post('/wtf/register', 'AuthController@registerUser');
+//Login users
+Route::post('/wtf/login', 'AuthController@loginUser');
+//change default password
+// Route::post('/change-default-password', 'AuthController@changeDefaultPassword');
+//change password
+Route::post('/wtf/change-password', 'AuthController@changeMainPassword');
+//reset password link
+Route::post('/reset-password', 'AuthController@resetPassword');
+//Gets the authenticated user details/profile via token provided
+Route::get('wtf/me', 'AuthController@me');

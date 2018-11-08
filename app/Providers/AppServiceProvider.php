@@ -21,6 +21,8 @@ class AppServiceProvider extends ServiceProvider
         if ($this->app->environment() == 'production') {
             URL::forceScheme('https');
         }
+        $app_logo = env('LOGO_URL','');
+        view()->share('appLogo', $app_logo);  
     }
 
     /**

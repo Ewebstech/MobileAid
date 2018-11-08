@@ -14,3 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Post Routes
+Route::prefix('app')->group(function () {
+    $this->post('register/', 'AuthController@registerUser');
+});
+
