@@ -13,19 +13,18 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
-use Faker\Generator as Faker;
+
 
 class AuthController extends Controller
 {
     protected $faker;
     protected $helper;
 
-    public function __construct(Faker $faker)
+    public function __construct()
     {
         $this->middleware('jwt-auth', ['only' => [
             'changeDefaultPassword', 'changeMainPassword', 'me'
         ]]);
-        $this->faker = $faker;
         $this->helper = new HelperController;
     }
     /**
@@ -53,7 +52,17 @@ class AuthController extends Controller
             //if validation error return error messages
             return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
         }
-        
+
+        $gender = $params['gender'];
+
+        if($gender == "male"){
+           $avatar_img = "/images/male_avatar.png";
+        } elseif($gender == "female") {
+            $avatar_img = "/images/female_avatar.png";
+        } else {
+            $avatar_img = "/images/male_avatar.png";
+        }
+
         try{
             $clientID = strtoupper($this->generateDefaultStaticPassword(5));
             $contentParams = $params;
@@ -66,7 +75,7 @@ class AuthController extends Controller
                 'email' => $params['email'],
                 'phonenumber' => $params['phonenumber'],
                 'password' => hash::make($params['password']),
-                'avatar' => $this->faker->imageUrl,
+                'avatar' => $avatar_img,
                 'role' => 'member',
                 'remember_token' => str_random(rand(0,9)),
                 'content' => $content,
