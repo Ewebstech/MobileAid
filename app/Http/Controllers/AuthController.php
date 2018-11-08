@@ -13,18 +13,19 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
+use Faker\Generator as Faker;
 
 class AuthController extends Controller
 {
     protected $faker;
     protected $helper;
 
-    public function __construct()
+    public function __construct(Faker $faker)
     {
         $this->middleware('jwt-auth', ['only' => [
             'changeDefaultPassword', 'changeMainPassword', 'me'
         ]]);
-        $this->faker = \Faker\Factory::create();
+        $this->faker = $faker;
         $this->helper = new HelperController;
     }
     /**
