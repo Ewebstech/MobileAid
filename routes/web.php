@@ -12,11 +12,20 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
+Route::get('/blank', function () {
+    return view('blank');
+});
+
+Route::get('/pricing', function () {
+    return view('pricing');
+});
 //Post Routes
 Route::prefix('app')->group(function () {
     $this->post('register/', 'AuthController@registerUser');
+
 });
+
 
