@@ -5,7 +5,7 @@
 <!-- Meta Tags -->
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-<meta name="description" content="DrPonits - Nonprofit, Crowdfunding & Charity HTML5 Template" />
+<meta name="description" content="Mobile Medical Aid Services - Get Instant Medical Aid via your Mobile" />
 <meta name="keywords" content="emergency,cough,health,wellness" />
 <meta name="author" content="Emmanuel C. Paul" />
 
