@@ -124,7 +124,7 @@
           <nav id="menuzord" class="menuzord default bg-theme-colored">
             <ul class="menuzord-menu navfont">
                 <li class="active"><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                <li class=""><a href="#"> <i class="fas fa-info-circle"></i> About</a></li>
+                <li class=""><a href="/about"> <i class="fas fa-info-circle"></i> About</a></li>
                 <li class=""><a href="#"><i class="far fa-credit-card"></i> Subscriptions</a>
                     <ul class="dropdown">           
                         <li><a href="#"><i class="fa fa-user-md"></i> Medical Doctors</a></li>

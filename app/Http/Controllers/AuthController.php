@@ -37,10 +37,10 @@ class AuthController extends Controller
             'firstname' => 'required|string',
             'lastname' => 'required|string',
             'email' => 'bail|required|email|unique:users',  
+            'gender' => 'required',
             'phonenumber' => 'bail|required|digits:11|unique:users',
             'password' => 'bail|required|alpha_dash'
         ]);
- 
     }
 
     public function registerUser(Request $request) {
