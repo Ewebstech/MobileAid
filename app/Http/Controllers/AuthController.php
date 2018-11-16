@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Response;
 
 
 class AuthController extends Controller
