@@ -35,10 +35,16 @@ Route::get('/how-it-works', function () {
     return view('how-it-works');
 });
 
-//Post Routes
-Route::prefix('app')->group(function () {
-    $this->post('register/', 'AuthController@registerUser');
+Route::get('/login', 'AuthController@loginPage')->name('loginPage');
+
+Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
+    Route::get('dashboard','DashboardController@index')->name('Dashboard');
+    Route::get('logout', 'AuthController@logout')->name('logout');
+    
+    //User Routes
+    Route::get('edit-user', 'UserController@editUser')->name('editUser');
 
 });
+
 
 

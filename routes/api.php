@@ -24,10 +24,9 @@ Route::get('/', function(){
 
 //User Routes
 
-    //Register's Users
 Route::post('/wtf/register', 'AuthController@registerUser')->name('register');
 //Login users
-Route::post('/wtf/login', 'AuthController@loginUser');
+Route::post('/wtf/login', 'AuthController@loginUser')->name('login');  
 //change default password
 // Route::post('/change-default-password', 'AuthController@changeDefaultPassword');
 //change password
@@ -36,3 +35,7 @@ Route::post('/wtf/change-password', 'AuthController@changeMainPassword');
 Route::post('/reset-password', 'AuthController@resetPassword');
 //Gets the authenticated user details/profile via token provided
 Route::get('wtf/me', 'AuthController@me');
+
+
+//Members Routes
+Route::post('/wtf/editkyc', 'UserController@saveUser')->name('saveUser'); 

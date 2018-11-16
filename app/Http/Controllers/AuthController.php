@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 
 class AuthController extends Controller
@@ -22,10 +24,19 @@ class AuthController extends Controller
 
     public function __construct()
     {
+        if(!isset($_SESSION)) session_start();
         $this->middleware('jwt-auth', ['only' => [
             'changeDefaultPassword', 'changeMainPassword', 'me'
         ]]);
         $this->helper = new HelperController;
+    }
+
+    public function loginPage(Request $request){
+        if(!isset($_SESSION['UserDetails'])){
+            return view('login');
+        } else{
+            return redirect()->route('Dashboard');
+        }
     }
     /**
      * Validate Users
@@ -38,8 +49,9 @@ class AuthController extends Controller
             'lastname' => 'required|string',
             'email' => 'bail|required|email|unique:users',  
             'gender' => 'required',
-            'phonenumber' => 'bail|required|digits:11|unique:users',
-            'password' => 'bail|required|alpha_dash'
+            'phonenumber' => 'bail|required|unique:users',
+            'password' => 'required|alpha_dash',
+            'role' => 'required'
         ]);
     }
 
@@ -50,7 +62,12 @@ class AuthController extends Controller
 
         if($validator->fails()) {
             //if validation error return error messages
-            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
         }
 
         $gender = $params['gender'];
@@ -76,7 +93,7 @@ class AuthController extends Controller
                 'phonenumber' => $params['phonenumber'],
                 'password' => hash::make($params['password']),
                 'avatar' => $avatar_img,
-                'role' => 'member',
+                'role' => $params['role'],
                 'remember_token' => str_random(rand(0,9)),
                 'content' => $content,
                 'client_id' => $clientID,
@@ -107,26 +124,38 @@ class AuthController extends Controller
         
         if(isset($params['view'])){
             if($saveUserData){
-               
-                $output['status'] = "success";
-                $output['data'] = "<center style='font-size: 13px;'><div class='col-md-12 alert alert-success text-center'>Signup Successful. <br> Your <b>Username</b> has been sent to your Email Address.</div></center>";
-                return json_encode($output);
+                $status = "success";
+                $data = "Your Signup Was Successful. <br> Your <b>Username</b> has been sent to your Email Address.";
+                return $this->returnOutput($status,$data);
             } else {
-                $output['failure'] = "<center style='font-size: 13px;'><div class='col-md-6 alert alert-danger text-center'>Registration Center Error. Please Try again!</div></center>";
-                return $output['failure'];
+                $status = "failure";
+                $data = "Registration Error. Please Try again!";
+                return $this->returnOutput($status,$data);
+                
             }
         } else {
             return $this->regSuccess($msg, $user, HttpStatusCodes::OK);
         }
     }
 
+    public function validateLoginRequest(Request $request) {
+        return Validator::make($request->all(), [
+            'loginparam' => 'required',
+            'password' => 'required',
+        ]);
+    }
+
     public function loginUser(Request $request) {
         $params = $request->all();
-        //dd($params);
         //validate request
         $validator = $this->validateLoginRequest($request);
         if($validator->fails()) {
-            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BAD_REQUEST);
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::BAD_REQUEST);
+            }
         }
 
         //check if password matches
@@ -134,7 +163,12 @@ class AuthController extends Controller
 
         if(!$verifyPassword) {
             //User's email or password is incorrect
-            return $this->validationError('Invalid login credentials', HttpStatusCodes::BAD_REQUEST);
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError('Invalid Login Credentials');
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError('Invalid Login Credentials', HttpStatusCodes::BAD_REQUEST);
+            }
         }  
 
         //return the user details back except from password, created and updated_at and remember_token
@@ -142,16 +176,20 @@ class AuthController extends Controller
         
         //User is valid, send token and details
         $token =  $this->JwtIssuer($verifyPassword);  
-
+        
         if(isset($params['view'])){
-            if($saveUserData){
-               
-                $output['status'] = "success";
-                $output['data'] = "<center style='font-size: 13px;'><div class='col-md-12 alert alert-success text-center'>Signup Successful. <br> Your <b>Username</b> has been sent to your Email Address.</div></center>";
-                return json_encode($output);
+            if($userDetails){
+                // set user details in session
+                $allDetails = $userDetails->toArray();
+                $sessionUserDetails = $this->setSession($allDetails);
+
+                $status = "success";
+                $data = "Login Successful";
+                return $this->returnOutput($status,$data);
             } else {
-                $output['failure'] = "<center style='font-size: 13px;'><div class='col-md-6 alert alert-danger text-center'>Registration Center Error. Please Try again!</div></center>";
-                return $output['failure'];
+                $status = "failure";
+                $data = "Login Failure !";
+                return $this->returnOutput($status,$data);
             }
         } else {
             $msg = 'Login Successful';
@@ -160,26 +198,51 @@ class AuthController extends Controller
         }
     }
 
-    public function validateLoginRequest(Request $request) {
-        return Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
+    private function setSession($userDetails){
+        foreach ($userDetails as $field => $value) {
+            # code...
+            $_SESSION['UserDetails'][$field] = $value;
+        }
+        return $_SESSION['UserDetails'];
     }
 
+    public function processUserLogin($user){
+        
+
+    }
+
+    public function checkEmail($email) {
+        $find1 = strpos($email, '@');
+        $find2 = strpos($email, '.');
+        return ($find1 !== false && $find2 !== false && $find2 > $find1 ? true : false);
+     }
+
     public function verifyPassword(Request $request) {
+        $loginParam = $request->input('loginparam');
+        // Check if Login Param is Email
+        $check = $this->checkEmail($loginParam);
+        if($check){
+            $type = "email";
+        } else {
+            $type = "phonenumber";
+        }
         //check if user exists
         try{
-            $userEmail = User::where('email', '=', $request->input('email'))->first();
+            if($type == "email"){
+                $userDetails = User::where('email', '=', $request->input('loginparam'))->first();
+            } elseif ($type == "phonenumber") {
+                $userDetails = User::where('phonenumber', '=', $request->input('loginparam'))->first();
+            }
+            
         }catch(\Exception $e) {
             //something wemt wrong finding the user
             return $this->exceptionError($e->getMessage(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
         }
         
-        if($userEmail) {
+        if($userDetails) {
             //check if password matches
-            if(Hash::check($request->input('password'), $userEmail->password)) {
-                return $userEmail;
+            if(Hash::check($request->input('password'), $userDetails->password)) {
+                return $userDetails;
             }
         }
         
@@ -240,7 +303,7 @@ class AuthController extends Controller
     public function validateMainChangePasswordRequest(Request $request) {
         //custom validation error message
         $customMessage = [
-            'password.confirmed' => 'Password and Confirm Password must match',
+            'password.confirmed' => 'Password and Confirm Password Must Match!',
         ];
         return Validator::make($request->all(), [
             'old_password' => 'required',
@@ -349,7 +412,16 @@ class AuthController extends Controller
             return back()->with('success', 'Your password has successfully been reset.');
     }
 
+    public function logout(){
+        unset($_SESSION['UserDetails']);
+        session_destroy();
+        return Redirect::to('/login');;
+    }
+
+
 }
+
+
 
 
 

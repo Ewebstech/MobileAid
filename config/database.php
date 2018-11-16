@@ -1,12 +1,12 @@
 <?php
 
 //Mysql Connection Vars
-$db_host = "db4free.net";
+$db_host = "localhost";
 $db_connection = "mysql";
 $db_port = "3306";
 $db_database = "mobileaid";
-$db_username = "mobileaiduser";
-$db_password = "mobileaid";
+$db_username = "root";
+$db_password = "dreammesh";
 
 
 return [

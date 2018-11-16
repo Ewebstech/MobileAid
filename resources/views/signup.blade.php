@@ -13,60 +13,7 @@
 <title>MobileAid | Register</title>
 
 <meta name="csrf-token" content="{{ csrf_token() }}">
-
-<!-- Favicon and Touch Icons -->
-<link href="/site/images/favicon.png" rel="shortcut icon" type="image/png">
-<link href="/site/images/apple-touch-icon.png" rel="apple-touch-icon">
-<link href="/site/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-<link href="/site/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-<link href="/site/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
-
-<!-- Stylesheet -->
-<link href="/site/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-<link href="/site/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
-<link href="/site/css/animate.css" rel="stylesheet" type="text/css">
-<link href="/site/css/css-plugin-collections.css" rel="stylesheet"/>
-<!-- CSS | menuzord megamenu skins -->
-<link id="menuzord-menu-skins" href="/site/css/menuzord-skins/menuzord-boxed.css" rel="stylesheet"/>
-<!-- CSS | Main style file -->
-<link href="/site/css/style-main.css" rel="stylesheet" type="text/css">
-<!-- CSS | Preloader Styles -->
-<link href="/site/css/preloader.css" rel="stylesheet" type="text/css">
-<!-- CSS | Custom Margin Padding Collection -->
-<link href="/site/css/custom-bootstrap-margin-padding.css" rel="stylesheet" type="text/css">
-<!-- CSS | Responsive media queries -->
-<link href="/site/css/responsive.css" rel="stylesheet" type="text/css">
-<!-- CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it. -->
-<!-- <link href="/site/css/style.css" rel="stylesheet" type="text/css"> -->
-
-<!-- CSS | Theme Color -->
-<link href="/site/css/colors/theme-skin-sky-blue.css" rel="stylesheet" type="text/css">
-
-<!-- external javascripts -->
-<script src="/site/js/jquery-2.2.4.min.js"></script>
-<script src="/site/js/jquery-ui.min.js"></script>
-<script src="/site/js/bootstrap.min.js"></script>
-<!-- JS | jquery plugin collection for this theme -->
-<script src="/site/js/jquery-plugin-collection.js"></script>
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-  <script src="/site/https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="/site/https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
-</head>
-<body class="">
-<div id="wrapper" class="clearfix">
-  <!-- preloader -->
-  <div id="preloader">
-    <div id="spinner">
-      <div class="preloader-dot-loading">
-        <div class="cssload-loading"><i></i><i></i><i></i><i></i></div>
-      </div>
-    </div>
-    <div id="disable-preloader" class="btn btn-default btn-sm">Disable Preloader</div>
-  </div>
+@include('layout.header')
 
   <!-- Start main-content -->
   <div class="main-content">
@@ -82,11 +29,12 @@
                   <div class="text-center"><a href="/site/#" class=""><img src="/site/img/MAlogo.JPG" alt="" style="width: 150px; height: 70px !important; margin:5px"></a></div>
                   <hr>
                   <h3 class="text-theme-colored mt-0 text-center">Quick Signup</h3>
-                  <p></p>
+                  <p class="text-center"><i>* We ensure absolute security for all patients medical Information<br>Please ensure you provide accurate details</i></p>
                   <hr>
-                  <form id="" action="{{ route('register') }}" method="post" enctype="multipart/form-data">
+                    <div class="form-group" id="signup-msg"></div>
+                  <form id="signup-form" enctype="multipart/form-data">
                   {{csrf_field()}}
-                  
+                   <input type="hidden" name="view" value="1" />
                     <div class="row">
                       <div class="col-sm-6">
                         <div class="form-group">
@@ -101,10 +49,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="form-group">
-                      <label>Email <small>*</small></label>
-                      <input name="email" type="email" placeholder="Enter a valid Email Address" required="required" class="form-control">
-                    </div>
+                 
                     <div class="row">
                     <div class="col-sm-6">
                         <div class="form-group">
@@ -123,35 +68,26 @@
                       </div>
                     </div>
                     <div class="form-group">
+                        <select class="form-control" name="role" required>
+                          <option value="patient">I'd Like To Join As A Patient</option>
+                          <option value="doctor">I'd Like To Join As A Doctor</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                      <label>Email <small>*</small></label>
+                      <input name="email" type="email" placeholder="Enter a valid Email Address" required="required" class="form-control">
+                    </div>
+                    <div class="form-group">
+                      <label>Choose Password <small>*</small></label>
+                      <input id="password" name="password" type="password" placeholder="Choose Password"  class="form-control col-md-10">
+                      <i id="toggle-password" class="col-md-2 fa fa-eye" onclick="togglepass()" style="float: right; margin-top: -30px; font-size: 13pt; "></i>
+                    </div>
+                    <br><br>
+                    <div class="form-group">
                       <input name="form_botcheck" class="form-control" type="hidden" value="" />
                       <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10">Signup Now</button>
                     </div>
                   </form>
-
-                  <!-- Job Form Validation-->
-                  <script type="text/javascript">
-                    $("#job_apply_form").validate({
-                      submitHandler: function(form) {
-                        var form_btn = $(form).find('button[type="submit"]');
-                        var form_result_div = '#form-result';
-                        $(form_result_div).remove();
-                        form_btn.before('<div id="form-result" class="alert alert-success" role="alert" style="display: none;"></div>');
-                        var form_btn_old_msg = form_btn.html();
-                        form_btn.html(form_btn.prop('disabled', true).data("loading-text"));
-                        $(form).ajaxSubmit({
-                          dataType:  'json',
-                          success: function(data) {
-                            if( data.status == 'true' ) {
-                              $(form).find('.form-control').val('');
-                            }
-                            form_btn.prop('disabled', false).html(form_btn_old_msg);
-                            $(form_result_div).html(data.message).fadeIn('slow');
-                            setTimeout(function(){ $(form_result_div).fadeOut('slow') }, 6000);
-                          }
-                        });
-                      }
-                    });
-                  </script>
                 </div>
               </div>
             </div>
@@ -167,7 +103,7 @@
     <div class="container p-20">
       <div class="row">
         <div class="col-md-12 text-center">
-          <p class="mb-0">Copyright &copy;2018 Mobile Medical Aid. All Rights Reserved</p>
+          <p class="mb-0">Copyright &copy; 2018 Mobile Medical Aid. All Rights Reserved</p>
         </div>
       </div>
     </div>
@@ -179,7 +115,26 @@
 <!-- Footer Scripts -->
 <!-- JS | Custom script for all pages -->
 <script src="/site/js/custom.js"></script>
+<script src="/js/ajax.js"></script>
+<script>
 
+// toggle password visibility
+  function togglepass(){
+      //$(this).closest("#toggle-password").toggleClass("fa-eye fa-eye-slash");
+      $("#toggle-password").toggleClass("fa-eye fa-eye-slash");
+      var pwdfield = document.getElementById('password');
+      if (pwdfield.type === "password"){
+          pwdfield.type = "text";
+      } else{
+          pwdfield.type = "password";
+      }
+  }
+
+  $("#signup-form").submit(function (e) {
+      e.preventDefault();
+      submit_reg_form('signup-form', "{{ route('register') }}", 'signup-msg', true);
+  });
+</script>
 </body>
 
 </html>

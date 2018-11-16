@@ -21,7 +21,7 @@ Trait Response {
         ], $httpCode);
     }
 
-    public static function validationError($msg, $httpCode) {
+    public static function validationError($msg, $httpCode=200) {
         return response()->json([
             'status' => false,
             'http_code' =>$httpCode,

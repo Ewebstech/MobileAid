@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Support\Facades\Redirect;
+
+class ValidateLogin
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, Closure $next)
+    {
+         
+        if(!isset($_SESSION['UserDetails'])){
+            return redirect('/login');
+        } else {
+
+            return $next($request);
+        }
+        return $next($request);
+       
+    
+        
+    }
+}
+
