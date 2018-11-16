@@ -172,8 +172,16 @@ class AuthController extends Controller
         }  
 
         //return the user details back except from password, created and updated_at and remember_token
-        $userDetails = array_except($verifyPassword, ['password', 'created_at', 'updated_at', 'remember_token']);
+
+        //$userDetails = array_except($verifyPassword, ['password', 'created_at', 'updated_at', 'remember_token']);
         
+        unset($verifyPassword['password']);
+        unset($verifyPassword['created_at']);
+        unset($verifyPassword['updated_at']);
+        unset($verifyPassword['remember_token']);
+
+        $userDetails =$verifyPassword;
+
         //User is valid, send token and details
         $token =  $this->JwtIssuer($verifyPassword);  
         
