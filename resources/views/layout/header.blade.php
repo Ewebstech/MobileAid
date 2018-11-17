@@ -96,7 +96,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4 col-md-6">
             <div class="widget no-border m-0">
-              <a class="pull-left flip xs-pull-center mb-6" href="{{$appLogo}}"><img src="/site/img/MAlogo.JPG" alt="" style="width: 150px; height: 70px !important; margin:5px"></a>
+              <a class="pull-left flip xs-pull-center mb-6" href="/site/img/MAlogo.JPG"><img src="/site/img/MAlogo.JPG" alt="" style="width: 150px; height: 70px !important; margin:5px"></a>
             </div>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-3">
@@ -110,8 +110,8 @@
           <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="widget no-border m-0">
               <div class="mt-10 mb-10 text-right flip pull-right xs-pull-center">
-                <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-home text-theme-colored font-18"></i> We're Located @ </div>
-                <a class="font-12 text-dim" href="#">2 Ayo Rosiji Crescent, Ikeja GRA, Lagos</a>
+                <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-envelope-o text-theme-colored font-18"></i> 24/7 Support System @ </div>
+                <a class="font-12 text-dim" href="#">info@mobilemedicalaid.com, support@mobilemedicalaid</a>
               </div>
             </div>
           </div>

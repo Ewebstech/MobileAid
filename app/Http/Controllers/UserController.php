@@ -24,12 +24,31 @@ class UserController extends Controller
     }
 
     public function editUser(Request $request){
-        $UserDetails = $_SESSION['UserDetails'];
-        $data['sessiondata'] = $UserDetails;
-        $role = $UserDetails['role'];
+        $data['sessiondata'] = $_SESSION['UserDetails'];
+        $role = $data['sessiondata']['role'];
         
+        $data['UserDetails'] =  $this->getUserDetails($data['sessiondata']['email']);
+
         $URI= '/'.$role.'/edit-profile';
         return view($URI)->with($data);
+     }
+
+     public function getUserDetails($username){
+         $userQuery = new Users;
+         $userData = $userQuery->getUser($username);
+
+         if($userData){
+            $userInfo = $userData->toArray();
+            $userContent = $this->jsonToArray($userInfo['content']);
+            foreach($userContent as $field => $value){
+                $UserDetails[$field] = $value;
+            }
+            $UserDetails['ClientId'] = $userInfo['client_id'];
+            $UserDetails['Role'] = $userInfo['role'];
+            $UserDetails['avatar'] = $userInfo['avatar'];
+         }
+
+         return $UserDetails;
      }
 
     public function saveUser(Request $request) {
@@ -92,7 +111,7 @@ class UserController extends Controller
                 $sendMail = $this->helper->sendMail($mailParams);
 
                 if(isset($params['view'])){
-                    if($saveUserData){
+                    if($updateUser){
                         $status = "success";
                         $data = "Your Data has been Updated Successfully";
                         return $this->returnOutput($status,$data);

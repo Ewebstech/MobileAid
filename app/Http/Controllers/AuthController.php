@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
-use Response;
+
 
 
 class AuthController extends Controller
@@ -186,7 +186,7 @@ class AuthController extends Controller
         unset($verifyPassword['remember_token']);
 
         
-        $userDetails  =$verifyPassword;
+        $userDetails  = $verifyPassword;
 
         //User is valid, send token and details
         $token =  $this->JwtIssuer($verifyPasswordObj);  
@@ -194,7 +194,7 @@ class AuthController extends Controller
         if(isset($params['view'])){
             if($userDetails){
                 // set user details in session
-                $allDetails = $userDetails->toArray();
+                $allDetails = $userDetails;
                 $sessionUserDetails = $this->setSession($allDetails);
 
                 $status = "success";

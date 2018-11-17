@@ -17,6 +17,9 @@
 
 		<!-- Title -->
 		<title>Mobile Medical Aid | @yield('title')</title>
+
+		<meta name="csrf-token" content="{{ csrf_token() }}">
+
 		<link rel="stylesheet" href="/assets/fonts/fonts/font-awesome.min.css">
 
 		<!-- Font family -->
@@ -111,12 +114,13 @@
 
 		<!-- Custom-->
 		<script src="assets/js/custom.js"></script>
-
+		<script src="/js/ajax.js"></script>
 		<!--Counters js-->
 		<script>
 			$('.count').countUp();
 		</script>
 
+		@yield('scripts')
 	</body>
 
 </html>

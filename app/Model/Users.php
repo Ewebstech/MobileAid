@@ -16,4 +16,9 @@ class Users
 
         return ($update) ? true : false;
     }
+
+    public function getUser($param){
+        $user = User::where('email', $param)->first();
+        return ($user) ? $user : false;
+    }
 }

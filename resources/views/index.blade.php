@@ -170,110 +170,109 @@
           </div>
         </div>
         <div class="section-content">
-          <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
-              <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
-                <h5 class="package-type mb-30 text-uppercase">Silver</h5>
-                <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
-                  </div> </div>
-                <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
+                <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
+                  <h5 class="package-type mb-30 text-uppercase">Silver</h5>
+                  <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Silver</em></h6>
+                    </div> </div>
+                  <div class="price-amount bg-theme-colored rotate">
+                    <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 2,000</div>
+                  </div>
+                  <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
+                    <li>1 Call</li>
+                    <li>Multilingual</li>
+                    <li>1 Follow-up Call</li>
+                    <li>Free Wellness Support</li>
+                    <li>Extra Support</li>
+                    <li>Extended to 3rd Party</li>
+                    <li>USSD/Transfer/POS & MM Payment</li>
+                  </ul>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
                 </div>
-                <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
-                  <li>1 Call</li>
-                  <li>Multilingual</li>
-                  <li>1 Follow-up Call</li>
-                  <li>Free Wellness Support</li>
-                  <li>Extra Support</li>
-                  <li>Extended to 3rd Party</li>
-                  <li>USSD/Transfer/POS & MM Payment</li>
-                </ul>
-                <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
               </div>
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
-              <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
-                <h5 class="package-type mb-30 text-uppercase">Gold</h5>
-                <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
-                  </div> </div>
-                <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+              <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
+                <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
+                  <h5 class="package-type mb-30 text-uppercase">Gold</h5>
+                  <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Gold</em></h6>
+                    </div> </div>
+                  <div class="price-amount bg-theme-colored rotate">
+                      <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 5,000</div>
+                  </div>
+                  <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
+                    <li>1 Call</li>
+                    <li>Multilingual</li>
+                    <li>1 Follow-up Call</li>
+                    <li>Free Wellness Support</li>
+                    <li>Access to Second Opinion</li>
+                    <li>Photo Enabled</li>
+                    <li>N300,000 Insurance</li>
+                    <li>Cover/Subscription</li>
+                    <li>Extra Support</li>
+                    <li>Extended to 3rd Party</li>
+                    <li>USSD/Transfer/POS & MM Payment</li>
+                  </ul>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
                 </div>
-                <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
-                  <li>1 Call</li>
-                  <li>Multilingual</li>
-                  <li>1 Follow-up Call</li>
-                  <li>Free Wellness Support</li>
-                  <li>Access to Second Opinion</li>
-                  <li>Photo Enabled</li>
-                  <li>N300,000 Insurance</li>
-                  <li>Cover/Subscription</li>
-                  <li>Extra Support</li>
-                  <li>Extended to 3rd Party</li>
-                  <li>USSD/Transfer/POS & MM Payment</li>
-                </ul>
-                <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
               </div>
-            </div>
-            <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
-              <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
-                <h5 class="package-type mb-30 text-uppercase">Titanium</h5>
-                <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
-                  </div> </div>
-                <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+              <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
+                <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
+                  <h5 class="package-type mb-30 text-uppercase">Titanium</h5>
+                  <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Titanium</em></h6>
+                    </div> </div>
+                  <div class="price-amount bg-theme-colored rotate">
+                      <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 25,000</div>
+                  </div>
+                  <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
+                    <li>3 Local & 2 Foriegn Calls</li>
+                    <li>Multilingual + English</li>
+                    <li>2-3 Follow-up Calls</li>
+                    <li>Access to Second Opinion</li>
+                    <li>Free Wellness Support</li>
+                    <li>Extra Support</li>
+                    <li>Chat, Photo & Video Enabled</li>
+                    <li>N1,500,000 Insurance</li>
+                    <li>Cover/Subscription</li>
+                    <li>Specialist Consultation</li>
+                    <li>Extended to 3rd Party</li>
+                    <li>USSD/Transfer/POS & MM Payment</li>
+                  </ul>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
                 </div>
-                <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
-                  <li>3 Local & 2 Foriegn Calls</li>
-                  <li>Multilingual + English</li>
-                  <li>2-3 Follow-up Calls</li>
-                  <li>Access to Second Opinion</li>
-                  <li>Free Wellness Support</li>
-                  <li>Extra Support</li>
-                  <li>Chat, Photo & Video Enabled</li>
-                  <li>N1,500,000 Insurance</li>
-                  <li>Cover/Subscription</li>
-                  <li>Specialist Consultation</li>
-                  <li>Extended to 3rd Party</li>
-                  <li>USSD/Transfer/POS & MM Payment</li>
-                </ul>
-                <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                
               </div>
-              
-            </div>
-
-            <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
-              <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
-                <h5 class="package-type mb-30 text-uppercase">Diamond</h5>
-                <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
-                  </div> </div>
-                <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+  
+              <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
+                <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
+                  <h5 class="package-type mb-30 text-uppercase">Diamond</h5>
+                  <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Diamond</em></h6>
+                    </div> </div>
+                  <div class="price-amount bg-theme-colored rotate">
+                      <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 65,000</div>
+                  </div>
+                  <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
+                    <li>5 Local & 3 Foriegn Calls</li>
+                    <li>Multilingual + English</li>
+                    <li>3-5 Follow-up Calls</li>
+                    <li>Access to Second Opinion</li>
+                    <li>Free Wellness Support</li>
+                    <li>Extra Support</li>
+                    <li>Chat, Photo & Video Enabled</li>
+                    <li>N3,000,000 Insurance</li>
+                    <li>Cover/Subscription</li>
+                    <li>Specialist Consultation</li>
+                    <li>Extended to 3rd Party</li>
+                    <li>USSD/Transfer/POS & MM Payment</li>
+                  </ul>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
                 </div>
-                <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
-                  <li>5 Local & 3 Foriegn Calls</li>
-                  <li>Multilingual + English</li>
-                  <li>3-5 Follow-up Calls</li>
-                  <li>Access to Second Opinion</li>
-                  <li>Free Wellness Support</li>
-                  <li>Extra Support</li>
-                  <li>Chat, Photo & Video Enabled</li>
-                  <li>N3,000,000 Insurance</li>
-                  <li>Cover/Subscription</li>
-                  <li>Specialist Consultation</li>
-                  <li>Extended to 3rd Party</li>
-                  <li>USSD/Transfer/POS & MM Payment</li>
-                </ul>
-                <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
               </div>
             </div>
           </div>
-        </div>
-      </div>
     </section>
 
    

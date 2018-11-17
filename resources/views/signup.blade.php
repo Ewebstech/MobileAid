@@ -7,7 +7,7 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <meta name="description" content="" />
 <meta name="keywords" content="" />
-<meta name="author" content="ThemeMascot" />
+<meta name="author" content="Emmanuel Paul" />
 
 <!-- Page Title -->
 <title>MobileAid | Register</title>

@@ -19,9 +19,16 @@ class DashboardController extends Controller
        $UserDetails = $_SESSION['UserDetails'];
        $data['sessiondata'] = $UserDetails;
        $role = $UserDetails['role'];
+        
+       $userContent = $this->jsonToArray($UserDetails['content']);
+       if(isset($userContent['Kyc'])){
+           $data['EditProfile'] = "set";
+       } else {
+        $data['EditProfile'] = "";
+       }
        
        $URI= '/'.$role.'/dashboard';
-       $data['data'] = 'patient';
+
        return view($URI)->with($data);
     }
 

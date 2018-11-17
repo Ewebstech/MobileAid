@@ -63,10 +63,10 @@
               <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                 <h5 class="package-type mb-30 text-uppercase">Silver</h5>
                 <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
+                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Silver</em></h6>
                   </div> </div>
                 <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+                  <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 2,000</div>
                 </div>
                 <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                   <li>1 Call</li>
@@ -84,10 +84,10 @@
               <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                 <h5 class="package-type mb-30 text-uppercase">Gold</h5>
                 <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
+                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Gold</em></h6>
                   </div> </div>
                 <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+                    <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 5,000</div>
                 </div>
                 <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                   <li>1 Call</li>
@@ -109,10 +109,10 @@
               <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                 <h5 class="package-type mb-30 text-uppercase">Titanium</h5>
                 <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
+                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Titanium</em></h6>
                   </div> </div>
                 <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+                    <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 25,000</div>
                 </div>
                 <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                   <li>3 Local & 2 Foriegn Calls</li>
@@ -137,10 +137,10 @@
               <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                 <h5 class="package-type mb-30 text-uppercase">Diamond</h5>
                 <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Per Unit</em></h6>
+                  <h6 class="text-white text-bold"><em style="margin-left: 30px;">Diamond</em></h6>
                   </div> </div>
                 <div class="price-amount bg-theme-colored rotate">
-                  <div class="no-rotate text-white">100<sup>&#8358</sup></div>
+                    <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 65,000</div>
                 </div>
                 <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                   <li>5 Local & 3 Foriegn Calls</li>
