@@ -23,8 +23,10 @@ class DashboardController extends Controller
        $userContent = $this->jsonToArray($UserDetails['content']);
        if(isset($userContent['Kyc'])){
            $data['EditProfile'] = "set";
+           
        } else {
         $data['EditProfile'] = "";
+      
        }
        
        $URI= '/'.$role.'/dashboard';

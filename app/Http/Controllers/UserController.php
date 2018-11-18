@@ -28,7 +28,10 @@ class UserController extends Controller
         $role = $data['sessiondata']['role'];
         
         $data['UserDetails'] =  $this->getUserDetails($data['sessiondata']['email']);
-
+        if(!$data['UserDetails']['Kyc']){
+            $data['UserDetails']['Kyc'] = [];
+        }
+      
         $URI= '/'.$role.'/edit-profile';
         return view($URI)->with($data);
      }
@@ -40,6 +43,19 @@ class UserController extends Controller
          if($userData){
             $userInfo = $userData->toArray();
             $userContent = $this->jsonToArray($userInfo['content']);
+            $UserDetails['Kyc']['emergency_contact_name_1'] = "";
+            $UserDetails['Kyc']['emergency_contact_name_2'] = "";
+            $UserDetails['Kyc']['emergency_contact_num_1'] = "";
+            $UserDetails['Kyc']['emergency_contact_num_2'] = "";
+            $UserDetails['Kyc']['hmo_information'] = "";
+            $UserDetails['Kyc']['postal_code'] = "";
+            $UserDetails['Kyc']['city'] = "";
+            $UserDetails['Kyc']['medical_condition_details'] = "";
+            $UserDetails['Kyc']['contact_address'] = "";
+            $UserDetails['Kyc']['country'] = "";
+            $UserDetails['Kyc']['treatment_status'] = "";
+
+
             foreach($userContent as $field => $value){
                 $UserDetails[$field] = $value;
             }

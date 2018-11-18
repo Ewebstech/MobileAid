@@ -3,6 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content')
+
 <div class=" content-area">
         <div class="page-header">
             <h4 class="page-title">Edit Profile</h4>

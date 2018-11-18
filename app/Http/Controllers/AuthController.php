@@ -163,7 +163,10 @@ class AuthController extends Controller
         $verifyPasswordObj = $this->verifyPassword($request);
         if($verifyPasswordObj){
             $verifyPassword = $verifyPasswordObj->toArray();
+        } else {
+            $verifyPassword = $this->verifyPassword($request);
         }
+
 
         if(!$verifyPassword) {
             //User's email or password is incorrect
