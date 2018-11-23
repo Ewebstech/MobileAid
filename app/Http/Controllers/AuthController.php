@@ -163,7 +163,7 @@ class AuthController extends Controller
         $verifyPasswordObj = $this->verifyPassword($request);
         if($verifyPasswordObj){
            
-            $verifyPassword = $verifyPasswordObj->toArray();
+            $verifyPassword = $verifyPasswordObj->getOriginal();
             dd($verifyPassword);
             
         } else {
