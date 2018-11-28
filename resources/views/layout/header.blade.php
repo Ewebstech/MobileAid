@@ -35,6 +35,9 @@
 <script src="/site/js/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
 <script src="/site/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
 
+<!-- Favicon and Touch Icons -->
+<link href="/images/favicon.ico" rel="shortcut icon" type="image/png">
+
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -102,7 +105,7 @@
           <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="widget no-border m-0">
               <div class="mt-10 mb-10 text-right flip pull-right xs-pull-center">
-                <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-phone-square text-theme-colored font-18"></i> +(234) 813 391 8455</div>
+                <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-phone-square text-theme-colored font-18"></i>+234-814-990-6511</div>
                 <a class="font-12 text-dim" href="#">Call Us for More Details!</a> 
               </div>
             </div>

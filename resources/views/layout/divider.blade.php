@@ -4,7 +4,7 @@
           <div class="call-to-action pt-30 pb-20">
             <div class="col-sm-4 col-md-4">
               <div class="widget border-right mb-15"> <i class="fa fa-map text-white pull-left flip font-20 mr-30 mt-5"></i>
-                <h5 class="text-white mb-5 font-14 font-weight-600"> 2 Ayo Rosiji Crescent, <br> Ikeja GRA, Lagos</h5>
+                <h5 class="text-white mb-5 font-14 font-weight-600">Ikeja GRA, Lagos</h5>
               </div>
             </div>
             <div class="col-sm-4 col-md-4">
@@ -23,27 +23,7 @@
                     </span> 
                   </div>
                 </form>
-                <!-- Mailchimp Subscription Form Validation--> 
-                <script type="text/javascript">
-                  $('#mailchimp-subscription-form').ajaxChimp({
-                      callback: mailChimpCallBack,
-                      url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
-                  });
-
-                  function mailChimpCallBack(resp) {
-                      // Hide any previous response text
-                      var $mailchimpform = $('#mailchimp-subscription-form'),
-                          $response = '';
-                      $mailchimpform.children(".alert").remove();
-                      if (resp.result === 'success') {
-                          $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                      } else if (resp.result === 'error') {
-                          $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                      }
-                      $mailchimpform.prepend($response);
-                  }
-                </script> 
-                <!-- Mailchimp Subscription Form Ends Here --> 
+               
               </div>
             </div>
           </div>

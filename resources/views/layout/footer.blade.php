@@ -6,32 +6,13 @@
           <div >
           <div class="widget dark">
             <h4 class="text-white">MOBILE MEDICAL AID</h4>
-            <p class="text-white">2, Ayo Rosiji Crescent, Ikeja GRA, Lagos, Nigeria.</p>
+            <p class="text-white">Ikeja GRA, Lagos, Nigeria.</p>
             <ul class="list-inline mt-5">
-              <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-white" href="#">+234-123-456-789</a> </li>
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-white" href="#">+234-814-990-6511</a> </li>
               <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-white" href="#">support@mobilemedicalaid.com</a> </li>
             </ul>
           </div>
-            <!-- Mailchimp Subscription Form Validation-->
-            <script type="text/javascript">
-              $('#mailchimp-subscription-form-footer').ajaxChimp({
-                  callback: mailChimpCallBack,
-                  url: '//thememascot.us9.list-manage.com/subscribe/post?u=a01f440178e35febc8cf4e51f&amp;id=49d6d30e1e'
-              });
-
-              function mailChimpCallBack(resp) {
-                  // Hide any previous response text
-                  var $mailchimpform = $('#mailchimp-subscription-form-footer'),
-                      $response = '';
-                  $mailchimpform.children(".alert").remove();
-                  if (resp.result === 'success') {
-                      $response = '<div class="alert alert-success"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                  } else if (resp.result === 'error') {
-                      $response = '<div class="alert alert-danger"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>' + resp.msg + '</div>';
-                  }
-                  $mailchimpform.prepend($response);
-              }
-            </script>
+          
             <!-- Mailchimp Subscription Form Ends Here -->
           </div>
         </div>
@@ -39,8 +20,8 @@
           <div class="widget dark">
             <h5 class="widget-title mb-10">Call Us Now</h5>
             <div class="text-gray">
-            <i class="fa fa-phone text-theme-colored mr-5"></i> +234 03 1234 5678 <br>
-            <i class="fa fa-phone text-theme-colored mr-5"></i> +234 67 1234 5678
+            <i class="fa fa-phone text-theme-colored mr-5"></i> +234-814-990-6511 <br>
+        
             </div>
           </div>
         </div>

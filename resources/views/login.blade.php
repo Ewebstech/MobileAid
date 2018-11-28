@@ -38,6 +38,9 @@
 	<!---Font icons-->
 	<link href="assets/plugins/iconfonts/plugin.css" rel="stylesheet" />
 
+	<!-- Favicon and Touch Icons -->
+	<link href="/images/favicon.ico" rel="shortcut icon" type="image/png">
+
 </head>
 	<body class="">
 		<div id="loading"></div>
