@@ -1091,10 +1091,26 @@ section > .container-fluid {
 .menuzord-menu > li > .menuzord-menu > li > .megamenu .megamenu-row li:hover a i {
   color: #fff;
 }
+
+.hide-web{
+  visibility: hidden;
+ }
+
 @media only screen and (max-width: 900px) {
   .menuzord-menu {
-    background: #fff;
+    background: #000;
+    color:#000;
   }
+
+  .hide-web{
+   visibility: visible;
+  }
+
+  .mobile-view{
+    text-align: center !important;
+  }
+
+
 }
 /* -------- Scrolltofixed ---------- */
 .header-nav .header-nav-wrapper.scroll-to-fixed-fixed.scroll-to-fixed-fixed {
@@ -1108,6 +1124,8 @@ section > .container-fluid {
 .header .inner-sticky-wrapper {
   height: 80px;
 }
+
+
 @media only screen and (min-width: 901px) {
   .header-nav .header-nav-absolute-wrapper {
     bottom: -36px;
@@ -1120,6 +1138,8 @@ section > .container-fluid {
   .header-nav .header-nav-absolute-wrapper.scroll-to-fixed-fixed.scroll-to-fixed-fixed {
     bottom: auto;
   }
+
+ 
 }
 /* -------- Navbar Fixed  ---------- */
 .header-nav {

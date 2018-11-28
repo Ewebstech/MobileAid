@@ -112,7 +112,7 @@
           </div>
           <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="widget no-border m-0">
-              <div class="mt-10 mb-10 text-right flip pull-right xs-pull-center">
+              <div class="mt-10 mb-10 flip text-right mobile-view xs-pull-center">
                 <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-envelope-o text-theme-colored font-18"></i> 24/7 Support System @ </div>
                 <a class="font-12 text-dim" href="#">info@mobilemedicalaid.com, support@mobilemedicalaid</a>
               </div>
@@ -126,8 +126,8 @@
         <div class="container">
           <nav id="menuzord" class="menuzord default bg-theme-colored">
             <ul class="menuzord-menu navfont">
-                <li class="active"><a href="/"><i class="fas fa-home"></i> Home</a></li>
-                <li class=""><a href="/about"> <i class="fas fa-info-circle"></i> About</a></li>
+                <li class="active"><a href="/" style="color:#fff;"><i class="fas fa-home"></i> Home</a></li>
+                <li class=""><a href="/about" > <i class="fas fa-info-circle"></i> About</a></li>
                 <li class=""><a href="#"><i class="far fa-credit-card"></i> Subscriptions</a>
                     <ul class="dropdown">           
                         <li><a href="#"><i class="fa fa-user-md"></i> Medical Doctors</a></li>
@@ -137,6 +137,8 @@
                 </li>
                 <li class=""><a href="/pricing"><i class="fas fa-money"></i> Pricing</a></li>
                 <li class=""><a href="#"><i class="fas fa-rss"></i> Blog</a></li>
+                <li class="hide-web"><a href="/login"><i class="fas fa-sign-in"></i> Login</a></li>
+                <li class="hide-web"><a href="/signup"><i class="fas fa-user-plus"></i> Signup</a></li>
             </ul>
             <ul class="list-inline pull-right flip hidden-sm hidden-xs">
               <li>
