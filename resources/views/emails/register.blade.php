@@ -21,6 +21,7 @@ people do not know what to do they can call for medical advice or assistance.</p
             </tr>
         </table>
     </p>
+    <p>Please kindly note that you can also login by using your registered <b>Phone Number</b></p>
     <p>You can log in by clicking <a href="#">Here</a>. Please do have nice day.</p>
 </td>
 </tr>

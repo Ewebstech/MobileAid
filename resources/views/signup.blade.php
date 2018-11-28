@@ -31,7 +31,7 @@
                   <h3 class="text-theme-colored mt-0 text-center">Quick Signup</h3>
                   <p class="text-center"><i>* We ensure absolute security for all patients medical Information<br>Please ensure you provide accurate details</i></p>
                   <hr>
-                    <div class="form-group" id="signup-msg"></div>
+                    
                   <form id="signup-form" enctype="multipart/form-data">
                   {{csrf_field()}}
                    <input type="hidden" name="view" value="1" />
@@ -83,6 +83,7 @@
                       <i id="toggle-password" class="col-md-2 fa fa-eye" onclick="togglepass()" style="float: right; margin-top: -30px; font-size: 13pt; "></i>
                     </div>
                     <br><br>
+                    <div class="form-group" id="signup-msg"></div>
                     <div class="form-group">
                       <input name="form_botcheck" class="form-control" type="hidden" value="" />
                       <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10">Signup Now</button>

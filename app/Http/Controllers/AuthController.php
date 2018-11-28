@@ -108,7 +108,7 @@ class AuthController extends Controller
                     'Email' => $params['email'],
                     'Subject' => 'Welcome Email - '. $params['firstname']. ' '. $params['lastname'],
                     'Username' => $params['email'],
-                    'template' => 'emails.register'
+                    'template' => 'register'
                 ];
 
                 $sendMail = $this->helper->sendMail($mailParams);
@@ -125,6 +125,7 @@ class AuthController extends Controller
         
         if(isset($params['view'])){
             if($saveUserData){
+                //var_dump("success");
                 $status = "success";
                 $data = "Your Signup Was Successful. <br> Your <b>Username</b> has been sent to your Email Address.";
                 return $this->returnOutput($status,$data);

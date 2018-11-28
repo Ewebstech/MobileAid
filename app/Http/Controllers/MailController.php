@@ -2,54 +2,88 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use  Illuminate\Contract\Mailer;
-use Illuminate\Support\Facades\Mail;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+
 
 class MailController extends Controller
 {
-    protected $mailer;
-    public $company_name = "Mobile Medical Aid";
-
-    public function __construct()
-    {   
-        $this->mailer = new Mail;
-    }
-
-    public function sendMail($params)
+    
+    private function mailTemplate($template,$data)
     {
-        //Grab uploaded file
-        //$attach = $request->file('file');
-        Mail::send($params['template'], $params, 
-            function ($message) use($params)
-            {
-                $subject = $params['Subject'];
-                $toAddress = trim($params['Email']);
-                $FullName = $params["Name"];
-                
-                $fromAddress = "noreply@mobilemedicalaid.com";
-                $replyTo = "info@mobilemedicalaid.com";
-       
-                //Attach file
-                //$message->attach($attach);
-
-                //Add a subject
-                $message->subject($subject);
-
-                $message->from($fromAddress, $this->company_name);
-
-                $message->sender($fromAddress, $this->company_name);
-
-                $message->to($toAddress, $name = $FullName);
-
-                $message->replyTo($replyTo, $this->company_name);
-
-                //$message->priority($level);
-                //$message->attach($pathToFile, array $options = []);
-            });
+        $contents = view('emails.'.$template, $data)->render();
+        return $contents;
     }
 
+    public function sendMail($params){
+        $mail = new PHPMailer(true);
+        $subject = $params['Subject'];
+        $toAddress = trim($params['Email']);
+        $FullName = $params["Name"];
+
+        $mailTemplate = $this->mailTemplate($params["template"],$params);
+
+        $fromAddress = "noreply@mobilemedicalaid.com";
+        $replyTo = "info@mobilemedicalaid.com";
+       
+        try{
+            $mail->isSMTP();
+            $mail->CharSet = 'utf-8';
+            $mail->SMTPAuth =true;
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');
+            $mail->Host = env('MAIL_HOST'); //gmail has host > smtp.gmail.com
+            $mail->Port = env('MAIL_PORT'); //gmail has port > 587 . without double quotes
+            $mail->Username = env('MAIL_USERNAME'); //your username. actually your email
+            $mail->Password = env('MAIL_PASSWORD'); // your password. your mail password
+            $mail->setFrom(env('MY_EMAIL'), env('MY_NAME')); 
+            $mail->Subject = $subject;
+            $mail->MsgHTML($mailTemplate);
+            $mail->addAddress($toAddress , $FullName); 
+            $mail->addReplyTo($replyTo,  env('MY_NAME'));
+            if ($mail->send()) {
+                return 'Message has been sent';
+            } else {
+                return 'Message not sent';
+            }
+        }catch(Exception $e){
+            return ($e->getMessage());
+        }
+       
+    }
+
+    // public function sendMail($params)
+    // {
+    //     //Grab uploaded file
+    //     //$attach = $request->file('file');
+    //     Mail::send($params['template'], $params, 
+    //         function ($message) use($params)
+    //         {
+    //             $subject = $params['Subject'];
+    //             $toAddress = trim($params['Email']);
+    //             $FullName = $params["Name"];
+                
+    //             $fromAddress = "noreply@mobilemedicalaid.com";
+    //             $replyTo = "info@mobilemedicalaid.com";
+       
+    //             //Attach file
+    //             //$message->attach($attach);
+
+    //             //Add a subject
+    //             $message->subject($subject);
+
+    //             $message->from($fromAddress, $this->company_name);
+
+    //             $message->sender($fromAddress, $this->company_name);
+
+    //             $message->to($toAddress, $name = $FullName);
+
+    //             $message->replyTo($replyTo, $this->company_name);
+
+    //             //$message->priority($level);
+    //             //$message->attach($pathToFile, array $options = []);
+    //         });
+    // }
 }
