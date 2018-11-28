@@ -38,7 +38,7 @@ class MailController extends Controller
             $mail->Port = env('MAIL_PORT'); //gmail has port > 587 . without double quotes
             $mail->Username = env('MAIL_USERNAME'); //your username. actually your email
             $mail->Password = env('MAIL_PASSWORD'); // your password. your mail password
-            $mail->setFrom(env('MY_EMAIL'), env('MY_NAME')); 
+            $mail->setFrom($fromAddress, env('MY_NAME')); 
             $mail->Subject = $subject;
             $mail->MsgHTML($mailTemplate);
             $mail->addAddress($toAddress , $FullName); 
@@ -49,7 +49,7 @@ class MailController extends Controller
                 return 'Message not sent';
             }
         }catch(Exception $e){
-            return ($e->getMessage());
+            return $e->getMessage();
         }
        
     }

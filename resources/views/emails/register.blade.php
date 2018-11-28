@@ -1,6 +1,6 @@
 @include('emails.layout.mailheader')   
 <tr>
-<td style='color: #fff; font-weight: bolder; background-color: #7c8385;' colspan='3' align='center'> {{$Subject}}</td>
+<td style='color: #fff; font-weight: bolder; background-color: #00A4EF !important;' colspan='3' align='center'> {{$Subject}}</td>
 </tr>
 <tr>
 <td style='color: #000; background-color: #fff;' colspan='3' align='left'>
@@ -22,7 +22,7 @@ people do not know what to do they can call for medical advice or assistance.</p
         </table>
     </p>
     <p>Please kindly note that you can also login by using your registered <b>Phone Number</b></p>
-    <p>You can log in by clicking <a href="#">Here</a>. Please do have nice day.</p>
+    <p>You can log in by clicking <a href="http://mobilemedicalaid.com">Here</a>. Please do have nice day.</p>
 </td>
 </tr>
 @include('emails.layout.mailfooter')   
