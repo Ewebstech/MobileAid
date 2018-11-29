@@ -39,6 +39,13 @@ class MailController extends Controller
             $mail->Port = "25"; //gmail has port > 587 . without double quotes
             $mail->Username = "mn79gomyi4s2"; //your username. actually your email
             $mail->Password = "Chinonye247@"; // your password. your mail password
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
             $mail->setFrom($fromAddress, "Mobile Medical Aid"); 
             $mail->Subject = $subject;
             $mail->MsgHTML($mailTemplate);
