@@ -26,7 +26,7 @@ class MailController extends Controller
 
         $mailTemplate = $this->mailTemplate($params["template"],$params);
 
-        $fromAddress = "support@mobilemedicalaid.com";
+        $fromAddress = "ewebstech@gmail.com";
         $replyTo = "info@mobilemedicalaid.com";
        
         try{
@@ -34,11 +34,11 @@ class MailController extends Controller
             $mail->SMTPDebug = 3;                               // Enable verbose debug output
             $mail->CharSet = 'utf-8';
             $mail->SMTPAuth = true;
-            $mail->SMTPSecure = null;
-            $mail->Host = "smtpout.secureserver.net"; //gmail has host > smtp.gmail.com
-            $mail->Port = "25"; //gmail has port > 587 . without double quotes
-            $mail->Username = "support@mobilemedicalaid.com"; //your username. actually your email
-            $mail->Password = "2ma@2018"; // your password. your mail password
+            $mail->SMTPSecure = "ssl";
+            $mail->Host = "smtp.gmail.com"; //gmail has host > smtp.gmail.com
+            $mail->Port = "465"; //gmail has port > 587 . without double quotes
+            $mail->Username = "ewebstech@gmail.com"; //your username. actually your email
+            $mail->Password = "chinonye247"; // your password. your mail password
             $mail->setFrom($fromAddress, "Mobile Medical Aid"); 
             $mail->Subject = $subject;
             $mail->MsgHTML($mailTemplate);
