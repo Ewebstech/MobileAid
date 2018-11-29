@@ -26,19 +26,19 @@ class MailController extends Controller
 
         $mailTemplate = $this->mailTemplate($params["template"],$params);
 
-        $fromAddress = "ewebstech@gmail.com";
+        $fromAddress = "mn79gomyi4s2";
         $replyTo = "info@mobilemedicalaid.com";
        
         try{
             $mail->isSMTP();
             $mail->SMTPDebug = 3;                               // Enable verbose debug output
             $mail->CharSet = 'utf-8';
-            $mail->SMTPAuth = true;
-            $mail->SMTPSecure = "tls";
-            $mail->Host = "smtp.gmail.com"; //gmail has host > smtp.gmail.com
-            $mail->Port = "587"; //gmail has port > 587 . without double quotes
-            $mail->Username = "ewebstech@gmail.com"; //your username. actually your email
-            $mail->Password = "chinonye247"; // your password. your mail password
+            //$mail->SMTPAuth = true;
+            //$mail->SMTPSecure = "tls";
+            $mail->Host = "localhost"; //gmail has host > smtp.gmail.com
+            $mail->Port = "25"; //gmail has port > 587 . without double quotes
+            $mail->Username = "mn79gomyi4s2"; //your username. actually your email
+            $mail->Password = "Chinonye247@"; // your password. your mail password
             $mail->setFrom($fromAddress, "Mobile Medical Aid"); 
             $mail->Subject = $subject;
             $mail->MsgHTML($mailTemplate);
