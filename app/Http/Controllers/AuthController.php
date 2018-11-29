@@ -114,6 +114,7 @@ class AuthController extends Controller
                 ];
 
                 $sendMail = $this->helper->sendMail($mailParams);
+                dd($sendMail);
             }
 
         } catch(\Exception $e) {
