@@ -7,7 +7,8 @@
     <p>
    Hello {{$Name}},
     </p>
-    <p>Welcome to <b>Mobile Medical Aid.</b> We are happy to have you signup as a {{$Role}} on our indigenous platform</p>
+    <p>Welcome to <b>Mobile Medical Aid.</b> </p>
+    <p>We are happy to have you signup as a <b>{{$Role}}</b> on our indigenous platform</p>
 
     <p>MA is a medical call-in service that is designed to provide quick medical assistance in any health
 related situation to reduce or prevent worsening conditions or resulting in death. In situations where

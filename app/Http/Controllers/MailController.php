@@ -31,7 +31,7 @@ class MailController extends Controller
        
         try{
             $mail->isSMTP();
-            $mail->SMTPDebug = 3;                               // Enable verbose debug output
+            $mail->SMTPDebug = 0;       // Enable verbose debug output | Production Server = 0
             $mail->CharSet = 'utf-8';
             //$mail->SMTPAuth = true;
             //$mail->SMTPSecure = "tls";
