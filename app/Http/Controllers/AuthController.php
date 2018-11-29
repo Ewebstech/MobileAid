@@ -48,7 +48,7 @@ class AuthController extends Controller
             //validation rules
             'firstname' => 'required|string',
             'lastname' => 'required|string',
-            'email' => 'bail|required|email|unique:users',  
+            'email' => 'bail|email|unique:users',  
             'gender' => 'required',
             'phonenumber' => 'bail|required|unique:users',
             'password' => 'required|alpha_dash',
