@@ -109,8 +109,8 @@ class UserController extends Controller
                     'Name' => $Content['firstname']. " ". $Content['lastname'],
                     'Email' => $params['email'],
                     'Subject' => 'Notification on Profile Update',
-                    'template' => 'profile_update'
-                    
+                    'template' => 'profile_update',
+                    'Username' => $params['email']
                 ];
 
                 $sendMail = $this->helper->sendMail($mailParams);
