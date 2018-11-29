@@ -33,7 +33,7 @@ class MailController extends Controller
             $mail->isSMTP();
             $mail->SMTPDebug = 3;                               // Enable verbose debug output
             $mail->CharSet = 'utf-8';
-            $mail->SMTPAuth =true;
+            //$mail->SMTPAuth = "";
             $mail->SMTPSecure = null;
             $mail->Host = "smtpout.secureserver.net"; //gmail has host > smtp.gmail.com
             $mail->Port = "80"; //gmail has port > 587 . without double quotes
