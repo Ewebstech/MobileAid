@@ -58,26 +58,41 @@ class UserController extends Controller
     public function saveUser(Request $request) {
         $params = $request->all();
         //validate requests
-
-        $validator =  Validator::make($request->all(), [
-            //validation rules
-            'treatment_status' => '',
-            'email' => 'email|required',  
-            'phonenumber' => 'required',
-            'emergency_contact_name_1' => '',
-            'emergency_contact_num_1' => '',
-            'emergency_contact_name_2' => '',
-            'emergency_contact_num_2' => '',
-            'hmo_reg_status' => '',
-            'hmo_information' => '',
-            'medical_condition' => '',
-            'medical_condition_details' => '',
-            'contact_address' => '',
-            'city' => '',
-            'postal_code' => '',
-            'country' => '',
-            
-        ]);
+        if($params["role"] == "patient"){
+            $validator =  Validator::make($request->all(), [
+                //validation rules
+                'treatment_status' => '',
+                'email' => 'email|required',  
+                'phonenumber' => 'required',
+                'emergency_contact_name_1' => '',
+                'emergency_contact_num_1' => '',
+                'emergency_contact_name_2' => '',
+                'emergency_contact_num_2' => '',
+                'hmo_reg_status' => '',
+                'hmo_information' => '',
+                'medical_condition' => '',
+                'medical_condition_details' => '',
+                'contact_address' => '',
+                'city' => '',
+                'postal_code' => '',
+                'country' => '',
+                'role' => 'required'
+                
+            ]);
+    
+        } else {
+            $validator =  Validator::make($request->all(), [
+                //validation rules
+                'email' => 'email|required',  
+                'phonenumber' => 'required',
+                'contact_address' => '',
+                'city' => '',
+                'postal_code' => '',
+                'country' => '',
+                
+            ]);
+    
+        }
 
         if($validator->fails()) {
             //if validation error return error messages
