@@ -26,7 +26,7 @@ class MailController extends Controller
 
         $mailTemplate = $this->mailTemplate($params["template"],$params);
 
-        $fromAddress = "noreply@mobilemedicalaid.com";
+        $fromAddress = "support@mobilemedicalaid.com";
         $replyTo = "info@mobilemedicalaid.com";
        
         try{
