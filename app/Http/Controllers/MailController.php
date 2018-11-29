@@ -34,9 +34,9 @@ class MailController extends Controller
             $mail->SMTPDebug = 3;                               // Enable verbose debug output
             $mail->CharSet = 'utf-8';
             $mail->SMTPAuth = true;
-            $mail->SMTPSecure = "ssl";
+            $mail->SMTPSecure = "tls";
             $mail->Host = "smtp.gmail.com"; //gmail has host > smtp.gmail.com
-            $mail->Port = "465"; //gmail has port > 587 . without double quotes
+            $mail->Port = "587"; //gmail has port > 587 . without double quotes
             $mail->Username = "ewebstech@gmail.com"; //your username. actually your email
             $mail->Password = "chinonye247"; // your password. your mail password
             $mail->setFrom($fromAddress, "Mobile Medical Aid"); 
