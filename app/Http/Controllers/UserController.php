@@ -125,7 +125,7 @@ class UserController extends Controller
                     'Email' => $params['email'],
                     'Subject' => 'Notification on Profile Update',
                     'template' => 'profile_update',
-                    'Username' => $params['email']
+                    // 'Username' => $params['email']
                 ];
 
                 $sendMail = $this->helper->sendMail($mailParams);
