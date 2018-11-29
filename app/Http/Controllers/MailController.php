@@ -33,16 +33,16 @@ class MailController extends Controller
             $mail->isSMTP();
             $mail->CharSet = 'utf-8';
             $mail->SMTPAuth =true;
-            $mail->SMTPSecure = "tls";
-            $mail->Host = "smtp.gmail.com"; //gmail has host > smtp.gmail.com
-            $mail->Port = "587"; //gmail has port > 587 . without double quotes
-            $mail->Username = "ewebstech@gmail.com"; //your username. actually your email
-            $mail->Password = "chinonye247"; // your password. your mail password
-            $mail->setFrom($fromAddress, "Mobile Medical Aid"); 
+            $mail->SMTPSecure = env('MAIL_ENCRYPTION');
+            $mail->Host = env('MAIL_HOST'); //gmail has host > smtp.gmail.com
+            $mail->Port = env('MAIL_PORT'); //gmail has port > 587 . without double quotes
+            $mail->Username = env('MAIL_USERNAME'); //your username. actually your email
+            $mail->Password = env('MAIL_PASSWORD'); // your password. your mail password
+            $mail->setFrom($fromAddress, env('MY_NAME')); 
             $mail->Subject = $subject;
             $mail->MsgHTML($mailTemplate);
             $mail->addAddress($toAddress , $FullName); 
-            $mail->addReplyTo($replyTo, "Mobile Medical Aid");
+            $mail->addReplyTo($replyTo,  env('MY_NAME'));
             if ($mail->send()) {
                 return 'Message has been sent';
             } else {
