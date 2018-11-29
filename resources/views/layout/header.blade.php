@@ -114,7 +114,7 @@
             <div class="widget no-border m-0">
               <div class="mt-10 mb-10 flip text-right mobile-view xs-pull-center">
                 <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-envelope-o text-theme-colored font-18"></i> 24/7 Support System @ </div>
-                <a class="font-12 text-dim" href="#">info@mobilemedicalaid.com, support@mobilemedicalaid</a>
+                <a class="font-12 text-dim" href="#">info@mobilemedicalaid.com, support@mobilemedicalaid.com</a>
               </div>
             </div>
           </div>

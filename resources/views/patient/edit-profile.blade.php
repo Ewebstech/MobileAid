@@ -96,26 +96,26 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="form-label">Contact Address</label>
-                                    <input type="text" class="form-control" name="contact_address" value="{{$UserDetails['Kyc']['contact_address']}}" placeholder="Contact Address" >
+                                    <input type="text" class="form-control" name="contact_address" value="{{array_get($UserDetails,'Kyc.contact_address')}}" placeholder="Contact Address" >
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-4">
                                 <div class="form-group">
                                     <label class="form-label">City</label>
-                                    <input type="text" class="form-control" name="city"  value="{{$UserDetails['Kyc']['city']}}" placeholder="City" >
+                                    <input type="text" class="form-control" name="city"  value="{{array_get($UserDetails, 'Kyc.city')}}" placeholder="City" >
                                 </div>
                             </div>
                             <div class="col-sm-6 col-md-3">
                                 <div class="form-group">
                                     <label class="form-label">Postal Code</label>
-                                    <input type="number" class="form-control" name="postal_code"  value="{{$UserDetails['Kyc']['postal_code']}}" placeholder="ZIP Code">
+                                    <input type="number" class="form-control" name="postal_code"  value="{{array_get($UserDetails,'Kyc.postal_code')}}" placeholder="ZIP Code">
                                 </div>
                             </div>
                             <div class="col-md-5">
                                 <div class="form-group">
                                     <label class="form-label">Country</label>
                                     <select class="form-control custom-select" name="country">
-                                            <option value="{{$UserDetails['Kyc']['country']}}" selected>{{$UserDetails['Kyc']['country']}}</option>
+                                            <option value="{{array_get($UserDetails,'Kyc.country')}}" selected>{{array_get($UserDetails,'Kyc.country')}}</option>
                                             <option data-code="US" value="United States">United States</option>
                                             <option data-code="GB" value="United Kingdom">United Kingdom</option>
                                             <option data-code="DE" value="Germany">Germany</option>
@@ -374,21 +374,21 @@
                             <div class="col-md-12">
                                 <div class="form-group mb-0">
                                     <label class="form-label">Do you have any Medical Condition, Please Indicate if Any</label>
-                                    <textarea rows="5" class="form-control" name="medical_condition_details" placeholder="Supply Detailed Information on your Medical Status">{{$UserDetails['Kyc']['medical_condition_details']}}</textarea>
+                                    <textarea rows="5" class="form-control" name="medical_condition_details" placeholder="Supply Detailed Information on your Medical Status">{{array_get($UserDetails,'Kyc.medical_condition_details')}}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-12">
                                     <div class="form-group mb-0">
                                         <label class="form-label">Are you presently undergoing any treatment?, If yes, please provide details.</label>
-                                        <textarea rows="5" class="form-control" name="treatment_status" placeholder="Supply Detailed Information on your Current Treatment Status">{{$UserDetails['Kyc']['treatment_status']}}</textarea>
+                                        <textarea rows="5" class="form-control" name="treatment_status" placeholder="Supply Detailed Information on your Current Treatment Status">{{array_get($UserDetails,'Kyc.treatment_status')}}</textarea>
                                     </div>
                             </div>
 
                             <div class="col-md-12">
                                     <div class="form-group mb-0">
                                         <label class="form-label">Are you regsitered with an HMO?, If yes, please provide details.</label>
-                                        <textarea rows="5" class="form-control" name="hmo_information" placeholder="Supply Detailed Information on your HMO">{{$UserDetails['Kyc']['hmo_information']}}</textarea>
+                                        <textarea rows="5" class="form-control" name="hmo_information" placeholder="Supply Detailed Information on your HMO">{{array_get($UserDetails,'Kyc.hmo_information')}}</textarea>
                                     </div>
                             </div>
                             <br><br>
@@ -399,28 +399,28 @@
                                 <div class="col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="form-label">Contact's Name</label>
-                                            <input type="text" class="form-control" name="emergency_contact_name_1" value="{{$UserDetails['Kyc']['emergency_contact_name_1']}}" placeholder="Enter First Choice Contact">
+                                            <input type="text" class="form-control" name="emergency_contact_name_1" value="{{array_get($UserDetails,'Kyc.emergency_contact_name_1')}}" placeholder="Enter First Choice Contact">
                                         </div>
                                 </div>
                             
                                 <div class="col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" name="emergency_contact_num_1" value="{{$UserDetails['Kyc']['emergency_contact_num_1']}}" placeholder="+234 00 000 0000">
+                                        <input type="text" class="form-control" name="emergency_contact_num_1" value="{{array_get($UserDetails,'Kyc.emergency_contact_num_1')}}" placeholder="+234 00 000 0000">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6 col-md-6">
                                         <div class="form-group">
                                             <label class="form-label">Contact's  Name</label>
-                                            <input type="text" class="form-control" name="emergency_contact_name_2" value="{{$UserDetails['Kyc']['emergency_contact_name_2']}}" placeholder="Enter First Choice Contact">
+                                            <input type="text" class="form-control" name="emergency_contact_name_2" value="{{array_get($UserDetails,'Kyc.emergency_contact_name_2')}}" placeholder="Enter First Choice Contact">
                                         </div>
                                 </div>
                         
                                 <div class="col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" name="emergency_contact_num_2" value="{{$UserDetails['Kyc']['emergency_contact_num_2']}}" placeholder="+234 00 000 0000">
+                                        <input type="text" class="form-control" name="emergency_contact_num_2" value="{{array_get($UserDetails,'Kyc.emergency_contact_num_2')}}" placeholder="+234 00 000 0000">
                                     </div>
                                 </div>
                             

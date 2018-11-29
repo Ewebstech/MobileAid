@@ -7,7 +7,8 @@
     <p>
    Hello {{$Name}},
     </p>
-    <p>Welcome to <b>Mobile Medical Aid.</b></p>
+    <p>Welcome to <b>Mobile Medical Aid.</b> We are happy to have you signup as a {{$Role}} on our indigenous platform</p>
+
     <p>MA is a medical call-in service that is designed to provide quick medical assistance in any health
 related situation to reduce or prevent worsening conditions or resulting in death. In situations where
 people do not know what to do they can call for medical advice or assistance.</p>
@@ -21,7 +22,7 @@ people do not know what to do they can call for medical advice or assistance.</p
             </tr>
         </table>
     </p>
-    <p>Please kindly note that you can also login by using your registered <b>Phone Number</b></p>
+    <p>Please kindly note that you can also login by using your registered <b>Phone Number - {{$PhoneNumber}}</b></p>
     <p>You can log in by clicking <a href="http://mobilemedicalaid.com">Here</a>. Please do have nice day.</p>
 </td>
 </tr>

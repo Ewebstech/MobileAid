@@ -108,6 +108,8 @@ class AuthController extends Controller
                     'Email' => $params['email'],
                     'Subject' => 'Welcome Email - '. $params['firstname']. ' '. $params['lastname'],
                     'Username' => $params['email'],
+                    'Role' => $params['role'],
+                    'PhoneNumber' => $params['phonenumber'],
                     'template' => 'register'
                 ];
 
