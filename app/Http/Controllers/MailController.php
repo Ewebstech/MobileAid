@@ -37,8 +37,8 @@ class MailController extends Controller
             $mail->SMTPSecure = null;
             $mail->Host = "smtpout.secureserver.net"; //gmail has host > smtp.gmail.com
             $mail->Port = "80"; //gmail has port > 587 . without double quotes
-            $mail->Username = "mn79gomyi4s2"; //your username. actually your email
-            $mail->Password = "Chinonye247@"; // your password. your mail password
+            $mail->Username = "support@mobilemedicalaid.com"; //your username. actually your email
+            $mail->Password = "2ma@2018"; // your password. your mail password
             $mail->setFrom($fromAddress, "Mobile Medical Aid"); 
             $mail->Subject = $subject;
             $mail->MsgHTML($mailTemplate);
