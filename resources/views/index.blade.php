@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
 <meta name="description" content="Mobile Medical Aid Services - Get Instant Medical Aid via your Mobile" />
-<meta name="keywords" content="emergency,cough,health,wellness" />
+<meta name="keywords" content="emergency,cough,health,wellness,mobile healthcare" />
 <meta name="author" content="Emmanuel C. Paul" />
 
 <!-- Page Title -->
@@ -216,7 +216,7 @@
                     <li>USSD/Transfer/POS & MM Payment</li>
                   </ul>
                   </div>
-                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
@@ -245,7 +245,7 @@
                     <li>USSD/Transfer/POS & MM Payment</li>
                   </ul>
                 </div>
-                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
                 </div>
                 
               </div>
@@ -276,7 +276,7 @@
                     <li>USSD/Transfer/POS & MM Payment</li>
                   </ul>
                   </div>
-                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
                 </div>
               </div>
             </div>

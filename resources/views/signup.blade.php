@@ -85,7 +85,7 @@
                     <div class="form-group" id="signup-msg"></div>
                     <div class="form-group">
                       <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                      <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10"><i class="fa fa-check-circle"></i> Signup Now</button>
+                      <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10"><i class="fa fa-check-circle"></i> Sign-up Now</button>
                     </div>
                   </form>
                 </div>
