@@ -67,3 +67,4 @@
       </div>
     </div>
   </footer>
+  <script src="/js/ajax.js"></script>

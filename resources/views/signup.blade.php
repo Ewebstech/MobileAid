@@ -115,7 +115,7 @@
 <!-- Footer Scripts -->
 <!-- JS | Custom script for all pages -->
 <script src="/site/js/custom.js"></script>
-<script src="/js/ajax.js"></script>
+
 <script>
 
 // toggle password visibility

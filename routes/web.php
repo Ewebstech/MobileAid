@@ -35,7 +35,12 @@ Route::get('/how-it-works', function () {
     return view('how-it-works');
 });
 
+Route::get('/contact', function () {
+    return view('contact');
+});
+
 Route::get('/login', 'AuthController@loginPage')->name('loginPage');
+Route::post('/contactform', 'PagesController@contactPage')->name('contactPage');
 
 Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('dashboard','DashboardController@index')->name('Dashboard');

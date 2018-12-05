@@ -97,7 +97,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4 col-md-6">
             <div class="widget no-border m-0">
-              <a class="pull-left flip xs-pull-center mb-6" href="/site/img/MAlogo.JPG"><img src="/site/img/MAlogo.png" alt="" style="width: 150px; height: 70px !important; margin:5px"></a>
+              <a class="pull-left flip xs-pull-center mb-6" href="/home"><img src="/site/img/MAlogo.png" alt="" style="width: 150px; height: 70px !important; margin:5px"></a>
             </div>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-3">
