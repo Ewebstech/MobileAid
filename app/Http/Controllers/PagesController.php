@@ -49,7 +49,7 @@ class PagesController extends Controller
                 'Body' => 'Hello '. ucfirst(strtolower($params['name'])). ', thank you for contacting us. Our support team will get back to you very soon. Cheers!',
             ];
             
-            $sendMail = $this->helper->sendMail($mailParams);
+            //$sendMail = $this->helper->sendMail($mailParams);
 
             $status = "success";
             $data = "Thanks ". ucfirst(strtolower($params['name'])) .", your message has been sent. Check your Email Address for subsequent communications.";
