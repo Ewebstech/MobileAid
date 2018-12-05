@@ -80,12 +80,10 @@
                 </li>
                 <li class="text-white">|</li>
                 <li>
-                  <a href="#" class="text-white">Help Desk</a>
+                  <a href="/contact" class="text-white">Help Desk</a>
                 </li>
                 <li class="text-white">|</li>
-                <li>
-                  <a href="#" class="text-white">Support</a>
-                </li>
+                
                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a href="#" class="text-white">support@mobilemedicalaid.com</a>
                 </li>
               </ul>
@@ -99,7 +97,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4 col-md-6">
             <div class="widget no-border m-0">
-              <a class="pull-left flip xs-pull-center mb-6" href="/site/img/MAlogo.JPG"><img src="/site/img/MAlogo.JPG" alt="" style="width: 150px; height: 70px !important; margin:5px"></a>
+              <a class="pull-left flip xs-pull-center mb-6" href="/site/img/MAlogo.JPG"><img src="/site/img/MAlogo.png" alt="" style="width: 150px; height: 70px !important; margin:5px"></a>
             </div>
           </div>
           <div class="col-xs-12 col-sm-4 col-md-3">
@@ -128,15 +126,17 @@
             <ul class="menuzord-menu navfont">
                 <li class="active"><a href="/" style="color:#fff;"><i class="fas fa-home"></i> Home</a></li>
                 <li class=""><a href="/about" > <i class="fas fa-info-circle"></i> About</a></li>
-                <li class=""><a href="#"><i class="far fa-credit-card"></i> Subscriptions</a>
-                    <ul class="dropdown">           
-                        <li><a href="#"><i class="fa fa-user-md"></i> Medical Doctors</a></li>
-                        <li><a href="#"><i class="fa fa-user"></i> Patients</a></li>
-                        <li><a href="#"><i class="fa fa-globe"></i> Organisation</a></li>
-                    </ul>
+                <li class=""><a href="/pricing"><i class="fas fa-cube"></i> Subscription Packages</a>
                 </li>
-                <li class=""><a href="/pricing"><i class="fas fa-money"></i> Pricing</a></li>
-                <li class=""><a href="#"><i class="fas fa-rss"></i> Blog</a></li>
+               
+                <li class=""><a href="#"><i class="fas fa-list"></i> 2MA Publications</a>
+                  <ul class="dropdown">
+                    <li><a href="#">News</a></li>
+                    <li><a href="#">Audio</a></li>
+                    <li><a href="#">Video</a></li>
+                  </ul>
+                </li>
+                <li class=""><a href="/contact"><i class="fas fa-envelope"></i> Contact</a></li>
                 <li class="hide-web"><a href="/login"><i class="fas fa-sign-in"></i> Login</a></li>
                 <li class="hide-web"><a href="/signup"><i class="fas fa-user-plus"></i> Signup</a></li>
             </ul>
@@ -147,7 +147,7 @@
             </ul>
              <ul class="list-inline pull-right flip hidden-sm hidden-xs">
               <li>
-                <a class="btn btn-flat text-white border-2px font-13" href="/signup" style="margin-top: 13px;"><i class="fa fa-user"></i> Signup</a>
+                <a class="btn btn-flat text-white border-2px font-13" href="/signup" style="margin-top: 13px; "><i class="fa fa-user"></i> Free Registration</a>
               </li>
             </ul>
           </nav>

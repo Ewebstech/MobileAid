@@ -44,6 +44,9 @@
 		<!-- Favicon and Touch Icons -->
 		<link href="/images/favicon.ico" rel="shortcut icon" type="image/png">
 
+		@yield('style')
+
+	
 	</head>
 
 	<body>

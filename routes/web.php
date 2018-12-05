@@ -43,6 +43,7 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     
     //User Routes
     Route::get('edit-user', 'UserController@editUser')->name('editUser');
+    Route::get('view-user', 'UserController@viewUser')->name('viewUser');
 
 });
 

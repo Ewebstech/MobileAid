@@ -1,3 +1,44 @@
+  <style style="text/css">
+    .example5 {
+      height: 50px;	
+      overflow: hidden;
+      position: relative;
+      font-size: 12px !important;
+      }
+      .example5 h5 {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      line-height: 50px;
+      text-align: left;
+      /* Apply animation to this element */	
+      -moz-animation: example5 8s linear infinite alternate;
+      -webkit-animation: example5 8s linear infinite alternate;
+      animation: example5 8s linear infinite alternate;
+      }
+      /* Move it (define the animation) */
+      @-moz-keyframes example5 {
+      0%   { -moz-transform: translateX(50%); }
+      100% { -moz-transform: translateX(0%); }
+      }
+      @-webkit-keyframes example5 {
+      0%   { -webkit-transform: translateX(50%); }
+      100% { -webkit-transform: translateX(0%); }
+      }
+      @keyframes example5 {
+      0%   { 
+      -moz-transform: translateX(50%); /* Firefox bug fix */
+      -webkit-transform: translateX(50%); /* Firefox bug fix */
+      transform: translateX(50%); 		
+      }
+      100% { 
+      -moz-transform: translateX(0%); /* Firefox bug fix */
+      -webkit-transform: translateX(0%); /* Firefox bug fix */
+      transform: translateX(0%); 
+      }
+      }
+	</style>
 <section id="home" class="divider">
       <div class="fullwidth-carousel">
       <div class="carousel-item bg-img-cover" data-bg-img="/site/images/bg/bg6.jpg">
@@ -9,7 +50,7 @@
                 <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
                   <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
-                  <a class="btn btn-colored btn-theme-colored btn-flat smooth-scroll-to-target mt-15" style="#fff;" href="#donate-now">Subscribe Now</a> <a class="btn btn-colored border-2px btn-flat smooth-scroll-to-target mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
               </div>
             </div>
@@ -26,10 +67,8 @@
               <div class="col-md-6 col-md-offset-3">
                 <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">PRO. Medical <span class="text-theme-colored">Consultations</h1>
-                  <h5 class="text-black-555 font-weight-500 p-10 font-15">2MA Service is set up to give the general public better and wider access to <b>professional
-medical services</b>. This is helping in drastically reducing fatality rates in the country, especially of avoidable incidents that can be
-prevented with the help of a <b>Pro. Medical Consultant.</b>.</h5>
-                  <a class="btn btn-colored btn-theme-colored btn-flat smooth-scroll-to-target mt-15" style="#fff;" href="#donate-now">Subscribe Now</a> <a class="btn btn-colored border-2px btn-flat smooth-scroll-to-target mt-15" target="_blank" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">2MA Service is set up to give the general public better and wider access to <b>professional medical services</b>. This is helping in drastically reducing fatality rates in the country, especially of avoidable incidents that can be prevented with the help of a <b>Pro. Medical Consultant.</b>.</h5>
+                  <a class="btn btn-colored btn-theme-colored btn-flat mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" target="_blank" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
               </div>
             </div>
@@ -64,4 +103,9 @@ prevented with the help of a <b>Pro. Medical Consultant.</b>.</h5>
           </div>
         </div>
       </div>
+      <div class="example5" style="">
+        <h5 style="color: #fff; font-weight: bold; font-size: 14px;"><i><i class="fa fa-lock"></i> All Clients information are kept confidential and
+          our systems are HIPAA compliant.</i></h5>
+      </div>
     </section>
+  

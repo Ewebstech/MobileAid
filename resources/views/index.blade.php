@@ -43,8 +43,8 @@
                         do in such situations is a key determinant of life and death. In such situations the doctor will be able
                         to prescribe the best solution so that the matter does not worsen, until proper medical attention can
                         be provided.</p>
-              <a href="#" class="btn btn-theme-colored btn-flat btn-lg mt-15 mr-15"><i class="fa fa-list"></i> Read More</a>
-              <a href="#" class="btn btn-default btn-flat btn-lg mt-15"><i class="fa fa-envelope-o"></i> Contact Us</a>
+              <a href="/how-it-works" class="btn btn-theme-colored btn-flat btn-lg mt-15 mr-15"><i class="fa fa-list"></i> Read More</a>
+              <a href="/contact" class="btn btn-default btn-flat btn-lg mt-15"><i class="fa fa-envelope-o"></i> Contact Us</a>
             </div>
             <div class="col-md-6">
               <div class="row">
@@ -68,7 +68,7 @@
         <div class="section-content">
           <div class="row mtli-row-clearfix">
             <div class="col-md-8">
-              <h3 class="mt-0 line-height-1 line-bottom"><span>Medical </span> <span class="text-theme-colored"> Services</span></h3>
+              <h3 class="mt-0 line-height-1 line-bottom"><span>Medical </span> <span class="text-theme-colored"> Issues </span>We Address </h3>
               <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
                   <div class="icon-box p-10 mb-30">
@@ -91,7 +91,7 @@
                       </a>
                       </div>
                     <div class="icon-box-details media-body">
-                      <h5 class="icon-box-title m-0 mb-5 text-bold">General Health Issues </h5>
+                      <h5 class="icon-box-title m-0 mb-5 text-bold">Medical Enquiries </h5>
                       <p class="mb-0 text-black">We profer mobile aid solutions to health problems inquiries of the forms; Allergies, Ear, Nose and Throat, Back Pain,Bronchitis and Pneumonia, Cellulitis and Skin Infections, Colds, Coughs, Congestion, Conjunctivitis, Headache / Migraine, Influenza, Rashes and Skin Conditions, Sinus Infections, Sports Injuries, Sprains and bruises, Urinary Tract Infections, Vomiting and Diarrhea</p>
                     </div>
                   </div>    
@@ -106,7 +106,7 @@
                       </a>
                       </div>
                     <div class="icon-box-details media-body">
-                      <h5 class="icon-box-title m-0 mb-5 text-bold">Health Status Inquiries </h5>
+                      <h5 class="icon-box-title m-0 mb-5 text-bold">Medical Condition</h5>
                       <p class="mb-0 text-black">Allergy & Asthma, Cardio vascular, Urology, Dermatology, Stroke, Obesity, High Blood Pressure, High Cholesterol, Metabolic Syndrome, Pre-Diabetes / Diabetes, Stress Management, Thyroid, Family planning / Preconception counseling, Menopause / PMS, Prenatal Counseling, Prostate Cancer Risk Counseling, Sexual Dysfunction, Urinary Tract Infections, Vaginal and Yeast Infections</p>
                     </div>
                   </div>    
@@ -120,7 +120,7 @@
                       </a>
                     </div>
                     <div class="icon-box-details media-body">
-                      <h5 class="icon-box-title m-0 mb-5 text-bold">Wellness</h5>
+                      <h5 class="icon-box-title m-0 mb-5 text-bold">Health &amp; Wellness</h5>
                       <p class="mb-0 text-black">We offer professional medical advise on Diet, Fitness, Supplementation, Lifestyle</p>
                     </div>
                   </div>    
@@ -154,17 +154,17 @@
 
     <!-- Section: Pricing -->
     <section id="pricing">
-      <div class="container pb-sm-30">
-        <div class="section-title text-center">
-          <div class="row">
-            <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-              <h2 class="mt-0 line-height-1 text-uppercase font-weight-700">Our <span class="text-theme-colored"> Pricing</span></h2>
-
-              <p class="text-uppercase">We've got you covered with out flexible and affordable subcription plans </p>
+        <div class="container pb-sm-30">
+          <div class="section-title text-center">
+            <div class="row">
+              <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
+                <h2 class="mt-0 line-height-1 text-uppercase font-weight-700">2MA <span class="text-theme-colored">Packages</span></h2>
+  
+                <p class="text-uppercase">We've got you covered with out flexible and affordable Subscription Packages </p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="section-content">
+          <div class="section-content">
             <div class="row">
               <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
                 <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
@@ -175,16 +175,20 @@
                   <div class="price-amount bg-theme-colored rotate">
                     <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 2,000</div>
                   </div>
-                  <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
-                    <li>1 Call</li>
-                    <li>Multilingual</li>
-                    <li>1 Follow-up Call</li>
-                    <li>Free Wellness Support</li>
-                    <li>Extra Support</li>
-                    <li>Extended to 3rd Party</li>
-                    <li>USSD/Transfer/POS & MM Payment</li>
-                  </ul>
-                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                  <button style="margin: 10px;" data-toggle="collapse" data-target="#silver"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                  <div id="silver" class="collapse">
+                      <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
+                          <li>1 Call</li>
+                          <li>Multilingual</li>
+                          <li>1 Follow-up Call</li>
+                          <li>Free Wellness Support</li>
+                          <li>Extra Support</li>
+                          <li>Extended to 3rd Party</li>
+                          <li>USSD/Transfer/POS & MM Payment</li>
+                        </ul>
+                  </div>
+                 
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
@@ -196,6 +200,8 @@
                   <div class="price-amount bg-theme-colored rotate">
                       <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 5,000</div>
                   </div>
+                  <button style="margin: 10px;" data-toggle="collapse" data-target="#gold"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                  <div id="gold" class="collapse">
                   <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                     <li>1 Call</li>
                     <li>Multilingual</li>
@@ -209,7 +215,8 @@
                     <li>Extended to 3rd Party</li>
                     <li>USSD/Transfer/POS & MM Payment</li>
                   </ul>
-                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                  </div>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
                 </div>
               </div>
               <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
@@ -221,6 +228,8 @@
                   <div class="price-amount bg-theme-colored rotate">
                       <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 25,000</div>
                   </div>
+                  <button style="margin: 10px;" data-toggle="collapse" data-target="#titanium"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                  <div id="titanium" class="collapse">
                   <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                     <li>3 Local & 2 Foriegn Calls</li>
                     <li>Multilingual + English</li>
@@ -235,7 +244,8 @@
                     <li>Extended to 3rd Party</li>
                     <li>USSD/Transfer/POS & MM Payment</li>
                   </ul>
-                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                </div>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
                 </div>
                 
               </div>
@@ -249,6 +259,8 @@
                   <div class="price-amount bg-theme-colored rotate">
                       <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 65,000</div>
                   </div>
+                  <button style="margin: 10px;" data-toggle="collapse" data-target="#diamond"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                  <div id="diamond" class="collapse">
                   <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                     <li>5 Local & 3 Foriegn Calls</li>
                     <li>Multilingual + English</li>
@@ -263,12 +275,14 @@
                     <li>Extended to 3rd Party</li>
                     <li>USSD/Transfer/POS & MM Payment</li>
                   </ul>
-                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="/signup"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                  </div>
+                  <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
                 </div>
               </div>
             </div>
           </div>
-    </section>
+        </div>
+      </section>
 
    
 

@@ -28,7 +28,7 @@
                 <div class="bg-lightest border-1px p-30 mb-0">
                   <div class="text-center"><a href="/site/#" class=""><img src="/site/img/MAlogo.JPG" alt="" style="width: 150px; height: 70px !important; margin:5px"></a></div>
                   <hr>
-                  <h3 class="text-theme-colored mt-0 text-center">Quick Signup</h3>
+                  <h3 class="text-theme-colored mt-0 text-center">Free Registration</h3>
                   <p class="text-center"><i>* We ensure absolute security for all patients medical Information<br>Please ensure you provide accurate details</i></p>
                   <hr>
                     
@@ -70,7 +70,6 @@
                     <div class="form-group">
                         <select class="form-control" name="role" required>
                           <option value="patient">I'd Like To Join As A Patient</option>
-                          <option value="doctor">I'd Like To Join As A Doctor</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -86,7 +85,7 @@
                     <div class="form-group" id="signup-msg"></div>
                     <div class="form-group">
                       <input name="form_botcheck" class="form-control" type="hidden" value="" />
-                      <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10">Signup Now</button>
+                      <button type="submit" class="btn btn-block btn-dark btn-theme-colored btn-sm mt-20 pt-10 pb-10"><i class="fa fa-check-circle"></i> Signup Now</button>
                     </div>
                   </form>
                 </div>

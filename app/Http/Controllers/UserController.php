@@ -23,6 +23,19 @@ class UserController extends Controller
         $this->helper = new HelperController;
     }
 
+    public function viewUser(Request $request){
+        $data['sessiondata'] = $_SESSION['UserDetails'];
+        $role = $data['sessiondata']['role'];
+        
+        $data['UserDetails'] =  $this->getUserDetails($data['sessiondata']['email']);
+        // if(!$data['UserDetails']['Kyc']){
+        //     $data['UserDetails']['Kyc'] = [];
+        // }
+      
+        $URI= '/'.$role.'/view-profile';
+        return view($URI)->with($data);
+     }
+
     public function editUser(Request $request){
         $data['sessiondata'] = $_SESSION['UserDetails'];
         $role = $data['sessiondata']['role'];
@@ -36,6 +49,7 @@ class UserController extends Controller
         return view($URI)->with($data);
      }
 
+     
      public function getUserDetails($username){
          $userQuery = new Users;
          $userData = $userQuery->getUser($username);

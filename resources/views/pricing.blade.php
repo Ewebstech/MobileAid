@@ -10,7 +10,7 @@
 <meta name="author" content="Emmanuel C. Paul" />
 
 <!-- Page Title -->
-<title>2MA | Pricing</title>
+<title>2MA | Packages</title>
 
 <!-- Favicon and Touch Icons -->
 <link href="/site/images/favicon.png" rel="shortcut icon" type="image/png">
@@ -32,7 +32,7 @@
             
               <ol class="breadcrumb text-center text-black text-bold mt-10">
                 <li><a href="/">Home</a></li>
-                <li class="active text-theme-colored">Pricing</li>
+                <li class="active text-theme-colored">Packages</li>
               </ol>
             </div>
           </div>
@@ -51,9 +51,9 @@
         <div class="section-title text-center">
           <div class="row">
             <div class=" col-xs-12 col-sm-12 col-md-8 col-md-offset-2">
-              <h2 class="mt-0 line-height-1 text-uppercase font-weight-700">Our <span class="text-theme-colored"> Pricing</span></h2>
+              <h2 class="mt-0 line-height-1 text-uppercase font-weight-700">2MA <span class="text-theme-colored">Packages</span></h2>
 
-              <p class="text-uppercase">We've got you covered with out flexible and affordable subcription plans </p>
+              <p class="text-uppercase">We've got you covered with out flexible and affordable Subscription Packages </p>
             </div>
           </div>
         </div>
@@ -68,16 +68,20 @@
                 <div class="price-amount bg-theme-colored rotate">
                   <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 2,000</div>
                 </div>
-                <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
-                  <li>1 Call</li>
-                  <li>Multilingual</li>
-                  <li>1 Follow-up Call</li>
-                  <li>Free Wellness Support</li>
-                  <li>Extra Support</li>
-                  <li>Extended to 3rd Party</li>
-                  <li>USSD/Transfer/POS & MM Payment</li>
-                </ul>
-                <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
+                <button style="margin: 10px;" data-toggle="collapse" data-target="#silver"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                <div id="silver" class="collapse">
+                    <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
+                        <li>1 Call</li>
+                        <li>Multilingual</li>
+                        <li>1 Follow-up Call</li>
+                        <li>Free Wellness Support</li>
+                        <li>Extra Support</li>
+                        <li>Extended to 3rd Party</li>
+                        <li>USSD/Transfer/POS & MM Payment</li>
+                      </ul>
+                </div>
+               
+                <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
               </div>
             </div>
             <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
@@ -89,6 +93,8 @@
                 <div class="price-amount bg-theme-colored rotate">
                     <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 5,000</div>
                 </div>
+                <button style="margin: 10px;" data-toggle="collapse" data-target="#gold"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                <div id="gold" class="collapse">
                 <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                   <li>1 Call</li>
                   <li>Multilingual</li>
@@ -102,6 +108,7 @@
                   <li>Extended to 3rd Party</li>
                   <li>USSD/Transfer/POS & MM Payment</li>
                 </ul>
+                </div>
                 <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
               </div>
             </div>
@@ -114,6 +121,8 @@
                 <div class="price-amount bg-theme-colored rotate">
                     <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 25,000</div>
                 </div>
+                <button style="margin: 10px;" data-toggle="collapse" data-target="#titanium"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                <div id="titanium" class="collapse">
                 <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                   <li>3 Local & 2 Foriegn Calls</li>
                   <li>Multilingual + English</li>
@@ -128,6 +137,7 @@
                   <li>Extended to 3rd Party</li>
                   <li>USSD/Transfer/POS & MM Payment</li>
                 </ul>
+              </div>
                 <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
               </div>
               
@@ -142,6 +152,8 @@
                 <div class="price-amount bg-theme-colored rotate">
                     <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 65,000</div>
                 </div>
+                <button style="margin: 10px;" data-toggle="collapse" data-target="#diamond"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
+                <div id="diamond" class="collapse">
                 <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
                   <li>5 Local & 3 Foriegn Calls</li>
                   <li>Multilingual + English</li>
@@ -156,6 +168,7 @@
                   <li>Extended to 3rd Party</li>
                   <li>USSD/Transfer/POS & MM Payment</li>
                 </ul>
+                </div>
                 <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Sign Me Up</a>
               </div>
             </div>
