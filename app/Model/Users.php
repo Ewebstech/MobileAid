@@ -21,4 +21,14 @@ class Users
         $user = User::where('email', $param)->first();
         return ($user) ? $user : false;
     }
+
+    public function getAllUsers(){
+        $user = User::all();
+        return ($user) ? $user : false;
+    }
+
+    public function getUsersByRole($role){
+        $user = User::where('role', $role)->get();
+        return ($user) ? $user : false;
+    }
 }

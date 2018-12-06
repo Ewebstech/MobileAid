@@ -1,7 +1,7 @@
 <nav id="sidebar" class="nav-sidebar">
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="{{$sessiondata['avatar']}}" alt="..." class="img-circle profile_img">
+                <img src="{{$sessiondata['avatar']}}" alt="..." style="height: 50px; width: 50px;" class="img-circle profile_img">
             
             </div>
             <div class="profile_info">
@@ -21,7 +21,7 @@
 
             <li class="border-0"><h3>Personal Information</h3><li>
             <li>
-                <a href="/" class=" wave-effect accordion-toggle "><i class="fa fa-eye mr-2 sidebarpink"></i> View Profile</a>
+                <a href="/view-user" class=" wave-effect accordion-toggle "><i class="fa fa-eye mr-2 sidebarpink"></i> View Profile</a>
             </li>
             <li>
                 <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i>Update Profile</a>

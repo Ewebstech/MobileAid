@@ -28,10 +28,7 @@ class UserController extends Controller
         $role = $data['sessiondata']['role'];
         
         $data['UserDetails'] =  $this->getUserDetails($data['sessiondata']['email']);
-        // if(!$data['UserDetails']['Kyc']){
-        //     $data['UserDetails']['Kyc'] = [];
-        // }
-      
+    
         $URI= '/'.$role.'/view-profile';
         return view($URI)->with($data);
      }
@@ -41,10 +38,7 @@ class UserController extends Controller
         $role = $data['sessiondata']['role'];
         
         $data['UserDetails'] =  $this->getUserDetails($data['sessiondata']['email']);
-        // if(!$data['UserDetails']['Kyc']){
-        //     $data['UserDetails']['Kyc'] = [];
-        // }
-      
+          
         $URI= '/'.$role.'/edit-profile';
         return view($URI)->with($data);
      }
@@ -56,21 +50,61 @@ class UserController extends Controller
 
          if($userData){
             $userInfo = $userData->toArray();
-            $userContent = $this->jsonToArray($userInfo['content']);
-    
-            foreach($userContent as $field => $value){
-                $UserDetails[$field] = $value;
+       
+            if($userInfo["role"] == "admin"){ 
+                $UserDetails['firstname'] = $userInfo['firstname'];
+                $UserDetails['lastname'] = $userInfo['lastname'];
+                $UserDetails['phonenumber'] = $userInfo['phonenumber'];
+                $UserDetails['email'] = $userInfo['email'];
+                $UserDetails['Kyc'] = [];
+                $UserDetails['ClientId'] = $userInfo['client_id'];
+            } else {
+                $userContent = $this->jsonToArray($userInfo['content']);
+                foreach($userContent as $field => $value){
+                    $UserDetails[$field] = $value;
+                }
             }
+
             $UserDetails['ClientId'] = $userInfo['client_id'];
             $UserDetails['Role'] = $userInfo['role'];
             $UserDetails['avatar'] = $userInfo['avatar'];
-         }
+        }
+        
+        return $UserDetails;
+    }
 
-         return $UserDetails;
-     }
+    public function getAllUsersByRole($role){
+        $userQuery = new Users;
+        $userData = $userQuery->getUsersByRole($role);
 
+        if($userData){
+           $userInfo = $userData->toArray();
+      
+           if($userInfo["role"] == "admin"){ 
+               $UserDetails['firstname'] = $userInfo['firstname'];
+               $UserDetails['lastname'] = $userInfo['lastname'];
+               $UserDetails['phonenumber'] = $userInfo['phonenumber'];
+               $UserDetails['email'] = $userInfo['email'];
+               $UserDetails['Kyc'] = [];
+               $UserDetails['ClientId'] = $userInfo['client_id'];
+           } else {
+               $userContent = $this->jsonToArray($userInfo['content']);
+               foreach($userContent as $field => $value){
+                   $UserDetails[$field] = $value;
+               }
+           }
+
+           $UserDetails['ClientId'] = $userInfo['client_id'];
+           $UserDetails['Role'] = $userInfo['role'];
+           $UserDetails['avatar'] = $userInfo['avatar'];
+       }
+       
+       return $UserDetails;
+   }
+    
     public function saveUser(Request $request) {
         $params = $request->all();
+        //dd($params);
         //validate requests
         if($params["role"] == "patient"){
             $validator =  Validator::make($request->all(), [

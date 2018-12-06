@@ -129,7 +129,7 @@
                   <script type="text/javascript">
                         $("#contact_form").submit(function (e) {
                             e.preventDefault();
-                            submit_form('contact_form', "{{ route('contactPage') }}", 'contact-msg', true);
+                            submit_form_no_reload('contact_form', "{{ route('contactPage') }}", 'contact-msg', true);
                             $('#contact_form')[0].reset();
                         });
                   </script>

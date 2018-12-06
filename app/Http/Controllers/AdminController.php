@@ -4,11 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-session_start();
-
-class DashboardController extends Controller
+class AdminController extends Controller
 {
-
     public function __construct()
     {
        $this->middleware('redirectauth');
@@ -32,5 +29,4 @@ class DashboardController extends Controller
 
        return view($URI)->with($data);
     }
-
 }

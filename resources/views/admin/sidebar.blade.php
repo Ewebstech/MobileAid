@@ -1,7 +1,7 @@
 <nav id="sidebar" class="nav-sidebar">
         <div class="profile clearfix">
             <div class="profile_pic">
-                <img src="{{$sessiondata['avatar']}}" style="height: 50px; width: 50px;" alt="..." class="img-circle profile_img">
+                <img src="{{$sessiondata['avatar']}}" style="height: 50px; width: 50px;" alt="..." class="img-circle profile_img img-responsive"  />
             
             </div>
             <div class="profile_info">
@@ -27,12 +27,12 @@
                 <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i>Update Profile</a>
             </li>
 
-            <li class="border-0"><h3>Payment Methods</h3><li>
+            <li class="border-0"><h3>Users Data</h3><li>
             <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-money mr-2 sidebarpink"></i> Add Debit/Credit Card</a>
+            <a href="{{route('viewPatients')}}" class=" wave-effect accordion-toggle "><i class="fa fa-users mr-2 sidebarpink"></i> Patients</a>
             </li>
             <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-file mr-2 sidebarpink"></i>Transaction History</a>
+                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-user-md mr-2 sidebarpink"></i> Doctors</a>
             </li>
 
             <li><h3>Subscription</h3><li>

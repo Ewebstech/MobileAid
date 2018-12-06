@@ -29,6 +29,7 @@ function AutoRefresh(t) {
     document.location.reload(false);
   }, t);
 }
+
 /**
  * 
  * @param {formid} fid 
@@ -39,6 +40,54 @@ function AutoRefresh(t) {
  * @param {data} xdata 
  */
 function submit_form(fid, page, contid, reload, cb, xdata) {
+  var form = document.getElementById(fid);
+  var formData = new FormData(form);
+  if (xdata) {
+    for (var i = 0, len = xdata.length; i < len; i++) {
+      formData.append("xdata[" + i + "]", xdata[i]);
+    }
+  }
+  var container = $("#" + contid);
+  container.html(
+    '<h6 class="text-center" ><img src="/images/loader.gif" width="50px" style="margin-bottom: 7px;" /> <br/> Request Processing</h6>'
+  );
+  xmlHttp.open("POST", page);
+  xmlHttp.onreadystatechange = function () {
+    if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+      var response = xmlHttp.responseText;
+      if (reload == false) {
+        if (cb) {
+          var jsonObj = JSON.parse(response);
+          return cb(jsonObj);
+        } else {
+          container.html(response);
+        }
+      } else {
+        var jsonObj = JSON.parse(response);
+        var status = jsonObj.status;
+        var data = jsonObj.data;
+        var message = jsonObj.message;
+        container.html(data);
+        if (status == "success") {
+           AutoRefresh(1000);
+        }
+      }
+    }
+  };
+  xmlHttp.send(formData);
+}
+
+
+/**
+ * 
+ * @param {formid} fid 
+ * @param {page} page 
+ * @param {response container} contid 
+ * @param {boolean - reload opt} reload 
+ * @param {call-back (not needed when reload is true)} cb 
+ * @param {data} xdata 
+ */
+function submit_form_no_reload(fid, page, contid, reload, cb, xdata) {
   var form = document.getElementById(fid);
   var formData = new FormData(form);
   if (xdata) {

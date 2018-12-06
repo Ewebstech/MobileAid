@@ -44,6 +44,10 @@
 		<!-- Favicon and Touch Icons -->
 		<link href="/images/favicon.ico" rel="shortcut icon" type="image/png">
 
+		<!-- Data table css -->
+		<link href="assets/plugins/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
+		<link href="assets/plugins/datatable/jquery.dataTables.min.css" rel="stylesheet" />
+
 		@yield('style')
 
 	
@@ -117,10 +121,23 @@
 
         <!-- Index Scripts -->
 		<script src="assets/js/index4.js"></script>
-
+		<script src="assets/js/index5.js"></script>
 		<!-- Custom-->
 		<script src="assets/js/custom.js"></script>
 		<script src="/js/ajax.js"></script>
+
+		<!-- Data tables -->
+		<script src="assets/plugins/datatable/jquery.dataTables.min.js"></script>
+		<script src="assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
+		<!-- Data table js -->
+		<script>
+			$(function(e) {
+				$('#example').DataTable();
+			} );
+			$(document).ready(function() {
+				$('#example2').DataTable();
+			} );
+		</script>
 		<!--Counters js-->
 		<script>
 			$('.count').countUp();

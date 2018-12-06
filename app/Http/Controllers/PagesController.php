@@ -13,7 +13,6 @@ class PagesController extends Controller
     public function __construct()
     {   
         $this->helper = new HelperController;
-        
     }
 
     public function index(Request $request){
@@ -23,11 +22,9 @@ class PagesController extends Controller
         
        $userContent = $this->jsonToArray($UserDetails['content']);
        if(isset($userContent['Kyc'])){
-           $data['EditProfile'] = "set";
-           
+            $data['EditProfile'] = "set";
        } else {
-        $data['EditProfile'] = "";
-      
+            $data['EditProfile'] = "";
        }
        
        $URI= '/'.$role.'/dashboard';
@@ -47,13 +44,13 @@ class PagesController extends Controller
                 'Email' => $params['email'],
                 'Subject' => 'Thank you for contacting Mobile Medical Aid',
                 'template' => 'default',
-                'Body' => 'Hello '. ucfirst(strtolower($params['name'])). ', thank you for contacting us. Our support team will get back to you very soon. Cheers!',
+                'Body' => 'Hello '. ucwords(strtolower($params['name'])). ', thank you for contacting us. Our support team will get back to you very soon. Cheers!',
             ];
             
             $sendMail = $this->helper->sendMail($mailParams);
 
             $status = "success";
-            $data = "Thanks ". ucfirst(strtolower($params['name'])) .", your message has been sent. Check your Email Address for subsequent communications.";
+            $data = "Thanks ". ucwords(strtolower($params['name'])) .", your message has been sent. Check your Email Address for subsequent communications.";
             return $this->returnOutput($status,$data);
      
         } else {
