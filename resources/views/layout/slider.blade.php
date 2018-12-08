@@ -49,7 +49,7 @@
               <div class="col-md-6 col-md-offset-3">
                 <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
-                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
                   <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
               </div>
@@ -67,7 +67,7 @@
               <div class="col-md-6 col-md-offset-3">
                   <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                       <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
-                      <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                      <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
                       <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                     </div>
               </div>
@@ -86,7 +86,7 @@
           <div class="col-md-6 col-md-offset-3">
               <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
-                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
                   <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
           </div>
@@ -104,7 +104,7 @@
           <div class="col-md-6 col-md-offset-3">
               <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
-                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
                   <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
           </div>
@@ -122,7 +122,7 @@
           <div class="col-md-6 col-md-offset-3">
               <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
-                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
                   <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
           </div>
