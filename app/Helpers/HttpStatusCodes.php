@@ -10,6 +10,8 @@ class HttpStatusCodes {
         UNAUTHORIZED = 401,
         FORBIDDEN = 403,
         NOT_FOUND = 404,
-        BAD_REQUEST = 400;
+        BAD_REQUEST = 400,
+        NOT_MODIFIED = 304;
+        
 
 }

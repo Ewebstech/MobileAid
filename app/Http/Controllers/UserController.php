@@ -77,10 +77,53 @@ class UserController extends Controller
             $UserDetails['ClientId'] = $userInfo['client_id'];
             $UserDetails['Role'] = $userInfo['role'];
             $UserDetails['avatar'] = $userInfo['avatar'];
+
+            return $UserDetails;
         }
         
-        return $UserDetails;
+        
     }
+
+
+    public function getUserDetailsById($userId){
+        $userQuery = new Users;
+        $userData = $userQuery->getUserById($userId);
+
+        if($userData){
+           $userInfo = $userData->toArray();
+      
+           if($userInfo["role"] == "admin"){ 
+               $UserDetails['firstname'] = $userInfo['firstname'];
+               $UserDetails['lastname'] = $userInfo['lastname'];
+               $UserDetails['phonenumber'] = $userInfo['phonenumber'];
+               $UserDetails['email'] = $userInfo['email'];
+               $UserDetails['Kyc'] = [];
+               $UserDetails['ClientId'] = $userInfo['client_id'];
+           } else {
+               $userContent = $this->jsonToArray($userInfo['content']);
+               if($userContent != null){
+                   foreach($userContent as $field => $value){
+                       $UserDetails[$field] = $value;
+                   }
+               } else {
+                   $UserDetails['firstname'] = $userInfo['firstname'];
+                   $UserDetails['lastname'] = $userInfo['lastname'];
+                   $UserDetails['phonenumber'] = $userInfo['phonenumber'];
+                   $UserDetails['email'] = $userInfo['email'];
+                   $UserDetails['Kyc'] = [];
+                   $UserDetails['ClientId'] = $userInfo['client_id'];
+               }
+           }
+
+           $UserDetails['ClientId'] = $userInfo['client_id'];
+           $UserDetails['Role'] = $userInfo['role'];
+           $UserDetails['avatar'] = $userInfo['avatar'];
+
+           return $UserDetails;
+       }
+       
+       
+   }
 
     public function getAllUsersByRole($role){
         $userQuery = new Users;

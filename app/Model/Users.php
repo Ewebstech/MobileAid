@@ -17,8 +17,25 @@ class Users
         return ($update) ? true : false;
     }
 
+    public function updateUserContent($params){
+        $user = [
+            'remember_token' => str_random(rand(0,9)),
+            'content' => json_encode($params),
+        ];
+        $update = User::where('client_id', $params['client_id'])
+            ->where('email', $params['user'])
+            ->update($user);
+
+        return ($update) ? true : false;
+    }
+
     public function getUser($param){
         $user = User::where('email', $param)->first();
+        return ($user) ? $user : false;
+    }
+
+    public function getUserById($param){
+        $user = User::where('client_id', $param)->first();
         return ($user) ? $user : false;
     }
 

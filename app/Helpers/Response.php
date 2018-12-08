@@ -17,6 +17,7 @@ Trait Response {
     public function error($msg, $httpCode) {
         return response()->json([
             'status' => false,
+            'http_code' =>$httpCode,
             'message' => $msg
         ], $httpCode);
     }

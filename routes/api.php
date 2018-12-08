@@ -45,3 +45,4 @@ Route::post('/wtf/editkyc_doc', 'UserController@saveUser')->name('saveUserDoc');
 
 //Subscription Routes
 Route::get('/wtf/getpackages', 'SubscriptionController@getPackages')->name('getPackages'); 
+Route::post('/wtf/selectpackage', 'SubscriptionController@selectPackage')->name('selectPackage'); 

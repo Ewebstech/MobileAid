@@ -26,6 +26,11 @@ class HelperController extends Controller
         return $users->getUserDetails($username);
     }
 
+    public function getUserDetailsById($userId){
+        $users = new UserController;
+        return $users->getUserDetailsById($userId);
+    }
+
     public function getContactMessages(){
         $contact = new PagesController;
         return $contact->getContactMessages();
