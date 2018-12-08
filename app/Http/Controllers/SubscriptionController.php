@@ -72,7 +72,13 @@ class SubscriptionController extends Controller
         $params['package'] = $package;
         // Query to get current user's subscription status
         $subQuery = new Subscriptions();
-        $subDetails = $subQuery->getUserSubscription($userDetails['user'])->toArray()[0];
+        if($userDetails['email']){
+            $userparam = $userDetails['email'];
+        } else {
+            $userparam = $userDetails['user'];
+        }
+        
+        $subDetails = $subQuery->getUserSubscription($userparam)->toArray()[0];
 
        
         if(count($subDetails) > 0){
