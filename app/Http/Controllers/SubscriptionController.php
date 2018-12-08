@@ -82,7 +82,7 @@ class SubscriptionController extends Controller
         $subDetailsArray = $subQuery->getUserSubscription($userparam)->toArray();
        
         if(!empty($subDetailsArray)){
-            $subDetails = $subDetails[0];
+            $subDetails = $subDetailsArray[0];
         } else {
             $subDetails = [];
         }
