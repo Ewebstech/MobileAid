@@ -50,9 +50,8 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="img-hover-border mt-sm-20">
-                    <img src="/site/img/mobile-sdk_0.png"  class="img-fullwidth" alt="">
-                  </div>
-                  <center><a class="text-theme-colored font-13 font-weight-600" href="#"><img src="/site/img/download_app_google_play.svg" height="30" /></a></center>
+                    <img src="/site/slideshow/p1.jpg" style="border: 5px inset rgba(0,0,0,0.2);" class="img-fullwidth" alt="">
+                  
                 </div>
           
               </div>
@@ -67,7 +66,7 @@
       <div class="container pb-30 pb-sm-60">
         <div class="section-content">
           <div class="row mtli-row-clearfix">
-            <div class="col-md-8">
+            <div class="col-md-7">
               <h3 class="mt-0 line-height-1 line-bottom"><span>Medical </span> <span class="text-theme-colored"> Issues </span>We Address </h3>
               <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6">
@@ -127,9 +126,15 @@
                 </div>
             
               </div>
-
+              
             </div>
-            @include('includes.openhours')
+            <div class="col-md-5">
+                <div class="img-hover-border mt-sm-20">
+                    <img src="/site/img/mobile-sdk_0.png"  class="img-fullwidth"  alt="">
+                  </div>
+                  <center><a class="text-theme-colored font-13 font-weight-600" href="#"><img src="/site/img/download_app_google_play.svg" height="30" /></a></center>
+            </div>
+            
           </div>
         </div>
       </div>

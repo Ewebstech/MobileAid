@@ -59,7 +59,7 @@
           </div>
         </div>
 
-    <div class="carousel-item bg-img-cover" data-bg-img="/site/slideshow/p1.jpg">
+    <div class="carousel-item bg-img-cover" data-bg-img="/site/slideshow/P2.jpg">
           <div class="display-table"> 
             <div class="display-table-cell">
               <div class="container pt-200 pb-200">
