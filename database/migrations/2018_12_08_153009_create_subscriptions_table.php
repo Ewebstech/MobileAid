@@ -19,7 +19,7 @@ class CreateSubscriptionsTable extends Migration
             $table->string('package');
             $table->string('status');
             $table->string('calls');
-            $table->json('content');
+            $table->text('content');
             $table->timestamps();
             $table->foreign('user')
                   ->references('email')
