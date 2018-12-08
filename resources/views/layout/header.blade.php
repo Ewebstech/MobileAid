@@ -3,6 +3,8 @@
 <link href="/site/css/jquery-ui.min.css" rel="stylesheet" type="text/css">
 <link href="/site/css/animate.css" rel="stylesheet" type="text/css">
 <link href="/site/css/css-plugin-collections.css" rel="stylesheet"/>
+
+<link rel="stylesheet" href="/css/toastr.min.css" />
 <!-- CSS | menuzord megamenu skins -->
 <link id="menuzord-menu-skins" href="/site/css/menuzord-skins/menuzord-boxed.css" rel="stylesheet"/>
 <!-- CSS | Main style file -->
@@ -24,6 +26,8 @@
 <!-- CSS | Theme Color -->
 <link href="/site/css/colors/theme-skin-sky-blue.css" rel="stylesheet" type="text/css">
 
+<link rel="stylesheet" href="/css/toastr.min.css" />
+
 <!-- external javascripts -->
 <script src="/site/js/jquery-2.2.4.min.js"></script>
 <script src="/site/js/jquery-ui.min.js"></script>
@@ -34,6 +38,10 @@
 <!-- Revolution Slider 5.x SCRIPTS -->
 <script src="/site/js/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
 <script src="/site/js/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+
+<script src="/js/toastr/toastr.min.js"></script>
+
+<script src="/js/ajax.js"></script>
 
 <!-- Favicon and Touch Icons -->
 <link href="/images/favicon.ico" rel="shortcut icon" type="image/png">

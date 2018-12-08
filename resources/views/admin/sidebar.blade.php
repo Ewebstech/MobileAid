@@ -32,7 +32,7 @@
             <a href="{{route('viewPatients')}}" class=" wave-effect accordion-toggle "><i class="fa fa-users mr-2 sidebarpink"></i> Patients</a>
             </li>
             <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-user-md mr-2 sidebarpink"></i> Doctors</a>
+                <a href="{{route('viewDoctors')}}" class=" wave-effect accordion-toggle "><i class="fa fa-user-md mr-2 sidebarpink"></i> Doctors</a>
             </li>
 
             <li><h3>Subscription</h3><li>

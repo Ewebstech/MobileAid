@@ -21,7 +21,7 @@
         <div class="col-lg-5 col-xl-4">
             <div class="card card-profile cover-image "  data-image-src="assets/images/photos/gradient1.jpg">
                 <div class="card-body text-center">
-                    <img class="card-profile-img" src="{{$UserDetails['avatar']}}" alt="img">
+                    <img class="card-profile-img" style="height: 70px; width: 70px;" src="{{$UserDetails['avatar']}}" alt="img">
                     <h3 class="mb-1 text-white">{{$UserDetails['firstname']}} {{$UserDetails['lastname']}}</h3>
                     <p class="mb-2 text-white">Client ID: {{$UserDetails['ClientId']}}</p>
                     

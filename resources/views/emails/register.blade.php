@@ -19,7 +19,7 @@ people do not know what to do they can call for medical advice or assistance.</p
                 <td>Your Username</td><td>{{$Username}}</td>
             </tr>
             <tr>
-                <td>Your Password</td><td>*********</td>
+                <td>Your Password</td><td>{{$Password}}</td>
             </tr>
         </table>
     </p>

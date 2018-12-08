@@ -48,6 +48,7 @@
 		<link href="assets/plugins/datatable/dataTables.bootstrap4.min.css" rel="stylesheet" />
 		<link href="assets/plugins/datatable/jquery.dataTables.min.css" rel="stylesheet" />
 
+		<link rel="stylesheet" href="/css/toastr.min.css" />
 		@yield('style')
 
 	
@@ -101,6 +102,11 @@
 		<script src="assets/js/vendors/jquery.tablesorter.min.js"></script>
 		<script src="assets/js/vendors/circle-progress.min.js"></script>
 		<script src="assets/plugins/rating/jquery.rating-stars.js"></script>
+		
+		<!-- My Scripts-->
+		<script src="/js/sweetalert2.js"></script>
+		<script src="/js/toastr/toastr.min.js" type="text/javascript"></script>
+		<script src="/js/ajax.js"></script>
 
 		<!-- Fullside-menu Js-->
 		<script src="assets/plugins/fullside-menu/jquery.slimscroll.min.js"></script>
@@ -124,7 +130,7 @@
 		<script src="assets/js/index5.js"></script>
 		<!-- Custom-->
 		<script src="assets/js/custom.js"></script>
-		<script src="/js/ajax.js"></script>
+		
 
 		<!-- Data tables -->
 		<script src="assets/plugins/datatable/jquery.dataTables.min.js"></script>
@@ -137,6 +143,33 @@
 			$(document).ready(function() {
 				$('#example2').DataTable();
 			} );
+
+			        // Delete Closest Item
+			$(".deleteItem").click(function(){
+            var url = $(this).data('url');
+            var id = $(this).data('fieldid');
+            swal({
+                title: 'Are you sure about this?',
+                text: "You won't be able to get this data back!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#30b04f',
+                cancelButtonColor: '#707070',
+                confirmButtonText: 'Yes, Delete!'
+                }).then((result) => {
+                if (result.value) {
+                    $(this).closest('tr').fadeTo(400, 0, function () {
+                        rt = deleteField(id,url);
+                        if(rt){
+							$(this).remove();
+						}
+					});
+					//AutoRefresh(400);
+					toastr["success"]("Data Deleted Successfully", "Success")
+                }
+            });
+			});
+			
 		</script>
 		<!--Counters js-->
 		<script>

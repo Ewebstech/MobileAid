@@ -32,6 +32,9 @@ class PagesController extends Controller
        return view($URI)->with($data);
     }
 
+    /**
+     * Method to handle contact page logic
+     */
     public function contactPage(Request $request){
         $params = $request->all();
         $contactQuery = new Contacts;
@@ -59,6 +62,8 @@ class PagesController extends Controller
             return $this->returnOutput($status,$data);
             
         }
-    }
+    } 
+
+    
 
 }

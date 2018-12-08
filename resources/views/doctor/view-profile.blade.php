@@ -21,7 +21,7 @@
         <div class="col-lg-5 col-xl-4">
             <div class="card card-profile cover-image "  data-image-src="assets/images/photos/gradient1.jpg">
                 <div class="card-body text-center">
-                    <img class="card-profile-img" src="{{$UserDetails['avatar']}}" alt="img">
+                    <img class="card-profile-img" style="height: 70px; width: 70px;" src="{{$UserDetails['avatar']}}" alt="img">
                     <h3 class="mb-1 text-white">{{$UserDetails['firstname']}} {{$UserDetails['lastname']}}</h3>
                     <p class="mb-2 text-white">Client ID: {{$UserDetails['ClientId']}}</p>
                     
@@ -59,27 +59,7 @@
                 </div>
                 <!-- media-list -->
             </div>
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Emergency Contacts</h3>
-                    <div class="card-options">
-                        <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-                        <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="body-section">
-                    <h5 class="mediafont text-dark mb-1"><i class="fa fa-user"></i> {{ isset($UserDetails['Kyc']['emergency_contact_name_1']) ? $UserDetails['Kyc']['emergency_contact_name_1'] : "" }}</h5>
-                        <p class="text-mute"><i class="fa fa-phone"></i> {{ isset($UserDetails['Kyc']['emergency_contact_num_1']) ? $UserDetails['Kyc']['emergency_contact_num_1'] : "" }}</p>
-                    </div>
-                    <div class="body-section">
-                        <h5 class="mediafont text-dark mb-1">{{ isset($UserDetails['Kyc']['emergency_contact_name_2']) ? $UserDetails['Kyc']['emergency_contact_name_2'] : "" }}</h5>
-                        <p class="text-muted">{{ isset($UserDetails['Kyc']['emergency_contact_num_2']) ? $UserDetails['Kyc']['emergency_contact_num_2'] : "" }}</p>
-                    </div>
-                </div>
 
-               
-            </div>
         </div>
         <div class="col-lg-7 col-xl-8">
             <div class="card">
@@ -117,6 +97,23 @@
                     </div>
                 </div>
             </div>
+
+              
+            <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Professional Profile (Medical)</h3>
+                        <div class="card-options">
+                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
+                            <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                  
+                        <div class="clearfix"></div>
+                        <p class="fb-user-status">{{ isset($UserDetails['medprofile']) ? $UserDetails['medprofile'] : "--:--"}}</p>
+                    </div>
+            </div>
+
     </div>
 </div>
 @endsection

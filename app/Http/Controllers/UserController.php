@@ -60,8 +60,18 @@ class UserController extends Controller
                 $UserDetails['ClientId'] = $userInfo['client_id'];
             } else {
                 $userContent = $this->jsonToArray($userInfo['content']);
-                foreach($userContent as $field => $value){
-                    $UserDetails[$field] = $value;
+                if($userContent != null){
+                    foreach($userContent as $field => $value){
+                        $UserDetails[$field] = $value;
+                    }
+                } else {
+                    $UserDetails['firstname'] = $userInfo['firstname'];
+                    $UserDetails['lastname'] = $userInfo['lastname'];
+                    $UserDetails['phonenumber'] = $userInfo['phonenumber'];
+                    $UserDetails['email'] = $userInfo['email'];
+                    $UserDetails['Kyc'] = [];
+                    $UserDetails['ClientId'] = $userInfo['client_id'];
+                    
                 }
             }
 
@@ -76,15 +86,25 @@ class UserController extends Controller
     public function getAllUsersByRole($role){
         $userQuery = new Users;
         $userData = $userQuery->getUsersByRole($role);
-
+      //  dd($role);
         if($userData){
            $userInfo = $userData->toArray();
             //dd($userInfo);
             $i = 0;
             foreach($userInfo as $users){
+                
                 $userContent = $this->jsonToArray($users['content']);
-                foreach($userContent as $field => $value){
-                    $UserDetails[$i][$field] = $value;
+                if($userContent != null){
+                    foreach($userContent as $field => $value){
+                        $UserDetails[$i][$field] = $value;
+                    }
+                } else {
+                    $UserDetails[$i]['firstname'] = $users['firstname'];
+                    $UserDetails[$i]['lastname'] = $users['lastname'];
+                    $UserDetails[$i]['phonenumber'] = $users['phonenumber'];
+                    $UserDetails[$i]['email'] = $users['email'];
+                    $UserDetails[$i]['Kyc'] = [];
+                    
                 }
                 $UserDetails[$i]['ClientId'] = $users['client_id'];
                 $UserDetails[$i]['Role'] = $users['role'];

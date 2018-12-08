@@ -1,4 +1,22 @@
 var xmlHttp = createXmlHttpRequestObject(); // stores the reference to the XMLHttpRequest object
+//Toastr Options
+toastr.options = {
+  "closeButton": false,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": false,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 
 // retrieves the XMLHttpRequest object
 function createXmlHttpRequestObject() {
@@ -117,7 +135,10 @@ function submit_form_no_reload(fid, page, contid, reload, cb, xdata) {
         var message = jsonObj.message;
         container.html(data);
         if (status == "success") {
+          toastr["success"]("Session Restarted", "Success")
            //AutoRefresh(1000);
+        } else {
+          toastr["error"]("Operation Failed", "Error")
         }
       }
     }
@@ -252,6 +273,19 @@ function deletes(id, url) {
           icon: "error"
         });
       }
+    }
+  };
+  xmlHttp.send(formData);
+}
+
+function deleteField(id, url) {
+  formData = new FormData();
+  formData.append("id", id);
+  xmlHttp.open("GET", url);
+  xmlHttp.onreadystatechange = function () {
+    if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
+      var response = xmlHttp.responseText;
+      var jsonObj = JSON.parse(response);
     }
   };
   xmlHttp.send(formData);

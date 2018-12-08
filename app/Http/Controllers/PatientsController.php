@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HelperController;
 
+
 class PatientsController extends Controller
 {
     protected $helper;
@@ -30,6 +31,27 @@ class PatientsController extends Controller
         return view($URI)->with($data);
     }
 
+    public function requestProfile(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $userEmail = $_GET['user'];
+        $role = $_GET['type'];
+        $data['UserDetails'] =  $this->helper->getUserDetails($userEmail);
+    
+        $URI= '/'.$role.'/view-profile';
+        return view($URI)->with($data);
+    }
+
+    public function requestProfileEdit(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $userEmail = $_GET['user'];
+        $role = $_GET['type'];
+        $data['UserDetails'] =  $this->helper->getUserDetails($userEmail);
+    
+        $URI= '/'.$role.'/edit-profile';
+        return view($URI)->with($data);
+    }
 
     
 }

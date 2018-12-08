@@ -19,4 +19,9 @@ class HelperController extends Controller
         $users = new UserController;
         return $users->getAllUsersByRole($role);
     }
+
+    public function getUserDetails($username){
+        $users = new UserController;
+        return $users->getUserDetails($username);
+    }
 }

@@ -28,7 +28,14 @@ class Users
     }
 
     public function getUsersByRole($role){
-        $user = User::where('role', $role)->get();
+        $user = User::where('role', $role)->orderBy('created_at', 'DESC')->get();
         return ($user) ? $user : false;
     }
+
+    public function deleteRow($param){
+        $user = User::where('client_id', $param)->delete();
+        return ($user) ? true : false;
+    }
+
+
 }

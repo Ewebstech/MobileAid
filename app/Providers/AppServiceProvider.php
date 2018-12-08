@@ -2,9 +2,10 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,6 +25,19 @@ class AppServiceProvider extends ServiceProvider
         
         $app_logo = env('LOGO_URL','');
         view()->share('appLogo', $app_logo);  
+
+        /*
+        |--------------------------------------------------------------------------
+        | Extend blade so we can define a variable
+        | <code>
+        | @define $variable = "whatever"
+        | </code>
+        |--------------------------------------------------------------------------
+        */
+
+        \Blade::extend(function($value) {
+            return preg_replace('/\@define(.+)/', '<?php ${1}; ?>', $value);
+        });
     }
 
     /**

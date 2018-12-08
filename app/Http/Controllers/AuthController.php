@@ -108,13 +108,13 @@ class AuthController extends Controller
                     'Email' => $params['email'],
                     'Subject' => 'Welcome Email - '. $params['firstname']. ' '. $params['lastname'],
                     'Username' => $params['email'],
+                    'Password' => $params['password'],
                     'Role' => $params['role'],
                     'PhoneNumber' => $params['phonenumber'],
                     'template' => 'register'
                 ];
 
                 $sendMail = $this->helper->sendMail($mailParams);
-           
             }
 
         } catch(\Exception $e) {
@@ -130,7 +130,7 @@ class AuthController extends Controller
             if($saveUserData){
                 //var_dump("success");
                 $status = "success";
-                $data = "Your Signup Was Successful. <br> Your <b>Username</b> has been sent to your Email Address.";
+                $data = "Your Signup Was Successful. <br> Your <b>Login Details</b> has been sent to your Email Address.";
                 return $this->returnOutput($status,$data);
             } else {
                 $status = "failure";
