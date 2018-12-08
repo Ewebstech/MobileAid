@@ -41,7 +41,7 @@
 	</style>
 <section id="home" class="divider">
       <div class="fullwidth-carousel">
-      <div class="carousel-item bg-img-cover" data-bg-img="/site/images/bg/bg6.jpg">
+      <div class="carousel-item bg-img-cover" data-bg-img="/site/slideshow/P1.jpg">
           <div class="display-table">
             <div class="display-table-cell">
               <div class="container pt-200 pb-200">
@@ -59,23 +59,78 @@
           </div>
         </div>
 
-    <div class="carousel-item bg-img-cover" data-bg-img="/site/images/bg/bg5.jpg">
+    <div class="carousel-item bg-img-cover" data-bg-img="/site/slideshow/p1.jpg">
           <div class="display-table"> 
             <div class="display-table-cell">
               <div class="container pt-200 pb-200">
             <div class="row">
               <div class="col-md-6 col-md-offset-3">
-                <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
-                  <h1 class="text-black-555 text-uppercase font-30 text-bold">PRO. Medical <span class="text-theme-colored">Consultations</h1>
-                  <h5 class="text-black-555 font-weight-500 p-10 font-15">2MA Service is set up to give the general public better and wider access to <b>professional medical services</b>. This is helping in drastically reducing fatality rates in the country, especially of avoidable incidents that can be prevented with the help of a <b>Pro. Medical Consultant.</b>.</h5>
-                  <a class="btn btn-colored btn-theme-colored btn-flat mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" target="_blank" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
-                </div>
+                  <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
+                      <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
+                      <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                      <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                    </div>
               </div>
             </div>
               </div>
             </div>
           </div>
         </div>
+
+    
+    <div class="carousel-item bg-img-cover" data-bg-img="/site/slideshow/p3.jpg">
+      <div class="display-table"> 
+        <div class="display-table-cell">
+          <div class="container pt-200 pb-200">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
+                  <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item bg-img-cover" data-bg-img="/site/slideshow/p7.jpg">
+      <div class="display-table"> 
+        <div class="display-table-cell">
+          <div class="container pt-200 pb-200">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
+                  <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-item bg-img-cover" data-bg-img="/site/slideshow/P6.jpg">
+      <div class="display-table"> 
+        <div class="display-table-cell">
+          <div class="container pt-200 pb-200">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3">
+              <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
+                  <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
+                  <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital or proper medical attention.</h5>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                </div>
+          </div>
+        </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
       </div>
     </section>

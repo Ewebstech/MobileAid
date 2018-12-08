@@ -23,7 +23,7 @@
                 <div class="card-body text-center">
                     <img class="card-profile-img" style="height: 70px; width: 70px;" src="{{$UserDetails['avatar']}}" alt="img">
                     <h3 class="mb-1 text-white">{{$UserDetails['firstname']}} {{$UserDetails['lastname']}}</h3>
-                    <p class="mb-2 text-white">Client ID: {{$UserDetails['ClientId']}}</p>
+                    <p class="mb-2 text-white">User ID: {{$UserDetails['ClientId']}}</p>
                     
                     <a href="/edit-user" class="btn btn-info btn-sm mt-2" style="font-weight: bold;"><i class="fa fa-pencil" aria-hidden="true"></i> Edit Profile</a>
                 </div>

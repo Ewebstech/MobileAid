@@ -30,7 +30,7 @@
                                         <th>#</th>
                                         <th>####</th>
                                         <th>Name</th>
-                                        <th>ID</th>
+                                        <th>User ID</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
                                         <th>Gender</th>
