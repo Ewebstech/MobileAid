@@ -70,6 +70,7 @@ class SubscriptionController extends Controller
         }
         
         $params['package'] = $package;
+        $params['client_id'] = $formparams['client_id'];
         // Query to get current user's subscription status
         $subQuery = new Subscriptions();
         if($userDetails['email']){
