@@ -78,8 +78,10 @@ class SubscriptionController extends Controller
             $userparam = $userDetails['user'];
         }
         
-        $subDetails = $subQuery->getUserSubscription($userparam)->toArray()[0];
-
+        $subDetails = $subQuery->getUserSubscription($userparam);
+        if($subDetails){
+            $subDetails = $subDetails->toArray()[0];
+        }
        
         if(count($subDetails) > 0){
             //Get Previous Package
