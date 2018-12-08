@@ -14,7 +14,7 @@
 
 
 
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<link rel="stylesheet" href="site/css/font-awesome-all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- header -->
     @include('layout.header')
     
@@ -31,8 +31,7 @@
           <div class="row">
             <div class="col-md-6">
               <h3 class="mt-0 line-height-1 line-bottom" ><span class="">Mobile Medical Aid (2MA)</span></h3>
-              <h4 class="font-18 font-weight-500 text-gray-dimgray mt-20 mb-15"> <i>"2MA is designed to help people get medical help over the phones to treat, control or manage
-                        their health situation until they can get to the hospital or proper medical attention."</i></h4>
+              <h4 class="font-18 font-weight-500 text-gray-dimgray mt-20 mb-15"> <i>"2MA is designed to help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention."</i></h4>
                             <p class="text-black">MA is a medical call-in service that is designed to provide quick medical assistance in any health
                 related situation to reduce or prevent worsening conditions or resulting in death. In situations where
                 people do not know what to do they can call for medical advice or assistance.
