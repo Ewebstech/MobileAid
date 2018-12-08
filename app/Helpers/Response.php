@@ -45,6 +45,15 @@ Trait Response {
         ], $httpCode);
     }
 
+    public static function jsonoutput($msg, $data, $httpCode) {
+        return response()->json([
+            'status' => true, 
+            'http_code' => $httpCode,
+            'message' => $msg,
+            'data' => $data
+        ], $httpCode);
+    }
+
     public function issueUserToken($token, $msg, $httpCode, $data) {
         return response()->json([
             'status' => true,

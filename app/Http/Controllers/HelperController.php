@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PagesController;
 use App\Http\Controllers\MailController as MailController;
 
 
@@ -23,5 +24,10 @@ class HelperController extends Controller
     public function getUserDetails($username){
         $users = new UserController;
         return $users->getUserDetails($username);
+    }
+
+    public function getContactMessages(){
+        $contact = new PagesController;
+        return $contact->getContactMessages();
     }
 }

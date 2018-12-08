@@ -24,5 +24,10 @@ class Contacts
         return ($saveData) ? true : false;
     }
 
+    public function getContactMessages(){
+        $contacts = $this->model->all();
+        return ($contacts) ? $contacts : false;
+    }
+
     
 }

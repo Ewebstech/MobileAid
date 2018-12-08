@@ -159,7 +159,7 @@
                 }).then((result) => {
                 if (result.value) {
                     $(this).closest('tr').fadeTo(400, 0, function () {
-                        rt = deleteField(id,url);
+                        var rt = deleteField(id,url);
                         if(rt){
 							$(this).remove();
 						}

@@ -18,8 +18,8 @@
                 <div class="card">
                     <div class="card-body iconfont text-center">
                         <h5 class="text-muted">Patients</h5>
-                        <h2 class="count">67</h2>
-                        <p><a href="#"><i class="fa fa-location-arrow"></i> Click To View</a></p>
+                        <h2 class="count">{{$PatientNum}}</h2>
+                        <p><a href="{{route('viewPatients')}}"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                     </div>
                 </div>
             </div>
@@ -27,8 +27,8 @@
                 <div class="card">
                     <div class="card-body iconfont text-center">
                         <h5 class="text-muted">Doctors</h5>
-                        <h2 class="count">11</h2>
-                        <p><a href="#"><i class="fa fa-location-arrow"></i> Click To View</a></p>
+                        <h2 class="count">{{$DoctorNum}}</h2>
+                        <p><a href="{{route('viewDoctors')}}"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                 <div class="card">
                     <div class="card-body iconfont text-center">
                         <h5 class="text-muted">Active Cases </h5>
-                        <h2 class="count">93</h2>
+                        <h2 class="count">0</h2>
                         <p><a href="#"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 <div class="card">
                     <div class="card-body iconfont text-center">
                         <h5 class="text-muted">Messages</h5>
-                        <h2 class="count">78</h2>
+                        <h2 class="count">{{$MsgCount}}</h2>
                         <p><a href="#"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                     </div>
                 </div>

@@ -12,9 +12,11 @@
 <!-- Page Title -->
 <title>Mobile Medical Aid Services</title>
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+<!-- Favicon and Touch Icons -->
 
 
-<link rel="stylesheet" href="site/css/font-awesome-all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
     <!-- header -->
     @include('layout.header')
     
@@ -59,6 +61,24 @@
         </div>
       </div>
     </section>
+
+
+    <!-- Section: Call To Action -->
+    <section class="bg-theme-colored border-left border-3px">
+        <div class="container pt-20 pb-20">
+          <div class="call-to-action">
+            <div class="row">
+              <div class="col-sm-8 sm-text-center">
+                <h4 class="text-uppercase text-white text-bold">MOBILE MEDICAL AID SERVICES (2MA)</h4>
+                <p class="text-white font-15">In continual service of saving loss of life in practically every group of the economic demography</p>
+              </div>
+              <div class="col-sm-4 text-right flip sm-text-center"> 
+                <a href="/signup" class="btn btn-default mt-30 mt-sm-20"><i class="fa fa-user-plus"></i> Join Us Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     <!-- Section: Service  -->
     <section id="services" class="bg-light">
@@ -139,22 +159,53 @@
       </div>
     </section>
 
-    <!-- Section: Call To Action -->
-    <section class="bg-theme-colored border-left border-3px">
-      <div class="container pt-20 pb-20">
-        <div class="call-to-action">
+      <!-- Divider: Funfact -->
+      <section class="divider parallax layer-overlay overlay-dark-7" data-bg-img="images/bg/bg13.jpg" data-parallax-ratio="0.7">
+        <div class="container">
           <div class="row">
-            <div class="col-sm-8 sm-text-center">
-              <h4 class="text-uppercase text-white text-bold">MOBILE MEDICAL AID SERVICES (2MA)</h4>
-              <p class="text-white font-15">In continual service of saving loss of life in practically every group of the economic demography</p>
+            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
+              <div class="funfact">
+                <i class="pe-7s-smile text-white-f1 mt-20 font-48 pull-left flip"></i>
+                <div class="ml-60">
+                  <h2 class="animate-number text-white-f1 mt-0 mb-0 font-48 line-bottom" data-value="754" data-animation-duration="2000">0</h2>
+                  <div class="clearfix"></div>
+                  <h5 class="text-white-f1">Happy Users</h5>
+                </div>
+              </div>
             </div>
-            <div class="col-sm-4 text-right flip sm-text-center"> 
-              <a href="/signup" class="btn btn-default mt-30 mt-sm-20"><i class="fa fa-user-plus"></i> Join Us Now</a>
+            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.4s">
+              <div class="funfact">
+                <i class="pe-7s-rocket text-white-f1 mt-20 font-48 pull-left flip"></i>
+                <div class="ml-60">
+                  <h2 class="animate-number text-white-f1 mt-0 mb-0 font-48 line-bottom" data-value="125" data-animation-duration="2500">0</h2>
+                  <div class="clearfix"></div>
+                  <h5 class="text-white-f1">Cases Completed</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 mb-md-50 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
+              <div class="funfact">
+                <i class="pe-7s-add-user text-white-f1 mt-20 font-48 pull-left flip"></i>
+                <div class="ml-60">
+                  <h2 class="animate-number text-white-f1 mt-0 mb-0 font-48 line-bottom" data-value="150" data-animation-duration="3000">0</h2>
+                  <div class="clearfix"></div>
+                  <h5 class="text-white-f1">Active Doctors</h5>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6 col-md-3 wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.6s">
+              <div class="funfact">
+                <i class="pe-7s-global text-white-f1 mt-20 font-48 pull-left flip"></i>
+                <div class="ml-60">
+                  <h2 class="animate-number text-white-f1 mt-0 mb-0 font-48 line-bottom" data-value="55" data-animation-duration="3500">0</h2>
+                  <div class="clearfix"></div>
+                  <h5 class="text-white-f1">Patients Reached</h5>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
     <!-- Section: Pricing -->
     <section id="pricing">

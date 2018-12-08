@@ -8,7 +8,7 @@
         <div class="page-header" style="margin-bottom: -10px;">
             <h4 class="page-title">Patient's Dashboard</h4>
         </div>
-        @if ($EditProfile == "set")
+        @if ($EditProfile != "set")
             <div class="row">
                 <div class="col-lg-12">
                     <div class="alert alert-warning d-none d-lg-block" role="alert">

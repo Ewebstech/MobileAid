@@ -42,3 +42,6 @@ Route::post('/wtf/editkyc', 'UserController@saveUser')->name('saveUser');
 
 //Doctors Routes
 Route::post('/wtf/editkyc_doc', 'UserController@saveUser')->name('saveUserDoc'); 
+
+//Subscription Routes
+Route::get('/wtf/getpackages', 'SubscriptionController@getPackages')->name('getPackages'); 

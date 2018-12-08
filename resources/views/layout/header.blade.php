@@ -43,9 +43,7 @@
 
 <script src="/js/ajax.js"></script>
 
-<!-- Favicon and Touch Icons -->
-<link href="/images/favicon.ico" rel="shortcut icon" type="image/png">
-
+<link rel="stylesheet" href="/assets/fonts/fonts/font-awesome.min.css">
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>

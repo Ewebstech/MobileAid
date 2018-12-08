@@ -71,7 +71,6 @@ class UserController extends Controller
                     $UserDetails['email'] = $userInfo['email'];
                     $UserDetails['Kyc'] = [];
                     $UserDetails['ClientId'] = $userInfo['client_id'];
-                    
                 }
             }
 
@@ -140,7 +139,6 @@ class UserController extends Controller
                 'postal_code' => '',
                 'country' => '',
                 'role' => 'required'
-                
             ]);
     
         } else {
@@ -154,7 +152,6 @@ class UserController extends Controller
                 'country' => '',
                 
             ]);
-    
         }
 
         if($validator->fails()) {
