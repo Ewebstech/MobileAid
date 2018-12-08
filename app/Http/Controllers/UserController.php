@@ -79,24 +79,19 @@ class UserController extends Controller
 
         if($userData){
            $userInfo = $userData->toArray();
-      
-           if($userInfo["role"] == "admin"){ 
-               $UserDetails['firstname'] = $userInfo['firstname'];
-               $UserDetails['lastname'] = $userInfo['lastname'];
-               $UserDetails['phonenumber'] = $userInfo['phonenumber'];
-               $UserDetails['email'] = $userInfo['email'];
-               $UserDetails['Kyc'] = [];
-               $UserDetails['ClientId'] = $userInfo['client_id'];
-           } else {
-               $userContent = $this->jsonToArray($userInfo['content']);
-               foreach($userContent as $field => $value){
-                   $UserDetails[$field] = $value;
-               }
-           }
-
-           $UserDetails['ClientId'] = $userInfo['client_id'];
-           $UserDetails['Role'] = $userInfo['role'];
-           $UserDetails['avatar'] = $userInfo['avatar'];
+            //dd($userInfo);
+            $i = 0;
+            foreach($userInfo as $users){
+                $userContent = $this->jsonToArray($users['content']);
+                foreach($userContent as $field => $value){
+                    $UserDetails[$i][$field] = $value;
+                }
+                $UserDetails[$i]['ClientId'] = $users['client_id'];
+                $UserDetails[$i]['Role'] = $users['role'];
+                $UserDetails[$i]['avatar'] = $users['avatar'];
+                $i++;
+            }
+           
        }
        
        return $UserDetails;

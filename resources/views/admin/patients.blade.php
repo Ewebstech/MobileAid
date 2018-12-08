@@ -24,26 +24,34 @@
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table id="example2" class="hover table-bordered" >
+                            <table id="example2" class="hover table-bordered" style="font-size: 11px; text-align: center;" >
                                 <thead>
                                     <tr>
+                                        <th>#</th>
+                                        <th>####</th>
                                         <th>Name</th>
                                         <th>Email</th>
                                         <th>Phone Number</th>
+                                        <th>Gender</th>
                                         <th>2MA Package</th>
-                                        <th></th>
-                                        <th>Salary</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <?php $i = 1; ?>
+                                    @foreach ($Patient as $patientdata )
                                     <tr>
-                                        <td>Tiger Nixon</td>
-                                        <td>System Architect</td>
-                                        <td>Edinburgh</td>
-                                        <td>61</td>
-                                        <td>2011/04/25</td>
-                                        <td>$320,800</td>
+                                        <td>{{$i}}</td>
+                                        <td><img src="{{$patientdata['avatar']}}" style="height: 50px; width: 50px;"  alt="..." class="img-circle profile_img img-responsive"  /></td>
+                                        <td>{{$patientdata['firstname']}} {{$patientdata['lastname']}}</td>
+                                        <td>{{$patientdata['email']}}</td>
+                                        <td>{{$patientdata['phonenumber']}}</td>
+                                        <td>{{$patientdata['gender']}}</td>
+                                        <td>{{ isset($patientdata['package']) ? $patientdata['package'] : "--:--" }}</td>
+                                        <td><a href="{{route('viewUser')}}"><i class="fa fa-eye"></i></a> | <a href="{{route('editUser')}}"><i class="fa fa-edit"></i></a> | <a href="#"><i class="fa fa-trash-o"></i></a></td>
                                     </tr>
+                                    @endforeach
+                                    
                                    
                             </table>
 
