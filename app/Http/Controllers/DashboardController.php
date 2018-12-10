@@ -35,6 +35,8 @@ class DashboardController extends Controller
        $data['MsgCount'] = $this->getContactMessageCount();
        $data['PatientNum'] = $this->getPatientsNum();
        $data['DoctorNum'] = $this->getDoctorsNum();
+       $data['regToday'] = $this->registrationsToday();
+      // dd($data['regToday']);
        
        $URI= '/'.$role.'/dashboard';
 
@@ -43,25 +45,37 @@ class DashboardController extends Controller
 
     private function getPatientsNum(){
         $data =  $this->helper->getAllUsersByRole("patient");
-        $count = count($data);
-        return ($count) ? $count : 0;
+        if(!empty($data)){
+            $count = count($data);
+            return ($count) ? $count : 0;
+        }
     }
 
     private function getDoctorsNum(){
         $data =  $this->helper->getAllUsersByRole("doctor");
-        $count = count($data);
-        return ($count) ? $count : 0;
+        if(!empty($data)){
+            $count = count($data);
+            return ($count) ? $count : 0;
+        }
     }
 
     private function getContactMessageCount(){
         $data = $this->helper->getContactMessages();
         if($data){
-            $data = $data->toArray();
-            //dd($data);
+            //$data = $data->toArray();
+            $count = count($data);
+            return ($count) ? $count : 0;
         }
-      
-        $count = count($data);
-        return ($count) ? $count : 0;
+    }
+
+    private function registrationsToday(){
+        $data = $this->helper->getTodayRegs();
+        if($data){
+            //$data = $data->toArray();
+            $count = count($data);
+            return ($count) ? $count : 0;
+        }
+       // dd($data);
     }
     
 }

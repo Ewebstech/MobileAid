@@ -35,6 +35,11 @@
                 <a href="{{route('viewDoctors')}}" class=" wave-effect accordion-toggle "><i class="fa fa-user-md mr-2 sidebarpink"></i> Doctors</a>
             </li>
 
+            <li class="border-0"><h3>Messages</h3><li>
+                <li>
+                    <a href="{{route('inbox')}}" class=" wave-effect accordion-toggle "><i class="fa fa-envelope mr-2 sidebarpink"></i> View Inbox</a>
+                </li>
+                
             <li><h3>Subscription</h3><li>
 
             <li>

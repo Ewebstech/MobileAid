@@ -15,6 +15,7 @@ class Contacts
         $data = [
             'name' => ucfirst(strtolower($params['name'])),
             'email' => $params['email'],
+            'status' => 'unread',
             'phonenumber' => $params['phone'],
             'subject' => $params['subject'],
             'message' => $params['message'],
@@ -28,6 +29,12 @@ class Contacts
         $contacts = $this->model->all();
         return ($contacts) ? $contacts : false;
     }
+
+    public function getUnreadContactMessages(){
+        $contacts = $this->model->where('status','unread');
+        return ($contacts) ? $contacts : false;
+    }
+
 
     
 }

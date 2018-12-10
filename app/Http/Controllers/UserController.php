@@ -43,6 +43,11 @@ class UserController extends Controller
         return view($URI)->with($data);
      }
 
+     public function getTodayRegs(){
+        $userQuery = new Users;
+        $userData = $userQuery->getUserRegToday();
+        return $userData;
+     }
      
      public function getUserDetails($username){
          $userQuery = new Users;
@@ -128,13 +133,13 @@ class UserController extends Controller
     public function getAllUsersByRole($role){
         $userQuery = new Users;
         $userData = $userQuery->getUsersByRole($role);
-      //  dd($role);
+        //  dd($role);
+        $UserDetails = [];
         if($userData){
            $userInfo = $userData->toArray();
             //dd($userInfo);
             $i = 0;
             foreach($userInfo as $users){
-                
                 $userContent = $this->jsonToArray($users['content']);
                 if($userContent != null){
                     foreach($userContent as $field => $value){
@@ -153,10 +158,9 @@ class UserController extends Controller
                 $UserDetails[$i]['avatar'] = $users['avatar'];
                 $i++;
             }
-           
+            return ($UserDetails) ? $UserDetails : "";
        }
        
-       return $UserDetails;
    }
     
     public function saveUser(Request $request) {

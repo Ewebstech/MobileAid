@@ -25,6 +25,7 @@ Route::get('/', function(){
 //User Routes
 
 Route::post('/wtf/register', 'AuthController@registerUser')->name('register');
+Route::post('/wtf/registerdoc', 'AuthController@registerDoctor')->name('registerdoc');
 //Login users
 Route::post('/wtf/login', 'AuthController@loginUser')->name('login');  
 //change default password

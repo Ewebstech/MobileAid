@@ -3,12 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\HelperController;
 
 class AdminController extends Controller
 {
+    protected $helper;
+
     public function __construct()
     {
-       $this->middleware('redirectauth');
+        if(!isset($_SESSION)) session_start();
+        $this->middleware('redirectauth');
+       $this->helper = new HelperController;
     }
 
     public function index(Request $request){
@@ -26,6 +31,18 @@ class AdminController extends Controller
        }
        
        $URI= '/'.$role.'/dashboard';
+
+       return view($URI)->with($data);
+    }
+
+    public function viewMessages(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        $data['ContactMessages'] = $this->helper->getContactMessages();
+
+        //dd($data['ContactMessages']);
+        $URI= '/'.$role.'/inbox';
 
        return view($URI)->with($data);
     }

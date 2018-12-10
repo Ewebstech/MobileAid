@@ -12,8 +12,8 @@ class customCode
         UNEXPECTED_ERROR = "UE-303", //Unexpected error
         ACCESS_DENIED = "AD-305", //Unexpected error
         UNAUTHORIZED = "U-304", // Token not provided
-        BADREQUEST = "BR-103"; //Bad request
-
+        BADREQUEST = "BR-103", //Bad request
+        NOT_MODIFIED = "ERR-304";
     const OPERATION_SUCCESSFUL = "OP-900";
 
 }

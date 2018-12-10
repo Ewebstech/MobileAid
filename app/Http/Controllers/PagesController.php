@@ -67,7 +67,7 @@ class PagesController extends Controller
     public function getContactMessages(){
         $contactQuery = new Contacts;
         $Data = $contactQuery->getContactMessages();
-        return $Data;
+        return ($Data) ? $Data->toArray() : false;
     }
 
     

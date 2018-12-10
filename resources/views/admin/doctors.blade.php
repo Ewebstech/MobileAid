@@ -16,7 +16,7 @@
             <div class="col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">All Doctors Details </div>
+                        <div class="card-title"><button type="button" class="btn btn-info" data-toggle="modal" data-target="#addDoctors"><i class="fa fa-user-plus"></i> Add Doctors</button></div>
                         <div class="card-options">
                             <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -63,6 +63,7 @@
             </div>
         </div>
     </div>
+@include('includes.modals')
 @endsection
 @section('scripts')
 <script>

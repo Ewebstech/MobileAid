@@ -39,6 +39,112 @@ class AuthController extends Controller
             return redirect()->route('Dashboard');
         }
     }
+
+
+       /**
+     * Validate Users
+     */
+    private function validateRegisterDoctorRequest(Request $request) {
+
+        return Validator::make($request->all(), [
+            //validation rules
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => 'bail|email|unique:users',  
+            'gender' => 'required',
+            'phonenumber' => 'bail|required|unique:users',
+            'role' => 'required'
+        ]);
+    }
+
+    public function registerDoctor(Request $request) {
+        $params = $request->all();
+        //validate incoming user input request
+        $validator =  $this->validateRegisterDoctorRequest($request);
+
+        if($validator->fails()) {
+            //if validation error return error messages
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
+        }
+
+        $gender = $params['gender'];
+
+        if($gender == "male"){
+           $avatar_img = "/images/male_avatar.png";
+        } elseif($gender == "female") {
+            $avatar_img = "/images/female_avatar.png";
+        } else {
+            $avatar_img = "/images/male_avatar.png";
+        }
+
+        try{
+            $clientID = strtoupper($this->generateDefaultStaticPassword(5));
+            $params['password'] = $this->generateDefaultStaticPassword(6);
+            $contentParams = $params;
+            unset($contentParams['password']);
+            $content = json_encode($contentParams);
+            //creates a new user in database
+            $user = [
+                'firstname' => $params['firstname'],
+                'lastname' => $params['lastname'],
+                'email' => $params['email'],
+                'phonenumber' => $params['phonenumber'],
+                'password' => hash::make($params['password']),
+                'avatar' => $avatar_img,
+                'role' => $params['role'],
+                'remember_token' => str_random(rand(0,9)),
+                'content' => $content,
+                'client_id' => $clientID,
+            ];
+
+            $saveUserData = User::create($user);
+            if($saveUserData){
+                // Send Email to User
+                $mailParams = [
+                    'Name' => $params['firstname']. " ". $params['lastname'],
+                    'Email' => $params['email'],
+                    'Subject' => 'Welcome Email - '. $params['firstname']. ' '. $params['lastname'],
+                    'Username' => $params['email'],
+                    'Password' => $params['password'],
+                    'Role' => $params['role'],
+                    'PhoneNumber' => $params['phonenumber'],
+                    'template' => 'register'
+                ];
+
+                $sendMail = $this->helper->sendMail($mailParams);
+            }
+
+        } catch(\Exception $e) {
+            //something went wrong during registration
+            return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+
+        }
+        
+        $msg = 'Hello '. $user['firstname']. ' '. $user['lastname']. ', Your Registration Was Successful!';
+        $data = $user;
+        
+        if(isset($params['view'])){
+            if($saveUserData){
+                //var_dump("success");
+                $status = "success";
+                $data = "New Doctors's Account Successfully Added. <br> <b>Login Details</b> has been sent to doctor's Email Address.";
+                return $this->returnOutput($status,$data);
+            } else {
+                $status = "failure";
+                $data = "Doctor Registration Error. Please Try again!";
+                return $this->returnOutput($status,$data);
+                
+            }
+        } else {
+            return $this->regSuccess($msg, $user, HttpStatusCodes::OK);
+        }
+    }
+
     /**
      * Validate Users
      */

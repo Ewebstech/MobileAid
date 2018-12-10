@@ -18,6 +18,7 @@ class CreateContactsTable extends Migration
             $table->string('name');
             $table->string('phonenumber');
             $table->string('email');
+            $table->string('status');
             $table->string('subject');
             $table->text('message');
             $table->rememberToken();

@@ -135,7 +135,7 @@ function submit_form_no_reload(fid, page, contid, reload, cb, xdata) {
         var message = jsonObj.message;
         container.html(data);
         if (status == "success") {
-          toastr["success"]("Session Restarted", "Success")
+          toastr["success"]("Operation Successful", "Success")
            //AutoRefresh(1000);
         } else {
           toastr["error"]("Operation Failed", "Error")

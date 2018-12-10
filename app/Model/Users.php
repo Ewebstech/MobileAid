@@ -54,5 +54,9 @@ class Users
         return ($user) ? true : false;
     }
 
+    public function getUserRegToday(){
+        $user = User::where('created_at', '>=', date('Y-m-d').' 00:00:00')->get();
+        return ($user) ? $user : false;
+    }
 
 }

@@ -16,6 +16,11 @@ class HelperController extends Controller
         return $mail->sendMail($params);
     }
 
+    public function getTodayRegs(){
+        $users = new UserController;
+        return $users->getTodayRegs();
+    }
+
     public function getAllUsersByRole($role){
         $users = new UserController;
         return $users->getAllUsersByRole($role);

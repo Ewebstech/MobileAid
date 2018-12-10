@@ -393,7 +393,7 @@
                             </div>
                             <br><br>
                             <div class="col-md-12" style="margin-bottom: 10px; margin-top: 20px;">
-                                    <h3 class="card-title"><i><b> * Emergency/Support Contacts</b></i></h3>
+                                    <h3 class="card-title"><i><b> *Nominate (2) Support Contacts</b></i></h3>
                             </div>
                            
                                 <div class="col-sm-6 col-md-6">

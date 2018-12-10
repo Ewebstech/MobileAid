@@ -30,5 +30,20 @@ class Subscriptions
         return ($sub) ? $sub : false;
     }
 
+    public function updateSubscription($params){
+        $content = json_encode($params);
+        $data = [
+            'user' => $params['user'],
+            'status' => $params['status'],
+            'calls' => $params['calls'],
+            'package' => $params['package'],
+            'content' => $content,
+        ];
+        $update = $this->model->where('user', $params['user'])
+            ->update($data);
+
+        return ($update) ? true : false;
+    }
+
     
 }

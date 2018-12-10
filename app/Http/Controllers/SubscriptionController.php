@@ -53,12 +53,14 @@ class SubscriptionController extends Controller
                 return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
             }
         }
-
-        $package = $formparams['package'];
+        
+        $package = ucfirst(strtolower($formparams['package']));
         // Retrieve client's info - Check previous package
         $userId = $formparams["client_id"];
         $userDetails = $this->helper->getUserDetailsById($userId);
+        if(isset($userDetails['view'])) { unset($userDetails['view']); }
         $params = $userDetails;
+
         if($userDetails == null) {
             //if validation error return error messages
             if(isset($params['view'])){
@@ -95,13 +97,13 @@ class SubscriptionController extends Controller
             if($previousPackage == $params['package']){
                 //dd("i am here");
                 // You are already subscribed on this package
-                return $this->error('You are already subscribed on this package. ', HttpStatusCodes::NOT_MODIFIED);
+                //return $this->validationError('You are already subscribed on this package.',  HttpStatusCodes::UNAUTHORIZED);
+                return $this->error('You are already subscribed on this package. ', HttpStatusCodes::UNAUTHORIZED);
             } else {
-              
                 if($MaxCalls > 0){
-                    return $this->error('Your subscription is still active and cannot be modified until it is exhausted. ', HttpStatusCodes::NOT_MODIFIED);
+                    return $this->error('Your subscription is still active and cannot be modified until it is exhausted. ', HttpStatusCodes::UNAUTHORIZED);
                 } else {
-                    return $this->processSubscriptionUpdates($params);
+                    return $this->processSubscriptionUpdates($params,$subUpdate=true);
                 }
             }
         } else {
@@ -114,21 +116,27 @@ class SubscriptionController extends Controller
         }
     }
 
-    private function processSubscriptionUpdates($params){
+    private function processSubscriptionUpdates($params,$subUpdate=false){
         try{
-            $subQuery = new Subscriptions();
-            $subDetails = $subQuery->addSubscription($params);
-
+            if($subUpdate){
+                $subQuery = new Subscriptions();
+                $subDetails = $subQuery->updateSubscription($params);
+            } else {
+                $subQuery = new Subscriptions();
+                $subDetails = $subQuery->addSubscription($params);
+            }
+            
             // Update Users Table with Subscription Details
             $userQuery = new Users;
             $userUpdate = $userQuery->updateUserContent($params);
             
             if($subDetails and $userUpdate){ 
+              
                 if(isset($params['view'])){
                     if($subDetails){
                         //var_dump("success");
                         $status = "success";
-                        $data = "New Subscription Package Added Successfully";
+                        $data = "Subscription Selection Successful: ". $params['package'] . " Package";
                         return $this->returnOutput($status,$data);
                     } else {
                         $status = "failure";
@@ -137,7 +145,7 @@ class SubscriptionController extends Controller
                         
                     }
                 } else {
-                    $msg = "New Subscription Package Added Successfully";
+                    $msg = "Subscription Selection Successful: ". $params['package'] . " Package";
                     $data = $params;
                     return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
                 }
