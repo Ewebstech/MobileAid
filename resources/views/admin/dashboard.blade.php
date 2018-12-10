@@ -45,8 +45,8 @@
                 <div class="card">
                     <div class="card-body iconfont text-center">
                         <h5 class="text-muted">Messages</h5>
-                        <h2 class="count">{{$MsgCount}}</h2>
-                        <p><a href="#"><i class="fa fa-location-arrow"></i> Click To View</a></p>
+                        <h2 class="count">{{isset($MsgCount) ? $MsgCount : 0}}</h2>
+                        <p><a href="{{route('inbox')}}"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                     </div>
                 </div>
             </div>

@@ -37,7 +37,10 @@
 
             <li class="border-0"><h3>Messages</h3><li>
                 <li>
-                    <a href="{{route('inbox')}}" class=" wave-effect accordion-toggle "><i class="fa fa-envelope mr-2 sidebarpink"></i> View Inbox</a>
+                    <a href="{{route('inbox')}}" class=" wave-effect accordion-toggle "><i class="fa fa-envelope mr-2 sidebarpink"></i> Un-read Messages</a>
+                </li>
+                <li>
+                    <a href="{{route('archive')}}" class=" wave-effect accordion-toggle "><i class="fa fa-envelope mr-2 sidebarpink"></i> Archived Messages</a>
                 </li>
                 
             <li><h3>Subscription</h3><li>

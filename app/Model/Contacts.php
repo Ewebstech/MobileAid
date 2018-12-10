@@ -45,6 +45,16 @@ class Contacts
         return ($contacts) ? $contacts : false;
     }
 
+    public function updateContactStatus($id){
+        $data = [
+            'status' => 'read',
+        ];
+        $update = $this->model->where('id', $id)
+            ->update($data);
+
+        return ($update) ? true : false;
+    }
+
 
     
 }

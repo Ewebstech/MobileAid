@@ -60,7 +60,7 @@ class DashboardController extends Controller
     }
 
     private function getContactMessageCount(){
-        $data = $this->helper->getContactMessages();
+        $data = $this->helper->getUnreadContactMessages();
         if($data){
             //$data = $data->toArray();
             $count = count($data);

@@ -49,7 +49,9 @@ class AdminController extends Controller
             $cM[$i] = $msgs;
             $i++;
         }
-        // dd($cM);
+        //dd($cM);
+        $data['UnreadMsgCount'] = $this->getUnreadContactMessageCount();
+        $data['ReadMsgCount'] = $this->getReadContactMessageCount();
 
         $data['ContactMessages'] = $cM;
         $URI= '/'.$role.'/inbox';
@@ -70,10 +72,12 @@ class AdminController extends Controller
             $cM[$i] = $msgs;
             $i++;
         }
-       //dd($cM);
+     
+        $data['UnreadMsgCount'] = $this->getUnreadContactMessageCount();
+        $data['ReadMsgCount'] = $this->getReadContactMessageCount();
 
         $data['ContactMessages'] = $cM;
-        $URI= '/'.$role.'/inbox';
+        $URI= '/'.$role.'/archive';
 
        return view($URI)->with($data);
     }
@@ -85,12 +89,30 @@ class AdminController extends Controller
         $id = $_GET['id'];
         $Query = new Contacts;
         $contactResult = $Query->getContactMessagesById($id)->toArray();
+        $updateStatus = $Query->updateContactStatus($id);
        //dd($contactResult);
-        $data['Messages'] = $contactResult;
-        $URI= '/'.$role.'/read';
-
-       return view($URI)->with($data);
-
+        if($updateStatus){
+            $data['Messages'] = $contactResult;
+            $URI= '/'.$role.'/read';
+            return view($URI)->with($data);
+        }
     }
 
+    private function getUnreadContactMessageCount(){
+        $data = $this->helper->getUnreadContactMessages();
+        if($data){
+            //$data = $data->toArray();
+            $count = count($data);
+            return ($count) ? $count : 0;
+        }
+    }
+
+    private function getReadContactMessageCount(){
+        $data = $this->helper->getReadContactMessages();
+        if($data){
+            //$data = $data->toArray();
+            $count = count($data);
+            return ($count) ? $count : 0;
+        }
+    }
 }

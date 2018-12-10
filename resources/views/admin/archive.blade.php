@@ -5,10 +5,10 @@
 @section('content')
 <div class=" content-area">
         <div class="page-header">
-            <h4 class="page-title">Messages Inbox</h4>
+            <h4 class="page-title">Archive Inbox</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Messages Inbox</li>
+                <li class="breadcrumb-item active" aria-current="page">Archive Inbox</li>
             </ol>
 
         </div>
@@ -20,7 +20,7 @@
                         <div class="list-group list-group-transparent mb-0 mail-inbox">
                             
                             <a href="{{route('inbox')}}" class="list-group-item list-group-item-action d-flex align-items-center active text-white">
-                                <span class="icon mr-3"><i class="fe fe-inbox"></i></span>Inbox - UnRead<span class="ml-auto badge badge-success">{{isset($UnreadMsgCount) ? $UnreadMsgCount : 0}}</span>
+                                <span class="icon mr-3"><i class="fe fe-inbox"></i></span>Inbox - UnRead <span class="ml-auto badge badge-success">{{isset($UnreadMsgCount) ? $UnreadMsgCount : 0}}</span>
                             </a>
             
                             <a href="{{route('archive')}}" class="list-group-item list-group-item-action d-flex align-items-center">
