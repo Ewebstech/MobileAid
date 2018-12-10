@@ -55,7 +55,9 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('doctors', 'DoctorController@viewDoctors')->name('viewDoctors');
     Route::get('get-profile', 'PatientsController@requestProfile')->name('requestProfile');
     Route::get('get-edit-profile', 'PatientsController@requestProfileEdit')->name('requestProfileEdit');
-    Route::get('inbox', 'AdminController@viewMessages')->name('inbox');
+    Route::get('inbox', 'AdminController@viewUnreadMessages')->name('inbox');
+    Route::get('archive', 'AdminController@viewReadMessages')->name('archive');
+    Route::get('read', 'AdminController@ReadMessages')->name('read');
 
     // Delete Route
     Route::get('trash', 'TrashController@delete')->name('trashIt');

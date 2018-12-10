@@ -38,16 +38,20 @@
                                 <div class="table-responsive">
                                     <table class="table table-inbox table-hover">
                                         <tbody>
+                                            @define $i = 1
+                                            @foreach ($ContactMessages as $msg)
                                             <tr class="unread">
-                                                <td class="inbox-small-cells">
-                                                    <input type="checkbox" checked class="mail-checkbox">
-                                                </td>
-                                                <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
-                                                <td class="view-message  dont-show">John Kribo</td>
-                                                <td class="view-message "><strong>Commits pushed</strong> Consectetur adipisicing elit...</td>
-                                                <td class="view-message  inbox-small-cells"><i class="fa fa-paperclip"></i></td>
-                                                <td class="view-message  text-right">9:27 AM</td>
-                                            </tr>
+                                                    <td class="inbox-small-cells">
+                                                        {{$i}}.
+                                                    </td>
+                                                    <td class="inbox-small-cells"><i class="fa fa-star inbox-started"></i></td>
+                                                    <td class="view-message  dont-show">{{$msg['name']}}</td>
+                                                    <td class="view-message"><a href="{{route('read')}}?id={{$msg['id']}}"><strong>{{$msg['subject']}}</strong></a></td>
+                                                    <td class="view-message inbox-small-cells text-right"><i class="fa fa-clock"></i> {{$msg['sendTime']}}</td>
+                                                </tr>
+                                            @define $i = $i + 1
+                                            @endforeach
+                                            
                                           
                                         </tbody>
                                     </table>

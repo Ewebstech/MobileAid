@@ -40,4 +40,16 @@ class HelperController extends Controller
         $contact = new PagesController;
         return $contact->getContactMessages();
     }
+
+    public function getUnreadContactMessages(){
+        $contact = new PagesController;
+        return $contact->getUnreadContactMessages();
+    }
+
+    public function getReadContactMessages(){
+        $contact = new PagesController;
+        return $contact->getReadContactMessages();
+    }
+
+
 }

@@ -12,12 +12,6 @@
 <!-- Page Title -->
 <title>Blank Page</title>
 
-<!-- Favicon and Touch Icons -->
-<link href="/site/images/favicon.png" rel="shortcut icon" type="image/png">
-<link href="/site/images/apple-touch-icon.png" rel="apple-touch-icon">
-<link href="/site/images/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
-<link href="/site/images/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
-<link href="/site/images/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <!-- header -->

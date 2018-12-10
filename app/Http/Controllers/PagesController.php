@@ -70,6 +70,18 @@ class PagesController extends Controller
         return ($Data) ? $Data->toArray() : false;
     }
 
+    public function getUnreadContactMessages(){
+        $contactQuery = new Contacts;
+        $Data = $contactQuery->getUnreadContactMessages();
+        return ($Data) ? $Data->toArray() : false;
+    }
+
+    public function getReadContactMessages(){
+        $contactQuery = new Contacts;
+        $Data = $contactQuery->getReadContactMessages();
+        return ($Data) ? $Data->toArray() : false;
+    }
+
     
 
 }

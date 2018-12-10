@@ -31,7 +31,17 @@ class Contacts
     }
 
     public function getUnreadContactMessages(){
-        $contacts = $this->model->where('status','unread');
+        $contacts = $this->model->where('status','unread')->get();
+        return ($contacts) ? $contacts : false;
+    }
+
+    public function getReadContactMessages(){
+        $contacts = $this->model->where('status','read')->get();
+        return ($contacts) ? $contacts : false;
+    }
+
+    public function getContactMessagesById($id){
+        $contacts = $this->model->where('id',$id)->first();
         return ($contacts) ? $contacts : false;
     }
 

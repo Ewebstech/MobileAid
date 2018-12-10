@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Dashboard')
+@section('title', 'Patients')
 
 @section('content')
 	<div class=" content-area overflow-hidden">
