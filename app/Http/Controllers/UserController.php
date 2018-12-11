@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use App\Helpers\HttpStatusCodes;
 use App\Model\Users;
 use App\Http\Controllers\HelperController;
+use App\Utils\RequestRules;
 
 class UserController extends Controller
 {
@@ -17,10 +18,88 @@ class UserController extends Controller
     {
         if(!isset($_SESSION)) session_start();
             $this->middleware('redirectauth', ['except' => [
-                'saveUser'
+                'saveUser','editProfile'
             ]]);
+            // $this->middleware('jwt-auth', ['only' => [
+            //     'editProfile'
+            // ]]);
         
         $this->helper = new HelperController;
+    }
+
+    public function editProfile(Request $request){
+        $params = $request->all();
+        //dd($params);
+        $validator =  Validator::make($request->all(), RequestRules::getRule('UPDATE_PROFILE'));
+    
+        if($validator->fails()) {
+            //if validation error return error messages
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
+        }
+
+        $userDetails_1 = User::where('email', $params['email'])->where('phonenumber', $params['phonenumber'])->first();
+       
+        if($userDetails_1){
+
+            $retrievedDataContent = $userDetails_1->toArray()['content'];
+            $Content = $this->jsonToArray($retrievedDataContent);
+     
+        try{
+            $Content['firstname'] = $params["firstname"];
+            $Content['lastname'] = $params["lastname"];
+            $Content['avatar'] = $params["avatar"];
+            $Content['phonenumber'] = $params["phonenumber"];
+            $Content['gender'] = $params["gender"];
+            $Content['role'] = $params["role"];
+            
+            $params['content'] = json_encode($Content);
+            //creates a new user in database
+            $userQuery = new Users();
+            $updateUser = $userQuery->updateUserDetails($params);
+
+            if($updateUser){
+                // Send Email to User
+                $mailParams = [
+                    'Name' => $Content['firstname']. " ". $Content['lastname'],
+                    'Email' => $params['email'],
+                    'Subject' => 'Notification on Profile Update',
+                    'template' => 'profile_update',
+                    'Username' => $params['email']
+                ];
+
+                $sendMail = $this->helper->sendMail($mailParams);
+
+                if(isset($params['view'])){
+                    if($updateUser){
+                        $status = "success";
+                        $data = "Your Data has been Updated Successfully";
+                        return $this->returnOutput($status,$data);
+                    } else {
+                        $status = "failure";
+                        $data = "Error on Update. Please Try again!";
+                        return $this->returnOutput($status,$data);
+                        
+                    }
+                } else {
+                    $msg = "Data Update Successful";
+                    $data = $params['content'];
+                    return $this->regSuccess($msg, $data, HttpStatusCodes::OK);
+                }
+            }
+
+        } catch(\Exception $e) {
+            //something went wrong during registration
+                return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+            }
+        } else {
+            return $this->validationError('Wrong User Email or Phonenumber', HttpStatusCodes::BAD_REQUEST);
+        }
+
     }
 
     public function viewUser(Request $request){
@@ -168,37 +247,10 @@ class UserController extends Controller
         //dd($params);
         //validate requests
         if($params["role"] == "patient"){
-            $validator =  Validator::make($request->all(), [
-                //validation rules
-                'treatment_status' => '',
-                'email' => 'email|required',  
-                'phonenumber' => 'required',
-                'emergency_contact_name_1' => '',
-                'emergency_contact_num_1' => '',
-                'emergency_contact_name_2' => '',
-                'emergency_contact_num_2' => '',
-                'hmo_reg_status' => '',
-                'hmo_information' => '',
-                'medical_condition' => '',
-                'medical_condition_details' => '',
-                'contact_address' => '',
-                'city' => '',
-                'postal_code' => '',
-                'country' => '',
-                'role' => 'required'
-            ]);
+            $validator =  Validator::make($request->all(), RequestRules::getRule('PATIENT_KYC'));
     
         } else {
-            $validator =  Validator::make($request->all(), [
-                //validation rules
-                'email' => 'email|required',  
-                'phonenumber' => 'required',
-                'contact_address' => '',
-                'city' => '',
-                'postal_code' => '',
-                'country' => '',
-                
-            ]);
+            $validator =  Validator::make($request->all(), RequestRules::getRule('OTHER_KYC'));
         }
 
         if($validator->fails()) {

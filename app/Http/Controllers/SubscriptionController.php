@@ -110,7 +110,7 @@ class SubscriptionController extends Controller
 
             // Add Subscription Details
             $params["calls"] = "0";
-            $params["status"] = "Supended";
+            $params["status"] = "InActive";
             $params["user"] = $userDetails['email'];
             return $this->processSubscriptionUpdates($params);
         }

@@ -40,6 +40,7 @@ Route::get('wtf/me', 'AuthController@me');
 
 //Members Routes
 Route::post('/wtf/editkyc', 'UserController@saveUser')->name('saveUser'); 
+Route::post('/wtf/editprofile', 'UserController@editProfile')->name('editProfile'); 
 
 //Doctors Routes
 Route::post('/wtf/editkyc_doc', 'UserController@saveUser')->name('saveUserDoc'); 

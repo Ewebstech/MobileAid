@@ -150,7 +150,7 @@ class AuthController extends Controller
      */
     private function validateRegisterRequest(Request $request) {
 
-        return Validator::make($request->all(), [
+        return Validator::make($request->all(), [ 
             //validation rules
             'firstname' => 'required|string',
             'lastname' => 'required|string',
