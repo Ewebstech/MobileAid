@@ -90,8 +90,8 @@ class AuthController extends Controller
             $content = json_encode($contentParams);
             //creates a new user in database
             $user = [
-                'firstname' => $params['firstname'],
-                'lastname' => $params['lastname'],
+                'firstname' => ucfirst(strtolower($params['firstname'])),
+                'lastname' => ucfirst(strtolower($params['lastname'])),
                 'email' => $params['email'],
                 'phonenumber' => $params['phonenumber'],
                 'password' => hash::make($params['password']),
@@ -194,8 +194,8 @@ class AuthController extends Controller
             $content = json_encode($contentParams);
             //creates a new user in database
             $user = [
-                'firstname' => $params['firstname'],
-                'lastname' => $params['lastname'],
+                'firstname' => ucfirst(strtolower($params['firstname'])),
+                'lastname' => ucfirst(strtolower($params['lastname'])),
                 'email' => $params['email'],
                 'phonenumber' => $params['phonenumber'],
                 'password' => hash::make($params['password']),

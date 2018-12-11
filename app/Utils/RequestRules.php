@@ -51,6 +51,9 @@ class RequestRules
             'postal_code' => '',
             'country' => '',
             
+        ],
+        'GET_USER_DETAILS' => [
+            'client_id' => 'required'
         ]
         
     ];

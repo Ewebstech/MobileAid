@@ -28,6 +28,10 @@ Route::post('/wtf/register', 'AuthController@registerUser')->name('register');
 Route::post('/wtf/registerdoc', 'AuthController@registerDoctor')->name('registerdoc');
 //Login users
 Route::post('/wtf/login', 'AuthController@loginUser')->name('login');  
+
+//Get Refreshed Data from API
+
+Route::post('/wtf/getfreshdata', 'UserController@getRefreshedDetails')->name('getUserData');  
 //change default password
 // Route::post('/change-default-password', 'AuthController@changeDefaultPassword');
 //change password

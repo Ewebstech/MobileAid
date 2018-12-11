@@ -18,13 +18,62 @@ class UserController extends Controller
     {
         if(!isset($_SESSION)) session_start();
             $this->middleware('redirectauth', ['except' => [
-                'saveUser','editProfile'
+                'saveUser','editProfile', 'getRefreshedDetails'
             ]]);
             // $this->middleware('jwt-auth', ['only' => [
             //     'editProfile'
             // ]]);
         
         $this->helper = new HelperController;
+    }
+
+
+    public function getRefreshedDetails(Request $request){
+        $params = $request->all();
+        //dd($params);
+        $validator =  Validator::make($request->all(), RequestRules::getRule('GET_USER_DETAILS'));
+    
+        if($validator->fails()) {
+            //if validation error return error messages
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
+        }
+
+        $userDetails_1 = User::where('client_id', $params['client_id'])->first();
+       
+        if($userDetails_1){
+     
+        try{
+            if(isset($params['view'])){
+                if($updateUser){
+                    $status = "success";
+                    $data = "Your Data has been Retrieved Successfully";
+                    return $this->returnOutput($status,$data);
+                } else {
+                    $status = "failure";
+                    $data = "Error on Update. Please Try again!";
+                    return $this->returnOutput($status,$data);
+                    
+                }
+            } else {
+                $msg = "Data Retrieval Successful";
+                $data = $userDetails_1;
+                return $this->regSuccess($msg, $data, HttpStatusCodes::OK);
+            }
+    
+
+        } catch(\Exception $e) {
+            //something went wrong during registration
+                return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+            }
+        } else {
+            return $this->validationError('Wrong Client ID', HttpStatusCodes::BAD_REQUEST);
+        }
+
     }
 
     public function editProfile(Request $request){
