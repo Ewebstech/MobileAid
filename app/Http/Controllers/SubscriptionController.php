@@ -23,6 +23,17 @@ class SubscriptionController extends Controller
         $this->helper = new HelperController;
     }
 
+    public function selectSubscription(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        $data['Packages'] = $this->getPackages($local=true);
+        //dd($data['Packages']);
+        $URI= '/'.$role.'/choosesub';
+ 
+        return view($URI)->with($data);
+    }
+
     public function getPackages($local=false){
         $Packages = $this->definePackages();
 

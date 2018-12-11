@@ -43,7 +43,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="Submenu9" data-parent="#accordion">
                     <li>
-                        <a href="#">Choose Subscription Plan</a>
+                        <a href="{{route('selectSub')}}">Choose Subscription Plan</a>
                     </li>
                     <li>
                         <a href="#">Subscription History</a>
