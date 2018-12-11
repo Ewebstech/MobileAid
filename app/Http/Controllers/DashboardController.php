@@ -39,8 +39,8 @@ class DashboardController extends Controller
       // dd($data['regToday']);
        $data['PatientsDashboard'] = $this->getPatientsDashboardData();
 
-       dd($role);
-       dd($data);
+    //    dd($role);
+    //    dd($data);
        $URI= '/'.$role.'/dashboard';
 
        return view($URI)->with($data);
