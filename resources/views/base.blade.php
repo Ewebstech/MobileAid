@@ -63,7 +63,7 @@
 				{{-- header ends --}}
 				<div class="wrapper">
 					<!-- Sidebar Holder -->
-					<?php $role = $sessiondata["role"]; ?>
+					<?php $role = strtolower($sessiondata["role"]); ?>
 					@section('sidebar')
 						@include($role.'/sidebar')
 					@show
