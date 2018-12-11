@@ -18,7 +18,7 @@ class PagesController extends Controller
     public function index(Request $request){
        $UserDetails = $_SESSION['UserDetails'];
        $data['sessiondata'] = $UserDetails;
-       $role = $UserDetails['role'];
+       $role = strtolower($UserDetails['role']);
         
        $userContent = $this->jsonToArray($UserDetails['content']);
        if(isset($userContent['Kyc'])){
