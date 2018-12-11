@@ -37,7 +37,7 @@ class DashboardController extends Controller
        $data['DoctorNum'] = $this->getDoctorsNum();
        $data['regToday'] = $this->registrationsToday();
       // dd($data['regToday']);
-       
+       $data['PatientsDashboard'] = $this->getPatientsDashboardData();
        $URI= '/'.$role.'/dashboard';
 
        return view($URI)->with($data);
@@ -49,6 +49,23 @@ class DashboardController extends Controller
             $count = count($data);
             return ($count) ? $count : 0;
         }
+    }
+
+    private function getPatientsDashboardData(){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+            
+        $userContent = $this->jsonToArray($UserDetails['content']);
+
+        $Sdata["Package"] = (isset($userContent['package'])) ? $userContent['package'] : "None" ;
+        $Sdata['Calls'] = (isset($userContent['calls'])) ? $userContent['calls'] : "0";
+        $Sdata['Status'] = (isset($userContent['Status'])) ? $userContent['Status'] : "InActive";
+        $Sdata['UserId'] = (isset($userContent['client_id'])) ? $userContent['client_id'] : $UserDetails['client_id'];
+        $Sdata['OpenCases'] = (isset($openCases)) ? $openCases : 0;
+        $Sdata['ClosedCases'] = (isset($closedCases)) ? $closedCases : 0;
+        
+        return $Sdata;
     }
 
     private function getDoctorsNum(){

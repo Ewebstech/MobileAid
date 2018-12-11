@@ -1,6 +1,6 @@
 @extends('base')
 
-@section('title', 'Dashboard')
+@section('title', 'Patients Dashboard')
 
 @section('content')
     <div class="content-area overflow-hidden">
@@ -21,24 +21,70 @@
         @endif
 
         <div class="row row-cards">
-            <div class="col-sm-12 col-lg-12 col-xl-4">
+            <div class="col-sm-12 col-lg-12 col-xl-5">
                 <div class="row">
-                    <div class="col-sm-12 col-lg-12">
+                    <div class="col-sm-6 col-lg-6">
                         <div class="card">
                             <div class="card-body text-center">
                                 <div class=" wx">
-                                    <h1 class="">&#8358;0.00</h1>
-                                    <p class="text-muted mb-0 lead"><span class="text-green"><i class="fa fa-arrow-circle-o-up text-green"></i></span> Calling Balance</p>
+                                    <h3 class="">{{$PatientsDashboard['Calls']}}</h3>
+                                    <p class="text-muted mb-0 lead"><span class="text-green"><i class="fa fa-phone-square text-green"></i></span> Call Balance</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-12 col-lg-12">
+                    
+                    <div class="col-sm-6 col-lg-6">
                         <div class="card">
                             <div class="card-body text-center">
                                 <div class=" wx">
-                                    <h1 class="">&#8358;0.00</h1>
-                                    <p class="text-muted mb-0 lead"><span class="text-red"><i class="fa fa-arrow-circle-o-down text-red"></i></span> Total Used-up</p>
+                                    <h3 class="">{{$PatientsDashboard['Package']}}</h3>
+                                    <p class="text-muted mb-0 lead"><span class="text-blue"><i class="fa fa-cube"></i></span> 2MA Package </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class=" wx">
+                                    <h3 class="">{{$PatientsDashboard['UserId']}}</h3>
+                                    <p class="text-muted mb-0 lead"><span class="text-purple"><i class="fa fa-user text-red"></i></span> User ID</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class=" wx">
+                                    <h3 class="">{{$PatientsDashboard['OpenCases']}}</h3>
+                                    <p class="text-muted mb-0 lead"><span class="text-yellow"><i class="fa fa-folder-open"></i></span> Open Cases</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class=" wx">
+                                    @if ($EditProfile != "set")
+                                        <h3 class="">30%</h3>
+                                        <p class="text-muted mb-0 lead"><span class="text-red"><i class="fa fa-list text-red"></i></span> KYC Data </p>
+                                    @else
+                                        <h3 class="">90% +</h3>
+                                        <p class="text-muted mb-0 lead"><span class="text-green"><i class="fa fa-list text-green"></i></span> KYC Data </p>
+                                    @endif
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <div class=" wx">
+                                    <h3 class="">{{$PatientsDashboard['ClosedCases']}}</h3>
+                                    <p class="text-muted mb-0 lead"><span class="text-red"><i class="fa fa-folder text-red"></i></span> Closed Cases</p>
                                 </div>
                             </div>
                         </div>
@@ -46,18 +92,12 @@
 
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-12 col-xl-8">
+            <div class="col-sm-12 col-lg-12 col-xl-7">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Medical Aid Stats</h3>
-                        <div class="card-options">
-                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-                            <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
-                        </div>
-                    </div>
+                    
                     <div class="card-body">
                         <div class="chart-container">
-                            <div id="echart2" class="chart-tasks dropshadow"></div>
+                            <img src="site/slideshow/p1.jpg" class="img-responsive" />
                         </div>
                     </div>
                 </div>
