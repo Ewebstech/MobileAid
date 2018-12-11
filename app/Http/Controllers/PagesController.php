@@ -26,9 +26,6 @@ class PagesController extends Controller
        } else {
             $data['EditProfile'] = "";
        }
-
-       dd($role);
-       dd($data);
        
        $URI= '/'.$role.'/dashboard';
 

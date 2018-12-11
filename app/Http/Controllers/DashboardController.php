@@ -20,7 +20,7 @@ class DashboardController extends Controller
     public function index(Request $request){
        $UserDetails = $_SESSION['UserDetails'];
        $data['sessiondata'] = $UserDetails;
-       $role = $UserDetails['role'];
+       $role = strtolower($UserDetails['role']);
         
        $userContent = $this->jsonToArray($UserDetails['content']);
 
@@ -38,6 +38,9 @@ class DashboardController extends Controller
        $data['regToday'] = $this->registrationsToday();
       // dd($data['regToday']);
        $data['PatientsDashboard'] = $this->getPatientsDashboardData();
+
+       dd($role);
+       dd($data);
        $URI= '/'.$role.'/dashboard';
 
        return view($URI)->with($data);
