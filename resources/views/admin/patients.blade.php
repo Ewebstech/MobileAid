@@ -64,7 +64,7 @@
         </div>
     </div>
 @endsection
-@section('scripts')
+
 <script>
     // $("#user-form").click(function (e) {
     //     e.preventDefault();
@@ -73,4 +73,4 @@
 
 </script>
 
-@endsection
+@endpush

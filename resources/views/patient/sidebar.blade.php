@@ -51,6 +51,22 @@
                 </ul>
             </li>
 
+            <li><h3>Payments &amp; Transactions</h3><li>
+
+            <li>
+                <a href="#Submenu99" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+                    <i class="fa fa-futbol-o mr-2 sidebarred"></i> Payments
+                </a>
+                <ul class="collapse list-unstyled" id="Submenu99" data-parent="#accordion">
+                    <li>
+                        <a href="{{route('getRenewable')}}">Renew Subscription</a>
+                    </li>
+                    <li>
+                        <a href="">Payment History</a>
+                    </li>
+                </ul>
+            </li>
+
             <li><h3>Medical Need</h3><li>
 
             <li>

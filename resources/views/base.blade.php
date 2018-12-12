@@ -131,7 +131,6 @@
 		<!-- Custom-->
 		<script src="assets/js/custom.js"></script>
 		
-
 		<!-- Data tables -->
 		<script src="assets/plugins/datatable/jquery.dataTables.min.js"></script>
 		<script src="assets/plugins/datatable/dataTables.bootstrap4.min.js"></script>
@@ -144,7 +143,7 @@
 				$('#example2').DataTable();
 			} );
 
-			        // Delete Closest Item
+			// Delete Closest Item
 			$(".deleteItem").click(function(){
             var url = $(this).data('url');
             var id = $(this).data('fieldid');
@@ -176,7 +175,8 @@
 			$('.count').countUp();
 		</script>
 
-		@yield('scripts')
+		@stack('scripts')
+
 	</body>
 
 </html>

@@ -225,7 +225,7 @@
                 <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                   <h5 class="package-type mb-30 text-uppercase">Silver</h5>
                   <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Silver</em></h6>
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Silver (&#8358; 2,000)</em></h6>
                     </div> </div>
                   <div class="price-amount bg-theme-colored rotate">
                     <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 2,000</div>
@@ -250,7 +250,7 @@
                 <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                   <h5 class="package-type mb-30 text-uppercase">Gold</h5>
                   <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Gold</em></h6>
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Gold (&#8358; 5,000)</em></h6>
                     </div> </div>
                   <div class="price-amount bg-theme-colored rotate">
                       <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 5,000</div>
@@ -258,7 +258,7 @@
                   <button style="margin: 10px;" data-toggle="collapse" data-target="#gold"><i class="fas fa-arrow-circle-down"></i> Package Details</button>
                   <div id="gold" class="collapse">
                   <ul class="list table-list text-left flip check-circle pt-20 pb-20 pr-20 bg-lighter">
-                    <li>1 Call</li>
+                    <li>2 Calls</li>
                     <li>Multilingual</li>
                     <li>1 Follow-up Call</li>
                     <li>Free Wellness Support</li>
@@ -278,7 +278,7 @@
                 <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                   <h5 class="package-type mb-30 text-uppercase">Titanium</h5>
                   <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Titanium</em></h6>
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Titanium (&#8358; 25,000)</em></h6>
                     </div> </div>
                   <div class="price-amount bg-theme-colored rotate">
                       <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 25,000</div>
@@ -309,7 +309,7 @@
                 <div class="pricing-table text-center pt-30 pb-0 mt-sm-0 maxwidth400 bg-lighter">
                   <h5 class="package-type mb-30 text-uppercase">Diamond</h5>
                   <div class="price pt-5 pb-5 bg-black-222"> <div class="price-period">
-                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Diamond</em></h6>
+                    <h6 class="text-white text-bold"><em style="margin-left: 30px;">Diamond (&#8358; 65,000)</em></h6>
                     </div> </div>
                   <div class="price-amount bg-theme-colored rotate">
                       <div class="no-rotate text-white" style="font-size: 18px;">&#8358; 65,000</div>

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Helpers\HttpStatusCodes;
 use App\Http\Controllers\HelperController;
 use Illuminate\Support\Facades\Validator;
+use App\Utils\Packages;
 
 
 class SubscriptionController extends Controller
@@ -23,14 +24,72 @@ class SubscriptionController extends Controller
         $this->helper = new HelperController;
     }
 
+    public function getRenewable(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = strtolower($UserDetails['role']);
+        $userId = $UserDetails['client_id'];
+        $userContent = $this->helper->getUserDetailsById($userId);
+        $package_name = $userContent["package"];
+        $data['package'] = $this->getpackageDetails($package_name);
+        $data['ClientId'] = $UserDetails['client_id'];
+        //dd($data['Packages']);
+        $URI= '/'.$role.'/renewal';
+        
+        return view($URI)->with($data);
+    }
+
+    public function getpackageDetails($package_name){
+        $package_array = Packages::getPackage(strtoupper($package_name));
+        $package = $package_array;
+        return $package;
+    }
+
+    public function getPackagePrice(){
+        $package_name = $this->getSubscriptionPackage();
+        $package_array = Packages::getPackage(strtoupper($package_name));
+        $packagePrice = $package_array['Price'];
+        return $packagePrice;
+    }
+
+    public function getCalls(){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        $userId = $UserDetails['client_id'];
+        $userContent = $this->helper->getUserDetailsById($userId);
+        return (!is_null($userContent['calls'])) ? $userContent['calls'] : 0;
+    }
+
+    public function getSubscriptionStatus(){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        $userId = $UserDetails['client_id'];
+        $userContent = $this->helper->getUserDetailsById($userId);
+        return ($userContent['status']) ? $userContent['status'] : "InActive";
+    }
+    
+    public function getSubscriptionPackage(){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        $userId = $UserDetails['client_id'];
+        $userContent = $this->helper->getUserDetailsById($userId);
+        return ($userContent['package']) ? $userContent['package'] : "None";
+    }
+
+
     public function selectSubscription(Request $request){
         $UserDetails = $_SESSION['UserDetails'];
         $data['sessiondata'] = $UserDetails;
         $role = $UserDetails['role'];
         $data['Packages'] = $this->getPackages($local=true);
-        //dd($data['Packages']);
+        $data['ClientId'] = $UserDetails['client_id'];
+
+        //dd($this->getpackageDetails('gold'));
         $URI= '/'.$role.'/choosesub';
- 
+        
         return view($URI)->with($data);
     }
 
@@ -48,7 +107,7 @@ class SubscriptionController extends Controller
 
     public function selectPackage(Request $request){
         $formparams = $request->all();
-
+        //dd($formparams);
         $validator =  Validator::make($request->all(), [
             //validation rules
             'package' => 'required',
@@ -57,7 +116,7 @@ class SubscriptionController extends Controller
 
         if($validator->fails()) {
             //if validation error return error messages
-            if(isset($params['view'])){
+            if(isset($formparams['view'])){
                 $errorResponse = $this->validationError($validator->getMessageBag()->all());
                 return $this->displayValidationError($errorResponse);
             } else {
@@ -68,6 +127,7 @@ class SubscriptionController extends Controller
         $package = ucfirst(strtolower($formparams['package']));
         // Retrieve client's info - Check previous package
         $userId = $formparams["client_id"];
+        
         $userDetails = $this->helper->getUserDetailsById($userId);
         if(isset($userDetails['view'])) { unset($userDetails['view']); }
         $params = $userDetails;
@@ -99,6 +159,9 @@ class SubscriptionController extends Controller
         } else {
             $subDetails = [];
         }
+
+        $params['view'] = $formparams['view']; // Ensure view param is copied
+
         //dd($subDetailsArray);
         if(count($subDetails) > 0){
             //Get Previous Package
@@ -106,10 +169,13 @@ class SubscriptionController extends Controller
             $previousPackage = $subDetails['package'];
             $MaxCalls = $subDetails['calls'];
             if($previousPackage == $params['package']){
-                //dd("i am here");
-                // You are already subscribed on this package
-                //return $this->validationError('You are already subscribed on this package.',  HttpStatusCodes::UNAUTHORIZED);
-                return $this->error('You are already subscribed on this package. ', HttpStatusCodes::UNAUTHORIZED);
+                if(isset($params['view'])){
+                    $status = "error";
+                    $data = "You are already subscribed on ". $params['package'] . " package";
+                    return $this->returnOutput($status,$data);
+                } else {
+                    return $this->error('You are already subscribed on '. $params['package'] . ' package. ', HttpStatusCodes::UNAUTHORIZED);
+                }
             } else {
                 if($MaxCalls > 0){
                     return $this->error('Your subscription is still active and cannot be modified until it is exhausted. ', HttpStatusCodes::UNAUTHORIZED);
@@ -120,6 +186,7 @@ class SubscriptionController extends Controller
         } else {
 
             // Add Subscription Details
+            
             $params["calls"] = "0";
             $params["status"] = "InActive";
             $params["user"] = $userDetails['email'];
@@ -128,6 +195,7 @@ class SubscriptionController extends Controller
     }
 
     private function processSubscriptionUpdates($params,$subUpdate=false){
+       // dd($params['view']);
         try{
             if($subUpdate){
                 $subQuery = new Subscriptions();
@@ -172,34 +240,13 @@ class SubscriptionController extends Controller
 
     private function definePackages(){
 
-        $package[0] = [
-            "Title" => "Silver",
-            "Price" => "2000",
-            "LocalMaxCalls" => "1",
-            "IntMaxCalls" => "0"
-        ];
+        $package[0] = Packages::getPackage('SILVER');
 
-        $package[1] = [
-            "Title" => "Gold",
-            "Price" => "5000",
-            "LocalMaxCalls" => "1",
-            "IntMaxCalls" => "0"
-        ];
+        $package[1] = Packages::getPackage('GOLD');
 
-        $package[2] = [
-            "Title" => "Titanium",
-            "Price" => "25000",
-            "MaxCalls" => "3",
-            "IntMaxCalls" => "2"
-        ];
+        $package[2] = Packages::getPackage('TITANIUM');
 
-        $package[3] = [
-            "Title" => "Diamond",
-            "Price" => "65000",
-            "MaxCalls" => "5",
-            "IntMaxCalls" => "3"
-        ];
-
+        $package[3] = Packages::getPackage('DIAMOND');
 
         return $package;
     } 

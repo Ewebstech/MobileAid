@@ -58,8 +58,9 @@ class DashboardController extends Controller
         $UserDetails = $_SESSION['UserDetails'];
         $data['sessiondata'] = $UserDetails;
         $role = $UserDetails['role'];
-            
-        $userContent = $this->jsonToArray($UserDetails['content']);
+        $userId = $UserDetails['client_id'];
+        $detailById = $this->helper->getUserDetailsById($userId);
+        $userContent = $detailById;
 
         $Sdata["Package"] = (isset($userContent['package'])) ? $userContent['package'] : "None" ;
         $Sdata['Calls'] = (isset($userContent['calls'])) ? $userContent['calls'] : "0";
