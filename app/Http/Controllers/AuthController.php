@@ -113,7 +113,7 @@ class AuthController extends Controller
                     'Password' => $params['password'],
                     'Role' => $params['role'],
                     'PhoneNumber' => $params['phonenumber'],
-                    'template' => 'register'
+                    'template' => 'registerdoc'
                 ];
 
                 $sendMail = $this->helper->sendMail($mailParams);

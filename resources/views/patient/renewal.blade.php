@@ -8,8 +8,41 @@
             <h4 class="page-title">Subscription Renewal</h4>
          
         </div>
+            @if(Session::has('trn_error'))
+                <div class="alert alert-danger">
+                    <button type="button" class="close" data-dismiss="alert"> x </button>
+                    <strong> {!! session('trn_error') !!}</strong>
+                </div>
+            @endif
             
-            <div class="col-md-12 col-md-offset-3 text-center" style="font-weight: bold;" id="packagesuccess"></div>
+            @if(Session::has('trn_failed'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">  x  </button>
+                    <strong> {!! session('trn_success') !!}</strong>
+                </div>
+            @endif
+            
+            
+            @if(Session::has('trn_success'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">  x  </button>
+                    <strong>{!! session('trn_success') !!} </strong>
+                </div>
+            @endif
+
+            @if (session('success'))
+            <div class="alert alert-success col-md-3">
+                    <button type="button" class="close" data-dismiss="alert">  X  </button>
+                    <strong> {!! session('success') !!}</strong>
+                </div>
+            @endif
+
+            @if (session('failed'))
+            <div class="alert alert-danger col-md-3">
+                    <button type="button" class="close" data-dismiss="alert">  X  </button>
+                    <strong> {!! session('failed') !!}</strong>
+                </div>
+            @endif
         
             <div class="row row-cards ">
                  
@@ -28,14 +61,33 @@
                                         <input type="hidden" name="client_id" value="{{$ClientId}}" />
                                         <input type="hidden" name="view" value="1" />
                                         </form>
-                                        <button type="submit" id="{{$package['Title']}}" class="btn btn-pill btn-green selectpackage" data-formname="{{$package['Title']}}Form" data-package="{{$package['Title']}}" data-clientid="{{$ClientId}}" style="font-weight: bold;"><i class="fa fa-check-square"></i> PAY</button>
+
+                                        <form action="{{ url('/makepayment') }}" method="post" role="form">
+                                            {{ csrf_field() }}
+                                            <?php
+                                                $metadata = [
+                                                    'custom_fields' => [
+                                                        [
+                                                            'package' => $package['Title'],
+                                                            'client_id' => $ClientId
+                                                        ], 
+                                                     ]
+                                                ];
+                                        
+                                            ?> 
+                                            <input type="hidden" name="amount" value="{{ $package['Price'] }}" > 
+                                             <input type="hidden" name="metadata" value="{{ json_encode($metadata) }}" > 
+                                            <input type="submit" class="btn btn-green" value="Pay Now" style="background-color:green; color:white;">
+                            
+                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
                         </div>
-                  
-            
                 </div>
+
+               
         </center>
      
     </div>

@@ -49,6 +49,7 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     //User Routes
     Route::get('edit-user', 'UserController@editUser')->name('editUser');
     Route::get('view-user', 'UserController@viewUser')->name('viewUser');
+    Route::get('choose-subscriptions', 'SubscriptionController@selectSubscription')->name('selectSub');
     Route::get('renewal', 'SubscriptionController@getRenewable')->name('getRenewable');
 
     //Admin Routes
@@ -59,7 +60,12 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('inbox', 'AdminController@viewUnreadMessages')->name('inbox');
     Route::get('archive', 'AdminController@viewReadMessages')->name('archive');
     Route::get('read', 'AdminController@ReadMessages')->name('read');
-    Route::get('choose-subscriptions', 'SubscriptionController@selectSubscription')->name('selectSub');
+
+
+    //paymentcontroller routes
+    Route::post('/makepayment', 'PaystackController@redirectToProvider');
+    Route::get('/payment/callback', 'PaystackController@handleGatewayCallback');
+
 
     // Delete Route
     Route::get('trash', 'TrashController@delete')->name('trashIt');

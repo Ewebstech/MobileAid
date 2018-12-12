@@ -7,13 +7,13 @@
     <p>
    Hello {{$Name}},
     </p>
-    <p>Welcome to <b>Mobile Medical Aid.</b> </p>
-    <p>We are happy to have you signup as a <b>{{$Role}}</b> on our indigenous platform</p>
+    <p>Welcome to <b>Mobile Medical Aid.</b> We are happy to have you signed-up as our <b>client</b> on our health support platform.</p>
+    <p>Your health needs are important to us, so please select your health package <a href="http://www.mobilemedicalaid.com/login">here</a> for your full medical service.</p>
 
-    <p>MA is a medical call-in service that is designed to provide quick medical assistance in any health
-related situation to reduce or prevent worsening conditions or resulting in death. In situations where
-people do not know what to do they can call for medical advice or assistance.</p>
-    <p>For your rememberance, here are your login details:
+    <p>You can now easily reach our qualified doctors from the convenience and comfort of your home, office or
+            on the go. So you do not have to spend hours in cramped waiting room, which is a big advantage when you
+            need urgent medical attention.</p>
+    <p>Please find below your login details to be kept securely:
         <table>
             <tr>
                 <td>Your Username</td><td>{{$Username}}</td>
@@ -23,8 +23,14 @@ people do not know what to do they can call for medical advice or assistance.</p
             </tr>
         </table>
     </p>
-    <p>Please kindly note that you can also login by using your registered <b>Phone Number - {{$PhoneNumber}}</b></p>
-    <p>You can log in by clicking <a href="http://mobilemedicalaid.com">Here</a>. Please do have nice day.</p>
+    <p>Please kindly note that you can also login by using your registered <b>Phone Number - {{$PhoneNumber}}</b> You can try by clicking by <a href="http://mobilemedicalaid.com">Here</a></p>
+    <p>Thank you and have a happy healthy day.</p>
+    <p> 
+        <b>  
+            Client Support<br>
+            <u>clientsupport@mobilemedicalaid.com</u>
+        </b> 
+    </p>
 </td>
 </tr>
-@include('emails.layout.mailfooter')   
+@include('emails.layout.mailfooter')
