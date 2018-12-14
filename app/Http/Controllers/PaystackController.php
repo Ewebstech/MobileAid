@@ -157,7 +157,7 @@ class PaystackController extends Controller
                 // Current Call Number
                 $remaining_calls = $this->helper->getCalls();
                 $callable = $this->helper->getpackageDetails($subparams['package'])['LocalMaxCalls'];
-                $new_calls = int($remaining_calls) + int($callable);
+                $new_calls = (int) $remaining_calls + (int) $callable;
                 $subparams['calls'] = $new_calls;
                 $subparams['status'] = 'Active';
                 
