@@ -17,8 +17,17 @@
                         <a href="/edit-user" class="btn btn-white btn-sm float-right mr-2">Complete My Profile Now</a>
                     </div>
                 </div>
+
+              
             </div>
         @endif
+        <div class="col-lg-12">
+            <div class="alert alert-primary d-none d-lg-block" style='color: #000;' role="alert">
+                <button type="button" class="close text-white" data-dismiss="alert" aria-hidden="true">×</button>
+           Hurray!, you can now subscribe on our silver package for just N 1,500 only!
+                <a href="{{route('selectSub')}}" class="btn btn-white btn-sm float-right mr-2">Get My Special Deal Now</a>
+            </div>
+        </div>
 
         <div class="row row-cards">
             <div class="col-sm-12 col-lg-12 col-xl-5">

@@ -5,12 +5,33 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\SubscriptionController;
 use App\Http\Controllers\MailController as MailController;
 
 
 class HelperController extends Controller
 {
-         
+
+    public function getUserTransactions($client_id){
+        $trans = new TransactionController;
+        return $trans->getUserTransactions($client_id);
+    }
+
+    public function getUserSubscriptionData($user_email){
+        $sub = new SubscriptionController;
+        return $sub->getUserSubscriptionData($user_email);
+    }
+
+    public function getpackageDetails($package_name){
+        $sub = new SubscriptionController;
+        return $sub->getpackageDetails($package_name);
+    }
+    public function getCalls(){
+        $sub = new SubscriptionController;
+        return $sub->getCalls();
+    }
+
     public function sendMail($params){
         $mail = new MailController;
         return $mail->sendMail($params);

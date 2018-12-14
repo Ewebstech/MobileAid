@@ -1,14 +1,14 @@
 @extends('base')
 
-@section('title', 'Patients')
+@section('title', 'My Transactions')
 
 @section('content')
 	<div class=" content-area overflow-hidden">
         <div class="page-header">
-            <h4 class="page-title">Patients Database</h4>
+            <h4 class="page-title">Transaction History</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Patients</li>
+                <li class="breadcrumb-item active" aria-current="page">Transactions</li>
             </ol>
 
         </div>
@@ -16,7 +16,7 @@
             <div class="col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Registered Patients Details</div>
+                        <div class="card-title">My Transaction History</div>
                         <div class="card-options">
                             <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
@@ -28,28 +28,25 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>####</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone Number</th>
-                                        <th>Gender</th>
-                                        <th>2MA Package</th>
-                                        <th>Action</th>
+                                        <th>Trans Ref.</th>
+                                        <th>Status</th>
+                                        <th>Package</th>
+                                        <th>Amount</th>
+                                        <th>Trans. Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @define $i = 1
 
-                                    @foreach ($Patient as $patientdata )
+                                    @foreach ($Trans as $data )
                                     <tr>
                                         <td>{{$i}}</td>
-                                        <td><img src="{{$patientdata['avatar']}}" style="height: 50px; width: 50px;"  alt="..." class="img-circle profile_img img-responsive"  /></td>
-                                        <td>{{$patientdata['firstname']}} {{$patientdata['lastname']}}</td>
-                                        <td>{{$patientdata['email']}}</td>
-                                        <td>{{$patientdata['phonenumber']}}</td>
-                                        <td>{{$patientdata['gender']}}</td>
-                                        <td>{{ isset($patientdata['package']) ? $patientdata['package'] : "--:--" }}</td>
-                                    <td><a target="_blank" href="{{route('requestProfile')}}?user={{$patientdata['email']}}&type=patient"><i class="fa fa-eye"></i></a> | <a target="_blank" href="{{route('requestProfileEdit')}}?user={{$patientdata['email']}}&type=patient"><i class="fa fa-edit"></i></a> | <a href="#" data-url="{{route('trashIt')}}?table=users&cid={{$patientdata['ClientId']}}" data-fieldid="delete{{$i}}" class="deleteItem"><i class="fa fa-trash-o"></i></a></td>
+                                        
+                                        <td>{{$data['transref']}}</td>
+                                        <td> <?php if($data['status'] == "success") { echo "<span class='label label-success' style='font-weight: bolder; color: #000;'>$data[status]</span>"; } else { echo "<span class='label label-danger'>$data[status]</span>"; } ?></td>
+                                        <td>{{$data['package']}}</td>
+                                        <td>{{$data['currency']}} {{ number_format($data['amount']) }}</td>
+                                        <td>{{$data['created_at']}}</td>
                                     </tr>
                                     @define $i++
                                     @endforeach
@@ -72,4 +69,3 @@
     // });
 
 </script>
-

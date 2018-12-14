@@ -12,13 +12,29 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DateTime;
+use App\Model\Users;
 
 class Controller extends BaseController
 {
     
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Response, generateDefaultPassword, Uploadimage, JwtIssuer, UploadMultipleImages;
 
-     protected function returnOutput($status,$data){
+    protected function generateClientId(){
+        $generatedID = $this->generateDefaultStaticPassword(5);
+        $Resource = new Users;
+        $user = $Resource->getUserById($generatedID);
+
+        $staffID = $user['client_id'];
+        if($staffID == null){
+            $ID = $generatedID;
+        } else {
+            $this->generateClientId();
+        }
+        
+        return $ID;
+    }
+
+    protected function returnOutput($status,$data){
         if($status == "success"){
             $output['status'] = 'success';
             $output['data'] = '<p class="alert alert-success text-center"> <i class="fa fa-check fa-fw"> </i> '.$data.' </p>';

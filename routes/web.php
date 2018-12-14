@@ -51,6 +51,7 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('view-user', 'UserController@viewUser')->name('viewUser');
     Route::get('choose-subscriptions', 'SubscriptionController@selectSubscription')->name('selectSub');
     Route::get('renewal', 'SubscriptionController@getRenewable')->name('getRenewable');
+    Route::get('transaction', 'PatientsController@viewTransactions')->name('viewTransactions');
 
     //Admin Routes
     Route::get('patients', 'PatientsController@viewPatients')->name('viewPatients');

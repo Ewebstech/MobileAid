@@ -31,21 +31,28 @@
             @endif
 
             @if (session('success'))
-            <div class="alert alert-success col-md-3">
+            <div class="alert alert-success col-md-6">
                     <button type="button" class="close" data-dismiss="alert">  X  </button>
                     <strong> {!! session('success') !!}</strong>
                 </div>
             @endif
+            
+
+            @if (session('info'))
+            <div class="alert alert-info col-md-6" >
+                    <button type="button" class="close" data-dismiss="alert">  X  </button>
+                    <strong> {!! session('info') !!}</strong>
+                </div>
+            @endif
 
             @if (session('failed'))
-            <div class="alert alert-danger col-md-3">
+            <div class="alert alert-danger col-md-6">
                     <button type="button" class="close" data-dismiss="alert">  X  </button>
                     <strong> {!! session('failed') !!}</strong>
                 </div>
             @endif
         
             <div class="row row-cards ">
-                 
                     <div class="col-md-3 col-xs-6" >
                             <div class="card">
                                 <div class="card-body">
@@ -77,7 +84,7 @@
                                             ?> 
                                             <input type="hidden" name="amount" value="{{ $package['Price'] }}" > 
                                              <input type="hidden" name="metadata" value="{{ json_encode($metadata) }}" > 
-                                            <input type="submit" class="btn btn-green" value="Pay Now" style="background-color:green; color:white;">
+                                            <input type="image" src="images/paynow.jpg" style="max-height: 40px;">
                             
                                         </form>
                                         

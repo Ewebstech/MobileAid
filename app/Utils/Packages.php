@@ -8,7 +8,7 @@ class Packages
     private static $packages = [
         'SILVER' => [
             "Title" => "Silver",
-            "Price" => "2000",
+            "Price" => "1500",
             "LocalMaxCalls" => "1",
             "IntMaxCalls" => "0"
         ],

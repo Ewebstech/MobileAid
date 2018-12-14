@@ -1,10 +1,14 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Model\Users;
+use App\Model\Transactions;
+use App\Model\Subscriptions;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\HelperController;
 
 class PaystackController extends Controller
 {
@@ -135,9 +139,43 @@ class PaystackController extends Controller
             ->get();
         $response = json_decode($response);
         if ($response->status === true) {
-           
-            dd($response);
-            return redirect()->route('getRenewable')->with('success', 'Subscription Successful');
+            // Save Transaaction Details
+            $params = (array) $response->data;
+            $params['custom_fields'] = (array) $response->data->metadata->custom_fields[0];
+            $params['package'] = $params['custom_fields']['package'];
+            $params['client_id'] = $params['custom_fields']['client_id'];
+            $params['customer'] = (array) $params['customer'];
+            $params['authorization'] = (array) $params['authorization'];
+            $params['log'] = (array) $params['log'];
+            $params['email'] = $params['customer']['email'];
+            $Resource = new Transactions;
+            $saveTrans = $Resource->addTransaction($params);
+            if(is_bool($saveTrans)){
+                // Credit Customers
+                $usersSubData = $this->helper->getUserSubscriptionData($params['email']);
+                $subparams = $this->jsonToArray($usersSubData['content']);
+                // Current Call Number
+                $remaining_calls = $this->helper->getCalls();
+                $callable = $this->helper->getpackageDetails($subparams['package'])['LocalMaxCalls'];
+                $new_calls = int($remaining_calls) + int($callable);
+                $subparams['calls'] = $new_calls;
+                $subparams['status'] = 'Active';
+                
+                $subQuery = new Subscriptions();
+                $subDetails = $subQuery->updateSubscription($subparams);
+                
+                if($subDetails){
+                     // Update Users Table with Subscription Details
+                    $userQuery = new Users;
+                    $userUpdate = $userQuery->updateUserContent($subparams);   
+                }
+               
+                return redirect()->route('getRenewable')->with('success', 'Your Subscription Renewal for '.$params['package'].' Package was Successful.');
+            } else {
+            
+                return redirect()->route('getRenewable')->with('info', $saveTrans);
+            }            
+            
         } else {
             //dd($response);
             return redirect()->route('getRenewable')->with('failed', 'Transaction Failed, Please try again later.');

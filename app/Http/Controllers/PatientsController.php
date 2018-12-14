@@ -21,6 +21,17 @@ class PatientsController extends Controller
        
     }
 
+    public function viewTransactions(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        $client_id = $UserDetails['client_id'];
+        $data['Trans'] =  $this->helper->getUserTransactions($client_id);
+        //dd($data['Trans']);
+        $URI= '/'.$role.'/transactions';
+        return view($URI)->with($data);
+    }
+
     public function viewPatients(Request $request){
         $UserDetails = $_SESSION['UserDetails'];
         $data['sessiondata'] = $UserDetails;

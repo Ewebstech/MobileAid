@@ -105,6 +105,21 @@ class SubscriptionController extends Controller
         }
     }
 
+
+    public function getUserSubscriptionData($user_email){
+        $subQuery = new Subscriptions();
+        $subDetailsArray = $subQuery->getUserSubscription($user_email)->toArray();
+       
+        if(!empty($subDetailsArray)){
+            $subDetails = $subDetailsArray[0];
+        } else {
+            $subDetails = [];
+        }
+
+        return $subDetails;
+
+    }
+
     public function selectPackage(Request $request){
         $formparams = $request->all();
         //dd($formparams);
@@ -195,7 +210,6 @@ class SubscriptionController extends Controller
     }
 
     private function processSubscriptionUpdates($params,$subUpdate=false){
-       // dd($params['view']);
         try{
             if($subUpdate){
                 $subQuery = new Subscriptions();

@@ -43,11 +43,9 @@
                 </a>
                 <ul class="collapse list-unstyled" id="Submenu9" data-parent="#accordion">
                     <li>
-                        <a href="{{route('selectSub')}}">Choose Subscription Plan</a>
+                        <a href="{{route('selectSub')}}">Select Subscription Plan</a>
                     </li>
-                    <li>
-                        <a href="#">Subscription History</a>
-                    </li>
+                   
                 </ul>
             </li>
 
@@ -62,7 +60,7 @@
                         <a href="{{route('getRenewable')}}">Renew Subscription</a>
                     </li>
                     <li>
-                        <a href="">Payment History</a>
+                        <a href="{{route('viewTransactions')}}">Payment History</a>
                     </li>
                 </ul>
             </li>

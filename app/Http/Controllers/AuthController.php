@@ -83,7 +83,7 @@ class AuthController extends Controller
         }
 
         try{
-            $clientID = strtoupper($this->generateDefaultStaticPassword(5));
+            $clientID = strtoupper($this->generateClientId());
             $params['password'] = $this->generateDefaultStaticPassword(6);
             $contentParams = $params;
             unset($contentParams['password']);
@@ -188,7 +188,7 @@ class AuthController extends Controller
         }
 
         try{
-            $clientID = strtoupper($this->generateDefaultStaticPassword(5));
+            $clientID = strtoupper($this->generateClientId());
             $contentParams = $params;
             unset($contentParams['password']);
             $content = json_encode($contentParams);

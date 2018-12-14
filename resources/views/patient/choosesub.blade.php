@@ -28,7 +28,7 @@
                                     <input type="hidden" name="client_id" value="{{$ClientId}}" />
                                     <input type="hidden" name="view" value="1" />
                                     </form>
-                                    <button type="submit" id="{{$package['Title']}}" class="btn btn-pill btn-green selectpackage" data-formname="{{$package['Title']}}Form" data-package="{{$package['Title']}}" data-clientid="{{$ClientId}}" style="font-weight: bold;"><i class="fa fa-check-square"></i> SELECT</button>
+                                    <button type="submit" id="{{$package['Title']}}" class="btn btn-pill btn-green selectpackage" data-formname="{{$package['Title']}}Form" data-package="{{$package['Title']}}" data-clientid="{{$ClientId}}" style="font-weight: bold;" {{ ($package['Title'] != 'Silver') ? 'disabled' : '' }}><i class="fa fa-check-square"></i> SELECT</button>
                                 </div>
                             </div>
                         </div>
