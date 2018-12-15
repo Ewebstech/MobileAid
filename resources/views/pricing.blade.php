@@ -75,7 +75,7 @@
                                   </ul>
                             </div>
                            
-                            <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
+                            <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="{{route('selectSub')}}"><i class="fa fa-user-plus"></i> Subscribe Me</a>
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
@@ -103,7 +103,7 @@
                               <li>USSD/Transfer/POS & MM Payment</li>
                             </ul>
                             </div>
-                            <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
+                            <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="{{route('selectSub')}}"><i class="fa fa-user-plus"></i> Subscribe Me</a>
                           </div>
                         </div>
                         <div class="col-xs-12 col-sm-3 col-md-3 hvr-float-shadow mb-sm-30">
@@ -132,7 +132,7 @@
                               <li>USSD/Transfer/POS & MM Payment</li>
                             </ul>
                           </div>
-                            <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
+                          <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="{{route('selectSub')}}"><i class="fa fa-user-plus"></i> Subscribe Me</a>
                           </div>
                           
                         </div>
@@ -163,7 +163,7 @@
                               <li>USSD/Transfer/POS & MM Payment</li>
                             </ul>
                             </div>
-                            <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="#"><i class="fa fa-user-plus"></i> Pay Now</a>
+                            <a class="btn btn-lg btn-theme-colored text-uppercase btn-block pt-20 pb-20 btn-flat" href="{{route('selectSub')}}"><i class="fa fa-user-plus"></i> Subscribe Me</a>
                           </div>
                         </div>
                       </div>

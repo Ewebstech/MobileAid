@@ -102,8 +102,16 @@ class PaystackController extends Controller
         $role = strtolower($UserDetails['role']);
         $params = $request->all();
 
+       
+        $package_type = $params['package'];
+        if($package_type == "Silver"){
+            $charge = 0.015 * $params['amount'];
+        } else {
+            $charge = 0;
+        }
+
         try {
-            $totalAmount = $params['amount'] * 100;
+            $totalAmount = ($params['amount'] * 100) + ((int) $charge * 100);
         } catch (\ErrorException $e) {
             Log::error($e->getMessage());
             return back()->with('trn_error', 'You can only subscribe with a price attached.');

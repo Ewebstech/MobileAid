@@ -193,7 +193,14 @@ class SubscriptionController extends Controller
                 }
             } else {
                 if($MaxCalls > 0){
-                    return $this->error('Your subscription is still active and cannot be modified until it is exhausted. ', HttpStatusCodes::UNAUTHORIZED);
+                    if(isset($params['view'])){
+                        $status = "error";
+                        $data = "Your subscription is still active on ". $subDetails['package'] . " package and cannot be modified until it is exhausted.";
+                        return $this->returnOutput($status,$data);
+                    } else {
+                        return $this->error('Your subscription is still active on '. $params['package'] . ' package and cannot be modified until it is exhausted.', HttpStatusCodes::UNAUTHORIZED);
+                    }
+                    
                 } else {
                     return $this->processSubscriptionUpdates($params,$subUpdate=true);
                 }
@@ -229,7 +236,7 @@ class SubscriptionController extends Controller
                     if($subDetails){
                         //var_dump("success");
                         $status = "success";
-                        $data = "Subscription Selection Successful: ". $params['package'] . " Package";
+                        $data = "Subscription Selection Successful: ". $params['package'] . " Package <br> <a href='/renewal' class='btn btn-secondary'><i class='fa fa-sign-in'></i> <b>Proceed To Payment Now</b></a>";
                         return $this->returnOutput($status,$data);
                     } else {
                         $status = "failure";
@@ -238,7 +245,7 @@ class SubscriptionController extends Controller
                         
                     }
                 } else {
-                    $msg = "Subscription Selection Successful: ". $params['package'] . " Package";
+                    $msg = "Subscription Selection Successful: ". $params['package'] . " Package. ";
                     $data = $params;
                     return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
                 }

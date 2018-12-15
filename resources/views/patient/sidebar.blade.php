@@ -27,44 +27,19 @@
                 <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i>Update Profile</a>
             </li>
 
-            <li class="border-0"><h3>Payment Methods</h3><li>
-            <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-money mr-2 sidebarpink"></i> Add Debit/Credit Card</a>
-            </li>
-            <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-file mr-2 sidebarpink"></i>Transaction History</a>
-            </li>
-
-            <li><h3>Subscription</h3><li>
+            <li class="border-0"><h3>Subscription & Payment</h3><li>
 
             <li>
-                <a href="#Submenu9" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-                    <i class="fa fa-futbol-o mr-2 sidebarred"></i> My Subscription
-                </a>
-                <ul class="collapse list-unstyled" id="Submenu9" data-parent="#accordion">
-                    <li>
-                        <a href="{{route('selectSub')}}">Select Subscription Plan</a>
-                    </li>
-                   
-                </ul>
+                <a href="{{route('selectSub')}}" class=" wave-effect accordion-toggle "><i class="fa fa-futbol-o mr-2 sidebarpink"></i> Select Subscription Plan</a>
             </li>
-
-            <li><h3>Payments &amp; Transactions</h3><li>
-
             <li>
-                <a href="#Submenu99" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-                    <i class="fa fa-futbol-o mr-2 sidebarred"></i> Payments
-                </a>
-                <ul class="collapse list-unstyled" id="Submenu99" data-parent="#accordion">
-                    <li>
-                        <a href="{{route('getRenewable')}}">Renew Subscription</a>
-                    </li>
-                    <li>
-                        <a href="{{route('viewTransactions')}}">Payment History</a>
-                    </li>
-                </ul>
+                <a href="{{route('getRenewable')}}" class=" wave-effect accordion-toggle "><i class="fa fa-money mr-2 sidebarpink"></i> Subscription Payment</a>
+             </li>
+            <li>
+                <a href="{{route('viewTransactions')}}#" class=" wave-effect accordion-toggle "><i class="fa fa-file mr-2 sidebarpink"></i>Transaction History</a>
             </li>
 
+           
             <li><h3>Medical Need</h3><li>
 
             <li>

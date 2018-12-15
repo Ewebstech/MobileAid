@@ -5,7 +5,7 @@
 @section('content')
 <div class="content-area">
         <div class="page-header" style="margin-bottom: -10px;">
-            <h4 class="page-title">Subscription Renewal</h4>
+            <h4 class="page-title">Subscription Renewal / Payments</h4>
          
         </div>
             @if(Session::has('trn_error'))
@@ -58,11 +58,16 @@
                                 <div class="card-body">
                                     <div class="text-center">
                                         <span style="text-align: center; padding: 4px; font-weight: bold; margin-bottom: 10px;">{{$package['Title']}} Package</span><br>
-                                        <span style="text-align: center; padding: 4px; font-weight: bold; margin-bottom: 10px;">(&#8358; {{ number_format($package['Price'])}})</span><br>
-                                        <img src="images/{{ strtolower($package['Title']) }}package.png" style="max-height: 80px; margin-top: 10px;" />
+                                        <span style="text-align: center; padding: 4px; font-weight: bold; margin-bottom: 10px;">(&#8358; {{ number_format($package['Price'])}}) 
+                                        @if( $package['Title'] == "Silver")
+                                        <br> <span style='color:blueviolet; font-size: 12px;'> 
+                                        + &#8358; {{ 0.015 * $package['Price']}} Transaage['Title']) }}package.png" style="max-height: 80px; margin-top: 10px;" />
                                     </div>
                                     <div style="margin-top: 15px;" class="text-center">
-                                        <form id="{{$package['Title']}}Form">
+         ction Charge</span>
+                                        @endif
+                                        </span><br>
+                                        <img src="images/{{ strtolower($pack                               <form id="{{$package['Title']}}Form">
                                        
                                         <input type="hidden" name="package" value="{{strtolower($package['Title'])}}" />
                                         <input type="hidden" name="client_id" value="{{$ClientId}}" />
@@ -82,6 +87,7 @@
                                                 ];
                                         
                                             ?> 
+                                            <input type="hidden" name="package" value="{{ $package['Title'] }}" > 
                                             <input type="hidden" name="amount" value="{{ $package['Price'] }}" > 
                                              <input type="hidden" name="metadata" value="{{ json_encode($metadata) }}" > 
                                             <input type="image" src="images/paynow.jpg" style="max-height: 40px;">
