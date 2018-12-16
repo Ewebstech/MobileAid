@@ -25,15 +25,14 @@ Route::get('/', function(){
 //User Routes
 
 Route::post('/wtf/register', 'AuthController@registerUser')->name('register');
+
 Route::post('/wtf/registerdoc', 'AuthController@registerDoctor')->name('registerdoc');
 //Login users
 Route::post('/wtf/login', 'AuthController@loginUser')->name('login');  
 
-//Get Refreshed Data from API
-
+//Get Refreshed Data from DB
 Route::post('/wtf/getfreshdata', 'UserController@getRefreshedDetails')->name('getUserData');  
-//change default password
-// Route::post('/change-default-password', 'AuthController@changeDefaultPassword');
+
 //change password
 Route::post('/wtf/change-password', 'AuthController@changeMainPassword');
 //reset password link

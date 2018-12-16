@@ -15,13 +15,14 @@ class RequestRules
         ],
         'UPDATE_PROFILE' => [
             //validation rules
-            'firstname' => 'required',
-            'lastname' => 'required',  
+            'firstname' => 'nullable',
+            'lastname' => 'nullable',  
             'email' => 'email|required',
             'phonenumber' => 'required',
-            'avatar' => 'required',
+            'avatar' => 'nullable',
             'gender' => 'required',
-            'role' => 'required'
+            'role' => 'required',
+            'password' => 'nullable'
         ],
         'PATIENT_KYC' => [
             //validation rules

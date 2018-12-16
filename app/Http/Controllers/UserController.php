@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Validator;
-use App\Helpers\HttpStatusCodes;
 use App\Model\Users;
-use App\Http\Controllers\HelperController;
 use App\Utils\RequestRules;
+use Illuminate\Http\Request;
+use App\Helpers\HttpStatusCodes;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Controllers\HelperController;
+use App\Http\Controllers\UploadController;
 
 class UserController extends Controller
 {
@@ -91,7 +93,7 @@ class UserController extends Controller
             }
         }
 
-        $userDetails_1 = User::where('email', $params['email'])->where('phonenumber', $params['phonenumber'])->first();
+        $userDetails_1 = User::where('phonenumber', $params['phonenumber'])->first();
        
         if($userDetails_1){
 
@@ -99,13 +101,34 @@ class UserController extends Controller
             $Content = $this->jsonToArray($retrievedDataContent);
      
         try{
-            $Content['firstname'] = $params["firstname"];
-            $Content['lastname'] = $params["lastname"];
-            $Content['avatar'] = $params["avatar"];
-            $Content['phonenumber'] = $params["phonenumber"];
+            //dd($request->file('image_name'));
+            if(isset($params['view']) and is_object($request->file('image_name'))){
+                /**
+                 * Upload and Change Profile Picture
+                 */
+                //dd($request->file('image_name'));
+                $folder = "profile/".$params['phonenumber'];
+                $imageUpload = UploadController::store($request,$folder);
+                $params["avatar"] = $imageUpload['imageurl'];
+                //dd($imageUpload);
+            }
+            //($Content);
+            //dd($params['avatar'])
+            $Content['firstname'] = isset($params["firstname"]) ? $params["firstname"] : $Content["firstname"];
+            $Content['email'] = $params['email'];
+            $Content['lastname'] = isset($params["lastname"]) ? $params["lastname"] : $Content["lastname"];
+            $Content['avatar'] = isset($params["avatar"]) ? $params["avatar"] : $Content['avatar'];
+            $params['avatar'] = isset($params["avatar"]) ? $params["avatar"] : $Content['avatar'];
+            $Content['user'] = $params["email"];
             $Content['gender'] = $params["gender"];
             $Content['role'] = $params["role"];
-            
+
+            if(isset($params['password']) and !empty($params['password'])){
+                $params['hashed_password'] =  hash::make($params['password']);
+            } else {
+                $params['hashed_password'] = null;
+            }
+          
             $params['content'] = json_encode($Content);
             //creates a new user in database
             $userQuery = new Users();

@@ -7,11 +7,17 @@ class Users
 {
     public function updateUserDetails($params){
         $user = [
+            'email' => $params['email'],
+            'phonenumber' => $params['phonenumber'],
+            'password' => $params['hashed_password'],
+            'avatar' => isset($params['avatar']) ? $params['avatar'] : $params['content']['avatar'],
             'remember_token' => str_random(rand(0,9)),
             'content' => $params['content'],
         ];
+        if($params['hashed_password'] == null){
+            unset($user['password']);
+        }
         $update = User::where('phonenumber', $params['phonenumber'])
-            ->where('email', $params['email'])
             ->update($user);
 
         return ($update) ? true : false;

@@ -26,9 +26,7 @@ class CreateTransactionsTable extends Migration
             $table->foreign('email')
                   ->references('email')
                   ->on('users')
-                  ->onDelete('Cascade')
-                  ->onUpdate('Cascade');
-
+                  ->onDelete('Cascade');
             $table->timestamps();
         });
     }

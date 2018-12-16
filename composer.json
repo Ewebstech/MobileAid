@@ -10,6 +10,7 @@
         "firebase/php-jwt": "^5.0",
         "guzzlehttp/guzzle": "^6.3",
         "ixudra/curl": "^6.16",
+        "jrm2k6/cloudder": "^0.6.0",
         "laravel/framework": "5.7",
         "laravel/tinker": "^1.0",
         "symfony/process": "^4.2"

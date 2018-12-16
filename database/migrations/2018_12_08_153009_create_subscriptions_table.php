@@ -24,8 +24,7 @@ class CreateSubscriptionsTable extends Migration
             $table->foreign('user')
                   ->references('email')
                   ->on('users')
-                  ->onDelete('Cascade')
-                  ->onUpdate('Cascade');
+                  ->onDelete('Cascade');
         });
     }
 

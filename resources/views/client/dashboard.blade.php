@@ -17,10 +17,9 @@
                         <a href="/edit-user" class="btn btn-white btn-sm float-right mr-2">Complete My Profile Now</a>
                     </div>
                 </div>
-
-              
             </div>
         @endif
+
         <div class="col-lg-12">
             <div class="alert alert-primary d-none d-lg-block" style='color: #000;' role="alert">
                 <button type="button" class="close text-white" data-dismiss="alert" aria-hidden="true">×</button>
@@ -30,7 +29,7 @@
         </div>
 
         <div class="row row-cards">
-            <div class="col-sm-12 col-lg-12 col-xl-5">
+            <div class="col-sm-12 col-md-5">
                 <div class="row">
                     <div class="col-sm-6 col-lg-6">
                         <div class="card">
@@ -101,7 +100,7 @@
 
                 </div>
             </div>
-            <div class="col-sm-12 col-lg-12 col-xl-7">
+            <div class="col-sm-12 col-md-7">
                 <div class="card">
                     
                     <div class="card-body">
