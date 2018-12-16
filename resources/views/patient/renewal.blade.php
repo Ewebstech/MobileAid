@@ -61,13 +61,13 @@
                                         <span style="text-align: center; padding: 4px; font-weight: bold; margin-bottom: 10px;">(&#8358; {{ number_format($package['Price'])}}) 
                                         @if( $package['Title'] == "Silver")
                                         <br> <span style='color:blueviolet; font-size: 12px;'> 
-                                        + &#8358; {{ 0.015 * $package['Price']}} Transaage['Title']) }}package.png" style="max-height: 80px; margin-top: 10px;" />
+                                        + &#8358; {{ 0.015 * $package['Price']}} Transaction Charge</span>
+                                        @endif
+                                        </span><br> 
+                                        <img src="images/{{ strtolower($package['Title']) }}package.png" style="max-height: 80px; margin-top: 10px;" />
                                     </div>
                                     <div style="margin-top: 15px;" class="text-center">
-         ction Charge</span>
-                                        @endif
-                                        </span><br>
-                                        <img src="images/{{ strtolower($pack                               <form id="{{$package['Title']}}Form">
+                                        <form id="{{$package['Title']}}Form">
                                        
                                         <input type="hidden" name="package" value="{{strtolower($package['Title'])}}" />
                                         <input type="hidden" name="client_id" value="{{$ClientId}}" />
