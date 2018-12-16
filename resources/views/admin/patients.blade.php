@@ -1,14 +1,14 @@
 @extends('base')
 
-@section('title', 'Patients')
+@section('title', 'Clients')
 
 @section('content')
 	<div class=" content-area overflow-hidden">
         <div class="page-header">
-            <h4 class="page-title">Patients Database</h4>
+            <h4 class="page-title">Clients Database</h4>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Patients</li>
+                <li class="breadcrumb-item active" aria-current="page">Clients</li>
             </ol>
 
         </div>
@@ -16,7 +16,7 @@
             <div class="col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="card-title">Registered Patients Details</div>
+                        <div class="card-title">Registered Clients Details</div>
                         <div class="card-options">
                             <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
                             <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>

@@ -22,7 +22,6 @@
                 </div>
             @endif
             
-            
             @if(Session::has('trn_success'))
                 <div class="alert alert-success">
                     <button type="button" class="close" data-dismiss="alert">  x  </button>
