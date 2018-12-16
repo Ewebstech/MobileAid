@@ -87,11 +87,13 @@
                 </li>
                 <li class="text-white">|</li>
                 <li>
-                  <a href="/contact" class="text-white">Help Desk</a>
+                  <a href="/contact" class="text-white">Partnerships &amp; Gallery</a>
                 </li>
                 <li class="text-white">|</li>
                 
                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a href="#" class="text-white">support@mobilemedicalaid.com</a>
+                <li class="text-white">|</li>
+                <li class="m-0 pl-10 pr-10 text-white"> <span>RC: 477355</span></li>
                 </li>
               </ul>
             </div>
@@ -102,27 +104,40 @@
     <div class="header-middle p-0 xs-text-center">
       <div class="container pt-0 pb-0">
         <div class="row">
-          <div class="col-xs-12 col-sm-4 col-md-6">
-            <div class="widget no-border m-0">
-              <a class="pull-left flip xs-pull-center mb-6" href="/home"><img src="/site/img/MAlogo.png" alt="" style="width: 150px; height: 70px !important; margin:5px"></a>
-            </div>
-          </div>
           <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="widget no-border m-0">
-              <div class="mt-10 mb-10 text-right flip pull-right xs-pull-center">
-                <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-phone-square text-theme-colored font-18"></i>+234-814-990-6511</div>
+              <a class="pull-left flip xs-pull-center mb-6" href="/home"><img src="/site/img/MAlogo.png" alt="" style="width: 150px; height: 80px !important; margin:5px"></a>
+            </div>
+          </div>
+     
+          <div class="col-xs-12 col-sm-4 col-md-5">
+            <div class="widget no-border m-0">
+              <div class="mt-10 mb-10 text-right mobile-view hide-mobile xs-pull-center">
+                <div class="font-15 text-black-333 mb-3 font-weight-600" style="margin-top: 23px;"><i class="fa fa-phone-square text-theme-colored font-18"></i>+234-814-990-6511</div>
                 <a class="font-12 text-dim" href="#">Call Us for More Details!</a> 
               </div>
             </div>
-          </div>
+          </div>       
+
           <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="widget no-border m-0">
-              <div class="mt-10 mb-10 flip text-right mobile-view xs-pull-center">
-                <div class="font-15 text-black-333 mb-3 font-weight-600"><i class="fa fa-envelope-o text-theme-colored font-18"></i> 24/7 Support System @ </div>
-                <a class="font-12 text-dim" href="#">info@mobilemedicalaid.com, support@mobilemedicalaid.com</a>
+              <div class="mt-10 mb-10 flip text-center mobile-view hide-mobile xs-pull-center">
+                <div class="font-15 text-black-333 mb-3 font-weight-600" style="margin-top: 23px;"><i class="fa fa-envelope-o text-theme-colored font-18"></i> 24/7 Support System @ </div>
+                <a class="font-12 text-dim" href="#">support@mobilemedicalaid.com</a>
+               
               </div>
             </div>
           </div>
+          
+          <div class="col-xs-12 col-sm-4 col-md-1">
+              <div class="widget no-border m-0">
+                <div class="mt-10 mb-10 flip text-right mobile-view hide-mobile xs-pull-center">
+                  <div class="font-15 text-black-333 mb-3 font-weight-600"><img src="images/hipaa.png" style="max-height: 80px;"> </div>
+                  
+                </div>
+              </div>
+          </div>
+
         </div>
       </div>
     </div>

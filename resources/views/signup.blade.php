@@ -68,19 +68,22 @@
                       </div>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" name="role" required>
-                          <option value="patient">I'd Like To Join As A Patient</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
                       <label>Email <small>*</small></label>
                       <input name="email" type="email" placeholder="Enter a valid Email Address" required="required" class="form-control">
                     </div>
+
+                    <div class="form-group">
+                        <label>Referer's Mobile Number</label>
+                        <input name="refnumber" type="number" placeholder="Mobile Number of your Referrer" class="form-control">
+                    </div>
+
                     <div class="form-group">
                       <label>Choose Password <small>*</small></label>
                       <input id="password" name="password" type="password" placeholder="Choose Password"  class="form-control col-md-10">
                       <i id="toggle-password" class="col-md-2 fa fa-eye" onclick="togglepass()" style="float: right; margin-top: -30px; font-size: 13pt; "></i>
                     </div>
+                    
+                    <input type="hidden" name="role" value="client" />
                     <br><br>
                     <div class="form-group" id="signup-msg"></div>
                     <div class="form-group">

@@ -19,7 +19,7 @@ Route::get('/blank', function () {
     return view('blank');
 });
 
-Route::get('/pricing', function () {
+Route::get('/subscription', function () {
     return view('pricing');
 });
 

@@ -2,21 +2,34 @@
     <div class="container pt-60 pb-30">
   
       <div class="row mt-10">
-        <div class="col-md-5">
+        <div class="col-md-4">
           <div >
           <div class="widget dark">
-            <h4 class="text-white">MOBILE MEDICAL AID</h4>
-            <p class="text-white">Ikeja GRA, Lagos, Nigeria.</p>
+            <h4 class="text-white">MOBILE MEDICAL AID<sup>&reg;</sup></h4>
             <ul class="list-inline mt-5">
-              <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-white" href="#">+234-814-990-6511</a> </li>
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-phone text-theme-colored mr-5"></i> <a class="text-white" href="#">+234-814-990-6511</a> </li><br>
               <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-white" href="#">support@mobilemedicalaid.com</a> </li>
+              <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-theme-colored mr-5"></i> <a class="text-white" href="#">info@mobilemedicalaid.com</a> </li>
             </ul>
           </div>
           
             <!-- Mailchimp Subscription Form Ends Here -->
           </div>
         </div>
-        <div class="col-md-3 col-md-offset-1">
+        <div class="col-sm-3 col-md-3">
+            <div class="widget dark">
+              <h5 class="widget-title line-bottom">Useful Links</h5>
+              <ul class="list-border">
+                <li><a href="/">Home</a></li>
+                <li><a href="/how-it-works">How 2MA Works</a></li>
+                <li><a href="/about">About us</a></li>
+                <li><a href="/subscription">Subscriptions</a></li>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="/contact">Contact</a></li>
+              </ul>
+            </div>
+          </div>
+        <div class="col-md-2">
           <div class="widget dark">
             <h5 class="widget-title mb-10">Call Us Now</h5>
             <div class="text-gray">
@@ -44,21 +57,21 @@
       <div class="container pt-20 pb-20">
         <div class="row">
           <div class="col-md-6">
-            <p class="font-11 text-white m-0">Copyright &copy;2018 2MA. All Rights Reserved</p>
+            <p class="font-11 text-white m-0">Copyright &copy;2018 2MA. All Rights Reserved | DevTeam - Ewebs NG</p>
           </div>
           <div class="col-md-6 text-right">
             <div class="widget no-border m-0">
               <ul class="list-inline sm-text-center mt-5 font-12 text-white">
                 <li class="text-white">
-                  <a class="text-white" href="#">FAQ</a>
+                  <a class="text-white" href="#">Terms &amp; Conditions</a>
                 </li>
                 <li>|</li>
                 <li class="text-white">
-                  <a class="text-white" href="#">Help Desk</a>
+                  <a class="text-white" href="#">Privacy Policy</a>
                 </li>
                 <li>|</li>
                 <li class="text-white">
-                  <a class="text-white" href="#">Support</a>
+                  <a class="text-white" href="/contact">Support</a>
                 </li>
               </ul>
             </div>

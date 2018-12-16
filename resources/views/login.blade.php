@@ -56,7 +56,7 @@
 							<form id="login-form" class="">
 									{{csrf_field()}}
 								<div class="text-center mb-3" style="background: #fff; padding: 6px; border-top-left-radius: 10px; border-top-right-radius: 10px;">
-                                        <img src="/site/img/MAlogo.JPG" alt="" style="width: 80px; height: 40px !important; margin:5px; ">
+                                        <a href='./'><img src="/site/img/MAlogo.JPG" alt="" style="width: 100px; height: 60px !important; margin:5px; "></a>
 								</div>
 								<div class="card">
 									<div class="card-body">
@@ -82,12 +82,12 @@
 											<button type="submit" class="btn btn-success btn-block">Sign In</>
 										</div>
 										<div class="text-center  mt-3 text-dark">
-											Don't have account yet? <a href="/signup">SignUp</a>
+											No Account Yet? Please - <a href="/signup" style='font-weight: bold; color: #999;'>Sign-Up</a>
 										</div>
 										<hr class="divider">
 										<div class="mt-2">
 											<a href="https://www.facebook.com/" class="btn btn-facebook btn-block">Sign In via Facebook</a>
-											<a href="https://www.google.com/gmail/" class="btn btn-google btn-block">Sign In via Google</a>
+											<a href="./" class="btn btn-info btn-block">Go to Homepage</a>
 										</div>
 									</div>
 								</div>

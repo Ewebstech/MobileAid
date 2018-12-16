@@ -51,7 +51,7 @@
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-7">
               <h3 class="mt-0 line-bottom"><span class="font-weight-300">Mobile</span><span class="text-theme-colored font-weight-400"> Medical Aid</span></h3>
-              <p class="lead mb-10"> <i>"2MA is designed to help people get medical help over the phones to treat, control or manage
+              <p class="lead mb-10"> <i>"2MA is designed to help people get medical help over the phones to address, control or manage
                         their health situation until they can get to the hospital or proper medical attention."</i></p>
               <p>MA is a medical call-in service that is designed to provide quick medical assistance in any health related situation to reduce or prevent worsening conditions or resulting in death. In situations where people do not know what to do they can call for medical advice or assistance. 
             </p>

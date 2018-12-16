@@ -1096,6 +1096,10 @@ section > .container-fluid {
   visibility: hidden;
  }
 
+ .hide-mobile{
+  visibility: visible;
+ }
+
 @media only screen and (max-width: 900px) {
   .menuzord-menu {
     background: #000;
@@ -1105,6 +1109,11 @@ section > .container-fluid {
   .hide-web{
    visibility: visible;
   }
+
+  .hide-mobile{
+    visibility: hidden;
+    display: none;
+   }
 
   .mobile-view{
     text-align: center !important;
