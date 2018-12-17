@@ -30,13 +30,17 @@ class SubscriptionController extends Controller
         $role = strtolower($UserDetails['role']);
         $userId = $UserDetails['client_id'];
         $userContent = $this->helper->getUserDetailsById($userId);
-        $package_name = $userContent["package"];
-        $data['package'] = $this->getpackageDetails($package_name);
-        $data['ClientId'] = $UserDetails['client_id'];
-        //dd($data['Packages']);
-        $URI= '/'.$role.'/renewal';
+        //dd($userContent);
+        if(isset($userContent['package'])){
+            $package_name = $userContent["package"];
+            $data['package'] = $this->getpackageDetails($package_name);
+            $data['ClientId'] = $UserDetails['client_id'];
+            $URI= '/'.$role.'/renewal';
+            return view($URI)->with($data);
+        } else {
+           return $this->selectSubscription($request);
+        }
         
-        return view($URI)->with($data);
     }
 
     public function getpackageDetails($package_name){
