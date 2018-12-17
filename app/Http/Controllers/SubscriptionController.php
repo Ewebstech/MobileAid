@@ -122,6 +122,7 @@ class SubscriptionController extends Controller
 
     public function getUserSubscriptionDataViaMobile($phone_number){
         $subQuery = new Subscriptions();
+        
         $subDetailsArray = $subQuery->getUserSubscriptionViaMobile($phone_number)->toArray();
        
         if(!empty($subDetailsArray)){

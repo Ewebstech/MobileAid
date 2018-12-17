@@ -14,6 +14,6 @@ class Subscription extends Model
      * @var array
      */
     protected $fillable = [
-        'user', 'package', 'status', 'calls', 'content'
+        'user', 'package', 'status', 'calls', 'content', 'phonenumber'
     ];
 }

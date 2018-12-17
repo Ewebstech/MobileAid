@@ -71,7 +71,7 @@
                     var formname = $(this).data('formname');
                     //.preventDefault();
                     submit_form_no_reload(formname, url, 'packagesuccess', true);
-                   //setTimeout("location.href = '/renewal?s';",6000);
+                    setTimeout("location.href = '/renewal?s';",6000);
 
                 }
             });

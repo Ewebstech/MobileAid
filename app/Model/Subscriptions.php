@@ -52,6 +52,5 @@ class Subscriptions
 
         return ($update) ? true : false;
     }
-
-    
+   
 }

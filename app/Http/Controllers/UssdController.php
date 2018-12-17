@@ -9,11 +9,18 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\HelperController;
 use App\Utils\RequestRules;
 use App\User;
+use App\Subscription;
 use App\Model\Users;
 
 class UssdController extends Controller
 {
     protected $helper;
+
+
+    public function __construct()
+    {
+        $this->helper = new HelperController;
+    }
 
     public function ussd_registerUser(Request $request) {
         $params = $request->all();
@@ -85,22 +92,27 @@ class UssdController extends Controller
         }
 
         $userDetails = User::where('client_id', $params['client_id'])->where('phonenumber', $params['phonenumber'])->first();
-       
+        $has_Subscription = Subscription::where('phonenumber', $params['phonenumber'])->first();
+        
         if($userDetails){
-
-        try{
-            $subData = $this->helper->getUserSubscriptionDataViaMobile($params['phonenumber']);
-            if($saveUserData){
-                $msg = 'Subscription Data Retrieved';
-                $data = $subData;
-                return $this->jsonoutput($msg, $user, HttpStatusCodes::OK);
+            if($has_Subscription){
+                try{
+                    $subData = $this->helper->getUserSubscriptionDataViaMobile($params['phonenumber']);
+                    //dd($subData);
+                    if($subData){
+                        $msg = 'Subscription Data Retrieved';
+                        $data = $subData;
+                        return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                    }
+        
+                } catch(\Exception $e) {
+                    //something went wrong during registration
+                    return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+        
+                }
+            } else {
+                return $this->validationError('No Subscription Package Exists for this User!', HttpStatusCodes::NOT_FOUND);
             }
-
-        } catch(\Exception $e) {
-            //something went wrong during registration
-            return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
-
-        }
         
         } else {
             return $this->validationError('Wrong Client ID or Phonenumber', HttpStatusCodes::BAD_REQUEST);
