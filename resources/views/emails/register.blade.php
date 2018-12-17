@@ -23,7 +23,7 @@
             </tr>
         </table>
     </p>
-    <p>Please kindly note that you can also login by using your registered <b>Phone Number - {{$PhoneNumber}}</b> You can try by clicking by <a href="http://mobilemedicalaid.com">Here</a></p>
+    <p>Please kindly note that you can also login by using your registered <b>Phone Number - {{$PhoneNumber}}</b> You can try by clicking <a href="http://mobilemedicalaid.com">Here</a></p>
     <p>Thank you and have a happy healthy day.</p>
     <p> 
         <b>  

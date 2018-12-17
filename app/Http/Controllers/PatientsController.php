@@ -36,8 +36,8 @@ class PatientsController extends Controller
         $UserDetails = $_SESSION['UserDetails'];
         $data['sessiondata'] = $UserDetails;
         $role = $UserDetails['role'];
-        $data['Patient'] =  $this->helper->getAllUsersByRole("patient");
-          
+        $data['Patient'] =  $this->helper->getAllUsersByRole("client");
+       //dd($data['Patient']);
         $URI= '/'.$role.'/patients';
         return view($URI)->with($data);
     }

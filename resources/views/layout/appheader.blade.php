@@ -41,13 +41,15 @@
                             
                         </a>
                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow ">
-                            <a class="dropdown-item" href="/">
+                            <a class="dropdown-item" href="{{route('viewUser')}}">
                                 <i class="dropdown-icon si si-user"></i> My Profile
                             </a>
+                            @if($sessiondata['role'] == "admin")
                             <a class="dropdown-item" href="/">
-                                <i class="dropdown-icon si si-envelope"></i> Inbox
+                                <i class="dropdown-icon si si-envelope"></i> Messages Inbox
                             </a>
-                            <a class="dropdown-item" href="/">
+                            @endif
+                            <a class="dropdown-item" href="#">
                                 <i class="dropdown-icon  si si-settings"></i> Account Settings
                             </a>
                             <a class="dropdown-item" href="/logout">

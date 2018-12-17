@@ -45,12 +45,15 @@ class UssdController extends Controller
         try{
             $clientID = strtoupper($this->generateClientId());
             $params['password'] = $this->generateDefaultStaticPassword(6);
+           
+
+            // Create Dummy Email Address
+            $params['client_id'] = $clientID;
+            $params['avatar'] = $avatar_img;
+            $params['email'] = strtolower($clientID)."@tempemail.com";
             $contentParams = $params;
             unset($contentParams['password']);
             $content = json_encode($contentParams);
-
-            // Create Dummy Email Address
-            $params['email'] = strtolower($clientID)."@tempemail.com";
             //creates a new user in database
             $user = [
                 'firstname' => ucfirst(strtolower($params['firstname'])),
