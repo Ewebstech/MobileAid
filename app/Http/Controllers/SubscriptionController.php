@@ -177,6 +177,9 @@ class SubscriptionController extends Controller
         }
         
         $params['package'] = $package;
+        $packageDetails = $this->getpackageDetails($package);
+        $params['amount'] = $packageDetails['Price'];
+        //dd($package_price);
         $params['client_id'] = $formparams['client_id'];
         // Query to get current user's subscription status
         $subQuery = new Subscriptions();
@@ -202,7 +205,6 @@ class SubscriptionController extends Controller
         //dd($subDetailsArray);
         if(count($subDetails) > 0){
             //Get Previous Package
-            
             $previousPackage = $subDetails['package'];
             $MaxCalls = $subDetails['calls'];
             if($previousPackage == $params['package']){
@@ -241,6 +243,7 @@ class SubscriptionController extends Controller
     private function processSubscriptionUpdates($params,$subUpdate=false){
         try{
             //dd($params['phonenumber']);
+            
             if($subUpdate){
                 $subQuery = new Subscriptions();
                 $subDetails = $subQuery->updateSubscription($params);
