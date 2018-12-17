@@ -19,7 +19,7 @@ class SubscriptionController extends Controller
     {   
         if(!isset($_SESSION)) session_start();
         $this->middleware('redirectauth',['except' => [
-            'getPackages','selectPackage'
+            'getPackages','selectPackage', 'getRenewable', 'selectSubscription'
         ]]);
         $this->helper = new HelperController;
     }
@@ -193,9 +193,12 @@ class SubscriptionController extends Controller
         } else {
             $subDetails = [];
         }
-
-        $params['view'] = $formparams['view']; // Ensure view param is copied
-
+        if(isset($formparams['view'])){
+            $params['view'] = $formparams['view']; // Ensure view param is copied
+        } else {
+            $params['view'] = null; // Ensure view param is copied
+        }
+       
         //dd($subDetailsArray);
         if(count($subDetails) > 0){
             //Get Previous Package

@@ -86,7 +86,8 @@
                                                 ];
                                         
                                             ?> 
-                                            <input type="hidden" name="package" value="{{ $package['Title'] }}" > 
+                                            <input type="hidden" name="package" value="{{ $package['Title'] }}" >
+                                            <input type="hidden" name="view" value="1" />
                                             <input type="hidden" name="amount" value="{{ $package['Price'] }}" > 
                                              <input type="hidden" name="metadata" value="{{ json_encode($metadata) }}" > 
                                             <input type="image" src="images/paynow.jpg" style="max-height: 40px;">

@@ -237,7 +237,7 @@ class UserController extends Controller
             }
 
             $UserDetails['ClientId'] = $userInfo['client_id'];
-            $UserDetails['Role'] = $userInfo['role'];
+            $UserDetails['role'] = $userInfo['role'];
             $UserDetails['avatar'] = $userInfo['avatar'];
 
             return $UserDetails;
@@ -278,7 +278,7 @@ class UserController extends Controller
            }
 
            $UserDetails['ClientId'] = $userInfo['client_id'];
-           $UserDetails['Role'] = $userInfo['role'];
+           $UserDetails['role'] = $userInfo['role'];
            $UserDetails['avatar'] = $userInfo['avatar'];
 
            return $UserDetails;
@@ -311,7 +311,7 @@ class UserController extends Controller
                     
                 }
                 $UserDetails[$i]['ClientId'] = $users['client_id'];
-                $UserDetails[$i]['Role'] = $users['role'];
+                $UserDetails[$i]['role'] = $users['role'];
                 $UserDetails[$i]['avatar'] = $users['avatar'];
                 $i++;
             }

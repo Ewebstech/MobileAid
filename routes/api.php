@@ -44,6 +44,7 @@ Route::get('wtf/me', 'AuthController@me');
 //Members Routes
 Route::post('/wtf/editkyc', 'UserController@saveUser')->name('saveUser'); 
 Route::post('/wtf/editprofile', 'UserController@editProfile')->name('editProfile'); 
+Route::post('/wtf/call_init', 'CaseController@initiateCall'); 
 
 //Doctors Routes
 Route::post('/wtf/editkyc_doc', 'UserController@saveUser')->name('saveUserDoc'); 
@@ -56,3 +57,5 @@ Route::post('/wtf/selectpackage', 'SubscriptionController@selectPackage')->name(
 // USSD Routes
 Route::post('/wtf/ussd_register', 'UssdController@ussd_registerUser');
 Route::post('/wtf/ussd_querysubscription', 'UssdController@ussd_getUserSubscription');
+
+Route::post('/wtf/make-payment', 'PaystackController@redirectToProvider');

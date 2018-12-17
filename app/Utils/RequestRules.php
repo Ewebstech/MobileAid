@@ -64,6 +64,11 @@ class RequestRules
         ],
         'USSD_QUERY_SUBSCRPTION_DATA' => [
             'client_id' => 'required'
+        ],
+        'CLIENT_CASES' => [
+            'client_id' => 'required',
+            'phonenumber' => 'required',
+
         ]
         
     ];

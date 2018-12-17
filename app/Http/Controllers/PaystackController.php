@@ -9,6 +9,7 @@ use Ixudra\Curl\Facades\Curl;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HelperController;
+use App\Helpers\HttpStatusCodes;
 
 class PaystackController extends Controller
 {
@@ -23,7 +24,7 @@ class PaystackController extends Controller
     public function __construct()
     {   
         if(!isset($_SESSION)) session_start();
-        $this->middleware('redirectauth');
+        //$this->middleware('redirectauth');
         $this->helper = new HelperController;
     }
   
@@ -31,6 +32,7 @@ class PaystackController extends Controller
     {
         return $this->getHashedToken(25);
     }
+
     private static function getPool($type = 'alnum')
     {
         switch ($type) {
@@ -97,18 +99,24 @@ class PaystackController extends Controller
 
     public function redirectToProvider(Request $request)
     {
-        $UserDetails = $_SESSION['UserDetails'];
-        $data['sessiondata'] = $UserDetails;
-        $role = strtolower($UserDetails['role']);
         $params = $request->all();
-
        
+        if(isset($_SESSION['UserDetails'])){
+            $UserDetails = $_SESSION['UserDetails'];
+        } else {
+            $UserDetails['email'] = $params['email'];
+        }
+        
         $package_type = $params['package'];
         if($package_type == "Silver"){
             $charge = 0.015 * $params['amount'];
         } else {
             $charge = 0;
         }
+        if(!isset($params['metadata'])){
+            $params['metadata'] = null;
+        }
+        
 
         try {
             $totalAmount = ($params['amount'] * 100) + ((int) $charge * 100);
@@ -118,6 +126,7 @@ class PaystackController extends Controller
         }
         $initializePayment = 'https://api.paystack.co/transaction/initialize';
         $authBearer = 'Bearer ' . $this->setKey();
+        //dd($initializePayment);
         try {
             $response = Curl::to($initializePayment)
                 ->withData([
@@ -130,12 +139,25 @@ class PaystackController extends Controller
                 ->asJson()
                 ->post();
             $response = json_decode(json_encode($response));
+            
             $authorizationUrl = $response->data->authorization_url;
+            $params['url'] = $authorizationUrl;
+
+            if(isset($params['view'])){
+                return redirect()->away($authorizationUrl);
+            } else {
+                $msg = "Payment Initiated Successfully";
+                $data = $params;
+                return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+            }
+
         } catch (\ErrorException $e) {
             Log::error($e->getMessage());
             return back()->with('trn_error', 'Unable to connect to service provider, please try again later.');
         }
-        return redirect()->away($authorizationUrl);
+        
+        
+        
     }
 
     public function handleGatewayCallback(Request $request)
