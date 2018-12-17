@@ -55,6 +55,15 @@ class RequestRules
         ],
         'GET_USER_DETAILS' => [
             'client_id' => 'required'
+        ],
+        'USSD_REGISTER' => [
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',  
+            'gender' => 'required',
+            'phonenumber' => 'required|unique:users',
+        ],
+        'USSD_QUERY_SUBSCRPTION_DATA' => [
+            'client_id' => 'required'
         ]
         
     ];

@@ -28,7 +28,7 @@
                 <div class="col-lg-12">
                     <div class="alert alert-warning d-none d-lg-block" role="alert">
                         <button type="button" class="close text-white" aria-hidden="true"></button>
-                    <i class="fa fa-lock"></i> All data storage, retrieval and transaction procedures are strictly confidential and HIPAA Compliant. 
+                    <i class="fa fa-lock"></i> All data storage, retrieval and transaction procedures are strictly confidential and HIPAA Compliant. <br> <i class="fa fa-info-circle"></i> Please kindly provide most accurate health information for a better health service.
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                             </div>
                             <div class="form-group">
                                     <label class="form-label">Phone Number</label>
-                                <input class="form-control" name="phonenumber" value="{{$UserDetails['phonenumber']}}"/>
+                                <input class="form-control" name="phonenumber" value="{{$UserDetails['phonenumber']}}" readonly/>
                                 </div>
                             <div class="form-group">
                                 <label class="form-label">Password</label>
@@ -445,7 +445,7 @@
                                             <input type="text" class="form-control" name="emergency_contact_name_2" value="{{array_get($UserDetails,'Kyc.emergency_contact_name_2')}}" placeholder="Enter First Choice Contact">
                                         </div>
                                 </div>
-                        
+                                <input type="hidden" name="role" value="{{$UserDetails['role']}}" />
                                 <div class="col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Phone Number</label>

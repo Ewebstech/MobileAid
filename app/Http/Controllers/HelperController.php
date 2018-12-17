@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TransactionController;
@@ -13,9 +14,20 @@ use App\Http\Controllers\MailController as MailController;
 class HelperController extends Controller
 {
 
+    public function setSession($userDetails){
+        $sess = new AuthController;
+        return $sess->setSession($userDetails);
+    }
+    
     public function getUserTransactions($client_id){
         $trans = new TransactionController;
         return $trans->getUserTransactions($client_id);
+    }
+
+   
+    public function getUserSubscriptionDataViaMobile($phonenumber){
+        $sub = new SubscriptionController;
+        return $sub->getUserSubscriptionDataViaMobile($phonenumber);
     }
 
     public function getUserSubscriptionData($user_email){

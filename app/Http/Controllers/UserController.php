@@ -98,6 +98,7 @@ class UserController extends Controller
         if($userDetails_1){
 
             $retrievedDataContent = $userDetails_1->toArray()['content'];
+            
             $Content = $this->jsonToArray($retrievedDataContent);
      
         try{
@@ -133,7 +134,9 @@ class UserController extends Controller
             //creates a new user in database
             $userQuery = new Users();
             $updateUser = $userQuery->updateUserDetails($params);
-
+            $getUser = $userQuery->getUser($params['email']);
+            $allDetails = $getUser->toArray();
+            //dd($allDetails);
             if($updateUser){
                 // Send Email to User
                 $mailParams = [
@@ -143,13 +146,16 @@ class UserController extends Controller
                     'template' => 'profile_update',
                     'Username' => $params['email']
                 ];
-
+                
                 $sendMail = $this->helper->sendMail($mailParams);
 
                 if(isset($params['view'])){
                     if($updateUser){
                         $status = "success";
                         $data = "Your Data has been Updated Successfully";
+                        // Update Session Data
+                        $sessionUserDetails = $this->helper->setSession($allDetails);
+                        //dd($sessionUserDetails);
                         return $this->returnOutput($status,$data);
                     } else {
                         $status = "failure";
@@ -344,6 +350,8 @@ class UserController extends Controller
             $Content['Kyc'] = $params;
      
         try{
+            $params['hashed_password'] = null;
+            $params['avatar'] = $Content['avatar'];
             $params['content'] = json_encode($Content);
             //creates a new user in database
             $userQuery = new Users();

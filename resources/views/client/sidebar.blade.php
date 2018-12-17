@@ -27,6 +27,10 @@
                 <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i>Update Profile</a>
             </li>
 
+            <li>
+                <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Rate Doctor</a>
+            </li>
+
             <li class="border-0"><h3>Subscription & Payment</h3><li>
 
             <li>
@@ -40,6 +44,7 @@
             </li>
 
            
+           
             <li><h3>Medical Need</h3><li>
 
             <li>
@@ -48,9 +53,7 @@
 
             <li><h3>More</h3><li>
 
-            <li>
-                <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Rate Doctor</a>
-            </li>
+            
             <li>
                 <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Support</a>
             </li>

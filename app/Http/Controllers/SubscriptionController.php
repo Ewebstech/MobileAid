@@ -120,6 +120,20 @@ class SubscriptionController extends Controller
 
     }
 
+    public function getUserSubscriptionDataViaMobile($phone_number){
+        $subQuery = new Subscriptions();
+        $subDetailsArray = $subQuery->getUserSubscriptionViaMobile($phone_number)->toArray();
+       
+        if(!empty($subDetailsArray)){
+            $subDetails = $subDetailsArray[0];
+        } else {
+            $subDetails = [];
+        }
+
+        return $subDetails;
+
+    }
+
     public function selectPackage(Request $request){
         $formparams = $request->all();
         //dd($formparams);
@@ -218,6 +232,7 @@ class SubscriptionController extends Controller
 
     private function processSubscriptionUpdates($params,$subUpdate=false){
         try{
+            //dd($params['phonenumber']);
             if($subUpdate){
                 $subQuery = new Subscriptions();
                 $subDetails = $subQuery->updateSubscription($params);

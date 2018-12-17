@@ -39,6 +39,10 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+
+//Web Hook
+Route::get('/webhook', 'TrashController@webhook');
+
 Route::get('/login', 'AuthController@loginPage')->name('loginPage');
 Route::post('/contactform', 'PagesController@contactPage')->name('contactPage');
 

@@ -13,10 +13,12 @@ class Subscriptions
 
     public function addSubscription($params){
         $content = json_encode($params);
+        
         $data = [
             'user' => $params['user'],
             'status' => $params['status'],
             'calls' => $params['calls'],
+            'phonenumber' => $params['phonenumber'],
             'package' => $params['package'],
             'content' => $content,
         ];
@@ -30,11 +32,17 @@ class Subscriptions
         return ($sub) ? $sub : false;
     }
 
+    public function getUserSubscriptionViaMobile($param){
+        $sub = $this->model->where('phonenumber',$param)->get();
+        return ($sub) ? $sub : false;
+    }
+
     public function updateSubscription($params){
         $content = json_encode($params);
         $data = [
             'user' => $params['user'],
             'status' => $params['status'],
+            'phonenumber' => $params['phonenumber'],
             'calls' => $params['calls'],
             'package' => $params['package'],
             'content' => $content,

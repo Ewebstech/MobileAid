@@ -325,17 +325,12 @@ class AuthController extends Controller
         }
     }
 
-    private function setSession($userDetails){
+    public function setSession($userDetails){
         foreach ($userDetails as $field => $value) {
             # code...
             $_SESSION['UserDetails'][$field] = $value;
         }
         return $_SESSION['UserDetails'];
-    }
-
-    public function processUserLogin($user){
-        
-
     }
 
     public function checkEmail($email) {

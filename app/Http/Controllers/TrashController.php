@@ -35,4 +35,8 @@ class TrashController extends Controller
         return $output;
     }
 
+    public function webhook(Request $request){
+        dd($request->all);
+    }
+
 }
