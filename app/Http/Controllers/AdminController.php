@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\HelperController;
 use App\Model\Contacts;
+use App\Error;
 
 class AdminController extends Controller
 {
@@ -114,5 +115,31 @@ class AdminController extends Controller
             $count = count($data);
             return ($count) ? $count : 0;
         }
+    }
+
+    public function DisplayErrors(){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+         
+        $errorModel = Error::orderBy('created_at','desc')->get();
+
+        $errors = $errorModel->toArray();
+        $i = 0;
+        foreach($errors as $error){
+            $errorContent = $this->jsonToArray($error['content']);
+            $rdata[$i]['error']['error_code'] = $errorContent['error_code'];
+            $rdata[$i]['error']['error_line'] = $errorContent['error_line']; 
+            $rdata[$i]['error']['error_message'] = $errorContent['error_message'];
+            $rdata[$i]['error']['ip_address'] = $errorContent['ip_address'];
+            $rdata[$i]['error']['request_type'] = $errorContent['request_type'];
+            $rdata[$i]['error']['date'] = $error['created_at'];
+            $i++;
+       
+        }
+        $data['Errors'] = $rdata;
+        $URI= '/'.$role.'/errors';
+        
+        return view($URI)->with($data);
     }
 }

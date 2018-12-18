@@ -70,6 +70,7 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('inbox', 'AdminController@viewUnreadMessages')->name('inbox');
     Route::get('archive', 'AdminController@viewReadMessages')->name('archive');
     Route::get('read', 'AdminController@ReadMessages')->name('read');
+    Route::get('errors', 'AdminController@DisplayErrors')->name('errors');
     //paymentcontroller routes
     Route::post('/makepayment', 'PaystackController@redirectToProvider');
 
