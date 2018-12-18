@@ -162,12 +162,6 @@ class PaystackController extends Controller
 
     public function handleGatewayCallback(Request $request)
     {
-        //dd($request->all());
-        if(isset($_SESSION['UserDetails'])){
-            $params['view'] = 1;
-        } else {
-            $params['view'] = 0;
-        }
         $transactionRef = request()->query('trxref');
         $verifyPayment = 'https://api.paystack.co/transaction/verify/' . $transactionRef;
         $response = Curl::to($verifyPayment)
@@ -178,6 +172,11 @@ class PaystackController extends Controller
         if ($response->status === true) {
             // Save Transaaction Details
             $params = (array) $response->data;
+            if(isset($_SESSION['UserDetails'])){
+                $params['view'] = 1;
+            } else {
+                $params['view'] = 0;
+            }
             dd($params);
             $params['custom_fields'] = (array) $response->data->metadata->custom_fields[0];
             $params['package'] = $params['custom_fields']['package'];
