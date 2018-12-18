@@ -222,7 +222,7 @@ class SubscriptionController extends Controller
                         $data = "Your subscription is still active on ". $subDetails['package'] . " package and cannot be modified until it is exhausted.";
                         return $this->returnOutput($status,$data);
                     } else {
-                        return $this->error('Your subscription is still active on '. $params['package'] . ' package and cannot be modified until it is exhausted.', HttpStatusCodes::UNAUTHORIZED);
+                        return $this->error('Your subscription is still active on '. $subDetails['package'] . ' package and cannot be modified until it is exhausted.', HttpStatusCodes::UNAUTHORIZED);
                     }
                     
                 } else {
