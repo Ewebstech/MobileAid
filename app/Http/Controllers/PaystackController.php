@@ -167,6 +167,7 @@ class PaystackController extends Controller
         $response = Curl::to($verifyPayment)
             ->withHeader('Authorization: Bearer ' . $this->SetKey())
             ->get();
+        dd($response);
         $response = json_decode($response);
         if ($response->status === true) {
             // Save Transaaction Details
@@ -184,7 +185,7 @@ class PaystackController extends Controller
                 // Credit Customers
                 $usersSubData = $this->helper->getUserSubscriptionData($params['email']);
                 $subparams = $this->jsonToArray($usersSubData['content']);
-                // Current Call Number
+                // Current Call Number                                                                                        
                 $remaining_calls = $this->helper->getCalls();
                 $callable = $this->helper->getpackageDetails($subparams['package'])['LocalMaxCalls'];
                 $new_calls = (int) $remaining_calls + (int) $callable;
