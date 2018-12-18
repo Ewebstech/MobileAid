@@ -163,6 +163,11 @@ class PaystackController extends Controller
     public function handleGatewayCallback(Request $request)
     {
         //dd($request->all());
+        if(isset($_SESSION['UserDetails'])){
+            $params['view'] = 1;
+        } else {
+            $params['view'] = 0;
+        }
         $transactionRef = request()->query('trxref');
         $verifyPayment = 'https://api.paystack.co/transaction/verify/' . $transactionRef;
         $response = Curl::to($verifyPayment)
@@ -202,7 +207,7 @@ class PaystackController extends Controller
                     $userQuery = new Users;
                     $userUpdate = $userQuery->updateUserContent($subparams);   
                 }
-                if(isset($params['view'])){
+                if($params['view'] == 1){
                     return redirect()->route('getRenewable')->with('success', 'Your Subscription Renewal for '.$params['package'].' Package was Successful.');
                 } else {
                     $msg = "Payment Successful";

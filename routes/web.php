@@ -39,6 +39,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
+Route::get('/test', function () {
+    return view('Shell');
+});
+
+
 
 //Web Hook
 Route::get('/webhook', 'TrashController@webhook');

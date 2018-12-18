@@ -8,5 +8,7 @@ $metadata = [
     ]
 ];
 
+echo json_encode($metadata);
+
 
 ?> 
