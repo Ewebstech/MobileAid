@@ -67,14 +67,16 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('read', 'AdminController@ReadMessages')->name('read');
 
 
-    //paymentcontroller routes
-    Route::post('/makepayment', 'PaystackController@redirectToProvider');
-    Route::get('/payment/callback', 'PaystackController@handleGatewayCallback');
+    
 
 
     // Delete Route
     Route::get('trash', 'TrashController@delete')->name('trashIt');
 });
+
+//paymentcontroller routes
+Route::post('/makepayment', 'PaystackController@redirectToProvider');
+Route::get('/payment/callback', 'PaystackController@handleGatewayCallback');
 
 
 
