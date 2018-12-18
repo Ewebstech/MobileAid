@@ -148,7 +148,7 @@
             <ul class="menuzord-menu navfont">
                 <li class="active"><a href="/" style="color:#fff;"><i class="fas fa-home"></i> Home</a></li>
                 <li class=""><a href="/about" > <i class="fas fa-info-circle"></i> About</a></li>
-                <li class=""><a href="/pricing"><i class="fas fa-cube"></i> Subscription Packages</a>
+                <li class=""><a href="/subscription"><i class="fas fa-cube"></i> Subscription Packages</a>
                 </li>
                
                 <li class=""><a href="#"><i class="fas fa-list"></i> 2MA Publications</a>

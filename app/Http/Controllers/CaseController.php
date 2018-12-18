@@ -40,7 +40,9 @@ class CaseController extends Controller
                     $subData = $this->helper->getUserSubscriptionDataViaMobile($params['phonenumber']);
                     //dd($subData);
                     if($subData){
-                        dd($userDetails);
+                        $userData = $userDetails->toArray();
+                        
+                        //dd($userDetails);
                     }
         
                 } catch(\Exception $e) {
