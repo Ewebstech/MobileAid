@@ -137,7 +137,7 @@ class AdminController extends Controller
             $i++;
        
         }
-        $data['Errors'] = $rdata;
+        $data['Errors'] = isset($rdata) ? $rdata : null;
         $URI= '/'.$role.'/errors';
         
         return view($URI)->with($data);
