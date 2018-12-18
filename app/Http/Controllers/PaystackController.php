@@ -162,12 +162,13 @@ class PaystackController extends Controller
 
     public function handleGatewayCallback(Request $request)
     {
+        dd($request->all());
         $transactionRef = request()->query('trxref');
         $verifyPayment = 'https://api.paystack.co/transaction/verify/' . $transactionRef;
         $response = Curl::to($verifyPayment)
             ->withHeader('Authorization: Bearer ' . $this->SetKey())
             ->get();
-        dd($response);
+        //dd($response);
         $response = json_decode($response);
         if ($response->status === true) {
             // Save Transaaction Details
