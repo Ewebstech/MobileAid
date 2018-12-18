@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col">
                                     <h3 class="mb-1 ">{{$UserDetails['firstname']}} {{$UserDetails['lastname']}}</h3>
-                                    <p class="mb-4 label label-danger">{{$UserDetails['Role']}}</p>
+                                    <p class="mb-4 label label-danger">{{$UserDetails['role']}}</p>
                                 </div>
                             </div>
                            
@@ -370,7 +370,7 @@
                             <div class="col-md-12" style="margin-bottom: 10px;">
                                     <h5 class="card-title"><i><b> * Professional Profile</b></i></h5>
                             </div>
-                           <input type="hidden" name="role" value="{{$UserDetails['Role']}}" />
+                           <input type="hidden" name="role" value="{{$UserDetails['role']}}" />
                             <div class="col-md-12">
                                 <div class="form-group mb-0">
                                     

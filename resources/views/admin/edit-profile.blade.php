@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col">
                                     <h3 class="mb-1 ">{{$UserDetails['firstname']}} {{$UserDetails['lastname']}}</h3>
-                                    <p class="mb-4 label label-danger">{{$UserDetails['Role']}}</p>
+                                    <p class="mb-4 label label-danger">{{$UserDetails['role']}}</p>
                                 </div>
                             </div>
                            
