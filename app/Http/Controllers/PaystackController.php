@@ -133,6 +133,9 @@ class PaystackController extends Controller
                     'reference' => $this->genTranxRef(),
                     'amount' => intval($totalAmount),
                     'email' =>  $UserDetails['email'],
+                    'package' => $params['package'],
+                    'client_id' => $params['client_id'],
+                    'view' => isset($params['view']) ? $params['view'] : 0,
                     'metadata' => $params['metadata'],
                 ])
                 ->withHeader('Authorization: Bearer ' . $this->SetKey())
