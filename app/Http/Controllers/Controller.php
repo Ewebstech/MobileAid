@@ -13,6 +13,7 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use DateTime;
 use App\Model\Users;
+use App\Model\ClientCases;
 
 class Controller extends BaseController
 {
@@ -20,7 +21,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests, Response, generateDefaultPassword, Uploadimage, JwtIssuer, UploadMultipleImages;
 
     protected function generateClientId(){
-        $generatedID = $this->generateDefaultStaticPassword(5);
+        $generatedID = $this->generateDefaultStaticPassword(6);
         $Resource = new Users;
         $user = $Resource->getUserById($generatedID);
 
@@ -33,6 +34,21 @@ class Controller extends BaseController
         
         return $ID;
     }
+
+    // protected function generateCaseId(){
+    //     $generatedID = $this->generateDefaultStaticPassword(5);
+    //     $Resource = new ClientCases;
+    //     $user = $Resource->getUserByClientId($generatedID);
+        
+    //     $staffID = $user['client_id'];
+    //     if($staffID == null){
+    //         $ID = $generatedID;
+    //     } else {
+    //         $this->generateCaseId();
+    //     }
+        
+    //     return $ID;
+    // }
 
     protected function returnOutput($status,$data){
         if($status == "success"){
