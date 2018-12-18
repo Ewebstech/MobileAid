@@ -162,7 +162,7 @@ class PaystackController extends Controller
 
     public function handleGatewayCallback(Request $request)
     {
-        //dd($request->all());
+        dd($request->all());
         $transactionRef = request()->query('trxref');
         $verifyPayment = 'https://api.paystack.co/transaction/verify/' . $transactionRef;
         $response = Curl::to($verifyPayment)
@@ -219,6 +219,7 @@ class PaystackController extends Controller
             return redirect()->route('getRenewable')->with('failed', 'Transaction Failed, Please try again later.');
         }
     }
+
     public function setKey()
     {
         $key = config('paystack.paystack_secret_key');
