@@ -69,14 +69,20 @@ class CaseController extends Controller
                             $updateparams['calls'] = $call_balance;
                             $updateparams['status'] = $status;
                             $subQuery = new Subscriptions();
-                            $subDetails = $subQuery->updateSubscription($params);
+                            $subDetails = $subQuery->updateSubscription($updateparams);
 
                             // Update Users Table with Subscription Details
-                            $updateparams = $userDataContent;
+                            $updateparam = $userDataContent;
                             $updateparams['calls'] = $call_balance;
                             $updateparams['status'] = $status;
                             $userQuery = new Users;
-                            $userUpdate = $userQuery->updateUserContent($params);
+                            $userUpdate = $userQuery->updateUserContent($updateparams);
+
+                            if($subDetails and $userUpdate){
+                                // Create Case
+                                
+
+                            } 
                         } 
                     }
         

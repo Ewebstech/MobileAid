@@ -199,8 +199,14 @@ class PaystackController extends Controller
                     $userQuery = new Users;
                     $userUpdate = $userQuery->updateUserContent($subparams);   
                 }
-               
-                return redirect()->route('getRenewable')->with('success', 'Your Subscription Renewal for '.$params['package'].' Package was Successful.');
+                if(isset($params['view'])){
+                    return redirect()->route('getRenewable')->with('success', 'Your Subscription Renewal for '.$params['package'].' Package was Successful.');
+                } else {
+                    $msg = "Payment Successful";
+                    $data = $params;
+                    return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                }
+                
             } else {
             
                 return redirect()->route('getRenewable')->with('info', $saveTrans);
