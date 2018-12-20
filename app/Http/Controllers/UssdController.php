@@ -50,9 +50,7 @@ class UssdController extends Controller
             $params['client_id'] = $clientID;
             $params['avatar'] = $avatar_img;
             $params['email'] = strtolower($clientID)."@tempemail.com";
-            $contentParams = $params;
-            unset($contentParams['password']);
-            $content = json_encode($contentParams);
+            $content = json_encode($params);
             //creates a new user in database
             $user = [
                 'firstname' => ucfirst(strtolower($params['firstname'])),
