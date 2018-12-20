@@ -105,7 +105,7 @@ class AdminController extends Controller
         $data['sessiondata'] = $UserDetails;
         $role = $UserDetails['role'];
 
-        $data['Patient'] =  $this->helper->getUsersByStatus('Active');
+        $data['Patient'] =  $this->helper->getUsersByStatus('InActive');
         //dd($data['Patient']);
         $URI= '/'.$role.'/inactiveusers';
 
