@@ -16,11 +16,11 @@ class ValidateLogin
      */
     public function handle($request, Closure $next)
     {
-         
+        //if(!isset($_SESSION)) session_start();
         if(!isset($_SESSION['UserDetails'])){
-            return redirect('/login');
+            $_SESSION['PreviousUrl'] = basename($_SERVER['PHP_SELF']); 
+            return redirect('/login?cont');
         } else {
-
             return $next($request);
         }
         return $next($request);

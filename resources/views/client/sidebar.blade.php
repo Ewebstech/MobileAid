@@ -45,8 +45,10 @@
 
            
            
-            <li><h3>Medical Need</h3><li>
-
+            <li><h3>Medicals</h3><li>
+            <li>
+                <a href="{{route('viewCases')}}" class=" wave-effect accordion-toggle"><i class="fa fa-files-o mr-2 sidebarlightgreen"></i>  My Cases</a>
+            </li>
             <li>
                 <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Schedule Appointments</a>
             </li>

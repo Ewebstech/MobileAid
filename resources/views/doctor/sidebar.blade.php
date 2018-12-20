@@ -6,7 +6,7 @@
             </div>
             <div class="profile_info">
             <h2>{{$sessiondata['firstname']}} {{$sessiondata['lastname']}}</h2>
-            <span class="label label-success" style="color: #000; font-size: bold;">{{ $sessiondata['role'] }}</span>
+            <span class="label label-success" style="color: #000; font-size: bold;">{{ ucfirst($sessiondata['role']) }}</span>
             </div>
         </div>
         

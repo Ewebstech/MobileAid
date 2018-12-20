@@ -39,22 +39,22 @@
                                 </thead>
                                 <tbody>
                                     @define $i = 1
-                                    
-                                    @foreach ($Doctor as $patientdata )
-                                    <tr>
-                                        <td>{{$i}}</td>
-                                        <td><img src="{{$patientdata['avatar']}}" style="height: 50px; width: 50px;"  alt="..." class="img-circle profile_img img-responsive"  /></td>
-                                        <td>{{$patientdata['firstname']}} {{$patientdata['lastname']}}</td>
-                                        <td>{{isset($patientdata['ClientId']) ? $patientdata['ClientId'] : "--:--"}}</td>
-                                        <td>{{$patientdata['email']}}</td>
-                                        <td>{{$patientdata['phonenumber']}}</td>
-                                        <td>{{isset($patientdata['gender']) ? $patientdata['gender'] : "--:--"}}</td>
-                                    <td><a target="_blank" href="{{route('requestProfile')}}?user={{$patientdata['email']}}&type=doctor"><i class="fa fa-eye"></i></a> | <a target="_blank" href="{{route('requestProfileEdit')}}?user={{$patientdata['email']}}&type=doctor"><i class="fa fa-edit"></i></a> | <a href="#" data-url="{{route('trashIt')}}?table=users&cid={{$patientdata['ClientId']}}" data-fieldid="delete{{$i}}" class="deleteItem"><i class="fa fa-trash-o"></i></a></td>
-                                    </tr>
-                                    @define $i++
-                                    @endforeach
-                                    
-                                   
+                                    @if (isset($Doctor))
+                                        @foreach ($Doctor as $patientdata )
+                                            <tr>
+                                                <td>{{$i}}</td>
+                                                <td><img src="{{$patientdata['avatar']}}" style="height: 50px; width: 50px;"  alt="..." class="img-circle profile_img img-responsive"  /></td>
+                                                <td>{{$patientdata['firstname']}} {{$patientdata['lastname']}}</td>
+                                                <td>{{isset($patientdata['ClientId']) ? $patientdata['ClientId'] : "--:--"}}</td>
+                                                <td>{{$patientdata['email']}}</td>
+                                                <td>{{$patientdata['phonenumber']}}</td>
+                                                <td>{{isset($patientdata['gender']) ? $patientdata['gender'] : "--:--"}}</td>
+                                            <td><a target="_blank" href="{{route('requestProfile')}}?user={{$patientdata['email']}}&type=doctor"><i class="fa fa-eye"></i></a> | <a target="_blank" href="{{route('requestProfileEdit')}}?user={{$patientdata['email']}}&type=doctor"><i class="fa fa-edit"></i></a> | <a href="#" data-url="{{route('trashIt')}}?table=users&cid={{$patientdata['ClientId']}}" data-fieldid="delete{{$i}}" class="deleteItem"><i class="fa fa-trash-o"></i></a></td>
+                                            </tr>
+                                            @define $i++
+                                        @endforeach
+                                    @endif
+                                </tbody>
                             </table>
 
                         </div>

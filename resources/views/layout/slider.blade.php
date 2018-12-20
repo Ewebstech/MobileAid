@@ -50,7 +50,7 @@
                 <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
                   <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
-                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/subscription"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
               </div>
             </div>
@@ -68,7 +68,7 @@
                   <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                       <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
                       <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
-                      <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                      <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/subscription"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                     </div>
               </div>
             </div>
@@ -87,7 +87,7 @@
               <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
                   <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
-                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/subscription"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
           </div>
         </div>
@@ -105,7 +105,7 @@
               <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
                   <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
-                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/subscription"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
           </div>
         </div>
@@ -123,7 +123,7 @@
               <div class="bg-white-transparent text-center pt-20 pb-50 outline-border">
                   <h1 class="text-black-555 text-uppercase font-30 text-bold">MOBILE <span class="text-theme-colored">HealthCare</span></h1>
                   <h5 class="text-black-555 font-weight-500 p-10 font-15">Everyday, we help people get medical help over the phones to treat, control or manage their health situation until they can get to the hospital for proper medical attention.</h5>
-                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/pricing"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
+                  <a class="btn btn-colored btn-theme-colored btn-flat  mt-15" style="#fff;" href="/subscription"><i class="fas fa-cube"></i> 2MA Packages</a> <a class="btn btn-colored border-2px btn-flat mt-15" style="border: 2px solid #00A4EF !important; color: #000;" href="/how-it-works">How it works</a>
                 </div>
           </div>
         </div>
@@ -159,7 +159,7 @@
         </div>
       </div>
       <div class="example5" style="">
-        <h5 style="color: #fff; font-weight: bold; font-size: 14px;"><i><i class="fa fa-lock"></i> All Clients information are kept confidential and
+        <h5 style="color: #fff; font-weight: bold; font-size: 14px;"><i><i class="fa fa-lock"></i> All clients information are kept confidential and
           our systems are HIPAA compliant.</i></h5>
       </div>
     </section>

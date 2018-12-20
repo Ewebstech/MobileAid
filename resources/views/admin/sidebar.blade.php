@@ -29,10 +29,10 @@
 
             <li class="border-0"><h3>Users Data</h3><li>
             <li>
-            <a href="{{route('viewPatients')}}" class=" wave-effect accordion-toggle "><i class="fa fa-users mr-2 sidebarpink"></i> Patients</a>
+            <a href="{{route('viewPatients')}}" class=" wave-effect accordion-toggle "><i class="fa fa-users mr-2 sidebarpink"></i>All Patients</a>
             </li>
             <li>
-                <a href="{{route('viewDoctors')}}" class=" wave-effect accordion-toggle "><i class="fa fa-user-md mr-2 sidebarpink"></i> Doctors</a>
+                <a href="{{route('viewDoctors')}}" class=" wave-effect accordion-toggle "><i class="fa fa-user-md mr-2 sidebarpink"></i> All Doctors</a>
             </li>
 
             <li class="border-0"><h3>Messages</h3><li>

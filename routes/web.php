@@ -61,6 +61,7 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('choose-subscriptions', 'SubscriptionController@selectSubscription')->name('selectSub');
     Route::get('renewal', 'SubscriptionController@getRenewable')->name('getRenewable');
     Route::get('transaction', 'PatientsController@viewTransactions')->name('viewTransactions');
+    Route::get('my-cases', 'PatientsController@viewCases')->name('viewCases');
 
     //Admin Routes
     Route::get('clients', 'PatientsController@viewPatients')->name('viewPatients');
@@ -71,12 +72,14 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('archive', 'AdminController@viewReadMessages')->name('archive');
     Route::get('read', 'AdminController@ReadMessages')->name('read');
     Route::get('errors', 'AdminController@DisplayErrors')->name('errors');
+    Route::get('open-cases', 'AdminController@viewOpenCases')->name('openCases');
+    Route::get('closed-cases', 'AdminController@viewClosedCases')->name('closedCases');
+    Route::get('view-subs', 'AdminController@viewSubscribers')->name('viewSubscribers');
+    Route::get('active-users', 'AdminController@viewActiveUsers')->name('viewActiveUsers');
+    Route::get('in-active-users', 'AdminController@viewInActiveUsers')->name('viewInActiveUsers');
     //paymentcontroller routes
     Route::post('/makepayment', 'PaystackController@redirectToProvider');
-
     
-
-
     // Delete Route
     Route::get('trash', 'TrashController@delete')->name('trashIt');
 });

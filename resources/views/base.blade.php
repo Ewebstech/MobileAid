@@ -107,7 +107,8 @@
 		<script src="/js/sweetalert2.js"></script>
 		<script src="/js/toastr/toastr.min.js" type="text/javascript"></script>
 		<script src="/js/ajax.js"></script>
-
+		<script src="js/Chart.js"></script>
+		
 		<!-- Fullside-menu Js-->
 		<script src="assets/plugins/fullside-menu/jquery.slimscroll.min.js"></script>
 		<script src="assets/plugins/fullside-menu/waves.min.js"></script>

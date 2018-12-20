@@ -25,11 +25,10 @@ class AdminController extends Controller
         
        $userContent = $this->jsonToArray($UserDetails['content']);
        if(isset($userContent['Kyc'])){
-           $data['EditProfile'] = "set";
-           
+            $data['EditProfile'] = "set";
+
        } else {
-        $data['EditProfile'] = "";
-      
+            $data['EditProfile'] = "";
        }
        
        $URI= '/'.$role.'/dashboard';
@@ -59,6 +58,85 @@ class AdminController extends Controller
 
        return view($URI)->with($data);
     }
+
+    public function viewSubscribers(Request $request){
+        $params = $request->all();
+        $type = $params['var'];
+        
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        
+        if($type == "Silver"){
+            $data['Patient'] = $this->helper->getUsersBySubscription('Silver');
+           
+        } 
+        if($type == "Gold"){
+            $data['Patient'] = $this->helper->getUsersBySubscription('Gold');
+        } 
+        if($type == "Titanium"){
+            $data['Patient'] = $this->helper->getUsersBySubscription('Titanium');
+        } 
+        if($type == "Diamond"){
+            $data['Patient'] = $this->helper->getUsersBySubscription('Diamond');
+        } 
+
+        $data['Type'] = $type;
+
+        $URI= '/'.$role.'/subscribers';
+
+       return view($URI)->with($data);
+    }
+
+    public function viewActiveUsers(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+
+        $data['Patient'] =  $this->helper->getUsersByStatus('Active');
+        //dd($data['Patient']);
+        $URI= '/'.$role.'/activeusers';
+
+       return view($URI)->with($data);
+    }
+
+    public function viewInActiveUsers(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+
+        $data['Patient'] =  $this->helper->getUsersByStatus('Active');
+        //dd($data['Patient']);
+        $URI= '/'.$role.'/inactiveusers';
+
+       return view($URI)->with($data);
+    }
+
+    public function viewOpenCases(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+
+        $data['Cases'] = $this->helper->getAllOpenCases();
+        //dd($data['Cases']);
+        $URI= '/'.$role.'/opencases';
+
+       return view($URI)->with($data);
+    }
+
+    
+    public function viewClosedCases(Request $request){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+
+        $data['Cases'] = $this->helper->getAllClosedCases();
+    
+        $URI= '/'.$role.'/closedcases';
+
+       return view($URI)->with($data);
+    }
+
 
     public function viewReadMessages(Request $request){
         $UserDetails = $_SESSION['UserDetails'];

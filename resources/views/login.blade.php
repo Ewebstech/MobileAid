@@ -61,6 +61,9 @@
 								<div class="card">
 									<div class="card-body">
 										<div class="card-title text-center text-dark">Login to your Account</div>
+										<?php if(isset($_REQUEST['cont'])){ ?>
+											<div class="alert alert-danger" style="font-size: 12px !important; text-align: center;"><i class="fa fa-sign-in"></i> Please Sign-in to Continue</div>
+										<?php } ?>
 										<div id="login-msg" style="font-size: 10px !important;"></div>
 										<div class="form-group">
 											<label class="form-label text-dark">Email Address / Phone Number</label>

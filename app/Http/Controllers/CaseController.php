@@ -25,6 +25,70 @@ class CaseController extends Controller
         $this->helper = new HelperController;
     }
 
+    private function handleCasesArray($arraylized){
+        $i = 0;
+        $caseInf = [];
+        foreach($arraylized as $caseInfo){
+           // $caseInfo = $casesInfo;
+            $caseInf[$i] = $caseInfo;
+            $caseInf[$i]['Content'] = $this->jsonToArray($caseInfo['content']);
+            $caseInf[$i]['Time'] = date('jS \of F Y, h:i a', strtotime($caseInf[$i]['created_at']));
+            // Get Doctor's Details
+            if($caseInf[$i]['doctor_id'] != null) {
+                $doctor = $this->getUserDetailsById($caseInf[$i]['doctor_id']);
+                if($caseInf[$i]['doctor_id'] = $doctor['ClientId']){
+                    $caseInf[$i]['doc_name'] = $doctor['firstname']. " ". $doctor['lastname'];
+                }
+            } else {
+                $caseInf[$i]['doc_name'] = "Yet to Assign";
+            }
+            $i++;
+        }
+        return $caseInf;
+    }
+
+    public function getOpenCasesByClientId($client_id){
+        $caseQuery = new ClientCases;
+        $cases = $caseQuery->getUserOpenCases($client_id);
+        $arraylized = $this->arraylize($cases);
+        $caseInfo = $this->handleCasesArray($arraylized);
+
+        return $caseInfo;
+    }
+
+    public function getClosedCasesByClientId($client_id){
+        $caseQuery = new ClientCases;
+        $cases = $caseQuery->getUserClosedCases($client_id);  
+        return $this->arraylize($cases);
+    }
+
+    public function getAllOpenCases(){
+        $caseQuery = new ClientCases;
+        $cases = $caseQuery->getAllOpenCases();  
+        $arraylized = $this->arraylize($cases);
+        $caseInfo = $this->handleCasesArray($arraylized);
+        
+        return $caseInfo;
+    }
+
+    public function getAllClosedCases(){
+        $caseQuery = new ClientCases;
+        $cases = $caseQuery->getAllClosedCases();  
+        $arraylized = $this->arraylize($cases);
+        $caseInfo = $this->handleCasesArray($arraylized);
+        
+        return $caseInfo;
+    }
+
+    public function getUserCaseDetails($client_id){
+        $caseQuery = new ClientCases;
+        $cases = $caseQuery->getUserCases($client_id);  
+        $arraylized = $this->arraylize($cases);
+        $caseInfo = $this->handleCasesArray($arraylized);
+        
+        return $caseInfo;
+    }
+
     /**
      * This Method handles client to doctor call logistics immediately the button to call is clicked by the patient.
      * It debits calls and creates a case id for a new session with doctor. 
@@ -56,7 +120,7 @@ class CaseController extends Controller
                         $calls_available = (int) $subscriptionData['calls'];
                         $subscription_status = $subscriptionData['status'];
                         if($calls_available > 0 and $subscription_status == "Active"){
-                            // Subtract and update information
+                            // Subtract anphonenumberd update information
                             $call_balance = $calls_available - 1;
                             // Set Status
                             if($call_balance == 0){
@@ -88,7 +152,7 @@ class CaseController extends Controller
                                 $caseparam['client_email'] = $userDataContent['email'];
                                 $caseparam['client_phonenumber'] = $userDataContent['phonenumber'];
                                 $caseparam['client_package'] = $userDataContent['package'];
-                                $caseparam['case_status'] = "initiated";
+                                $caseparam['case_status'] = "open";
                                 $caseparam['sub_status'] = $userDataContent['status'];
                                 
                                 $caseQuery = new ClientCases();

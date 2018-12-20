@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CaseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\TransactionController;
@@ -13,6 +14,40 @@ use App\Http\Controllers\MailController as MailController;
 
 class HelperController extends Controller
 {
+    public function getUsersByStatus($status){
+        $sub = new SubscriptionController;
+        return $sub->getUsersByStatus($status);
+    }
+
+    public function getUsersBySubscription($package){
+        $sub = new SubscriptionController;
+        return $sub->getUsersBySubscription($package);
+    }
+
+    public function getOpenCasesByClientId($client_id){
+        $case = new CaseController;
+        return $case->getOpenCasesByClientId($client_id);
+    }
+
+    public function getClosedCasesByClientId($client_id){
+        $case = new CaseController;
+        return $case->getClosedCasesByClientId($client_id);
+    }
+
+    public function getAllOpenCases(){
+        $case = new CaseController;
+        return $case->getAllOpenCases();
+    }
+
+    public function getAllClosedCases(){
+        $case = new CaseController;
+        return $case->getAllClosedCases();
+    }
+
+    public function getUserCaseDetails($client_id){
+        $case = new CaseController;
+        return $case->getUserCaseDetails($client_id);
+    }
 
     public function setSession($userDetails){
         $sess = new AuthController;

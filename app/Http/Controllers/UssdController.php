@@ -46,7 +46,6 @@ class UssdController extends Controller
             $clientID = strtoupper($this->generateClientId());
             $params['password'] = $this->generateDefaultStaticPassword(6);
            
-
             // Create Dummy Email Address
             $params['client_id'] = $clientID;
             $params['avatar'] = $avatar_img;
@@ -60,8 +59,8 @@ class UssdController extends Controller
                 'lastname' => ucfirst(strtolower($params['lastname'])),
                 'email' => $params['email'],
                 'phonenumber' => $params['phonenumber'],
-                'password' => $params['password'],
-                'avatar' => $avatar_img,
+                'password' => hash::make($params['password']),
+                'avatar' => $params['avatar'],
                 'role' => $params['role'],
                 'remember_token' => str_random(rand(0,9)),
                 'content' => $content,
@@ -70,17 +69,17 @@ class UssdController extends Controller
 
             $saveUserData = User::create($user);
             
-
         } catch(\Exception $e) {
             //something went wrong during registration
             return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
-
         }
         
         if($saveUserData){
+            // Send SMS to User
+
             $msg = 'Hello '. $user['firstname']. ', Your Registration Was Successful!';
             $data = $user;
-            return $this->regSuccess($msg, $user, HttpStatusCodes::OK);
+            return $this->regSuccess($msg, $params, HttpStatusCodes::OK);
         }
         
     }

@@ -27,7 +27,7 @@ class AuthController extends Controller
     {
         if(!isset($_SESSION)) session_start();
         $this->middleware('jwt-auth', ['only' => [
-            'changeDefaultPassword', 'changeMainPassword', 'me'
+            'changeDefaultPassword', 'changeMainPassword', 'me'          
         ]]);
         $this->helper = new HelperController;
     }
@@ -35,8 +35,14 @@ class AuthController extends Controller
     public function loginPage(Request $request){
         if(!isset($_SESSION['UserDetails'])){
             return view('login');
-        } else{
-            return redirect()->route('Dashboard');
+        } else { 
+            if(isset($_SESSION['PreviousUrl'])){
+                $url = $_SESSION['PreviousUrl'];
+                unset($_SESSION['PreviousUrl']);
+                return redirect('/'.$url);
+            } else{
+                return redirect()->route('Dashboard');
+            }   
         }
     }
 
@@ -44,7 +50,7 @@ class AuthController extends Controller
        /**
      * Validate Users
      */
-    private function validateRegisterDoctorRequest(Request $request) {
+    private function validateRegisterDoctorRequest(Request $request) {       
 
         return Validator::make($request->all(), [
             //validation rules
@@ -74,9 +80,9 @@ class AuthController extends Controller
 
         $gender = $params['gender'];
 
-        if($gender == "male"){
+        if($gender == "Male"){
            $avatar_img = "/images/male_avatar.png";
-        } elseif($gender == "female") {
+        } elseif($gender == "Female") {
             $avatar_img = "/images/female_avatar.png";
         } else {
             $avatar_img = "/images/male_avatar.png";

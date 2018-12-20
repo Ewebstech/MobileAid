@@ -6,7 +6,7 @@
     <div class="content-area overflow-hidden">
 
         <div class="page-header" style="margin-bottom: -10px;">
-            <h4 class="page-title">Patient's Dashboard</h4>
+            <h4 class="page-title">Doctor's Dashboard</h4>
         </div>
         @if ($EditProfile == "set")
             <div class="row">
@@ -23,13 +23,12 @@
         <div class="row row-cards">
             <div class="col-sm-12 col-lg-12 col-xl-4">
                 <div class="row">
-                    <div class="col-sm-12 col-lg-12">
+                    <div class="col-sm-12 col-md-12">
                         <div class="card">
-                            <div class="card-body text-center">
-                                <div class=" wx">
-                                    <h1 class="">&#8358;0.00</h1>
-                                    <p class="text-muted mb-0 lead"><span class="text-green"><i class="fa fa-arrow-circle-o-up text-green"></i></span> Calling Balance</p>
-                                </div>
+                            <div class="card-body iconfont text-center">
+                                <h5 class="text-muted">Open Cases </h5>
+                                <h2 class="count">{{$OpenCasesNum}}</h2>
+                                <p><a href="{{route('openCases')}}"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                             </div>
                         </div>
                     </div>
@@ -38,7 +37,7 @@
                             <div class="card-body text-center">
                                 <div class=" wx">
                                     <h1 class="">&#8358;0.00</h1>
-                                    <p class="text-muted mb-0 lead"><span class="text-red"><i class="fa fa-arrow-circle-o-down text-red"></i></span> Total Used-up</p>
+                                    <p class="text-muted mb-0 lead"><span class="text-red"><i class="fa fa-smile-o text-green"></i></span> Total Earned</p>
                                 </div>
                             </div>
                         </div>
@@ -48,16 +47,12 @@
             </div>
             <div class="col-sm-12 col-lg-12 col-xl-8">
                 <div class="card">
-                    <div class="card-header">
-                        <h3 class="card-title">Medical Aid Stats</h3>
-                        <div class="card-options">
-                            <a href="#" class="card-options-collapse" data-toggle="card-collapse"><i class="fe fe-chevron-up"></i></a>
-                            <a href="#" class="card-options-remove" data-toggle="card-remove"><i class="fe fe-x"></i></a>
-                        </div>
-                    </div>
+                 
                     <div class="card-body">
                         <div class="chart-container">
-                            <div id="echart2" class="chart-tasks dropshadow"></div>
+                            <div class="p-3">
+                                <canvas id="myGPie" width="400" height="170" class=""></canvas>                            
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -66,3 +61,37 @@
 
     </div>
 @endsection
+@push('scripts')
+<script>
+var ctx = document.getElementById("myGPie").getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+        labels: ["Silver","Gold","Titanium","Diamond"],
+        datasets: [{
+            label: "Subscription Plans",
+            data: {{$SubChart}},
+            backgroundColor: [
+                'rgb(192,192,192)',
+                'rgb(212,175,55)',
+                '#6a696f',
+                'rgb(185, 242, 255)',
+            ],
+            borderColor: [
+               
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+</script>
+@endpush

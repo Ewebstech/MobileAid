@@ -35,6 +35,15 @@ class Controller extends BaseController
         return $ID;
     }
 
+    protected function arraylize($payload){
+        if(is_object($payload)){
+            $arraylized = $payload->toArray();
+        } else {
+            $arraylized = $payload;
+        }
+        return $arraylized;
+    }
+
     // protected function generateCaseId(){
     //     $generatedID = $this->generateDefaultStaticPassword(5);
     //     $Resource = new ClientCases;

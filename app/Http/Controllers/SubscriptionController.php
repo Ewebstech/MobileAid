@@ -83,6 +83,33 @@ class SubscriptionController extends Controller
         return ($userContent['package']) ? $userContent['package'] : "None";
     }
 
+    public function getUsersBySubscription($package){
+        $subQuery = new Subscriptions();
+        $subDetailsArray = $subQuery->getUsersByPackage($package);
+        $datalized = $this->arraylize($subDetailsArray);
+        $data = [];
+        $i = 0;
+        foreach($datalized as $dataloop){
+            $data[$i] = $dataloop;
+            $data[$i]['Content'] = $this->jsonToArray($dataloop['content']);
+            $i++;
+        }
+        return $data;
+    }   
+
+    public function getUsersByStatus($status){
+        $subQuery = new Subscriptions();
+        $subDetailsArray = $subQuery->getUsersByStatus($status);
+        $datalized = $this->arraylize($subDetailsArray);
+        $data = [];
+        $i = 0;
+        foreach($datalized as $dataloop){
+            $data[$i] = $dataloop;
+            $data[$i]['Content'] = $this->jsonToArray($dataloop['content']);
+            $i++;
+        }
+        return $data;;
+    }   
 
     public function selectSubscription(Request $request){
         $UserDetails = $_SESSION['UserDetails'];
@@ -99,7 +126,6 @@ class SubscriptionController extends Controller
 
     public function getPackages($local=false){
         $Packages = $this->definePackages();
-
         if($local){
             return $Packages;
         } else {
@@ -119,9 +145,7 @@ class SubscriptionController extends Controller
         } else {
             $subDetails = [];
         }
-
         return $subDetails;
-
     }
 
     public function getUserSubscriptionDataViaMobile($phone_number){

@@ -37,6 +37,16 @@ class Subscriptions
         return ($sub) ? $sub : false;
     }
 
+    public function getUsersByPackage($package){
+        $sub = $this->model->where('package',$package)->get();
+        return ($sub) ? $sub : false;
+    }
+
+    public function getUsersByStatus($status){
+        $sub = $this->model->where('status',$status)->get();
+        return ($sub) ? $sub : false;
+    }
+
     public function updateSubscription($params){
         $content = json_encode($params);
         $data = [

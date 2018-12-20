@@ -35,10 +35,30 @@ class ClientCases
         return ($case) ? $case : false;
     }
 
-    // public function getUserSubscriptionViaMobile($param){
-    //     $sub = $this->model->where('phonenumber',$param)->get();
-    //     return ($sub) ? $sub : false;
-    // }
+    public function getUserCases($param){
+        $sub = $this->model->where('client_id',$param)->get();
+        return ($sub) ? $sub : false;
+    }
+
+    public function getUserOpenCases($param){
+        $sub = $this->model->where('client_id',$param)->where('case_status', 'open')->get();
+        return ($sub) ? $sub : false;
+    }
+
+    public function getUserClosedCases($param){
+        $sub = $this->model->where('client_id',$param)->where('case_status', 'closed')->get();
+        return ($sub) ? $sub : false;
+    }
+
+    public function getAllOpenCases(){
+        $sub = $this->model->where('case_status', 'open')->get();
+        return ($sub) ? $sub : false;
+    }
+
+    public function getAllClosedCases(){
+        $sub = $this->model->where('case_status', 'closed')->get();
+        return ($sub) ? $sub : false;
+    }
 
     // public function updateSubscription($params){
     //     $content = json_encode($params);
