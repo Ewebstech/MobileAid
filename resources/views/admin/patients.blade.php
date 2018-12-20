@@ -44,7 +44,7 @@
                                         <td>{{$i}}</td>
                                         <td><img src="{{$patientdata['avatar']}}" style="height: 50px; width: 50px;"  alt="..." class="img-circle profile_img img-responsive"  /></td>
                                         <td>{{$patientdata['firstname']}} {{$patientdata['lastname']}}</td>
-                                        <td>{{$patientdata['email']}}</td>
+                                        <td>{{isset($patientdata['email']) ? $patientdata['email'] : "" }}</td>
                                         <td>{{$patientdata['phonenumber']}}</td>
                                         <td>{{$patientdata['gender']}}</td>
                                         <td>{{ isset($patientdata['package']) ? $patientdata['package'] : "--:--" }}</td>
