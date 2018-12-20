@@ -51,7 +51,7 @@ class PatientsController extends Controller
         $data['sessiondata'] = $UserDetails;
         $role = $UserDetails['role'];
         $data['Patient'] =  $this->helper->getAllUsersByRole("client");
-        //dd($data['Patient']);
+        dd($data['Patient']);
         $URI= '/'.$role.'/patients';
         return view($URI)->with($data);
     }
