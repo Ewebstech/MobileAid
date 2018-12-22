@@ -48,6 +48,9 @@ Route::post('/wtf/call_init', 'CaseController@initiateCall');
 
 //Doctors Routes
 Route::post('/wtf/editkyc_doc', 'UserController@saveUser')->name('saveUserDoc'); 
+Route::post('/wtf/caller_info', 'CaseController@getCallerInfo'); 
+Route::post('/wtf/call_completed', 'CaseController@completeCallLog');
+Route::post('/wtf/switch_status', 'DoctorController@switchStatus');
 
 //Subscription Routes
 Route::get('/wtf/getpackages', 'SubscriptionController@getPackages')->name('getPackages'); 

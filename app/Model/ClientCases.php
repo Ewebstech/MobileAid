@@ -30,6 +30,25 @@ class ClientCases
         return ($saveData) ? true : false;
     }
 
+
+    public function updateCase($params){
+        $user = [
+            'case_status' => $params['case_status'],
+            'doctor_id' => $params['doctor_id'],
+            'content' => json_encode($params),
+        ];
+        $update = $this->model->where('case_id', $params['case_id'])
+            ->where('client_email', $params['client_email'])
+            ->update($user);
+
+        return ($update) ? true : false;
+    }
+
+    public function getUserCasesByPhonenumber($param){
+        $sub = $this->model->where('client_phonenumber',$param)->where('case_status','open')->orderBy('created_at', 'DESC')->first();
+        return ($sub) ? $sub : false;
+    }
+
     public function getUserByClientId($id){
         $case = $this->model->where('client_id',$id)->get();
         return ($case) ? $case : false;
@@ -37,6 +56,11 @@ class ClientCases
 
     public function getUserCases($param){
         $sub = $this->model->where('client_id',$param)->get();
+        return ($sub) ? $sub : false;
+    }
+
+    public function getCaseById($param){
+        $sub = $this->model->where('case_id',$param)->first();
         return ($sub) ? $sub : false;
     }
 

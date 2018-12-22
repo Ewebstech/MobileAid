@@ -69,6 +69,20 @@ class RequestRules
             'client_id' => 'required',
             'phonenumber' => 'required',
 
+        ],
+        'CALLER_INFO' => [
+            'doctor_id' => 'required',
+            'client_phonenumber' => 'required',
+
+        ],
+        'COMPLETED_CALLS' => [
+            'doctor_id' => 'required',
+            'client_phonenumber' => 'required',
+            'case_id' => 'required'
+        ],
+        'STATUS_SWITCH' => [
+            'doctor_id' => 'required',
+            'new_status' => 'required'
         ]
         
     ];

@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Model\Users;
 use App\Subscription;
+use App\Model\Reports;
+use App\Model\ClientCases;
 use App\Utils\RequestRules;
 use App\Model\Subscriptions;
 use Illuminate\Http\Request;
 use App\Helpers\HttpStatusCodes;
 use Illuminate\Support\Facades\Hash;
+use App\Helpers\generateDefaultPassword;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
-use App\Model\ClientCases;
-use App\Helpers\generateDefaultPassword;
 
 class CaseController extends Controller
 {
@@ -35,7 +36,7 @@ class CaseController extends Controller
             $caseInf[$i]['Time'] = date('jS \of F Y, h:i a', strtotime($caseInf[$i]['created_at']));
             // Get Doctor's Details
             if($caseInf[$i]['doctor_id'] != null) {
-                $doctor = $this->getUserDetailsById($caseInf[$i]['doctor_id']);
+                $doctor = $this->helper->getUserDetailsById($caseInf[$i]['doctor_id']);
                 if($caseInf[$i]['doctor_id'] = $doctor['ClientId']){
                     $caseInf[$i]['doc_name'] = $doctor['firstname']. " ". $doctor['lastname'];
                 }
@@ -89,10 +90,125 @@ class CaseController extends Controller
         return $caseInfo;
     }
 
+
+    /**
+     * This endpoint gets caller's information from database
+    */
+
+    public function getCallerInfo(Request $request) {
+        $params = $request->all();
+        //validate incoming user input request
+        $validator =  Validator::make($request->all(), RequestRules::getRule('CALLER_INFO'));
+
+        if($validator->fails()) {
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+        }
+
+        $userDetails = User::where('phonenumber', $params['client_phonenumber'])->first(); // Check if Client Exists
+        $isvalid_clientId_role_doctor = User::where('client_id', $params['doctor_id'])->where('role','doctor')->first(); // Validate doctor's id
+        
+        if($userDetails){
+            if($isvalid_clientId_role_doctor){
+                try{
+                    $userData = $userDetails->toArray();
+                    $userDataContent = $this->jsonToArray($userData['content']);
+                    
+                    $caseQuery = new ClientCases();
+                    $caseData = $caseQuery->getUserCasesByPhonenumber($userData['phonenumber']);
+                    if(!$caseData){
+                        return $this->validationError('No consultancy case found for this client. Exit Process now!', HttpStatusCodes::BAD_REQUEST);
+                    } else {
+                        $caseDetails = $this->arraylize($caseData);
+                        if($caseDetails){
+                            $data = $caseDetails;
+                            $msg = "Data Retrieval Successful";
+                            return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                        } else {
+                            return $this->validationError('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
+                        }
+                    }
+        
+                } catch(\Exception $e) {
+                    //something went wrong
+                    return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+        
+                }
+            } else {
+                return $this->validationError('Doctor credential Invalid!', HttpStatusCodes::NOT_FOUND);
+            }
+        
+        } else {
+            return $this->validationError('No client exists with this phonenumber! ', HttpStatusCodes::NOT_FOUND);
+        }
+    }
+
+     /**
+     * This endpoint gets gets details of completed call between doctors and clients
+    */
+
+    public function completeCallLog(Request $request) {
+        $params = $request->all();
+        //validate incoming user input request
+        $validator =  Validator::make($request->all(), RequestRules::getRule('COMPLETED_CALLS'));
+
+        if($validator->fails()) {
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+        }
+
+        $userDetails = User::where('phonenumber', $params['client_phonenumber'])->first(); // Check if Client Exists
+        $isvalid_clientId_role_doctor = User::where('client_id', $params['doctor_id'])->where('role','doctor')->first(); // Validate doctor's id
+        
+        if($userDetails){
+            if($isvalid_clientId_role_doctor){
+                try{
+                    $userData = $userDetails->toArray();
+                    $userDataContent = $this->jsonToArray($userData['content']);
+                    
+                    $caseQuery = new ClientCases();
+                    $caseData = $caseQuery->getCaseById($params['case_id']);
+                    if(!$caseData){
+                        return $this->validationError('Case ID Invalid!', HttpStatusCodes::NOT_FOUND);
+                    } else {
+                        $caseDetails = $this->arraylize($caseData);
+                        $caseDetails['call_info'] = $params;
+                        
+                        $caseDetails['case_status'] = "closed"; // Case can now be closed at this point
+                        $caseDetails['doctor_id'] = $params['doctor_id'];
+
+                        $reportQuery = new Reports;
+                        $saveData = $reportQuery->saveCallInfo($caseDetails);
+
+                        // Update Case status to closed
+                        $updateThisCase = $caseQuery->updateCase($caseDetails);
+
+                        if($saveData and $updateThisCase){
+                            $data = null;
+                            $msg = "Data Saved Successfully";
+                            return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                        } else {
+                            return $this->validationError('Could not save call data', HttpStatusCodes::UNPROCESSABLE_ENTITY);
+                        }
+                    }
+        
+                } catch(\Exception $e) {
+                    //something went wrong
+                    return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+        
+                }
+            } else {
+                return $this->validationError('Doctor credential Invalid!', HttpStatusCodes::NOT_FOUND);
+            }
+        
+        } else {
+            return $this->validationError('No client exists with this phonenumber! ', HttpStatusCodes::NOT_FOUND);
+        }
+    }
+
     /**
      * This Method handles client to doctor call logistics immediately the button to call is clicked by the patient.
      * It debits calls and creates a case id for a new session with doctor. 
-     */
+    */
+
     public function initiateCall(Request $request) {
         $params = $request->all();
         //validate incoming user input request
@@ -185,6 +301,8 @@ class CaseController extends Controller
         }
         
     }
+
+
 
 
 

@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Doctor;
+use App\Model\Users;
+use App\Model\Doctors;
+use App\Utils\RequestRules;
 use Illuminate\Http\Request;
+use App\Helpers\HttpStatusCodes;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
 
 class DoctorController extends Controller
@@ -12,12 +19,73 @@ class DoctorController extends Controller
     public function __construct()
     {
         if(!isset($_SESSION)) session_start();
-        $this->middleware('redirectauth');
+        $this->middleware('redirectauth', [ 'except' => 'switchStatus']);
         $this->helper = new HelperController;
     }
 
-    public function index(Request $request){
-       
+    public function switchStatus(Request $request){
+        $params = $request->all();
+     
+        $validator =  Validator::make($request->all(), RequestRules::getRule('STATUS_SWITCH'));
+
+        if($validator->fails()) {
+            //if validation error return error messages
+            if(isset($formparams['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
+        }
+        
+        $is_valid_clientId_role_doctor = User::where('client_id', $params['doctor_id'])->where('role','doctor')->first(); // Validate doctor's id
+
+        if($is_valid_clientId_role_doctor) {
+            $userDetails = $this->arraylize($is_valid_clientId_role_doctor);
+            $userDataContent = $this->jsonToArray($userDetails['content']);
+            $userDataContent['status'] = $params['new_status'];
+            $userDataContent['client_id'] = $params['doctor_id'];
+            $userDataContent['user'] = $userDetails['email'];
+            // set some unavailable variables
+            $params['doc_email'] = $userDetails['email'];
+     
+            $check_for_doc = Doctor::where('doctor_id',$params['doctor_id'])->first();
+            if(!$check_for_doc){
+                $sQ = new Doctors;
+                $saveStatusData = $sQ->addStatus($params);
+            } else{
+                // Update Doctor Status
+                $sQ = new Doctors;
+                $saveStatusData = $sQ->updateStatus($params);
+            }
+            
+            // Update Users Table with Subscription Details
+            $userQuery = new Users;
+            $userUpdate = $userQuery->updateUserContent($userDataContent);
+
+            if($saveStatusData and $userUpdate){
+                if(isset($params['view'])){
+                    $status = "success";
+                    $data = "You are now". ucfirst($params['new_status']);
+                    return $this->returnOutput($status,$data);
+                   
+                } else {
+                    $msg = "Status Switch Successful";
+                    $data = $params;
+                    return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                }
+            }
+
+        } else {
+             //if validation error return error messages
+             if(isset($params['view'])){
+                $errorResponse = $this->validationError('Authentication Handshake Failed!');
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError('Authentication Handshake Failed!', HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
+        }
+
     }
 
     public function viewDoctors(Request $request){
