@@ -129,7 +129,7 @@
                 <div class="card-body">
               
                     <div class="clearfix"></div>
-                    <p class="fb-user-status">{{ isset($UserDetails['Kyc']['medical_condition_details']) ? $UserDetails['Kyc']['medical_condition_details'] : "--:--"}}</p>
+                    <p class="fb-user-status">{!! isset($UserDetails['Kyc']['medical_condition_details']) ? $UserDetails['Kyc']['medical_condition_details'] : "--:--"!!}</p>
                 </div>
             </div>
 
@@ -143,7 +143,7 @@
                 </div>
                 <div class="card-body">
                     <div class="clearfix"></div>
-                    <p class="fb-user-status">{{ isset($UserDetails['Kyc']['treatment_status']) ? $UserDetails['Kyc']['treatment_status'] : "--:--"}}</p>
+                    <p class="fb-user-status">{!! isset($UserDetails['Kyc']['treatment_status']) ? $UserDetails['Kyc']['treatment_status'] : "--:--"!!}</p>
                 </div>
             </div>
 
@@ -157,7 +157,7 @@
                     </div>
                     <div class="card-body">
                         <div class="clearfix"></div>
-                        <p class="fb-user-status">{{ isset($UserDetails['Kyc']['hmo_information']) ? $UserDetails['Kyc']['hmo_information'] : "--:--"}}</p>
+                        <p class="fb-user-status">{!! isset($UserDetails['Kyc']['hmo_information']) ? $UserDetails['Kyc']['hmo_information'] : "--:--"!!}</p>
                     </div>
                 </div>
       

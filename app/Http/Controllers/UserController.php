@@ -349,7 +349,7 @@ class UserController extends Controller
     
     public function saveUser(Request $request) {
         $params = $request->all();
-        //dd($params);
+        
         //validate requests
         if($params["role"] == "client"){
             $validator =  Validator::make($request->all(), RequestRules::getRule('PATIENT_KYC'));
@@ -381,6 +381,7 @@ class UserController extends Controller
             $params['avatar'] = isset($Content['avatar']) ? $Content['avatar'] : '/images/male_avatar.png';
             $params['content'] = json_encode($Content);
             //creates a new user in database
+            dd($Content);
             $userQuery = new Users();
             $updateUser = $userQuery->updateUserDetails($params);
 

@@ -398,6 +398,7 @@
 
 
                     </div>
+                    <br>
                     <div id="user-msg"></div>
                     <div class="card-footer text-center">
                         <button type="submit" class="btn btn-info"><i class="fa fa-save"></i> <b>Update Profile</b></button>
@@ -422,7 +423,6 @@
         submit_form('profile-form', "{{ route('editProfile') }}", 'profile-msg', true);
     });
 
-    
     $('#imgUpload').on('change', function(){
     inputImagePreview(this, 'profile-image');
     //AutoRefresh(400);

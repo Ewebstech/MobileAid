@@ -110,7 +110,7 @@
                     <div class="card-body">
                   
                         <div class="clearfix"></div>
-                        <p class="fb-user-status">{{ isset($UserDetails['medprofile']) ? $UserDetails['medprofile'] : "--:--"}}</p>
+                        <p class="fb-user-status preformatted">{!! isset($UserDetails['Kyc']['medprofile']) ? $UserDetails['Kyc']['medprofile'] : "--:--" !!}</p>
                     </div>
             </div>
 
