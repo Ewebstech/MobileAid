@@ -324,7 +324,7 @@ class UserController extends Controller
         $params = $request->all();
         //dd($params);
         //validate requests
-        if($params["role"] == "patient"){
+        if($params["role"] == "client"){
             $validator =  Validator::make($request->all(), RequestRules::getRule('PATIENT_KYC'));
     
         } else {
@@ -351,7 +351,7 @@ class UserController extends Controller
      
         try{
             $params['hashed_password'] = null;
-            $params['avatar'] = $Content['avatar'];
+            $params['avatar'] = isset($Content['avatar']) ? $Content['avatar'] : '/images/male_avatar.png';
             $params['content'] = json_encode($Content);
             //creates a new user in database
             $userQuery = new Users();
