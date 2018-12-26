@@ -100,21 +100,22 @@ class UserController extends Controller
             $retrievedDataContent = $userDetails_1->toArray()['content'];
             
             $Content = $this->jsonToArray($retrievedDataContent);
-     
+            
+            $params['avatar'] = isset($Content['avatar']) ? $Content['avatar'] : '/images/male_avatar.png';
+            //dd($params['avatar']);
         try{
-            //dd($request->file('image_name'));
+           
             if(isset($params['view']) and is_object($request->file('image_name'))){
                 /**
                  * Upload and Change Profile Picture
                  */
-                //dd($request->file('image_name'));
+              
                 $folder = "profile/".$params['phonenumber'];
                 $imageUpload = UploadController::store($request,$folder);
                 $params["avatar"] = $imageUpload['imageurl'];
-                //dd($imageUpload);
+              
             }
-            //($Content);
-            //dd($params['avatar'])
+   
             $Content['firstname'] = isset($params["firstname"]) ? $params["firstname"] : $Content["firstname"];
             $Content['email'] = $params['email'];
             $Content['lastname'] = isset($params["lastname"]) ? $params["lastname"] : $Content["lastname"];

@@ -6,7 +6,7 @@
     <div class="content-area overflow-hidden">
 
         <div class="page-header" style="margin-bottom: -10px;">
-            <h4 class="page-title">Patient's Dashboard</h4>
+            <h4 class="page-title">Client's Dashboard</h4>
         </div>
         @if ($EditProfile != "set")
             <div class="row">
