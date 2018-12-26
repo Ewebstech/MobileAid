@@ -20,15 +20,42 @@ class UserController extends Controller
     {
         if(!isset($_SESSION)) session_start();
             $this->middleware('redirectauth', ['except' => [
-                'saveUser','editProfile', 'getRefreshedDetails'
+                'saveUser','editProfile', 'getRefreshedDetails', 'search2MA'
             ]]);
-            // $this->middleware('jwt-auth', ['only' => [
-            //     'editProfile'
-            // ]]);
         
         $this->helper = new HelperController;
     }
 
+    public function search2MA(Request $request){
+        $params = $request->all();
+        //dd($params);
+        $validator =  Validator::make($request->all(), RequestRules::getRule('SEARCH_2MA'));
+    
+        if($validator->fails()) {
+            //if validation error return error messages
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
+        }
+
+        $userDetails_1 = User::where('phonenumber', $params['phonenumber'])->first();
+       
+        if($userDetails_1){
+        try{
+            $msg = "User Exists";
+            $data = $userDetails_1;
+            return $this->regSuccess($msg, $data, HttpStatusCodes::OK);
+        } catch(\Exception $e) {
+        //something went wrong during registration
+            return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+        }
+        } else {
+            return $this->validationError('This phonenumber is not on the 2MA platform', HttpStatusCodes::NOT_FOUND);
+        }
+    }
 
     public function getRefreshedDetails(Request $request){
         $params = $request->all();
@@ -59,7 +86,6 @@ class UserController extends Controller
                     $status = "failure";
                     $data = "Error on Update. Please Try again!";
                     return $this->returnOutput($status,$data);
-                    
                 }
             } else {
                 $msg = "Data Retrieval Successful";

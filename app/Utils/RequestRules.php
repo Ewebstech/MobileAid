@@ -83,6 +83,9 @@ class RequestRules
         'STATUS_SWITCH' => [
             'doctor_id' => 'required',
             'new_status' => 'required'
+        ],
+        'SEARCH_2MA' => [
+            'phonenumber' => 'required'
         ]
         
     ];

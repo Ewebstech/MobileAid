@@ -45,7 +45,8 @@ Route::get('wtf/me', 'AuthController@me');
 Route::post('/wtf/editkyc', 'UserController@saveUser')->name('saveUser'); 
 Route::post('/wtf/editprofile', 'UserController@editProfile')->name('editProfile'); 
 Route::post('/wtf/call_init', 'CaseController@initiateCall'); 
-
+Route::post('/wtf/search2ma', 'UserController@search2MA');
+Route::post('/wtf/terminate_call', 'CaseController@terminatedCallHandle');
 //Doctors Routes
 Route::post('/wtf/editkyc_doc', 'UserController@saveUser')->name('saveUserDoc'); 
 Route::post('/wtf/caller_info', 'CaseController@getCallerInfo'); 

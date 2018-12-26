@@ -66,7 +66,7 @@
                             <div class="form-group">
                                 <label class="form-label">Gender</label>
                                 <select class="form-control" name="gender" required>
-                                    {{ isset($UserDetails['gender']) ? "<option value=\"Male\" selected>Male</option>" : "" }}
+                                    {{ isset($UserDetails['gender']) ? "<option value=\"$UserDetails[gender]\" >$UserDetails[gender]</option>" : "" }}
                                     <option value="Male">Male</option>
                                     <option value="Female">Female</option>
                                 </select>

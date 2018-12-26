@@ -91,6 +91,48 @@ class CaseController extends Controller
     }
 
 
+    public function terminatedCallHandle(Request $request){
+        $params = $request->all();
+        //dd($params);
+        $validator =  Validator::make($request->all(), RequestRules::getRule('SEARCH_2MA'));
+    
+        if($validator->fails()) {
+            //if validation error return error messages
+            if(isset($params['view'])){
+                $errorResponse = $this->validationError($validator->getMessageBag()->all());
+                return $this->displayValidationError($errorResponse);
+            } else {
+                return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+            }
+        }
+
+        $userDetails_1 = User::where('phonenumber', $params['phonenumber'])->first();
+       
+        if($userDetails_1){
+        try{
+            $msg = "Terminated Call Data Sent";
+            $data = $this->arraylize($userDetails_1);
+            // Send Email to User
+             // Send Email to User
+             $mailParams = [
+                'Name' => $data['firstname']. ' '. $data['lastname'],
+                'Email' => $data['email'],
+                'Subject' => ucfirst($data['firstname']). ', was your call was Terminated?',
+                'template' => 'default',
+                'Body' => 'Hello, '. $data['firstname']. ' '. $data['lastname']. ', we noticed that your call couldn\'t go through to the doctor, this might be caused by your in-active subscription status. Please kindly renew your subscription to gain access to 2MA mobile medical services. Thank you. ',
+            ];
+            
+            $sendMail = $this->helper->sendMail($mailParams);
+
+            return $this->success($msg, HttpStatusCodes::OK);
+        } catch(\Exception $e) {
+            return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+        }
+        } else {
+            return $this->validationError('This phonenumber is not on the 2MA platform', HttpStatusCodes::NOT_FOUND);
+        }
+    }
+
     /**
      * This endpoint gets caller's information from database
     */
