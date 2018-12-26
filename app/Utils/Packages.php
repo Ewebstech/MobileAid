@@ -21,13 +21,13 @@ class Packages
         'TITANIUM' => [
             "Title" => "Titanium",
             "Price" => "25000",
-            "MaxCalls" => "3",
+            "LocalMaxCalls" => "3",
             "IntMaxCalls" => "2"
         ],
         'DIAMOND' =>[
             "Title" => "Diamond",
             "Price" => "65000",
-            "MaxCalls" => "5",
+            "LocalMaxCalls" => "5",
             "IntMaxCalls" => "3"
         ]
                 

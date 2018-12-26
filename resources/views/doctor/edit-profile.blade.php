@@ -31,32 +31,50 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="profile-form" enctype="multipart/form-data" >
                             <div class="row mb-2">
                                 <div class="col-auto">
-                                    <img class="avatar brround avatar-xl" src="{{$UserDetails['avatar']}}" alt="Avatar-img">
+                                    <div class="fileUpload">
+                                        <label for="imgUpload">
+                                                <i style="text-align: center; margin-top: 38px; color: #fff; background: #000; padding: 5px; border-radius: 20px; margin-left: 20px; z-index: 0; position: absolute; opacity: 0.8" class="fa fa-camera "></i>
+                                        </label>
+                                        
+                                        <input type="file" id="imgUpload" name="image_name" style="display: none;" />
+                                    </div>
+                                    <label for="">
+                                        <img id="profile-image" class="avatar brround avatar-xl" src="{{$UserDetails['avatar']}}" alt="Avatar-img">
+                                    </label>
                                 </div>
                                 <div class="col">
                                     <h3 class="mb-1 ">{{$UserDetails['firstname']}} {{$UserDetails['lastname']}}</h3>
                                     <p class="mb-4 label label-danger">{{$UserDetails['role']}}</p>
                                 </div>
                             </div>
-                           
+                            
                             <div class="form-group">
                                 <label class="form-label">Email-Address</label>
-                            <input class="form-control" value="{{$UserDetails['email']}}" disabled/>
+                            <input class="form-control" name="email" value="{{$UserDetails['email']}}" required/>
                             </div>
                             <div class="form-group">
                                     <label class="form-label">Phone Number</label>
-                                <input class="form-control" value="{{$UserDetails['phonenumber']}}" disabled/>
+                                <input class="form-control" name="phonenumber" value="{{$UserDetails['phonenumber']}}" readonly/>
                                 </div>
                             <div class="form-group">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control" value="password" disabled/>
+                                <input type="password" name="password" placeholder="**********" class="form-control"/>
                             </div>
-                        
+                            <div class="form-group">
+                                <label class="form-label">Gender</label>
+                                <select class="form-control" name="gender" required>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
+                                </select>
+                            </div>
+                            <input type="hidden" name="role" value="{{$UserDetails['role']}}" />
+                            <input type="hidden" name="view" value="1" />
+                            <div id="profile-msg"></div>
                             <div class="form-footer">
-                                <button class="btn btn-primary btn-block" disabled>Update Login Information</button>
+                                <button type="submit" class="btn btn-danger btn-block" ><i class="fa fa-edit"></i> Update Login Information</button>
                             </div>
                         </form>
                     </div>
@@ -391,12 +409,25 @@
 
 @endsection
 
-@section('scripts')
+@push('scripts')
 <script>
     $("#user-form").submit(function (e) {
         e.preventDefault();
         submit_form('user-form', "{{ route('saveUser') }}", 'user-msg', true);
     });
+
+     $("#profile-form").submit(function (e) {
+        e.preventDefault();
+        submit_form('profile-form', "{{ route('editProfile') }}", 'profile-msg', true);
+    });
+
+    
+    $('#imgUpload').on('change', function(){
+    inputImagePreview(this, 'profile-image');
+    //AutoRefresh(400);
+    toastr["success"]("You just changed your profile picture. Click Update Login Information to save to your profile");  
+    });
+
 </script>
 
-@endsection
+@endpush
