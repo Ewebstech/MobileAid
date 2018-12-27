@@ -392,7 +392,7 @@
                             <div class="col-md-12">
                                 <div class="form-group mb-0">
                                     
-                                    <textarea rows="5" class="form-control" name="medprofile" placeholder="Please provide Information on your medical professional profile">{{array_get($UserDetails,'Kyc.medprofile')}}</textarea>
+                                    <textarea rows="5" class="form-control" name="medprofile" id="medprofile" placeholder="Please provide Information on your medical professional profile">{{array_get($UserDetails,'Kyc.medprofile')}}</textarea>
                                 </div>
                             </div>
 
@@ -413,9 +413,12 @@
 
 @push('scripts')
 <script>
+    CKEDITOR.replace('medprofile');
+    
     $("#user-form").submit(function (e) {
         e.preventDefault();
-        submit_form('user-form', "{{ route('saveUser') }}", 'user-msg', true);
+        var data = [CKEDITOR.instances.medprofile.getData()];
+        submit_form('user-form', "{{ route('saveUser') }}", 'user-msg', true, false, data);
     });
 
      $("#profile-form").submit(function (e) {
@@ -429,6 +432,8 @@
     toastr["success"]("You just changed your profile picture. Click Update Login Information to save to your profile");  
     });
 
+    
+    
 </script>
 
 @endpush

@@ -374,6 +374,11 @@ class UserController extends Controller
 
             $retrievedDataContent = $userDetails_1->toArray()['content'];
             $Content = $this->jsonToArray($retrievedDataContent);
+            // -- CKEDITOR FIELDS -- //
+
+            $params['medprofile'] = $params['xdata'][0];
+
+            // -- CKEDITOR FIELDS -- //
             $Content['Kyc'] = $params;
      
         try{
@@ -381,7 +386,7 @@ class UserController extends Controller
             $params['avatar'] = isset($Content['avatar']) ? $Content['avatar'] : '/images/male_avatar.png';
             $params['content'] = json_encode($Content);
             //creates a new user in database
-            dd($Content);
+            //dd($Content);
             $userQuery = new Users();
             $updateUser = $userQuery->updateUserDetails($params);
 

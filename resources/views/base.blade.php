@@ -49,19 +49,9 @@
 		<link href="assets/plugins/datatable/jquery.dataTables.min.css" rel="stylesheet" />
 
 		<link rel="stylesheet" href="/css/toastr.min.css" />
-		<style>
-			.preformatted {
-				font-family: monospace;
-				white-space: pre;
-			} 
-			
-		</style>
-		<script src="http://js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
-		<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
-			{{-- <!-- Main Quill library -->
-	<script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
-	<script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script> --}}
+		<script src="/ckeditor/ckeditor.js"></script>
+
 		@yield('style')
 
 	
