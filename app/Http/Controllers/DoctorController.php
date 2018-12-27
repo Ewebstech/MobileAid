@@ -60,7 +60,7 @@ class DoctorController extends Controller
             }
             
             // Update Users Table with Subscription Details
-            $userQuery = new Users;
+            $userQuery = new Users; profile.
             $userUpdate = $userQuery->updateUserContent($userDataContent);
 
             if($saveStatusData and $userUpdate){

@@ -56,11 +56,8 @@ class SubscriptionController extends Controller
         return $packagePrice;
     }
 
-    public function getCalls(){
-        $UserDetails = $_SESSION['UserDetails'];
-        $data['sessiondata'] = $UserDetails;
-        $role = $UserDetails['role'];
-        $userId = $UserDetails['client_id'];
+    public function getCalls($client_id){
+        $userId = $client_id;
         $userContent = $this->helper->getUserDetailsById($userId);
         return (!is_null($userContent['calls'])) ? $userContent['calls'] : 0;
     }

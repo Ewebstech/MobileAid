@@ -24,37 +24,15 @@
                 <a href="/view-user" class=" wave-effect accordion-toggle "><i class="fa fa-eye mr-2 sidebarpink"></i> View Profile</a>
             </li>
             <li>
-                <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i>Update Profile</a>
+                <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i> Update Profile</a>
             </li>
 
-            <li class="border-0"><h3>Payment Methods</h3><li>
+            <li class="border-0"><h3>Cases &amp; Reports</h3><li>
             <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-money mr-2 sidebarpink"></i> Add Debit/Credit Card</a>
+                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-files-o mr-2 sidebarpink"></i> My Cases</a>
             </li>
             <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-file mr-2 sidebarpink"></i>Transaction History</a>
-            </li>
-
-            <li><h3>Subscription</h3><li>
-
-            <li>
-                <a href="#Submenu9" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-                    <i class="fa fa-futbol-o mr-2 sidebarred"></i> My Subscription
-                </a>
-                <ul class="collapse list-unstyled" id="Submenu9" data-parent="#accordion">
-                    <li>
-                        <a href="#">Choose Subscription Plan</a>
-                    </li>
-                    <li>
-                        <a href="#">Subscription History</a>
-                    </li>
-                </ul>
-            </li>
-
-            <li><h3>Medical Need</h3><li>
-
-            <li>
-                <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Schedule Appointments</a>
+                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-file mr-2 sidebarpink"></i> My Reports</a>
             </li>
 
             <li><h3>More</h3><li>

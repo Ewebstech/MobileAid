@@ -8,7 +8,7 @@
         <div class="page-header" style="margin-bottom: -10px;">
             <h4 class="page-title">Doctor's Dashboard</h4>
         </div>
-        @if ($EditProfile == "set")
+        @if ($EditProfile != "set")
             <div class="row">
                 <div class="col-lg-12">
                     <div class="alert alert-warning d-none d-lg-block" role="alert">
@@ -26,7 +26,7 @@
                     <div class="col-sm-12 col-md-12">
                         <div class="card">
                             <div class="card-body iconfont text-center">
-                                <h5 class="text-muted">Open Cases </h5>
+                                <h5 class="text-muted">Handled Cases </h5>
                                 <h2 class="count">{{$OpenCasesNum}}</h2>
                                 <p><a href="{{route('openCases')}}"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                             </div>

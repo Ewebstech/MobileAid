@@ -74,9 +74,9 @@ class HelperController extends Controller
         $sub = new SubscriptionController;
         return $sub->getpackageDetails($package_name);
     }
-    public function getCalls(){
+    public function getCalls($client_id){
         $sub = new SubscriptionController;
-        return $sub->getCalls();
+        return $sub->getCalls($client_id);
     }
 
     public function sendMail($params){

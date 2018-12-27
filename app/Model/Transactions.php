@@ -38,6 +38,27 @@ class Transactions
         
     }
 
+    public function addTransactionUssd($params){
+        $content = json_encode($params);
+        $data = [
+            'client_id' => $params['client_id'],
+            'email' => $params['email'],
+            'status' => $params['status'],
+            'transref' => $params['reference'],
+            'package' => $params['package'],
+            'amount' => $params['amount']/100,
+            'currency' => $params['currency'],
+            'content' => $content,
+        ];
+        try{
+            $saveData = $this->model->create($data);
+            return ($saveData) ? true : false;
+        } catch (\Exception $e){
+            return $e->getMessage();      
+        }
+        
+    }
+
     public function getUserTransactions($client_id){
         $trans = $this->model->where('client_id',$client_id)->get();
         return ($trans) ? $trans : false;

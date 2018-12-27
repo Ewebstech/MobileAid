@@ -86,6 +86,13 @@ class RequestRules
         ],
         'SEARCH_2MA' => [
             'phonenumber' => 'required'
+        ],
+        'USSD_PAYMENT_VALIDATION' => [
+            'phonenumber' => 'required',
+            'status' => 'required',
+            'package' => 'required',
+            'amount' => 'required',
+            'reference' => 'required',
         ]
         
     ];

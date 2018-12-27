@@ -192,9 +192,14 @@ class PaystackController extends Controller
                 $usersSubData = $this->helper->getUserSubscriptionData($params['email']);
                 $subparams = $this->jsonToArray($usersSubData['content']);
                 // Current Call Number                                                                                        
-                $remaining_calls = $this->helper->getCalls();
-                $callable = $this->helper->getpackageDetails($subparams['package'])['LocalMaxCalls'];
-                $new_calls = (int) $remaining_calls + (int) $callable;
+                $remaining_calls = $this->helper->getCalls($params['client_id']);
+                if($params['status'] == "success"){
+                    $callable = $this->helper->getpackageDetails($subparams['package'])['LocalMaxCalls'];
+                    $new_calls = (int) $remaining_calls + (int) $callable;
+                } else {
+                    $new_calls = (int) $remaining_calls + 0;
+                }
+                
                 $subparams['calls'] = $new_calls;
                 $subparams['status'] = 'Active';
                 

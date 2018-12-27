@@ -11,6 +11,10 @@ class DashboardController extends Controller
        $this->middleware('redirectauth');
        $this->helper = new HelperController;
     }
+
+    /**
+     * This Method handles all dashboard views 
+     */
     public function index(Request $request){
        $UserDetails = $_SESSION['UserDetails'];
        $data['sessiondata'] = $UserDetails;
@@ -19,17 +23,16 @@ class DashboardController extends Controller
        $userContent = $this->jsonToArray($UserDetails['content']);
        // Check if user has updated their profiles
        if(isset($userContent['Kyc'])){
-           $data['EditProfile'] = "set";
-           
+            $data['EditProfile'] = "set";
        } else {
-        $data['EditProfile'] = "";
-      
+            $data['EditProfile'] = "";
        }
+
        $data['MsgCount'] = $this->getContactMessageCount();
        $data['PatientNum'] = $this->getPatientsNum();
        $data['DoctorNum'] = $this->getDoctorsNum();
        $data['regToday'] = $this->registrationsToday();
-       $data['OpenCasesNum'] = count($this->helper->getAllOpenCases());
+       $data['OpenCasesNum'] = count($this->helper->getAllOpenCases()); // Cases for Doctors
        $data['ClosedCasesNum'] = count($this->helper->getAllClosedCases());
        $data['SilverNum'] = $this->getUsersBySubscriptionCount('Silver');
        $data['GoldNum'] = $this->getUsersBySubscriptionCount('Gold');

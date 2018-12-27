@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Model\Users;
+use App\Subscription;
+use App\Model\Transactions;
+use App\Utils\RequestRules;
+use App\Model\Subscriptions;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Helpers\HttpStatusCodes;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\HelperController;
-use App\Utils\RequestRules;
-use App\User;
-use App\Subscription;
-use App\Model\Users;
 
 class UssdController extends Controller
 {
@@ -116,6 +118,119 @@ class UssdController extends Controller
         
         } else {
             return $this->validationError('Wrong Client ID or Phonenumber', HttpStatusCodes::BAD_REQUEST);
+        }
+        
+    }
+
+    public function ussd_GetUserName(Request $request) {
+        $params = $request->all();
+        //validate incoming user input request
+        $validator =  Validator::make($request->all(), RequestRules::getRule('SEARCH_2MA'));
+
+        if($validator->fails()) {
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+        }
+
+        $userDetails = User::where('phonenumber', $params['phonenumber'])->first();
+        //$has_Subscription = Subscription::where('phonenumber', $params['phonenumber'])->first();
+        
+        if($userDetails){
+                try{
+                    $subData = $this->arraylize($userDetails);
+                    //dd($subData);
+                    if($subData){
+                        $msg = 'User Data Retrieved';
+                        $data = $subData['firstname']. " ". $subData['lastname'];
+                        return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                    }
+        
+                } catch(\Exception $e) {
+                    //something went wrong during registration
+                    return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+        
+                }
+        
+        } else {
+            return $this->validationError('Wrong Client ID or Phonenumber', HttpStatusCodes::BAD_REQUEST);
+        }
+        
+    }
+
+    public function UssdPaymentValidation(Request $request) {
+        $params = $request->all();
+        //validate incoming user input request
+        $validator =  Validator::make($request->all(), RequestRules::getRule('USSD_PAYMENT_VALIDATION'));
+
+        if($validator->fails()) {
+            return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
+        }
+
+        $userDetails = User::where('phonenumber', $params['phonenumber'])->first();
+             
+        if($userDetails){
+                try{
+                    $subData = $this->arraylize($userDetails);
+                   
+                    if($subData){
+
+                        $params['client_id'] = $subData['client_id'];
+                        $params['email'] = $subData['email'];
+                        $params['currency'] = "NGN";
+                        $params['channel'] = "USSD";
+                        $params['amount'] = (int) $params['amount'] * 100;
+                        
+                       
+                        $Resource = new Transactions;
+                        $saveTrans = $Resource->addTransactionUssd($params);
+                        if(is_bool($saveTrans)){
+                            // Credit Customers
+                            
+                            $usersSubData = $this->helper->getUserSubscriptionData($params['email']);
+                            
+                            $subparams = $this->jsonToArray($usersSubData['content']);
+                           
+                            // Current Call Number                                                                                        
+                            $remaining_calls = $this->helper->getCalls($params['client_id']);
+                            //dd($subparams);
+                            if($params['status'] == "success"){
+                             
+                                $callable = $this->helper->getpackageDetails($subparams['package'])['LocalMaxCalls'];
+                                $new_calls = (int) $remaining_calls + (int) $callable;
+                            } else {
+                                $new_calls = (int) $remaining_calls + 0;
+                            }
+                           
+                            $subparams['calls'] = $new_calls;
+                            $subparams['status'] = 'Active';
+                            
+                            $subQuery = new Subscriptions();
+                            $subDetails = $subQuery->updateSubscription($subparams);
+                            
+                            if($subDetails){
+                                // Update Users Table with Subscription Details
+                                $userQuery = new Users;
+                                $userUpdate = $userQuery->updateUserContent($subparams);   
+                            }
+
+                            if($userUpdate){
+                                $msg = "Payment Validation Complete";
+                                $data = $params;
+                                return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                            } 
+                            
+                        } else {
+                            return $this->validationError('Transaction ID is Expired!', HttpStatusCodes::BAD_REQUEST);
+                        }
+                       
+                    }
+        
+                } catch(\Exception $e) {
+                    //something went wrong during registration
+                    return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
+                }
+        
+        } else {
+            return $this->validationError('Invalid Phonenumber', HttpStatusCodes::BAD_REQUEST);
         }
         
     }
