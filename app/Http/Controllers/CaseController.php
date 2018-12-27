@@ -158,7 +158,7 @@ class CaseController extends Controller
                     $caseQuery = new ClientCases();
                     $caseData = $caseQuery->getUserCasesByPhonenumber($userData['phonenumber']);
                     if(!$caseData){
-                        return $this->validationError('No consultancy case found for this client. Exit Process now!', HttpStatusCodes::BAD_REQUEST);
+                        return $this->error('No Consultancy Case was Found for this Client. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
                     } else {
                         $caseDetails = $this->arraylize($caseData);
                         if($caseDetails){
@@ -166,7 +166,7 @@ class CaseController extends Controller
                             $msg = "Data Retrieval Successful";
                             return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
                         } else {
-                            return $this->validationError('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
+                            return $this->error('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
                         }
                     }
         
@@ -176,11 +176,11 @@ class CaseController extends Controller
         
                 }
             } else {
-                return $this->validationError('Doctor credential Invalid!', HttpStatusCodes::NOT_FOUND);
+                return $this->error('Doctor Credential Invalid!', HttpStatusCodes::NOT_FOUND);
             }
         
         } else {
-            return $this->validationError('No client exists with this phonenumber! ', HttpStatusCodes::NOT_FOUND);
+            return $this->error('Caller is not a 2MA Client!', HttpStatusCodes::NOT_FOUND);
         }
     }
 
