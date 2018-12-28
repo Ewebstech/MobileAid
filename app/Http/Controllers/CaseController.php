@@ -48,7 +48,7 @@ class CaseController extends Controller
             $reportData = $reportQuery->getCaseReport($caseInf[$i]['case_id']);
             if($reportData){
                 $reportArray = $this->jsonToArray($this->arraylize($reportData->content));
-                $caseInf[$i]['report'] = $reportArray['report'];
+                $caseInf[$i]['report'] = isset($reportArray['report']) ? $reportArray['report'] : null;
             } else {
                 $caseInf[$i]['report'] = null;
             }
