@@ -234,7 +234,7 @@ class CaseController extends Controller
                                     $msg = "Data Retrieval Successful";
                                     return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
                                 } else {
-                                    return $this->error('Case not created. Call cannot proceed. Please Terminate.', HttpStatusCodes::BAD_REQUEST);
+                                    return $this->error('Case not created. Call cannot proceed. Please Terminate.', HttpStatusCodes::UNAUTHORIZED);
                                 }
                             } 
 
@@ -248,11 +248,21 @@ class CaseController extends Controller
                                 return $this->error('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
                             }
 
+                        } elseif($calls > 0 and $caseData){
+                            $caseDetails = $this->arraylize($caseData);
+                            if($caseDetails){
+                                $data = $caseDetails;
+                                $msg = "Data Retrieval Successful";
+                                return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                            } else {
+                                return $this->error('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
+                            }
+
                         } else {
-                            return $this->error('Client Subscription In-active. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
+                            return $this->error('Client Subscription In-active. Please Terminate Call.', HttpStatusCodes::UNPROCESSABLE_ENTITY);
                         }
                     } else {
-                        return $this->error('This client is new and has not subscribed. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
+                        return $this->error('This client is new and has not subscribed. Please Terminate Call.', HttpStatusCodes::FORBIDDEN);
                     }
                    
                     // if(!$caseData){
@@ -278,7 +288,7 @@ class CaseController extends Controller
             }
         
         } else {
-            return $this->error('Caller is not a 2MA Client!', HttpStatusCodes::BAD_REQUEST);
+            return $this->error('Caller is not a 2MA Client!', HttpStatusCodes::NOT_FOUND);
         }
     }
 
