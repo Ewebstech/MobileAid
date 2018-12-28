@@ -65,27 +65,27 @@ class ClientCases
     }
 
     public function getUserOpenCases($param){
-        $sub = $this->model->where('client_id',$param)->where('case_status', 'open')->get();
+        $sub = $this->model->where('client_id',$param)->where('case_status', 'open')->orderBy('created_at', 'DESC')->get();
         return ($sub) ? $sub : false;
     }
 
     public function getUserClosedCases($param){
-        $sub = $this->model->where('client_id',$param)->where('case_status', 'closed')->get();
+        $sub = $this->model->where('client_id',$param)->where('case_status', 'closed')->orderBy('created_at', 'DESC')->get();
         return ($sub) ? $sub : false;
     }
 
     public function getAllOpenCases(){
-        $sub = $this->model->where('case_status', 'open')->get();
+        $sub = $this->model->where('case_status', 'open')->orderBy('created_at', 'DESC')->get();
         return ($sub) ? $sub : false;
     }
 
     public function getAllClosedCases(){
-        $sub = $this->model->where('case_status', 'closed')->get();
+        $sub = $this->model->where('case_status', 'closed')->orderBy('created_at', 'DESC')->get();
         return ($sub) ? $sub : false;
     }
 
     public function getAllHandledCases($handler){
-        $sub = $this->model->where('case_status', 'closed')->where('doctor_id', $handler)->get();
+        $sub = $this->model->where('case_status', 'closed')->where('doctor_id', $handler)->orderBy('created_at', 'DESC')->get();
         return ($sub) ? $sub : false;
     }
 

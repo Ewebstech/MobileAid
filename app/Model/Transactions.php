@@ -60,7 +60,7 @@ class Transactions
     }
 
     public function getUserTransactions($client_id){
-        $trans = $this->model->where('client_id',$client_id)->get();
+        $trans = $this->model->where('client_id',$client_id)->orderBy('created_at', 'DESC')->get();
         return ($trans) ? $trans : false;
     }
 
