@@ -181,7 +181,7 @@ class CaseController extends Controller
                     $caseData = $caseQuery->getUserCasesByPhonenumber($userData['phonenumber']);
                     if(isset($userDataContent["calls"])){
                         $calls = (int) $userDataContent["calls"];
-                        if($calls > 0){
+                        if($calls > 0 and !$caseData){
 
                             $subscriptionData = $has_Subscription->toArray();
                             $subscriptionDataContent = $this->jsonToArray($subscriptionData['content']);
