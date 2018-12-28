@@ -65,13 +65,3 @@
     </div>
 @include('includes.modals')
 @endsection
-@section('scripts')
-<script>
-    // $("#user-form").click(function (e) {
-    //     e.preventDefault();
-    //     submit_form('user-form', "{{ route('saveUser') }}", 'user-msg', true);
-    // });
-
-</script>
-
-@endsection

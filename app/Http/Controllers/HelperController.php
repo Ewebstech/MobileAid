@@ -44,6 +44,11 @@ class HelperController extends Controller
         return $case->getAllClosedCases();
     }
 
+    public function getAllHandledCases($handler){
+        $case = new CaseController;
+        return $case->getAllHandledCases($handler);
+    }
+
     public function getUserCaseDetails($client_id){
         $case = new CaseController;
         return $case->getUserCaseDetails($client_id);

@@ -6,6 +6,8 @@ use App\User;
 use App\Doctor;
 use App\Model\Users;
 use App\Model\Doctors;
+use App\Model\Reports;
+use App\Model\ClientCases;
 use App\Utils\RequestRules;
 use Illuminate\Http\Request;
 use App\Helpers\HttpStatusCodes;
@@ -21,6 +23,47 @@ class DoctorController extends Controller
         if(!isset($_SESSION)) session_start();
         $this->middleware('redirectauth', [ 'except' => 'switchStatus']);
         $this->helper = new HelperController;
+    }
+
+    public function saveReport(Request $request){
+        $formparams = $request->all();
+    
+        $caseQuery = new ClientCases();
+        $caseData = $caseQuery->getCaseById($formparams['caseId']);
+        if($caseData){
+            $caseDetails = $this->arraylize($caseData);
+            $params = $caseDetails;
+            $params['report'] = $formparams['xdata'][0];
+            $params['case_id'] = $formparams['caseId'];
+
+            $reportQuery = new Reports;
+            $saveData = $reportQuery->saveReport($params);
+
+            if($saveData){
+                $status = "success";
+                $data = "Case Report Saved Successfully";
+                return $this->returnOutput($status,$data);
+            } else {
+                $status = "error";
+                $data = "Problem Saving Case Report";
+                return $this->returnOutput($status,$data);
+            }
+        }
+    }
+
+    public function viewHandledCases(){
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = $UserDetails['role'];
+        $client_id = $UserDetails['client_id'];
+
+        $caseInfo = $this->helper->getAllHandledCases($client_id);
+       
+        $data['Cases'] = $caseInfo;
+        //dd($data['Cases']);
+        $URI= '/'.$role.'/handledcases';
+        return view($URI)->with($data);
+        
     }
 
     public function switchStatus(Request $request){

@@ -26,9 +26,9 @@
                     <div class="col-sm-12 col-md-12">
                         <div class="card">
                             <div class="card-body iconfont text-center">
-                                <h5 class="text-muted">Handled Cases </h5>
-                                <h2 class="count">{{$OpenCasesNum}}</h2>
-                                <p><a href="{{route('openCases')}}"><i class="fa fa-location-arrow"></i> Click To View</a></p>
+                                <h5 class="text-muted">Cases </h5>
+                                <h2 class="count">{{$HandledCases}}</h2>
+                                <p><a href="{{route('handledCases')}}"><i class="fa fa-location-arrow"></i> Click To View</a></p>
                             </div>
                         </div>
                     </div>

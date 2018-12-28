@@ -43,8 +43,19 @@ class CaseController extends Controller
             } else {
                 $caseInf[$i]['doc_name'] = "Yet to Assign";
             }
+            // Get Report Using Case ID
+            $reportQuery = new Reports;
+            $reportData = $reportQuery->getCaseReport($caseInf[$i]['case_id']);
+            if($reportData){
+                $reportArray = $this->jsonToArray($this->arraylize($reportData->content));
+                $caseInf[$i]['report'] = $reportArray['report'];
+            } else {
+                $caseInf[$i]['report'] = null;
+            }
+            
             $i++;
         }
+        //dd($caseInf);
         return $caseInf;
     }
 
@@ -75,6 +86,15 @@ class CaseController extends Controller
     public function getAllClosedCases(){
         $caseQuery = new ClientCases;
         $cases = $caseQuery->getAllClosedCases();  
+        $arraylized = $this->arraylize($cases);
+        $caseInfo = $this->handleCasesArray($arraylized);
+        
+        return $caseInfo;
+    }
+
+    public function getAllHandledCases($handler){
+        $caseQuery = new ClientCases;
+        $cases = $caseQuery->getAllHandledCases($handler);  
         $arraylized = $this->arraylize($cases);
         $caseInfo = $this->handleCasesArray($arraylized);
         

@@ -63,7 +63,7 @@ Route::post('/wtf/ussd_register', 'UssdController@ussd_registerUser');
 Route::post('/wtf/ussd_querysubscription', 'UssdController@ussd_getUserSubscription');
 
 Route::post('/wtf/ussd_user_validation', 'UssdController@ussd_GetUserName');
-Route::post('/wtf/ussd_payment_validation', 'UssdController@UssdPaymentValidation');
+Route::post('/wtf/ussd_payment_notification', 'UssdController@UssdPaymentValidation');
 
 //Payment Route
 Route::post('/wtf/make-payment', 'PaystackController@redirectToProvider');

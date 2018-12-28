@@ -55,14 +55,17 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('dashboard','DashboardController@index')->name('Dashboard');
     Route::get('logout', 'AuthController@logout')->name('logout');
     
-    //User Routes
+    // General User Routes
     Route::get('edit-user', 'UserController@editUser')->name('editUser');
     Route::get('view-user', 'UserController@viewUser')->name('viewUser');
     Route::get('choose-subscriptions', 'SubscriptionController@selectSubscription')->name('selectSub');
     Route::get('renewal', 'SubscriptionController@getRenewable')->name('getRenewable');
     Route::get('transaction', 'PatientsController@viewTransactions')->name('viewTransactions');
     Route::get('my-cases', 'PatientsController@viewCases')->name('viewCases');
-
+    Route::get('my-cases', 'PatientsController@viewCases')->name('viewCases');
+    // Doctor Routes
+    Route::get('handled-cases', 'DoctorController@viewHandledCases')->name('handledCases');
+    Route::post('save-report', 'DoctorController@saveReport')->name('saveReport');
     //Admin Routes
     Route::get('clients', 'PatientsController@viewPatients')->name('viewPatients');
     Route::get('doctors', 'DoctorController@viewDoctors')->name('viewDoctors');

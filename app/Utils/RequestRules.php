@@ -63,7 +63,7 @@ class RequestRules
             'phonenumber' => 'required|unique:users',
         ],
         'USSD_QUERY_SUBSCRPTION_DATA' => [
-            'client_id' => 'required'
+            'phonenumber' => 'required'
         ],
         'CLIENT_CASES' => [
             'client_id' => 'required',

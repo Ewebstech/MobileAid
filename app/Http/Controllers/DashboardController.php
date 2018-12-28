@@ -32,7 +32,7 @@ class DashboardController extends Controller
        $data['PatientNum'] = $this->getPatientsNum();
        $data['DoctorNum'] = $this->getDoctorsNum();
        $data['regToday'] = $this->registrationsToday();
-       $data['OpenCasesNum'] = count($this->helper->getAllOpenCases()); // Cases for Doctors
+       $data['OpenCasesNum'] = count($this->helper->getAllOpenCases()); 
        $data['ClosedCasesNum'] = count($this->helper->getAllClosedCases());
        $data['SilverNum'] = $this->getUsersBySubscriptionCount('Silver');
        $data['GoldNum'] = $this->getUsersBySubscriptionCount('Gold');
@@ -41,6 +41,9 @@ class DashboardController extends Controller
        $data['ActiveUsers'] = $this->getActiveUsersNum();
        $data['InActiveUsers'] = $this->getInActiveUsersNum();
 
+       //Doctors
+       $data['HandledCases'] =  count($this->helper->getAllHandledCases($UserDetails['client_id'])); 
+       //dd($data['HandledCases']);
        // Chart Data
        $SubscriptionData = [$data['SilverNum'], $data['GoldNum'], $data['TitaniumNum'], $data['DiamondNum']];
        $data['SubChart'] = json_encode($SubscriptionData);

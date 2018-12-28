@@ -1,7 +1,17 @@
 @extends('base')
 
 @section('title', 'Dashboard')
-
+<style>
+    .fileUpload{
+        z-index: 3;
+        position: absolute;
+        border-radius: 0;
+    }
+    
+    .upload{
+        top: 5px !important;
+    }
+</style>
 @section('content')
 
 <div class=" content-area">

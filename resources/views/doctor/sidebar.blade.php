@@ -29,16 +29,12 @@
 
             <li class="border-0"><h3>Cases &amp; Reports</h3><li>
             <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-files-o mr-2 sidebarpink"></i> My Cases</a>
+                <a href="{{route('handledCases')}}" class=" wave-effect accordion-toggle "><i class="fa fa-files-o mr-2 sidebarpink"></i> My Cases</a>
             </li>
-            <li>
-                <a href="#" class=" wave-effect accordion-toggle "><i class="fa fa-file mr-2 sidebarpink"></i> My Reports</a>
-            </li>
-
             <li><h3>More</h3><li>
 
             <li>
-                <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Rate Doctor</a>
+                <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Rate Patient</a>
             </li>
             <li>
                 <a href="#" class=" wave-effect accordion-toggle"><i class="fa fa-ticket mr-2 sidebarlightgreen"></i>  Support</a>

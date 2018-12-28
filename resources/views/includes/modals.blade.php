@@ -62,6 +62,52 @@
         </div>
     </div>
 
+    	<!-- Add Doctors Modal -->
+      <div class="modal fade" id="caseReports" tabindex="-1" role="dialog"  aria-hidden="true">
+          <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="example-Modal3"><i class="fa fa-user-md"></i> Case Report Sheet for - <b><span id="clientName"></span></b></h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                      </button>
+                  </div>
+                  <div class="modal-body">
+                     
+                      <form id="report-form" enctype="multipart/form-data">
+                          {{csrf_field()}}
+                  
+                          <div class="row">
+                              <div class="col-sm-6" style="float: left;">
+                                <label style="font-weight: bold;"><i class="fa fa-user"></i> Client Name: </label><br>
+                                <input type="text" class="form-control" name="Name" value="" readonly/>
+                              </div>
+                              <div class="col-sm-6">
+                               <label style="font-weight: bold;">Case ID: </label><br><input type="text" class="form-control" name="caseId" value="" readonly/>
+                              </div>
+                          </div>
+                      
+                           <input type="hidden" name="view" value="1" />
+                            <div class="row" style="margin-top: 8px;">
+                              <div class="col-sm-12">
+                                <div class="form-group">
+                                  <label><b>Case Report</b> <small>*</small></label>
+                                  <textarea  id="textreport"  required="required" class="form-control"></textarea>
+                                </div>
+                              </div>
+                            </div>          
+                            <div class="form-group" id="report-msg"></div>
+                            <input type="hidden" name="role" value="doctor"/> 
+                            <div class="form-group">
+                              <input name="form_botcheck" class="form-control" type="hidden" value="" />
+                              <button type="submit" class="btn btn-block btn-blue"><i class="fa fa-check-circle"></i> Save Report</button>
+                            </div>
+                          </form>
+                  </div>
+                 
+              </div>
+          </div>
+      </div>
 
     <!-- external javascripts -->
 <script src="/site/js/jquery-2.2.4.min.js"></script>
@@ -78,10 +124,20 @@
 
 <script src="/js/ajax.js"></script>
 
+<script src="/ckeditor/ckeditor.js"></script>
 <script>
     $("#docsignup-form").submit(function (e) {
        // alert("lalslas");
         e.preventDefault();
         submit_reg_form('docsignup-form', "{{ route('registerdoc') }}", 'signup-msg', true);
     });
+
+    CKEDITOR.replace('textreport');
+    
+    $("#report-form").submit(function (e) {
+        e.preventDefault();
+        var data = [CKEDITOR.instances.textreport.getData()];
+        submit_form('report-form', "{{ route('saveReport') }}", 'report-msg', true, false, data);
+    });
+
 </script>

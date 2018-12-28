@@ -25,5 +25,25 @@ class Reports
        
         return ($saveData) ? true : false;
     }
+
+    public function saveReport($params){
+        $content = json_encode($params);
+        
+        $data = [
+            'case_id' => $params['case_id'],
+            'client_email' => $params['client_email'],
+            'content' => $content
+        ];
+        $update = $this->model->where('case_id', $params['case_id'])
+            ->where('client_email', $params['client_email'])
+            ->update($data);
+       
+        return ($update) ? true : false;
+    }
+
+    public function getCaseReport($case_id){
+        $sub = $this->model->where('case_id',$case_id)->first();
+        return ($sub) ? $sub : false;
+    }
     
 }

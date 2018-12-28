@@ -84,20 +84,11 @@ class ClientCases
         return ($sub) ? $sub : false;
     }
 
-    // public function updateSubscription($params){
-    //     $content = json_encode($params);
-    //     $data = [
-    //         'user' => $params['user'],
-    //         'status' => $params['status'],
-    //         'phonenumber' => $params['phonenumber'],
-    //         'calls' => $params['calls'],
-    //         'package' => $params['package'],
-    //         'content' => $content,
-    //     ];
-    //     $update = $this->model->where('user', $params['user'])
-    //         ->update($data);
+    public function getAllHandledCases($handler){
+        $sub = $this->model->where('case_status', 'closed')->where('doctor_id', $handler)->get();
+        return ($sub) ? $sub : false;
+    }
 
-    //     return ($update) ? true : false;
-    // }
+ 
    
 }

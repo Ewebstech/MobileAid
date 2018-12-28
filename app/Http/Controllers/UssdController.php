@@ -93,7 +93,7 @@ class UssdController extends Controller
             return $this->validationError($validator->getMessageBag()->all(), HttpStatusCodes::UNPROCESSABLE_ENTITY);
         }
 
-        $userDetails = User::where('client_id', $params['client_id'])->where('phonenumber', $params['phonenumber'])->first();
+        $userDetails = User::where('phonenumber', $params['phonenumber'])->first();
         $has_Subscription = Subscription::where('phonenumber', $params['phonenumber'])->first();
         
         if($userDetails){
@@ -213,7 +213,7 @@ class UssdController extends Controller
                             }
 
                             if($userUpdate){
-                                $msg = "Payment Validation Complete";
+                                $msg = "Payment Notification";
                                 $data = $params;
                                 return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
                             } 
