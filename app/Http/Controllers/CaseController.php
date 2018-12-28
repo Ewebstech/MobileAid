@@ -168,27 +168,105 @@ class CaseController extends Controller
 
         $userDetails = User::where('phonenumber', $params['client_phonenumber'])->first(); // Check if Client Exists
         $isvalid_clientId_role_doctor = User::where('client_id', $params['doctor_id'])->where('role','doctor')->first(); // Validate doctor's id
-        
+        $has_Subscription = Subscription::where('phonenumber', $params['client_phonenumber'])->first();
+
         if($userDetails){
             if($isvalid_clientId_role_doctor){
+                $subData = $this->helper->getUserSubscriptionDataViaMobile($params['client_phonenumber']);
                 try{
                     $userData = $userDetails->toArray();
                     $userDataContent = $this->jsonToArray($userData['content']);
-                    
+                   // dd($userDataContent);
                     $caseQuery = new ClientCases();
                     $caseData = $caseQuery->getUserCasesByPhonenumber($userData['phonenumber']);
-                    if(!$caseData){
-                        return $this->error('No Consultancy Case was Found for this Client. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
-                    } else {
-                        $caseDetails = $this->arraylize($caseData);
-                        if($caseDetails){
-                            $data = $caseDetails;
-                            $msg = "Data Retrieval Successful";
-                            return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                    if(isset($userDataContent["calls"])){
+                        $calls = (int) $userDataContent["calls"];
+                        if($calls > 0){
+
+                            $subscriptionData = $has_Subscription->toArray();
+                            $subscriptionDataContent = $this->jsonToArray($subscriptionData['content']);
+                          
+                            // Perform Caller Logistics 
+                            $calls_available = (int) $subscriptionData['calls'];
+                            $subscription_status = $subscriptionData['status'];
+                            if($calls_available > 0 and $subscription_status == "Active"){
+                                // Subtract anphonenumberd update information
+                                $call_balance = $calls_available - 1;
+                                // Set Status
+                                if($call_balance == 0){
+                                    $status = "InActive";
+                                } else {
+                                    $status = "Active";
+                                }
+    
+                                $updateparams = $subscriptionDataContent;
+                                $updateparams['calls'] = $call_balance;
+                                $updateparams['status'] = $status;
+                                $subQuery = new Subscriptions();
+                                $subDetails = $subQuery->updateSubscription($updateparams);
+    
+                                // Update Users Table with Subscription Details
+                                $updateparams = $userDataContent;
+                                $updateparams['calls'] = $call_balance;
+                                $updateparams['status'] = $status;
+                                $userQuery = new Users;
+                                $userUpdate = $userQuery->updateUserContent($updateparams);
+                            }
+
+                            if($subDetails and $userUpdate){
+                                // Create Case
+                                
+                                $caseparam = $params; // copy request data
+                                $caseparam['case_id'] = $this->generateDefaultStaticPassword(5);
+                                $caseparam['client_name'] = $userDataContent['firstname']. " ". $userDataContent['lastname'];
+                                $caseparam['client_id'] = $userData['client_id'];
+                                $caseparam['client_email'] = $userDataContent['email'];
+                                $caseparam['client_phonenumber'] = $userDataContent['phonenumber'];
+                                $caseparam['client_package'] = $userDataContent['package'];
+                                $caseparam['case_status'] = "open";
+                                $caseparam['sub_status'] = $userDataContent['status'];
+                                
+                                $caseQuery = new ClientCases();
+                                $caseDetails = $caseQuery->addCase($caseparam);
+
+                                if($caseDetails){
+                                    $data = $caseparam;
+                                    $msg = "Data Retrieval Successful";
+                                    return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                                } else {
+                                    return $this->error('Case not created. Call cannot proceed. Please Terminate.', HttpStatusCodes::BAD_REQUEST);
+                                }
+                            } 
+
+                        } elseif($calls == 0 and $caseData){
+                            $caseDetails = $this->arraylize($caseData);
+                            if($caseDetails){
+                                $data = $caseDetails;
+                                $msg = "Data Retrieval Successful";
+                                return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                            } else {
+                                return $this->error('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
+                            }
+
                         } else {
-                            return $this->error('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
+                            return $this->error('Client Subscription In-active. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
                         }
+                    } else {
+                        return $this->error('This client is new and has not subscribed. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
                     }
+                   
+                    // if(!$caseData){
+                    //     return $this->error('No Consultancy Case was Found for this Client. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
+                    // } else {
+                    //     $caseDetails = $this->arraylize($caseData);
+                    //     if($caseDetails){
+                    //         $data = $caseDetails;
+                    //         $msg = "Data Retrieval Successful";
+                    //         return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                    //     } else {
+                    //         return $this->error('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
+                    //     }
+                    // }
         
                 } catch(\Exception $e) {
                     //something went wrong
@@ -196,11 +274,11 @@ class CaseController extends Controller
         
                 }
             } else {
-                return $this->error('Doctor Credential Invalid!', HttpStatusCodes::NOT_FOUND);
+                return $this->error('Doctor Credential Invalid!', HttpStatusCodes::BAD_REQUEST);
             }
         
         } else {
-            return $this->error('Caller is not a 2MA Client!', HttpStatusCodes::NOT_FOUND);
+            return $this->error('Caller is not a 2MA Client!', HttpStatusCodes::BAD_REQUEST);
         }
     }
 
