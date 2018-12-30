@@ -202,38 +202,9 @@ class CaseController extends Controller
                                 $caseDetails = $caseQuery->addCase($caseparam);
 
                                 if($caseDetails){
-                                    // Perform Caller Logistics 
-                                    $calls_available = (int) $subscriptionData['calls'];
-                                    $subscription_status = $subscriptionData['status'];
-                                    if($calls_available > 0 and $subscription_status == "Active"){
-                                        // Subtract anphonenumberd update information
-                                        $call_balance = $calls_available - 1;
-                                        // Set Status
-                                        if($call_balance == 0){
-                                            $status = "InActive";
-                                        } else {
-                                            $status = "Active";
-                                        }
-            
-                                        $updateparams = $subscriptionDataContent;
-                                        $updateparams['calls'] = $call_balance;
-                                        $updateparams['status'] = $status;
-                                        $subQuery = new Subscriptions();
-                                        $subDetails = $subQuery->updateSubscription($updateparams);
-            
-                                        // Update Users Table with Subscription Details
-                                        $updateparams = $userDataContent;
-                                        $updateparams['calls'] = $call_balance;
-                                        $updateparams['status'] = $status;
-                                        $userQuery = new Users;
-                                        $userUpdate = $userQuery->updateUserContent($updateparams);
-                                    }
-
-                                    if($subDetails and $userUpdate){
-                                        $data = $caseparam;
-                                        $msg = "Data Retrievall Successful";
-                                        return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
-                                    } 
+                                    $data = $caseparam;
+                                    $msg = "Data Retrieval Successful";
+                                    return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
                                 } else {
                                     return $this->error('Case not created. Call cannot proceed. Please Terminate.', HttpStatusCodes::UNAUTHORIZED);
                                 }
@@ -296,7 +267,8 @@ class CaseController extends Controller
 
         $userDetails = User::where('phonenumber', $params['client_phonenumber'])->first(); // Check if Client Exists
         $isvalid_clientId_role_doctor = User::where('client_id', $params['doctor_id'])->where('role','doctor')->first(); // Validate doctor's id
-        
+        $has_Subscription = Subscription::where('phonenumber', $params['client_phonenumber'])->first();
+
         if($userDetails){
             if($isvalid_clientId_role_doctor){
                 try{
@@ -305,6 +277,10 @@ class CaseController extends Controller
                     
                     $caseQuery = new ClientCases();
                     $caseData = $caseQuery->getCaseById($params['case_id']);
+
+                    $subscriptionData = $has_Subscription->toArray();
+                    $subscriptionDataContent = $this->jsonToArray($subscriptionData['content']);
+
                     if(!$caseData){
                         return $this->validationError('Case ID Invalid!', HttpStatusCodes::NOT_FOUND);
                     } else {
@@ -321,9 +297,39 @@ class CaseController extends Controller
                         $updateThisCase = $caseQuery->updateCase($caseDetails);
 
                         if($saveData and $updateThisCase){
-                            $data = null;
-                            $msg = "Data Saved Successfully";
-                            return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                            /**
+                             *  Perform Call Logistics
+                             */
+                            $calls_available = (int) $subscriptionData['calls'];
+                            $subscription_status = $subscriptionData['status'];
+                            if($calls_available > 0 and $subscription_status == "Active"){
+                                // Subtract anphonenumberd update information
+                                $call_balance = $calls_available - 1;
+                                // Set Status
+                                if($call_balance == 0){
+                                    $status = "InActive";
+                                } else {
+                                    $status = "Active";
+                                }
+    
+                                $updateparams = $subscriptionDataContent;
+                                $updateparams['calls'] = $call_balance;
+                                $updateparams['status'] = $status;
+                                $subQuery = new Subscriptions();
+                                $subDetails = $subQuery->updateSubscription($updateparams);
+    
+                                // Update Users Table with Subscription Details
+                                $updateparams = $userDataContent;
+                                $updateparams['calls'] = $call_balance;
+                                $updateparams['status'] = $status;
+                                $userQuery = new Users;
+                                $userUpdate = $userQuery->updateUserContent($updateparams);
+                            }
+                            if($subDetails and $userUpdate){
+                                $data = null;
+                                $msg = "Data Saved Successfully";
+                                return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                            }
                         } else {
                             return $this->validationError('Could not save call data', HttpStatusCodes::UNPROCESSABLE_ENTITY);
                         }
@@ -371,62 +377,32 @@ class CaseController extends Controller
                         $subscriptionData = $has_Subscription->toArray();
                         $subscriptionDataContent = $this->jsonToArray($subscriptionData['content']);
                       
-                        // Perform Caller Logistics 
-                        $calls_available = (int) $subscriptionData['calls'];
-                        $subscription_status = $subscriptionData['status'];
-                        if($calls_available > 0 and $subscription_status == "Active"){
-                            // Subtract anphonenumberd update information
-                            $call_balance = $calls_available - 1;
-                            // Set Status
-                            if($call_balance == 0){
-                                $status = "InActive";
+                        // Create Case
+                        $caseparam = $params; // copy request data
+                        $caseparam['case_id'] = $this->generateDefaultStaticPassword(5);
+                        $caseparam['client_name'] = $userDataContent['firstname']. " ". $userDataContent['lastname'];
+                        $caseparam['client_id'] = $params['client_id'];
+                        $caseparam['client_email'] = $userDataContent['email'];
+                        $caseparam['client_phonenumber'] = $userDataContent['phonenumber'];
+                        $caseparam['client_package'] = $userDataContent['package'];
+                        $caseparam['case_status'] = "open";
+                        $caseparam['sub_status'] = $userDataContent['status'];
+                        
+                        $caseQuery = new ClientCases();
+                        $caseDetails = $caseQuery->addCase($caseparam);
+
+                            if($caseDetails){
+                                $data = $caseparam;
+                                $msg = "Call can Proceed to Doctor";
+                                return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
                             } else {
-                                $status = "Active";
+                                return $this->validationError('Case not created. Call cannot proceed', HttpStatusCodes::BAD_REQUEST);
                             }
-
-                            $updateparams = $subscriptionDataContent;
-                            $updateparams['calls'] = $call_balance;
-                            $updateparams['status'] = $status;
-                            $subQuery = new Subscriptions();
-                            $subDetails = $subQuery->updateSubscription($updateparams);
-
-                            // Update Users Table with Subscription Details
-                            $updateparams = $userDataContent;
-                            $updateparams['calls'] = $call_balance;
-                            $updateparams['status'] = $status;
-                            $userQuery = new Users;
-                            $userUpdate = $userQuery->updateUserContent($updateparams);
-
-                            if($subDetails and $userUpdate){
-                                // Create Case
-                                
-                                $caseparam = $params; // copy request data
-                                $caseparam['case_id'] = $this->generateDefaultStaticPassword(5);
-                                $caseparam['client_name'] = $userDataContent['firstname']. " ". $userDataContent['lastname'];
-                                $caseparam['client_id'] = $params['client_id'];
-                                $caseparam['client_email'] = $userDataContent['email'];
-                                $caseparam['client_phonenumber'] = $userDataContent['phonenumber'];
-                                $caseparam['client_package'] = $userDataContent['package'];
-                                $caseparam['case_status'] = "open";
-                                $caseparam['sub_status'] = $userDataContent['status'];
-                                
-                                $caseQuery = new ClientCases();
-                                $caseDetails = $caseQuery->addCase($caseparam);
-
-                                if($caseDetails){
-                                    $data = $caseparam;
-                                    $msg = "Call can Proceed to Doctor";
-                                    return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
-                                } else {
-                                    return $this->validationError('Case not created. Call cannot proceed', HttpStatusCodes::BAD_REQUEST);
-                                }
-                            } 
+                    
                         } else {
                             return $this->validationError('No Active Subscription', HttpStatusCodes::BAD_REQUEST);
                         }
-                    }
-        
-                } catch(\Exception $e) {
+                    } catch(\Exception $e) {
                     //something went wrong
                     return $this->exceptionError($e->getMessage(), HttpStatusCodes::BAD_REQUEST);
         
