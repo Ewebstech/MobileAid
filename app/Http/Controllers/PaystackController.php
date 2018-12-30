@@ -172,7 +172,7 @@ class PaystackController extends Controller
         if ($response->status === true) {
             // Save Transaaction Details
             $params = (array) $response->data;
-            if(isset($_SESSION['UserDetails'])){
+            if(isset($_SESSION)){
                 $params['view'] = 1;
             } else {
                 $params['view'] = 0;
