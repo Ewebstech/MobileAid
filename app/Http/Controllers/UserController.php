@@ -142,9 +142,9 @@ class UserController extends Controller
               
             }
             
-            //$Content['firstname'] = isset($params["firstname"]) ? $params["firstname"] : $Content["firstname"];
+            $params['firstname'] = $Content["firstname"];
             $Content['email'] = $params['email'];
-            //$Content['lastname'] = isset($params["lastname"]) ? $params["lastname"] : $Content["lastname"];
+            $params['lastname'] =  $Content["lastname"];
             $Content['avatar'] = isset($params["avatar"]) ? $params["avatar"] : $Content['avatar'];
             $params['avatar'] = isset($params["avatar"]) ? $params["avatar"] : $Content['avatar'];
             $Content['user'] = $params["email"];
