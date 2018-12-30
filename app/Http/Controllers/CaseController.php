@@ -185,40 +185,12 @@ class CaseController extends Controller
 
                             $subscriptionData = $has_Subscription->toArray();
                             $subscriptionDataContent = $this->jsonToArray($subscriptionData['content']);
-                          
-                            // Perform Caller Logistics 
-                            $calls_available = (int) $subscriptionData['calls'];
-                            $subscription_status = $subscriptionData['status'];
-                            if($calls_available > 0 and $subscription_status == "Active"){
-                                // Subtract anphonenumberd update information
-                                $call_balance = $calls_available - 1;
-                                // Set Status
-                                if($call_balance == 0){
-                                    $status = "InActive";
-                                } else {
-                                    $status = "Active";
-                                }
-    
-                                $updateparams = $subscriptionDataContent;
-                                $updateparams['calls'] = $call_balance;
-                                $updateparams['status'] = $status;
-                                $subQuery = new Subscriptions();
-                                $subDetails = $subQuery->updateSubscription($updateparams);
-    
-                                // Update Users Table with Subscription Details
-                                $updateparams = $userDataContent;
-                                $updateparams['calls'] = $call_balance;
-                                $updateparams['status'] = $status;
-                                $userQuery = new Users;
-                                $userUpdate = $userQuery->updateUserContent($updateparams);
-                            }
-
-                            if($subDetails and $userUpdate){
+                        
                                 // Create Case
-                                
                                 $caseparam = $params; // copy request data
                                 $caseparam['case_id'] = $this->generateDefaultStaticPassword(5);
                                 $caseparam['client_name'] = $userDataContent['firstname']. " ". $userDataContent['lastname'];
+                                $caseparam['avatar'] = $userDataContent['avatar'];
                                 $caseparam['client_id'] = $userData['client_id'];
                                 $caseparam['client_email'] = $userDataContent['email'];
                                 $caseparam['client_phonenumber'] = $userDataContent['phonenumber'];
@@ -230,17 +202,46 @@ class CaseController extends Controller
                                 $caseDetails = $caseQuery->addCase($caseparam);
 
                                 if($caseDetails){
-                                    $data = $caseparam;
-                                    $msg = "Data Retrieval Successful";
-                                    return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                                    // Perform Caller Logistics 
+                                    $calls_available = (int) $subscriptionData['calls'];
+                                    $subscription_status = $subscriptionData['status'];
+                                    if($calls_available > 0 and $subscription_status == "Active"){
+                                        // Subtract anphonenumberd update information
+                                        $call_balance = $calls_available - 1;
+                                        // Set Status
+                                        if($call_balance == 0){
+                                            $status = "InActive";
+                                        } else {
+                                            $status = "Active";
+                                        }
+            
+                                        $updateparams = $subscriptionDataContent;
+                                        $updateparams['calls'] = $call_balance;
+                                        $updateparams['status'] = $status;
+                                        $subQuery = new Subscriptions();
+                                        $subDetails = $subQuery->updateSubscription($updateparams);
+            
+                                        // Update Users Table with Subscription Details
+                                        $updateparams = $userDataContent;
+                                        $updateparams['calls'] = $call_balance;
+                                        $updateparams['status'] = $status;
+                                        $userQuery = new Users;
+                                        $userUpdate = $userQuery->updateUserContent($updateparams);
+                                    }
+
+                                    if($subDetails and $userUpdate){
+                                        $data = $caseparam;
+                                        $msg = "Data Retrievall Successful";
+                                        return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
+                                    } 
                                 } else {
                                     return $this->error('Case not created. Call cannot proceed. Please Terminate.', HttpStatusCodes::UNAUTHORIZED);
                                 }
-                            } 
-
+                            
                         } elseif($calls == 0 and $caseData){
                             $caseDetails = $this->arraylize($caseData);
                             if($caseDetails){
+                                $caseDetails['avatar'] = $userDataContent['avatar'];
                                 $data = $caseDetails;
                                 $msg = "Data Retrieval Successful";
                                 return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
@@ -251,6 +252,7 @@ class CaseController extends Controller
                         } elseif($calls > 0 and $caseData){
                             $caseDetails = $this->arraylize($caseData);
                             if($caseDetails){
+                                $caseDetails['avatar'] = $userDataContent['avatar'];
                                 $data = $caseDetails;
                                 $msg = "Data Retrieval Successful";
                                 return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
@@ -264,19 +266,6 @@ class CaseController extends Controller
                     } else {
                         return $this->error('This client is new and has not subscribed. Please Terminate Call.', HttpStatusCodes::FORBIDDEN);
                     }
-                   
-                    // if(!$caseData){
-                    //     return $this->error('No Consultancy Case was Found for this Client. Please Terminate Call.', HttpStatusCodes::BAD_REQUEST);
-                    // } else {
-                    //     $caseDetails = $this->arraylize($caseData);
-                    //     if($caseDetails){
-                    //         $data = $caseDetails;
-                    //         $msg = "Data Retrieval Successful";
-                    //         return $this->jsonoutput($msg, $data, HttpStatusCodes::OK);
-                    //     } else {
-                    //         return $this->error('Could not retrieve user details', HttpStatusCodes::BAD_REQUEST);
-                    //     }
-                    // }
         
                 } catch(\Exception $e) {
                     //something went wrong
