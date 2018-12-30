@@ -182,7 +182,7 @@ class UserController extends Controller
                         $data = "Your Data has been Updated Successfully";
                         // Update Session Data
                         $sessionUserDetails = $this->helper->setSession($allDetails);
-                        //dd($sessionUserDetails);
+                       
                         return $this->returnOutput($status,$data);
                     } else {
                         $status = "failure";
@@ -249,6 +249,7 @@ class UserController extends Controller
                 $UserDetails['ClientId'] = $userInfo['client_id'];
             } else {
                 $userContent = $this->jsonToArray($userInfo['content']);
+                //dd($userContent);
                 if($userContent != null){
                     foreach($userContent as $field => $value){
                         $UserDetails[$field] = $value;
@@ -375,12 +376,14 @@ class UserController extends Controller
             $retrievedDataContent = $userDetails_1->toArray()['content'];
             $Content = $this->jsonToArray($retrievedDataContent);
             // -- CKEDITOR FIELDS -- //
-
-            $params['medprofile'] = $params['xdata'][0];
-
+            if(isset( $params['xdata'])){
+                $params['medprofile'] = $params['xdata'][0];
+            }
+        
             // -- CKEDITOR FIELDS -- //
             $Content['Kyc'] = $params;
-     
+            $Content = array_merge($Content,$params);
+           
         try{
             $params['hashed_password'] = null;
             $params['avatar'] = isset($Content['avatar']) ? $Content['avatar'] : '/images/male_avatar.png';
@@ -389,7 +392,8 @@ class UserController extends Controller
             //dd($Content);
             $userQuery = new Users();
             $updateUser = $userQuery->updateUserDetails($params);
-
+            $getUser = $userQuery->getUser($params['email']);
+            $allDetails = $getUser->toArray();
             if($updateUser){
                 // Send Email to User
                 $mailParams = [
@@ -406,6 +410,8 @@ class UserController extends Controller
                     if($updateUser){
                         $status = "success";
                         $data = "Your Data has been Updated Successfully";
+                        // Update Session Data
+                        $sessionUserDetails = $this->helper->setSession($allDetails);
                         return $this->returnOutput($status,$data);
                     } else {
                         $status = "failure";

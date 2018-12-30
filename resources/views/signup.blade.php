@@ -63,7 +63,7 @@
                       <div class="col-sm-6">
                         <div class="form-group">
                           <label>Phone Number <small>*</small></label>
-                          <input name="phonenumber" class="form-control required" type="number" placeholder="Ex. +234 903 000 4446" required="required">
+                          <input name="phonenumber" class="form-control required" type="number" placeholder="Ex. 09030004446" required="required">
                         </div>
                       </div>
                     </div>

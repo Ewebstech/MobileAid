@@ -415,7 +415,7 @@
 
                             <div class="col-md-12">
                                     <div class="form-group mb-0">
-                                        <label class="form-label">Are you regsitered with an HMO?, If yes, please provide details.</label>
+                                        <label class="form-label">Are you registered with an HMO?, If yes, please provide details.</label>
                                         <textarea rows="5" class="form-control" name="hmo_information" placeholder="Supply Detailed Information on your HMO">{{array_get($UserDetails,'Kyc.hmo_information')}}</textarea>
                                     </div>
                             </div>

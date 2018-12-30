@@ -7,6 +7,8 @@ class Users
 {
     public function updateUserDetails($params){
         $user = [
+            'firstname' => $params['firstname'],
+            'lastname' => $params['lastname'],
             'email' => $params['email'],
             'phonenumber' => $params['phonenumber'],
             'password' => $params['hashed_password'],

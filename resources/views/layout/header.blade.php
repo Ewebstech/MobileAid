@@ -106,7 +106,7 @@
         <div class="row">
           <div class="col-xs-12 col-sm-4 col-md-3">
             <div class="widget no-border m-0">
-              <a class="pull-left flip xs-pull-center mb-6" href="/home"><img src="/site/img/MAlogo.png" alt="" style="width: 150px; height: 80px !important; margin:5px"></a>
+              <a class="pull-left flip xs-pull-center mb-6" href="/"><img src="/site/img/MAlogo.png" alt="" style="width: 150px; height: 80px !important; margin:5px"></a>
             </div>
           </div>
      

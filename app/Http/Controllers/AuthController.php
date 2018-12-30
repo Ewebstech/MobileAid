@@ -162,9 +162,10 @@ class AuthController extends Controller
             'lastname' => 'required|string',
             'email' => 'bail|email|unique:users',  
             'gender' => 'required',
-            'phonenumber' => 'bail|required|unique:users',
+            'phonenumber' => 'bail|required|unique:users|digits:11',
             'password' => 'required|alpha_dash',
-            'role' => 'required'
+            'role' => 'required',
+            'refnumber' => 'nullable|digits:11'
         ]);
     }
 
@@ -332,6 +333,9 @@ class AuthController extends Controller
     }
 
     public function setSession($userDetails){
+        if(isset($_SESSION['UserDetails'])){
+            unset($_SESSION['UserDetails']);
+        }
         foreach ($userDetails as $field => $value) {
             # code...
             $_SESSION['UserDetails'][$field] = $value;
