@@ -434,7 +434,7 @@
                                 <div class="col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" name="emergency_contact_num_1" value="{{array_get($UserDetails,'Kyc.emergency_contact_num_1')}}" placeholder="+234 00 000 0000">
+                                        <input type="text" class="form-control" name="emergency_contact_num_1" value="{{array_get($UserDetails,'Kyc.emergency_contact_num_1')}}" placeholder="080123456890">
                                     </div>
                                 </div>
 
@@ -448,7 +448,7 @@
                                 <div class="col-sm-6 col-md-6">
                                     <div class="form-group">
                                         <label class="form-label">Phone Number</label>
-                                        <input type="text" class="form-control" name="emergency_contact_num_2" value="{{array_get($UserDetails,'Kyc.emergency_contact_num_2')}}" placeholder="+234 00 000 0000">
+                                        <input type="text" class="form-control" name="emergency_contact_num_2" value="{{array_get($UserDetails,'Kyc.emergency_contact_num_2')}}" placeholder="080123456890">
                                     </div>
                                 </div>
                             

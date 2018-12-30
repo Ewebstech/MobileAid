@@ -141,10 +141,10 @@ class UserController extends Controller
                 $params["avatar"] = $imageUpload['imageurl'];
               
             }
-   
-            $Content['firstname'] = isset($params["firstname"]) ? $params["firstname"] : $Content["firstname"];
+            
+            //$Content['firstname'] = isset($params["firstname"]) ? $params["firstname"] : $Content["firstname"];
             $Content['email'] = $params['email'];
-            $Content['lastname'] = isset($params["lastname"]) ? $params["lastname"] : $Content["lastname"];
+            //$Content['lastname'] = isset($params["lastname"]) ? $params["lastname"] : $Content["lastname"];
             $Content['avatar'] = isset($params["avatar"]) ? $params["avatar"] : $Content['avatar'];
             $params['avatar'] = isset($params["avatar"]) ? $params["avatar"] : $Content['avatar'];
             $Content['user'] = $params["email"];
