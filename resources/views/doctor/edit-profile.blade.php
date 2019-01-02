@@ -23,13 +23,13 @@
             </ol>
         </div>
         <div class="row">
-                <div class="col-lg-12">
-                    <div class="alert alert-warning d-none d-lg-block" role="alert">
-                        <button type="button" class="close text-white" aria-hidden="true"></button>
-                    <i class="fa fa-lock"></i> All data storage, retrieval and transaction procedures are strictly confidential and HIPAA Compliant. 
-                    </div>
+            <div class="col-lg-12">
+                <div class="alert alert-warning d-none d-lg-block" role="alert">
+                    <button type="button" class="close text-white" aria-hidden="true"></button>
+                <i class="fa fa-lock"></i> All data storage, retrieval and transaction procedures are strictly confidential and HIPAA Compliant. 
                 </div>
             </div>
+        </div>
         <div class="row">
             <div class="col-lg-4">
                 <div class="card">
