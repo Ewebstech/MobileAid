@@ -8,12 +8,12 @@
         <div class="page-header" style="margin-bottom: -10px;">
             <h4 class="page-title">Client's Dashboard</h4>
         </div>
-        @if ($EditProfile != "set")
+        @if ($KycPercentage <= 50)
             <div class="row">
                 <div class="col-lg-12">
                     <div class="alert alert-warning d-none d-lg-block" role="alert">
                         <button type="button" class="close text-white" data-dismiss="alert" aria-hidden="true">×</button>
-                    Hi <strong>{{$sessiondata['firstname']}}</strong>, you have only completed 30% of your profile.
+                    Hi <strong>{{$sessiondata['firstname']}}</strong>, you have only completed {{$KycPercentage}}% of your profile.
                         <a href="/edit-user" class="btn btn-white btn-sm float-right mr-2">Complete My Profile Now</a>
                     </div>
                 </div>
@@ -76,11 +76,11 @@
                         <div class="card">
                             <div class="card-body text-center">
                                 <div class=" wx">
-                                    @if ($EditProfile != "set")
-                                        <h3 class="">30%</h3>
+                                    @if ($KycPercentage <= 70)
+                                        <h3 class="">{{$KycPercentage}}%</h3>
                                         <p class="text-muted mb-0 lead"><span class="text-red"><i class="fa fa-list text-red"></i></span> KYC Data </p>
                                     @else
-                                        <h3 class="">90% +</h3>
+                                        <h3 class="">{{$KycPercentage}}%</h3>
                                         <p class="text-muted mb-0 lead"><span class="text-green"><i class="fa fa-list text-green"></i></span> KYC Data </p>
                                     @endif
                                     </div>

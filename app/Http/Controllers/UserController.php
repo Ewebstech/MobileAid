@@ -26,6 +26,40 @@ class UserController extends Controller
         $this->helper = new HelperController;
     }
 
+    /**
+     * Dynamically Initialize Kyc Data
+     */
+    public function initializekycData($content){ 
+        if($content['role'] == "client"){
+            if(!isset($content['Kyc'])){
+                $content['Kyc']['treatment_status'] = null;
+                $content['Kyc']['emergency_contact_name_1'] = null;
+                $content['Kyc']['emergency_contact_name_2'] = null;
+                $content['Kyc']['emergency_contact_num_1'] = null;
+                $content['Kyc']['emergency_contact_num_2'] = null;
+                $content['Kyc']['hmo_reg_status'] = null;
+                $content['Kyc']['hmo_information'] = null;
+                $content['Kyc']['medical_condition'] = null;
+                $content['Kyc']['medical_condition_details'] = null;
+                $content['Kyc']['contact_address'] = null;
+                $content['Kyc']['postal_code'] = null;
+                $content['Kyc']['city'] = null;
+                $content['Kyc']['country'] = null;
+            }
+        } elseif($content['role'] == "doctor"){
+            if(!isset($content['Kyc'])){
+                $content['Kyc']['medprofile'] = null;
+                $content['Kyc']['contact_address'] = null;
+                $content['Kyc']['postal_code'] = null;
+                $content['Kyc']['city'] = null;
+                $content['Kyc']['country'] = null;
+            }
+        }
+       
+         
+        return $content;
+    }
+
     public function search2MA(Request $request){
         $params = $request->all();
         //dd($params);

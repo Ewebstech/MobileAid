@@ -24,7 +24,7 @@
                 <a href="/view-user" class=" wave-effect accordion-toggle "><i class="fa fa-eye mr-2 sidebarpink"></i> View Profile</a>
             </li>
             <li>
-                <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i>Update Profile</a>
+                <a href="/edit-user" class=" wave-effect accordion-toggle "><i class="fa fa-pencil mr-2 sidebarpink"></i> Update Profile</a>
             </li>
 
             <li>

@@ -14,6 +14,11 @@ use App\Http\Controllers\MailController as MailController;
 
 class HelperController extends Controller
 {
+    public function initializekycData($status){
+        $user = new UserController;
+        return $user->initializekycData($status);
+    }
+
     public function getUsersByStatus($status){
         $sub = new SubscriptionController;
         return $sub->getUsersByStatus($status);
