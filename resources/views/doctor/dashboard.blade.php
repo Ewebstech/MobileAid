@@ -8,16 +8,16 @@
         <div class="page-header" style="margin-bottom: -10px;">
             <h4 class="page-title">Doctor's Dashboard</h4>
         </div>
-        @if ($EditProfile != "set")
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="alert alert-warning d-none d-lg-block" role="alert">
-                        <button type="button" class="close text-white" data-dismiss="alert" aria-hidden="true">×</button>
-                    Hi <strong>{{$sessiondata['firstname']}}</strong>, you have only completed 30% of your profile.
-                        <a href="/edit-user" class="btn btn-white btn-sm float-right mr-2">Complete My Profile Now</a>
-                    </div>
+        @if ($KycPercentage <= 50)
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="alert alert-warning d-none d-lg-block" role="alert">
+                    <button type="button" class="close text-white" data-dismiss="alert" aria-hidden="true">×</button>
+                Hi <strong>{{$sessiondata['firstname']}}</strong>, you have only completed {{$KycPercentage}}% of your profile.
+                    <a href="/edit-user" class="btn btn-white btn-sm float-right mr-2">Complete My Profile Now</a>
                 </div>
             </div>
+        </div>
         @endif
 
         <div class="row row-cards">

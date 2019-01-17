@@ -178,7 +178,12 @@ class PaystackController extends Controller
                 $params['view'] = 0;
             }
             //dd($params);
-            $params['custom_fields'] = (array) $response->data->metadata->custom_fields[0];
+            if($params['view'] == 0){
+                $params['custom_fields'] = (array) $response->data->metadata;
+            } else {
+                $params['custom_fields'] = (array) $response->data->metadata->custom_fields[0];
+            }
+            
             $params['package'] = $params['custom_fields']['package'];
             $params['client_id'] = $params['custom_fields']['client_id'];
             $params['customer'] = (array) $params['customer'];

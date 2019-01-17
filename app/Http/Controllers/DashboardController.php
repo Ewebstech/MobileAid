@@ -12,6 +12,21 @@ class DashboardController extends Controller
        $this->helper = new HelperController;
     }
 
+
+    /**
+     * Calculate Percentage of completed Kyc
+     */
+
+    protected function calcKycPercentage($kycArray){
+        if(is_array($kycArray)){
+            $total_array_count = count($kycArray);
+            $filtered_array = array_filter($kycArray);
+            $total_non_null_count = count($filtered_array);
+            $perc = ($total_non_null_count/$total_array_count) * 100;
+            return round($perc);
+        }
+    } 
+
     /**
      * This Method handles all dashboard views 
      */
@@ -22,11 +37,8 @@ class DashboardController extends Controller
         
        $userContent = $this->jsonToArray($UserDetails['content']);
        // Check if user has updated their profiles
-       if(isset($userContent['Kyc'])){
-            $data['EditProfile'] = "set";
-       } else {
-            $data['EditProfile'] = "";
-       }
+  
+       $data['KycPercentage'] = $this->calcKycPercentage($userContent['Kyc']);
 
        $data['MsgCount'] = $this->getContactMessageCount();
        $data['PatientNum'] = $this->getPatientsNum();

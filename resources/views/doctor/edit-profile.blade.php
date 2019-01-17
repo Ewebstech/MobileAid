@@ -17,7 +17,7 @@
 <div class=" content-area">
         <div class="page-header">
             <h4 class="page-title">Edit Profile</h4>
-            <ol class="breadcrumb">
+            <ol class="breadcrumb"> 
                 <li class="breadcrumb-item"><a href="#">Pages</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Edit Profile</li>
             </ol>

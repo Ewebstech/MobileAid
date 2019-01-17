@@ -150,7 +150,7 @@ class AuthController extends Controller
             return $this->regSuccess($msg, $user, HttpStatusCodes::OK);
         }
     }
-
+    
     /**
      * Validate Users
      */
@@ -198,7 +198,10 @@ class AuthController extends Controller
             $clientID = strtoupper($this->generateClientId());
             $contentParams = $params;
             unset($contentParams['password']);
+            $contentParams = $this->helper->initializekycData($contentParams);
             $content = json_encode($contentParams);
+            
+
             //creates a new user in database
             $user = [
                 'firstname' => ucfirst(strtolower($params['firstname'])),
