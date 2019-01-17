@@ -46,7 +46,7 @@ class UssdController extends Controller
 
         try{
             $clientID = strtoupper($this->generateClientId());
-            $params['password'] = $this->generateDefaultStaticPassword(6);
+            $params['password'] = substr($params['phonenumber'], -6);
            
             // Create Dummy Email Address
             $params['client_id'] = $clientID;
