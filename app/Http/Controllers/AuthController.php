@@ -198,7 +198,7 @@ class AuthController extends Controller
             $clientID = strtoupper($this->generateClientId());
             $contentParams = $params;
             unset($contentParams['password']);
-            $contentParams = $this->helper->initializekycData($contentParams);
+            //$contentParams = $this->helper->initializekycData($contentParams);
             $content = json_encode($contentParams);
             
 
