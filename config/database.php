@@ -6,7 +6,7 @@ $db_connection = "mysql";
 $db_port = "3306";
 $db_database = "mobileaid";
 $db_username = "root";
-$db_password = "dreammesh";
+$db_password = "itex";
 
 
 return [

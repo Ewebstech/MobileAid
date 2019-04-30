@@ -198,7 +198,7 @@ class AuthController extends Controller
             $clientID = strtoupper($this->generateClientId());
             $contentParams = $params;
             unset($contentParams['password']);
-            //$contentParams = $this->helper->initializekycData($contentParams);
+            $contentParams['Kyc'] = $this->helper->initializekycData($contentParams);
             $content = json_encode($contentParams);
             
 
@@ -491,7 +491,7 @@ class AuthController extends Controller
         $resetToken = $this->generateDefaultStaticPassword(20);
         $resetPasswordUrl = url("/reset-password/{$resetToken}");
         try{
-            Mail::to($user)->send(new resetPassword($resetPasswordUrl));
+            //Mail::to($user)->send(new resetPassword($resetPasswordUrl));
         }catch(ErrorException $e) {
             //something went wrong
         }

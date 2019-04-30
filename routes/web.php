@@ -65,7 +65,7 @@ Route::group(['prefix' => '/', 'middleware' => ['redirectauth']], function(){
     Route::get('my-cases', 'PatientsController@viewCases')->name('viewCases');
     // Doctor Routes
     Route::get('handled-cases', 'DoctorController@viewHandledCases')->name('handledCases');
-    Route::post('save-report', 'DoctorController@saveReport')->name('saveReport');
+    Route::post('save-report', 'DoctorController@saveReport')->name('saveredirectauthredirectauthReport');
     //Admin Routes
     Route::get('clients', 'PatientsController@viewPatients')->name('viewPatients');
     Route::get('doctors', 'DoctorController@viewDoctors')->name('viewDoctors');

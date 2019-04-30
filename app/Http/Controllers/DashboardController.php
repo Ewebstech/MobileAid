@@ -31,40 +31,45 @@ class DashboardController extends Controller
      * This Method handles all dashboard views 
      */
     public function index(Request $request){
-       $UserDetails = $_SESSION['UserDetails'];
-       $data['sessiondata'] = $UserDetails;
-       $role = strtolower($UserDetails['role']);
+        $UserDetails = $_SESSION['UserDetails'];
+        $data['sessiondata'] = $UserDetails;
+        $role = strtolower($UserDetails['role']);
         
-       $userContent = $this->jsonToArray($UserDetails['content']);
-       // Check if user has updated their profiles
-  
-       $data['KycPercentage'] = $this->calcKycPercentage($userContent['Kyc']);
+        $userContent = $this->jsonToArray($UserDetails['content']);
+        // Check if user has updated their profiles
+        //dd($userContent['Kyc']['Kyc']);
+        if(isset($userContent['Kyc']['Kyc'])){
+            $data['KycPercentage'] = $this->calcKycPercentage($userContent['Kyc']['Kyc']);
+        } else {
+            $data['KycPercentage'] = 0;
+        }
+        
 
-       $data['MsgCount'] = $this->getContactMessageCount();
-       $data['PatientNum'] = $this->getPatientsNum();
-       $data['DoctorNum'] = $this->getDoctorsNum();
-       $data['regToday'] = $this->registrationsToday();
-       $data['OpenCasesNum'] = count($this->helper->getAllOpenCases()); 
-       $data['ClosedCasesNum'] = count($this->helper->getAllClosedCases());
-       $data['SilverNum'] = $this->getUsersBySubscriptionCount('Silver');
-       $data['GoldNum'] = $this->getUsersBySubscriptionCount('Gold');
-       $data['DiamondNum'] = $this->getUsersBySubscriptionCount('Diamond');
-       $data['TitaniumNum'] = $this->getUsersBySubscriptionCount('Titanium');
-       $data['ActiveUsers'] = $this->getActiveUsersNum();
-       $data['InActiveUsers'] = $this->getInActiveUsersNum();
+        $data['MsgCount'] = $this->getContactMessageCount();
+        $data['PatientNum'] = $this->getPatientsNum();
+        $data['DoctorNum'] = $this->getDoctorsNum();
+        $data['regToday'] = $this->registrationsToday();
+        $data['OpenCasesNum'] = count($this->helper->getAllOpenCases()); 
+        $data['ClosedCasesNum'] = count($this->helper->getAllClosedCases());
+        $data['SilverNum'] = $this->getUsersBySubscriptionCount('Silver');
+        $data['GoldNum'] = $this->getUsersBySubscriptionCount('Gold');
+        $data['DiamondNum'] = $this->getUsersBySubscriptionCount('Diamond');
+        $data['TitaniumNum'] = $this->getUsersBySubscriptionCount('Titanium');
+        $data['ActiveUsers'] = $this->getActiveUsersNum();
+        $data['InActiveUsers'] = $this->getInActiveUsersNum();
 
-       //Doctors
-       $data['HandledCases'] =  count($this->helper->getAllHandledCases($UserDetails['client_id'])); 
-       //dd($data['HandledCases']);
-       // Chart Data
-       $SubscriptionData = [$data['SilverNum'], $data['GoldNum'], $data['TitaniumNum'], $data['DiamondNum']];
-       $data['SubChart'] = json_encode($SubscriptionData);
+        //Doctors
+        $data['HandledCases'] =  count($this->helper->getAllHandledCases($UserDetails['client_id'])); 
+        //dd($data['HandledCases']);
+        // Chart Data
+        $SubscriptionData = [$data['SilverNum'], $data['GoldNum'], $data['TitaniumNum'], $data['DiamondNum']];
+        $data['SubChart'] = json_encode($SubscriptionData);
 
-      // dd($data['regToday']);
-       $data['PatientsDashboard'] = $this->getPatientsDashboardData();
-  
-       $URI= '/'.$role.'/dashboard';
-       return view($URI)->with($data);
+        // dd($data['regToday']);
+        $data['PatientsDashboard'] = $this->getPatientsDashboardData();
+
+        $URI= '/'.$role.'/dashboard';
+        return view($URI)->with($data);
     }
 
     private function getActiveUsersNum(){

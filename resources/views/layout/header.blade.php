@@ -85,15 +85,19 @@
                 <li>
                   <a href="#" class="text-white">FAQ</a>
                 </li>
+
                 <li class="text-white">|</li>
                 <li>
                   <a href="/contact" class="text-white">Partnerships &amp; Gallery</a>
                 </li>
+                
+                <li class="text-white">|</li>
+                <li class="m-0 pl-10 pr-10 text-white"> <span> Use *696*20# (Glo, Airtel, 9mobile)</span></li>
+
                 <li class="text-white">|</li>
                 
                 <li class="m-0 pl-10 pr-10"> <i class="fa fa-envelope-o text-white"></i> <a href="#" class="text-white">support@mobilemedicalaid.com</a>
-                <li class="text-white">|</li>
-                <li class="m-0 pl-10 pr-10 text-white"> <span>RC: 477355</span></li>
+                
                 </li>
               </ul>
             </div>

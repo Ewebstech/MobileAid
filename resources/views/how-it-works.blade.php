@@ -43,20 +43,18 @@
         <div class="section-content">
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-7">
-            <p><h3>How <span class="text-theme-colored font-weight-400">MA</span> Works</h3>
-            Subscribers call the number and speak to a doctor who will give timely and effective medical advice
-for any health situation to control and manage the situation. These issues range from general
-consulting to emergencies.
+            <p><h3>How <span class="text-theme-colored font-weight-400">2MA</span> Works</h3>
+              Subscribers call the number and speak to a doctor who will give timely and effective medical advice for any health situation to control and manage the situation. These issues are for general consulting only. 2MA does not replace the importance of having a proper medical check at a health facility (hospital).
             </p>
                 <div class="row">
                 <div class="col-xs-12">
                   <ul class="mt-10">
-                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Customers call designated number and put through to a doctor.</li>
+                    <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Customers call designated number and are put through to a doctor.</li>
                     <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;The client explains what their medical issue is.</li>
                     <li class="mb-10"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Depending on the issue the doctor will:</li>
                         <ul class="mt-6">
-                             <li class="mb-6"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;give immediate medical recommendations for managing and controlling emergencies. Child with a temperature talking gibberish, an individual suddenly slumping, sudden bleeding from the nose, etc.</li>
-                             <li class="mb-6"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;give advice on managing pre-existing medical conditions and address general health issues.</li>
+                             <li class="mb-6"><i class="fa fa-angle-double-right text-theme-colored font-15"></i>&emsp;Give immediate medical recommendations for managing and controlling health situations. 2MA doctors will give advice on managing pre-existing medical conditions and address general health issues.</li>
+                            
                         </ul>
                   </ul>
                   </div>
@@ -65,10 +63,9 @@ consulting to emergencies.
                     <ul style="list-style-type: square; margin-left: 40px; list-style-color: #00A4EF !important">
                         <li>It is very convenient; clients do not have to leave their homes/offices to get this feedback.</li> 
                         <li> It is fast. Clients will avoid long processes to find out about their health.</li>
-                        <li>It bypasses the barrier of fear most people experience of going to the hospitals. Unfortunately, many people do not go to the hospitals until it is critical, which is usually too
-                    late.</li>
-                    <li>It will help confirm whether to go to the hospital or not.</li>
-                    <li>It is very affordable, monthly subscription is a token that reduces the risk of a larger loss.</li>
+                        <li>It bypasses the barrier of fear most people experience of going to the hospitals. Unfortunately, many people do not go to the hospitals until it is critical, which is usually too late.</li>
+                        <li>It will help confirm whether to go to the hospital or not.</li>
+                        <li>It is very affordable and comes with a life insurance cover.</li>
                     </ul>
           
                   </div>
